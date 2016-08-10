@@ -6,15 +6,36 @@ void RGB::ErrorDetector(int v) {
 	case 0:
 		printf("OVERFLOW");
 		break;
-	case 1:
+	case 2:
 		printf("UNDERFLOW");
 		break;
 	}
 }
 RGB::RGB() { this->R = this->G = this->B = 0; }
-int RGB::setB(int b) { this->B = b; }
-int RGB::setG(int g) { this->G = g; }
-int RGB::setR(int r) { this->R = r; }
-int RGB::getR() { return this->R; }
-int RGB::getG() { return this->G; }
-int RGB::getB() { return this->B; }
+short RGB::checkRGBValue(int value) {
+	if (value < 0) return 2;
+	else if (value > 255) return 0;
+	else return 1;
+}
+short RGB::setB(short b) {
+	int temp = this->checkRGBValue(b);
+	if (temp == 1) {
+		this->B = b;
+	}
+	return temp;
+}
+short RGB::setG(short b) {
+	int temp = this->checkRGBValue(b);
+	if (temp == 1) {
+		this->B = b;
+	}return temp;
+}
+short RGB::setR(short b) {
+	int temp = this->checkRGBValue(b);
+	if (temp == 1) {
+		this->B = b;
+	}return temp;
+}
+short RGB::getR() { return this->R; }
+short RGB::getG() { return this->G; }
+short RGB::getB() { return this->B; }
