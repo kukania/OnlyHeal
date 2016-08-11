@@ -25,6 +25,9 @@ public:
 	long long	getDamage();
 	int			addDefence(int);
 	long long	getDefence();
+	int			setAgro(int);
+	int			getAgro();
+	int			addAgro(int);
 	RGB			setRGBDamage(RGB);
 	RGB			setRGBDefence(RGB);
 	int			addRGBDamage(RGB);

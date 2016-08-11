@@ -2,13 +2,13 @@
 #include "parts/Status.h"
 #include "parts/Skill.h"
 #include "parts/Tier.h"
-#include<list>
+#include<vector>
 class Character {
 private:
 	int type;
 	bool isDie;
 	Status myStatus;
-	list<Skill*> mySkillSet;
+	std::vector<Skill*> mySkillSet;
 public:
 	Character() {
 		isDie = false;
@@ -18,6 +18,7 @@ public:
 	int beAttacked(int);
 	int beBuffedDefence(RGB);
 	int beBuffedDamage(RGB);
-	int doAttack();
+	Status getStatus();
+	int doAttack(Character *);
 	bool checkDie();
 };

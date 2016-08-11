@@ -93,3 +93,12 @@ long long	Status::setMaxHP() {
 long long	Status::getMaxHP() {
 	return MaxHP;
 }
+int			Status::setAgro(int input) {
+	agro = input;
+}
+int			Status::getAgro() {
+	return agro;
+}
+int			Status::addAgro(int input) {
+	agro += input;
+}
