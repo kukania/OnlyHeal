@@ -9,12 +9,16 @@ public:
 	string	name;
 	Skill	*parent;
 	float	cooltime;
-	Skill(string, Skill *, float);
+	int		type;
+
+	Skill(string, Skill *, float, int);
 	string	getName();
 	Skill*	getParent();
 	float	getCooltime();
+	int		getType();
 	void	setName(string);
 	void	setParent(Skill*);
 	void	setCooltime(float);
+	void	setType(int);
 	virtual int activate(Character *, Character)=0;
 };
