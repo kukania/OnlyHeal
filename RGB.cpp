@@ -1,6 +1,7 @@
 #pragma once
 #include<cstdio>
 #include "RGB.h"
+#include<random>
 void RGB::ErrorDetector(int v) {
 	switch (v) {
 	case 0:
@@ -39,3 +40,8 @@ short RGB::setR(short b) {
 short RGB::getR() { return this->R; }
 short RGB::getG() { return this->G; }
 short RGB::getB() { return this->B; }
+short RGB::setRGBRandom(int max=256, int min = 1) {
+	this->R = rand() % max + min;
+	this->G = rand() % max + min;
+	this->B = rand() % max + min;
+}

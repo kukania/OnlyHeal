@@ -7,8 +7,12 @@ private:
 	short	level;
 	int		value;
 public:
+	Tier() {
+		short temp = 0;
+		setLevel(temp);
+	}
 	Tier(short);
-	Tier(short[]);
+	Tier(short*);
 	short setLevel(short);
 	short setLevel(short *);
 	short getLevel();
@@ -33,5 +37,18 @@ public:
 			_level /= 3;
 		}
 		return;
+	}
+	static Tier getSimillarTier(int level) {
+		short arr[5] = { -2,-1,-0,1,2 };
+		Tier temp(level);
+		short num = rand() % 5;
+		if (level + arr[num] > 80)
+			level = 80;
+		else if (level + arr[num] < 0)
+			level = 0;
+		else
+			level += arr[num];
+		temp.setLevel(level);
+		return temp;
 	}
 };
