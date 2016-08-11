@@ -4,6 +4,7 @@ Skill::Skill(string _name, Skill *_parent, int _cooltime, int _type) {
 	setParent(_parent);
 	setCooltime(_cooltime);
 	setType(_type);
+	cooldown = 0;
 	isMulti = false;
 }
 

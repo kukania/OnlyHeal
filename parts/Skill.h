@@ -14,11 +14,13 @@ public:
 	bool	isMulti;
 
 	Skill(string, Skill *, int, int);
+	
 	string	getName();
 	Skill*	getParent();
 	int		getCooltime();
 	int		getCooldown();
 	int		getType();
+
 	void	setName(string);
 	void	setParent(Skill*);
 	void	setCooltime(int);
