@@ -8,17 +8,24 @@ class Skill {
 public:
 	string	name;
 	Skill	*parent;
-	float	cooltime;
+	int		cooltime;
+	int		cooldown;
 	int		type;
+	bool	isMulti;
 
-	Skill(string, Skill *, float, int);
+	Skill(string, Skill *, int, int);
 	string	getName();
 	Skill*	getParent();
-	float	getCooltime();
+	int		getCooltime();
+	int		getCooldown();
 	int		getType();
 	void	setName(string);
 	void	setParent(Skill*);
-	void	setCooltime(float);
+	void	setCooltime(int);
+	void	setCooldown(int);
 	void	setType(int);
-	virtual int activate(Character *, Character)=0;
+
+	virtual int activate(Character *, Character) = 0;
+	void	setCooldown();
+	bool	able();
 };
