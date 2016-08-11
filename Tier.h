@@ -1,5 +1,7 @@
 #pragma once
 #include <random>
+#define MAX_LEVEL 80
+#define MAX_LABEL 2
 
 class Tier {
 private:
@@ -14,9 +16,7 @@ public:
 	Tier(short);
 	Tier(short*);
 	short setLevel(short);
-	short setLevel(short *);
 	short getLevel();
-	short setLabel(short);
 	short setLabel(short *);
 	short* getLabel();
 
@@ -42,8 +42,8 @@ public:
 		short arr[5] = { -2,-1,-0,1,2 };
 		Tier temp(level);
 		short num = rand() % 5;
-		if (level + arr[num] > 80)
-			level = 80;
+		if (level + arr[num] > MAX_LEVEL)
+			level = MAX_LEVEL;
 		else if (level + arr[num] < 0)
 			level = 0;
 		else

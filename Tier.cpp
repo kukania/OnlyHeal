@@ -5,26 +5,20 @@ Tier::Tier(short input) {
 	setLevel(input);
 }
 Tier::Tier(short *input){
-	setLevel(input);
-}
-short Tier::setLabel(short input) {
-	Tier::level2label(input, this->label);
-	this->level = input;
-	setValue();
-}
-short Tier::setLevel(short *input) {
-	this->level = Tier::label2level(input);
-	for (int i = 0; i < 4; i++)label[i] = input[i];
-	setValue();
+	setLabel(input);
 }
 short Tier::setLevel(short input) {
+	if (input > MAX_LEVEL) input = MAX_LEVEL;
 	level = input;
 	Tier::level2label(input, label);
 	setValue();
 }
 short Tier::getLevel() { return level; }
 short Tier::setLabel(short *input) {
-	for (int i = 0; i < 4; i++)label[i] = input[i];
+	for (int i = 0; i < 4; i++) {
+		if (input[i] > MAX_LABEL) input[i] = MAX_LABEL;
+		label[i] = input[i];
+	}
 	level = Tier::label2level(input);
 	setValue();
 }
