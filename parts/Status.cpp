@@ -55,11 +55,13 @@ long long	Status::getDefence() {
 RGB			Status::getRGBDamage() {
 	return RGBdamage;
 }
-RGB			Status::setRGBDamage(RGB input) {
+int			Status::setRGBDamage(RGB input) {
 	RGBdamage = input;
+	return true;
 }
-RGB			Status::setRGBDefence(RGB input) {
+int			Status::setRGBDefence(RGB input) {
 	RGBdefence = input;
+	return true;
 }
 RGB			Status::getRGBDefence() {
 	return RGBdefence;
@@ -69,8 +71,8 @@ float 		Status::getSpeed() {
 }
 bool		Status::equipItem(Item input) {
 	items[input.getType()] = input;
-	RGBdamage = items[0].getRGB() + items[2].getRGB;
-	RGBdefence = items[1].getRGB() + items[2].getRGB;
+	RGBdamage = items[0].getRGB() + items[2].getRGB();
+	RGBdefence = items[1].getRGB() + items[2].getRGB();
 	return 0;
 }
 int			Status::addRGBDamage(RGB input) {
@@ -95,10 +97,12 @@ long long	Status::getMaxHP() {
 }
 int			Status::setAgro(int input) {
 	agro = input;
+	return 0;
 }
 int			Status::getAgro() {
 	return agro;
 }
 int			Status::addAgro(int input) {
 	agro += input;
+	return 0;
 }

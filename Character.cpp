@@ -5,11 +5,12 @@ int Character::beAttacked(int damage) {
 	myStatus.addHP(-damage);
 	if (myStatus.getHP() == 0)
 		isDie = true;
+	return true;
 }
 int Character::doAttack(Character *input) {
 	//Skill 0 ´Â ÆòÅ¸, input 0 = player 1=monster
 	Skill* temp = mySkillSet[rand() % mySkillSet.size() + 1];
-	temp = temp->able ? temp : mySkillSet[0];
+	temp = temp->able() ? temp : mySkillSet[0];
 	if (temp->isMulti) {
 		temp->activate(input, *this);
 	}
@@ -29,15 +30,18 @@ int Character::doAttack(Character *input) {
 			temp->activate(&input[1], *this);
 		}
 	}
+	return true;
 }
 bool Character::checkDie() {
 	return isDie;
 }
 int Character::beBuffedDefence(RGB input) {
 	myStatus.addRGBDamage(input);
+	return true;
 }
 int Character::beBuffedDamage(RGB input) {
 	myStatus.addRGBDefence(input);
+	return true;
 }
 Status Character::getStatus() {
 	return myStatus;

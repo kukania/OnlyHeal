@@ -28,8 +28,8 @@ public:
 	int			setAgro(int);
 	int			getAgro();
 	int			addAgro(int);
-	RGB			setRGBDamage(RGB);
-	RGB			setRGBDefence(RGB);
+	int			setRGBDamage(RGB);
+	int			setRGBDefence(RGB);
 	int			addRGBDamage(RGB);
 	int			addRGBDefence(RGB);
 	RGB			getRGBDamage();
