@@ -8,8 +8,8 @@ private:
 	int type;
 	bool isDie;
 	Status myStatus;
-	std::vector<Skill*> mySkillSet;
 public:
+	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;
 		type = 0;
@@ -18,6 +18,8 @@ public:
 	int beAttacked(int);
 	int beBuffedDefence(RGB);
 	int beBuffedDamage(RGB);
+	int setType(int);
+	int getType();
 	Status getStatus();
 	int doAttack(Character *);
 	bool checkDie();

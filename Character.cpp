@@ -42,3 +42,10 @@ int Character::beBuffedDamage(RGB input) {
 Status Character::getStatus() {
 	return myStatus;
 }
+int Character::setType(int type) {
+	this->type = type;
+	return 0;
+}
+int Character::getType() {
+	return type;
+}
