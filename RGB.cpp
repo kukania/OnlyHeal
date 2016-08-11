@@ -13,6 +13,13 @@ void RGB::ErrorDetector(int v) {
 	}
 }
 RGB::RGB() { this->R = this->G = this->B = 0; }
+RGB RGB::operator+ (RGB a) {
+	RGB temp;
+	temp.setR(this->R + a.getR());
+	temp.setG(this->G + a.getG());
+	temp.setB(this->B + a.getB());
+	return temp;
+}
 short RGB::checkRGBValue(int value) {
 	if (value < 0) return 2;
 	else if (value > 255) return 0;

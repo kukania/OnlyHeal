@@ -13,4 +13,5 @@ public:
 	short getB();
 	short checkRGBValue(int);
 	static void ErrorDetector(int);
+	RGB operator+ (RGB a);
 };

@@ -15,18 +15,15 @@ private:
 public:
 	Status();//player
 	Status(Tier); //NPC,MONSTER
-	int			setHP();
+	int			addHP(int);
 	long long	getHP();
-	int			setDamage();
+	int			addDamage(int);
 	long long	getDamage();
-	int			setDefence();
+	int			addDefence(int);
 	long long	getDefence();
-	int			setRGBDamage();
 	RGB			getRGBDamage();
-	int			setRGBDefence();
 	RGB			getRGBDefence();
-	int			setSpeed();
-	long long	getSpeed();
+	float		getSpeed();
 	bool		equipItem(Item);
 	Tier		evalTier();
 };
