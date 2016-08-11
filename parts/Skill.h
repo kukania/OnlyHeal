@@ -11,6 +11,7 @@ public:
 	int		cooltime;
 	int		cooldown;
 	int		type;
+	bool	isMulti;
 
 	Skill(string, Skill *, int, int);
 	string	getName();
