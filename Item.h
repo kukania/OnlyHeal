@@ -1,25 +1,23 @@
 #pragma once
 #include <string>
 #include "RGB.h"
+#include "Tier.h"
 using namespace std;
 
 class Item {
 public:
-	string	tier;
+	Tier	tier;
 	int		type;
-	int		value;
 	RGB		rgb;
 
 	Item();
-	Item(string, int, RGB);
+	Item(Tier, int, RGB);
 
-	void setTier(string);
+	void setTier(Tier);
 	void setType(int);
-	void setValue(string);
 	void setRGB(RGB);
 
-	string	getTier();
+	Tier	getTier();
 	int		getType();
-	int		getValue();
 	RGB		getRGB();
 };

@@ -1,28 +1,32 @@
 #include "Item.h"
+#include "Tier.h"
 
 Item::Item() {
-	Item("ŷŷŷŷ", 0, RGB());
+	Tier temp = Tier(1);
+	Item(temp, 0, RGB());
 }
-Item::Item(string _tier, int _type, RGB _rgb) {
+Item::Item(Tier _tier, int _type, RGB _rgb) {
 	setTier(_tier);
 	setType(_type);
-	setValue(_tier);
 	setRGB(_rgb);
 }
 
-void Item::setTier(string _tier) {
-	if (_tier.length != 4) {
-		printf("Tier is not 4 levels.\n");
-		return;
-	}
+void Item::setTier(Tier _tier) {
 	tier = _tier;
 }
 void Item::setType(int _type) {
 	type = type;
 }
-void Item::setValue(string _tier) {
-	int temp = 0;
-	for (int i = 0; i < 4; i++) {
+void Item::setRGB(RGB _rgb) {
+	rgb = _rgb;
+}
 
-	}
+Tier Item::getTier() {
+	return tier;
+}
+int Item::getType() {
+	return type;
+}
+RGB Item::getRGB() {
+	return rgb;
 }
