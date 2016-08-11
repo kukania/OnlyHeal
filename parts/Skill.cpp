@@ -1,5 +1,5 @@
 #include "Skill.h"
-Skill::Skill(string _name, Skill *_parent, float _cooltime, int _type) {
+Skill::Skill(string _name, Skill *_parent, int _cooltime, int _type) {
 	setName(_name);
 	setParent(_parent);
 	setCooltime(_cooltime);
@@ -12,23 +12,38 @@ void Skill::setName(string _name) {
 void Skill::setParent(Skill *_parent) {
 	parent = _parent;
 }
-void Skill::setCooltime(float _cooltime) {
+void Skill::setCooltime(int _cooltime) {
 	if (_cooltime < 0)
 		_cooltime = 0;
 	cooltime = _cooltime;
 }
+void Skill::setCooldown(int _cooldown) {
+	cooldown = _cooldown;
+}
 void Skill::setType(int _type) {
 	type = _type;
 }
+
 string Skill::getName() {
 	return name;
 }
 Skill *Skill::getParent() {
 	return parent;
 }
-float Skill::getCooltime() {
+int Skill::getCooltime() {
 	return cooltime;
+}
+int Skill::getCooldown() {
+	return cooldown;
 }
 int Skill::getType() {
 	return type;
+}
+
+void Skill::setCooldown() {
+	cooldown = cooltime;
+	return;
+}
+bool Skill::able() {
+	return (!cooldown);
 }
