@@ -9,7 +9,6 @@ public:
 	string	name;
 	Skill	*parent;
 	float	cooltime;
-	Skill();
 	Skill(string, Skill *, float);
 	string	getName();
 	Skill*	getParent();
@@ -17,5 +16,5 @@ public:
 	void	setName(string);
 	void	setParent(Skill*);
 	void	setCooltime(float);
-	virtual int activate(Character *, Character);
+	virtual int activate(Character *, Character)=0;
 };

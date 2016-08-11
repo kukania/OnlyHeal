@@ -1,9 +1,4 @@
 #include "Skill.h"
-
-Skill::Skill() {
-	Skill("", NULL, 0);
-}
-
 Skill::Skill(string _name, Skill *_parent, float _cooltime) {
 	setName(_name);
 	setParent(_parent);

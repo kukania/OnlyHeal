@@ -12,6 +12,7 @@ short Tier::setLevel(short input) {
 	level = input;
 	Tier::level2label(input, label);
 	setValue();
+	return 0;
 }
 short Tier::getLevel() { return level; }
 short Tier::setLabel(short *input) {
@@ -21,6 +22,7 @@ short Tier::setLabel(short *input) {
 	}
 	level = Tier::label2level(input);
 	setValue();
+	return 0;
 }
 short* Tier::getLabel() { return label; }
 

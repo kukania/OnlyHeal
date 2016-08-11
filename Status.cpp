@@ -30,18 +30,21 @@ Tier Status::evalTier() {
 }
 int	Status::addHP(int input) {
 	HP += input;
+	return 0;
 }
 long long	Status::getHP() {
 	return this->evalTier().getValue()*10 + HP;
 }
 int	Status::addDamage(int input) {
 	damage += input;
+	return 0;
 }
 long long	Status::getDamage() {
 	return this->items[0].getTier().getValue() + damage;
 }
 int			Status::addDefence(int input) {
 	defence += input;
+	return 0;
 }
 long long	Status::getDefence() {
 	return this->items[1].getTier().getValue() + defence;
@@ -57,4 +60,5 @@ float 		Status::getSpeed() {
 }
 bool		Status::equipItem(Item input) {
 	items[input.getType()] = input;
+	return 0;
 }

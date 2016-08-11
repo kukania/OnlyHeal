@@ -51,4 +51,5 @@ short RGB::setRGBRandom(int max=256, int min = 1) {
 	this->R = rand() % max + min;
 	this->G = rand() % max + min;
 	this->B = rand() % max + min;
+	return 0;
 }
