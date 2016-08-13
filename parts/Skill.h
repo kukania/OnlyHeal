@@ -13,17 +13,20 @@ public:
 	int		type;
 	bool	isMulti;
 
-	Skill(string, Skill *, int, int);
+	Skill(string, Skill *, int, int); 	// name, parent, cooltime, type
 	string	getName();
 	Skill*	getParent();
 	int		getCooltime();
 	int		getCooldown();
 	int		getType();
+	bool 	getMulti();
+
 	void	setName(string);
 	void	setParent(Skill*);
 	void	setCooltime(int);
 	void	setCooldown(int);
 	void	setType(int);
+	void 	setMulti(bool);
 
 	virtual int activate(Character *, Character) = 0;
 	void	setCooldown();

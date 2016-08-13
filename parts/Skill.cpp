@@ -4,6 +4,7 @@ Skill::Skill(string _name, Skill *_parent, int _cooltime, int _type) {
 	setParent(_parent);
 	setCooltime(_cooltime);
 	setType(_type);
+	cooldown = 0;
 	isMulti = false;
 }
 
@@ -24,6 +25,9 @@ void Skill::setCooldown(int _cooldown) {
 void Skill::setType(int _type) {
 	type = _type;
 }
+void Skill::setMulti(bool _isMulti){
+	isMulti = _isMulti;
+}
 
 string Skill::getName() {
 	return name;
@@ -39,6 +43,9 @@ int Skill::getCooldown() {
 }
 int Skill::getType() {
 	return type;
+}
+bool Skill::getMulti(){
+	return isMulti;
 }
 
 void Skill::setCooldown() {
