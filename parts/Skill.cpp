@@ -1,5 +1,6 @@
 #include "Skill.h"
-Skill::Skill(string _name, Skill *_parent, int _cooltime, int _type) {
+Skill::Skill(int _ID, string _name, Skill *_parent, int _cooltime, int _type) {
+	setID(_ID);
 	setName(_name);
 	setParent(_parent);
 	setCooltime(_cooltime);
@@ -8,6 +9,9 @@ Skill::Skill(string _name, Skill *_parent, int _cooltime, int _type) {
 	isMulti = false;
 }
 
+void Skill::setID(int _ID){
+	ID = _ID;
+}
 void Skill::setName(string _name) {
 	name = _name;
 }
@@ -29,6 +33,9 @@ void Skill::setMulti(bool _isMulti){
 	isMulti = _isMulti;
 }
 
+int Skill::getID(){
+	return ID;
+}
 string Skill::getName() {
 	return name;
 }

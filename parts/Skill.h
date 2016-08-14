@@ -6,6 +6,7 @@ class Character;
 
 class Skill {
 public:
+	int 	ID;
 	string	name;
 	Skill	*parent;
 	int		cooltime;
@@ -13,7 +14,8 @@ public:
 	int		type;
 	bool	isMulti;
 
-	Skill(string, Skill *, int, int); 	// name, parent, cooltime, type
+	Skill(int, string, Skill *, int, int); 	// name, parent, cooltime, type
+	int 	getID();
 	string	getName();
 	Skill*	getParent();
 	int		getCooltime();
@@ -21,6 +23,7 @@ public:
 	int		getType();
 	bool 	getMulti();
 
+	void 	setID(int);
 	void	setName(string);
 	void	setParent(Skill*);
 	void	setCooltime(int);
