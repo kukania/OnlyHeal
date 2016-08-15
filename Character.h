@@ -14,7 +14,7 @@ public:
 		isDie = false;
 		type = 0;
 	}
-	Character(Tier tier):myStatus(tier) {}
+	Character(Tier tier) :myStatus(tier) {}
 	int beAttacked(int);
 	int beBuffedDefence(RGB);
 	int beBuffedDamage(RGB);

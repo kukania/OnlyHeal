@@ -16,7 +16,7 @@ typedef int time_s;
 class Character;
 
 class Skill {
-private:
+protected:
 	int 		ID;
 	string 		name;
 	int 		parent; 		// ID of parent skill
