@@ -10,7 +10,8 @@ using namespace std;
 
 typedef int SkillID
 typedef int Type;
-typedef int Millisec
+typedef int time_ms
+typedef int time_s
 
 class Character;
 
@@ -19,30 +20,30 @@ private:
 	int 		ID;
 	string 		name;
 	int 		parent; 		// ID of parent skill
-	Millisec 	cooltime; 		// static time for cooldown
-	Millisec 	cooldown; 		// dynamic value of cooldown
-	Millisec 	time; 			// persistant time of skill
+	time_ms 	cooltime; 		// static time for cooldown
+	time_ms 	cooldown; 		// dynamic value of cooldown
+	time_s 		time; 			// persistant time of skill
 	Type 		type; 			// type of skill
 	bool 		multi;
 
 public:	
 	// ID, name, parent, cooltime, time, type, multi
-	Skill(SkillID, string, SkillID, Millisec, Millisec, Type, bool);
+	Skill(SkillID, string, SkillID, time_ms, time_ms, Type, bool);
 	// getter
 	SkillID 	getID();
 	string		getName();
 	SkillID		getParent();
-	Millisec 	getCooltime();
-	Millisec 	getCooldown();
-	Millisec 	getTime();
+	time_ms 	getCooltime();
+	time_ms 	getCooldown();
+	time_ms 	getTime();
 	Type		getType();
 	bool 		getMulti();
 	// setter
 	void 		setID(SkillID);
 	void		setName(string);
 	void		setParent(SkillID);
-	void		setCooltime(Millisec);
-	void 		setTime(Millisec);
+	void		setCooltime(time_ms);
+	void 		setTime(time_ms);
 	void		setType(Type);
 	void 		setMulti(bool);
 	// main use

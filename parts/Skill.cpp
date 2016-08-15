@@ -3,7 +3,7 @@
 using namespace std;
 
 Skill::Skill(SkillID _ID, string _name, SkillID _parent, 
-Millisec _cooltime, Millisec _time, Type _type, bool _multi) {
+time_ms _cooltime, time_s _time, Type _type, bool _multi) {
 	setID(_ID);
 	setName(_name);
 	setParent(_parent);
@@ -23,13 +23,13 @@ string Skill::getName() {
 SkillID Skill::getParent() {
 	return parent;
 }
-Millisec Skill::getCooltime() {
+time_ms Skill::getCooltime() {
 	return cooltime;
 }
-Millisec Skill::getCooldown() {
+time_ms Skill::getCooldown() {
 	return cooldown;
 }
-Millisec Skill::getTime(){
+time_s Skill::getTime(){
 	return time;
 }
 Type Skill::getType() {
@@ -53,13 +53,13 @@ void Skill::setParent(SkillID _parent) {
 	parent = _parent;
 	return;
 }
-void Skill::setCooltime(Millisec _cooltime) {
+void Skill::setCooltime(time_ms _cooltime) {
 	if (isRange("Cooltime", _cooltime, 999*MINUTE, 0))
 		_cooltime = 0;
 	cooltime = _cooltime;
 	return;
 }
-void Skill::setTime(Millisec _time){
+void Skill::setTime(time_s _time){
 	if (isRange("Time", _time, 999*MINUTE, 0))
 		_time = 0;
 	time = _time;

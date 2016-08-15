@@ -3,10 +3,15 @@
 
 class HealSkill : Skill{
 private:
-    float   effi;                       // efficienty of skill
+    float   factor;                       // efficienty of skill
 public:
-    HealSkill()
-    :Skill(int _ID, )
+    HealSkill(SkillID _ID, string _name, SkillID _parent, 
+    time_ms _cooltime, time_s _time, bool _multi,
+    float _factor)
+    :Skill(_ID, _name, _parent, _cooltime, _time, 
+    T_HEAL, _multi){
+        factor = _factor;
+    }
     virtual int activate(Character *t, Character c){
         int power = c.getDamage();      // Caster's level
         int amount = effi * power / time;
