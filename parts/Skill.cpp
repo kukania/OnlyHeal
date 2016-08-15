@@ -1,5 +1,6 @@
 #include "Skill.h"
-Skill::Skill(string _name, Skill *_parent, int _cooltime, int _type) {
+Skill::Skill(int _ID, string _name, Skill *_parent, int _cooltime, int _type) {
+	ID = _ID;
 	setName(_name);
 	setParent(_parent);
 	setCooltime(_cooltime);

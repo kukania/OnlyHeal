@@ -8,8 +8,8 @@ private:
 	int type;
 	bool isDie;
 	Status myStatus;
-	std::vector<Skill*> mySkillSet;
 public:
+	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;
 		type = 0;
