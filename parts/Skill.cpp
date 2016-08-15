@@ -1,6 +1,10 @@
 #include "Skill.h"
 Skill::Skill(int _ID, string _name, Skill *_parent, int _cooltime, int _type) {
+<<<<<<< HEAD
 	ID = _ID;
+=======
+	setID(_ID);
+>>>>>>> 68ff0a335458818d594cfc5a335174f9da84278d
 	setName(_name);
 	setParent(_parent);
 	setCooltime(_cooltime);
@@ -9,6 +13,9 @@ Skill::Skill(int _ID, string _name, Skill *_parent, int _cooltime, int _type) {
 	isMulti = false;
 }
 
+void Skill::setID(int _ID){
+	ID = _ID;
+}
 void Skill::setName(string _name) {
 	name = _name;
 }
@@ -26,7 +33,13 @@ void Skill::setCooldown(int _cooldown) {
 void Skill::setType(int _type) {
 	type = _type;
 }
+void Skill::setMulti(bool _isMulti){
+	isMulti = _isMulti;
+}
 
+int Skill::getID(){
+	return ID;
+}
 string Skill::getName() {
 	return name;
 }
@@ -41,6 +54,9 @@ int Skill::getCooldown() {
 }
 int Skill::getType() {
 	return type;
+}
+bool Skill::getMulti(){
+	return isMulti;
 }
 
 void Skill::setCooldown() {

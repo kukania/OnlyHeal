@@ -15,7 +15,7 @@ void Item::setTier(Tier _tier) {
 	tier = _tier;
 }
 void Item::setType(int _type) {
-	type = type;
+	type = _type;
 }
 void Item::setRGB(RGB _rgb) {
 	rgb = _rgb;
