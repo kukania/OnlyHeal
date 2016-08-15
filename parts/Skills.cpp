@@ -2,6 +2,8 @@
 #include "../Character.h"
 #include <stdlib.h>
 
+
+
 class HealSkill : Skill {
 private:
 	float   factor;                       // efficienty of skill
@@ -33,10 +35,48 @@ public:
 
 class BuffSkill : Skill {
 private:
-	int     max;
-	int     stat;
+	float	value;
+	int		stype;
 public:
 	BuffSkill() :Skill(999, "1234", 0, 0, 0, 0, false) {};
+	BuffSkill(SkillID _ID, string _name, SkillID _parent,
+		time_ms _cooltime, time_s _time, bool _multi, float _value, int _stype)
+		:Skill(_ID, _name, _parent, _cooltime, _time, T_BUFF, _multi) {
+		value = _value;
+		stype = _stype;
+	}
+	virtual int activate(Character *t, Character c) {
+		int power = c.getStatus()->getDamage();
+		float factor = (power / 9999)*value;
+		setCooldown();
+		switch (stype) {
+		case 0:
+			if (isMulti()) {
+				int amount;
+				for (int i = 2; i < 6; i++) {
+					amount = t[i].getStatus()->getDamage()*factor;
+					t[i].getStatus()->addDamage(amount);
+				}
+				//_sleep(1000 * time);
+				for (int i = 2; i < 6; i++) {
+					amount = t[i].getStatus()->getDamage()*factor;
+					t[i].getStatus()->addDamage(-amount);
+				}
+			}
+			else {
+				int amount = t[0].getStatus()->getDamage()*factor;
+				t[0].getStatus()->addDamage(amount);
+				//_sleep(1000 * time);
+				t[0].getStatus()->addDamage(-amount);
+			}
+			break;
+		case 1:
+
+		default:
+			break;
+		}
+		return 0;
+	}
 };
 
 void initSkills() {

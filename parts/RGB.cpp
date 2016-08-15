@@ -21,8 +21,7 @@ RGB RGB::operator+ (RGB a) {
 	return temp;
 }
 short RGB::checkRGBValue(int value) {
-	if (value < 0) return 2;
-	else if (value > 255) return 0;
+	if (value > 255) return 0;
 	else return 1;
 }
 short RGB::setB(short b) {
