@@ -8,6 +8,7 @@ using namespace std;
 #define T_BUFF  1
 #define T_DEBU  2
 
+typedef int SkillID
 typedef int Type;
 typedef int Millisec
 
@@ -26,20 +27,20 @@ private:
 
 public:	
 	// ID, name, parent, cooltime, time, type, multi
-	Skill(int, string, int, Millisec, Millisec, Type, bool);
+	Skill(SkillID, string, SkillID, Millisec, Millisec, Type, bool);
 	// getter
-	int 		getID();
+	SkillID 	getID();
 	string		getName();
-	int			getParent();
+	SkillID		getParent();
 	Millisec 	getCooltime();
 	Millisec 	getCooldown();
 	Millisec 	getTime();
 	Type		getType();
 	bool 		getMulti();
 	// setter
-	void 		setID(int);
+	void 		setID(SkillID);
 	void		setName(string);
-	void		setParent(int);
+	void		setParent(SkillID);
 	void		setCooltime(Millisec);
 	void 		setTime(Millisec);
 	void		setType(Type);

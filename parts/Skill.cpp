@@ -2,7 +2,7 @@
 #include <cstdio>
 using namespace std;
 
-Skill::Skill(int _ID, string _name, int _parent, 
+Skill::Skill(SkillID _ID, string _name, SkillID _parent, 
 Millisec _cooltime, Millisec _time, Type _type, bool _multi) {
 	setID(_ID);
 	setName(_name);
@@ -14,13 +14,13 @@ Millisec _cooltime, Millisec _time, Type _type, bool _multi) {
 	cooldown = 0;
 }
 // getter
-int Skill::getID(){
+SkillID Skill::getID(){
 	return ID;
 }
 string Skill::getName() {
 	return name;
 }
-int Skill::getParent() {
+SkillID Skill::getParent() {
 	return parent;
 }
 Millisec Skill::getCooltime() {
@@ -39,7 +39,7 @@ bool Skill::getMulti(){
 	return isMulti;
 }
 // setter
-void Skill::setID(int _ID){
+void Skill::setID(SkillID _ID){
 	if (isRange("ID", _ID, 9999, 1)) return;
 	ID = _ID;
 	return;
@@ -48,7 +48,7 @@ void Skill::setName(string _name) {
 	name = _name;
 	return;
 }
-void Skill::setParent(int _parent) {
+void Skill::setParent(SkillID _parent) {
 	if (isRange("Parent", _parent, 9999, 0)) return;
 	parent = _parent;
 	return;
