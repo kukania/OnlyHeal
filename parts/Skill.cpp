@@ -2,6 +2,8 @@
 #include <cstdio>
 using namespace std;
 
+bool isRange(char *, int, int, int);
+
 Skill::Skill(SkillID _ID, string _name, SkillID _parent, 
 time_ms _cooltime, time_s _time, Type _type, bool _multi) {
 	setID(_ID);
@@ -36,7 +38,7 @@ Type Skill::getType() {
 	return type;
 }
 bool Skill::getMulti(){
-	return isMulti;
+	return multi;
 }
 // setter
 void Skill::setID(SkillID _ID){
