@@ -1,7 +1,5 @@
 #include "Skill.h"
 #include "../Character.h"
-#define SECOND  1000
-#define MINUTE  1000000
 
 class HealSkill : Skill{
 private:
@@ -9,9 +7,9 @@ private:
     int     time;
 public:
     HealSkill(int _ID, string _name, Skill *_parent, int _cooltime, bool _isM, float _effi, int _time)
-    :Skill(_ID, _name, _parent, _cooltime, 0){
+    :Skill(_ID, _name, _parent, _cooltime, T_HEAL){
         setEffi(_effi);
-        setMulti(_isM);
+        setMulti(_isM); 
     }
 
     void setEffi(float _effi){
@@ -34,6 +32,19 @@ public:
                 t[0].addHP(amount);
             }
         }
+    }
+}
+
+class BuffSkill : Skill{
+private:
+    int     max;
+    int     stat;
+    int     time;
+public:
+    BuffSkill(int _ID, string _name, int _parent, int _cooltime, 
+    bool isM, int _max, int _stat, int _time)
+    :Skill(_ID, _name, _parent, _cooltime, T_BUFF){
+
     }
 }
 
