@@ -4,7 +4,8 @@ private:
 	short R, G, B;
 public:
 	RGB();
-	short setRGBRandom(int ,int);
+	RGB(int, int, int);
+	static RGB getRGBRandom();
 	short setR(short);
 	short setG(short);
 	short setB(short);

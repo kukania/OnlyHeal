@@ -36,11 +36,11 @@ bool Character::checkDie() {
 	return isDie;
 }
 int Character::beBuffedDefence(RGB input) {
-	myStatus.addRGBDamage(input);
+	myStatus.addRGBDefence(input);
 	return true;
 }
 int Character::beBuffedDamage(RGB input) {
-	myStatus.addRGBDefence(input);
+	myStatus.addRGBDamage(input);
 	return true;
 }
 Status* Character::getStatus() {
