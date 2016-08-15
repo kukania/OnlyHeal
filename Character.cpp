@@ -19,8 +19,8 @@ int Character::doAttack(Character *input) {
 			int agroT = -2;
 			int obj = 0;
 			for (int i = 2; i <= 4; i++) {
-				if (agroT < input[i].getStatus().getAgro()) {
-					agroT = input[i].getStatus().getAgro();
+				if (agroT < input[i].getStatus()->getAgro()) {
+					agroT = input[i].getStatus()->getAgro();
 					obj = i;
 				}
 			}
@@ -43,8 +43,8 @@ int Character::beBuffedDamage(RGB input) {
 	myStatus.addRGBDefence(input);
 	return true;
 }
-Status Character::getStatus() {
-	return myStatus;
+Status* Character::getStatus() {
+	return &myStatus;
 }
 int Character::setType(int type) {
 	this->type = type;
