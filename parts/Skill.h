@@ -8,10 +8,10 @@ using namespace std;
 #define T_BUFF  1
 #define T_DEBU  2
 
-typedef int SkillID
+typedef int SkillID;
 typedef int Type;
-typedef int time_ms
-typedef int time_s
+typedef int time_ms;
+typedef int time_s;
 
 class Character;
 

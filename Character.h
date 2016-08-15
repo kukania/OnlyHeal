@@ -20,7 +20,7 @@ public:
 	int beBuffedDamage(RGB);
 	int setType(int);
 	int getType();
-	Status getStatus();
+	Status* getStatus();
 	int doAttack(Character *);
 	bool checkDie();
 };

@@ -13,7 +13,7 @@ public:
         factor = _factor;
     }
     virtual int activate(Character *t, Character c){
-        int power = c.getDamage();      // Caster's level
+        int power = c.getStatus()->getDamage();      // Caster's level
         int amount = effi * power / time;
         setCooldown();
         for(int i = 0; i < time; i++){
