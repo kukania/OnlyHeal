@@ -1,11 +1,12 @@
 #include "Skill.h"
 #include "../Character.h"
+#include <stdlib.h>
 
 class HealSkill : Skill {
 private:
 	float   factor;                       // efficienty of skill
 public:
-	HealSkill() :Skill(999, "기본생성자", 0, 0, 0, 0, false) {};
+	HealSkill() :Skill(999, "1234", 0, 0, 0, 0, false) {};
 	HealSkill(SkillID _ID, string _name, SkillID _parent,
 		time_ms _cooltime, time_s _time, bool _multi, float _factor)
 		:Skill(_ID, _name, _parent, _cooltime, _time, T_HEAL, _multi) {
@@ -24,7 +25,9 @@ public:
 			else {
 				t[0].getStatus()->addHP(amount);
 			}
+			_sleep(1000);
 		}
+		return 0;
 	}
 };
 
@@ -33,10 +36,7 @@ private:
 	int     max;
 	int     stat;
 public:
-	BuffSkill() :Skill(999, "기본생성자", 0, 0, 0, 0, false) {};
-	BuffSkill() {
-
-	}
+	BuffSkill() :Skill(999, "1234", 0, 0, 0, 0, false) {};
 };
 
 void initSkills() {
@@ -52,5 +52,5 @@ void initSkills() {
 	for (int i = 0; i < 7; i++) {
 		hs[i + 14] = HealSkill(i + 15, sPrefix[i] + "힐샘", i + 14, fCoeffi[i], false, fCoeffi[i] * 2, 10);
 	}
-	hs[21] = HealSkill(22, "힐샤워", 4, 5, true, 3, 5);
+	hs[21] = HealSkill(22, "1234", 4, 5, true, 3, 5);
 }
