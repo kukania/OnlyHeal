@@ -11,9 +11,14 @@ MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, str
 int MonsterSkillFear::activate(Character *t, Character c) {
 	int damage, defence;
 	RGB rgbDamage, rgbDefence;
+	damage = t[1].getStatus()->getDamage()/factor;
 	for (int i = 0; i < 6; i++) {
 		if (i == 1) continue;
-		damage=t[i].getStatus()->getDamage()*factor;
-		defence = t[i].getStatus()->getDefence()*factor;
+		//내부 정의
 	}
+}
+
+string MonsterSkillFear::getName() {
+	string p = Skill::getName();
+	//level 붙여주기
 }
