@@ -10,7 +10,7 @@
 #define	S_RGB_DAM	3
 #define S_RGB_DEF	4
 
-class BuffSkill : Skill {
+class BuffSkill : public Skill {
 private:
 	float	value;	// max buff
 	int		stype;
