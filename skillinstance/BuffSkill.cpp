@@ -124,3 +124,7 @@ int BuffSkill::activate(Character *t, Character c) {
 	return 0;
 }
 
+void initBuffSkill() {
+	BuffSkill *bs[10];
+	bs[0] = new BuffSkill(51, "goodbuf", 0, 10 * SECOND, 30, false, 0.3f, RGB(0, 0, 0), S_DAMAGE);
+}
