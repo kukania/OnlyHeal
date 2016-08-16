@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 
-
 class HealSkill : Skill {
 private:
 	float   factor;                       // efficienty of skill
