@@ -18,5 +18,5 @@ private:
 public:
 	BuffSkill();
 	BuffSkill(SkillID, string, SkillID, time_ms, time_s, bool, float, RGB, int);
-	virtual int activate(Character *t, Character c);
+	virtual int activate(Character *t, Character &c);
 };

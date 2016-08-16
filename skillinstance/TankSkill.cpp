@@ -5,7 +5,7 @@ TankSkill::TankSkill(SkillID _ID, string _name, SkillID _parent,
 	:Skill(_ID, _name, _parent, _cooltime, _time, 3, _multi) {
 	factor = _factor;
 }
-int TankSkill::activate(Character *t, Character c) {
+int TankSkill::activate(Character *t, Character &c) {
 	int power = c.getStatus()->getDamage();
 	int amount = power*factor;
 	for (int i = 0; i < time; i++) {

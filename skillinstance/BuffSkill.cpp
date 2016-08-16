@@ -12,7 +12,7 @@ BuffSkill::BuffSkill(SkillID _ID, string _name, SkillID _parent,
 	rgb		= _rgb;
 }
 
-int BuffSkill::activate(Character *t, Character c) {
+int BuffSkill::activate(Character *t, Character &c) {
 	int power = c.getStatus()->getDamage();
 	float factor = (power / 9999)*value;
 	setCooldown();

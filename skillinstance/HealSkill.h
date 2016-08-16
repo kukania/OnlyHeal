@@ -11,5 +11,5 @@ public:
 	HealSkill();
 	// ID, name, parent, cooltime, time, multi, factor
 	HealSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
-	virtual int activate(Character *t, Character c);
+	virtual int activate(Character *t, Character &c);
 };
