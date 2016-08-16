@@ -2,7 +2,7 @@
 
 TankSkill::TankSkill(SkillID _ID, string _name, SkillID _parent,
 	time_ms _cooltime, time_s _time, bool _multi, float _factor)
-	:Skill(_ID, _name, _parent, _cooltime, _time, 3, _multi) {
+	:Skill(_ID, _name, _parent, _cooltime, _time, T_TANK, _multi) {
 	factor = _factor;
 }
 int TankSkill::activate(Character *t, Character &c) {

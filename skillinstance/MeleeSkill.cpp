@@ -12,7 +12,7 @@ float calcRGB(RGB rgb1, RGB rgb2) {
 
 MeleeSkill::MeleeSkill(SkillID _ID, string _name, SkillID _parent,
 	time_ms _cooltime, time_s _time, bool _multi, float _factor)
-	:Skill(_ID, _name, _parent, _cooltime, _time, 4, _multi) {
+	:Skill(_ID, _name, _parent, _cooltime, _time, T_MELEE, _multi) {
 	factor = _factor;
 }
 int MeleeSkill::activate(Character *t, Character &c) {
@@ -20,7 +20,7 @@ int MeleeSkill::activate(Character *t, Character &c) {
 	RGB rgb1, rgb2;
 	rgb1 = c.getStatus()->getRGBDamage();
 	rgb2 = t[1].getStatus()->getRGBDefence();
-	int amount = (1 + calcRGB(rgb1, rgb2))*(c.getStatus()->getDamage - t[1].getStatus()->getDefence() / 4);
+	int amount = (1 + calcRGB(rgb1, rgb2))*(c.getStatus()->getDamage() - t[1].getStatus()->getDefence() / 4);
 	setCooldown();
 	for (int i = 0; i < time; i++) {
 		t[1].beAttacked(amount / time);
