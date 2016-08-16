@@ -32,6 +32,7 @@ public:
 	int			setRGBDefence(RGB);
 	int			addRGBDamage(RGB);
 	int			addRGBDefence(RGB);
+	int			addSpeed(float);
 	RGB			getRGBDamage();
 	RGB			getRGBDefence();
 	float		getSpeed();
