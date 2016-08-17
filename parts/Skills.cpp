@@ -2,7 +2,10 @@
 #include "../Character.h"
 #include <stdlib.h>
 
-
+#define S_DAMAGE	0
+#define	S_SPEED		1
+#define S_ARMOR		2
+#define	S_RGB		3
 
 class HealSkill : Skill {
 private:
@@ -50,17 +53,16 @@ public:
 		float factor = (power / 9999)*value;
 		setCooldown();
 		switch (stype) {
-		case 0:
+		case S_DAMAGE:
 			if (isMulti()) {
-				int amount;
+				int amount[4];
 				for (int i = 2; i < 6; i++) {
-					amount = t[i].getStatus()->getDamage()*factor;
-					t[i].getStatus()->addDamage(amount);
+					amount[i-2] = t[i].getStatus()->getDamage()*factor;
+					t[i].getStatus()->addDamage(amount[i-2]);
 				}
 				//_sleep(1000 * time);
 				for (int i = 2; i < 6; i++) {
-					amount = t[i].getStatus()->getDamage()*factor;
-					t[i].getStatus()->addDamage(-amount);
+					t[i].getStatus()->addDamage(-amount[i-2]);
 				}
 			}
 			else {
@@ -70,8 +72,27 @@ public:
 				t[0].getStatus()->addDamage(-amount);
 			}
 			break;
-		case 1:
-
+		case S_SPEED:
+			int amount = 0;
+			break;
+		case S_ARMOR:
+			if (isMulti()) {
+				int amount[4];
+				for (int i = 2; i < 6; i++) {
+					amount[i-2] = t[i].getStatus()->getDefence()*factor;
+					t[i].getStatus()->addDefence(amount[i-2]);
+				}
+				//_sleep
+				for (int i = 2; i < 6; i++) {
+					t[i].getStatus()->addDefence(-amount[i - 2]);
+				}
+			}
+			else {
+				int amount = t[0].getStatus()->getDefence()*factor;
+				t[0].getStatus()->addDefence(amount);
+				//sleep
+				t[0].getStatus()->addDefence(-amount);
+			}
 		default:
 			break;
 		}
