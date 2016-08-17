@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../parts/Skill.h"
-#include "../Character.h"
+#include "../characters/Character.h"
 #include <stdlib.h>
 
 class HealSkill :public Skill{

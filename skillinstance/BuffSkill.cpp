@@ -76,45 +76,45 @@ int BuffSkill::activate(Character *t, Character &c) {
 		break;
 	case S_RGB_DAM:
 		if (isMulti()) {
-			RGB amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			RGB amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDamage(amount);
 			}
 			//_sleep
 			factor *= -1;
-			amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDamage(amount);
 			}
 		}
 		else {
-			RGB amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			RGB amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			t[0].beBuffedDamage(amount);
 			//sleep
 			factor *= -1;
-			amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			t[0].beBuffedDamage(amount);
 		}
 		break;
 	case S_RGB_DEF:
 		if (isMulti()) {
-			RGB amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			RGB amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDefence(amount);
 			}
 			//_sleep
 			factor *= -1;
-			amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDefence(amount);
 			}
 		}
 		else {
-			RGB amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			RGB amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			t[0].beBuffedDefence(amount);
 			//sleep
 			factor *= -1;
-			amount = RGB(rgb.getR*factor, rgb.getG*factor, rgb.getB*factor);
+			amount = RGB(rgb.getR()*factor, rgb.getG()*factor, rgb.getB()*factor);
 			t[0].beBuffedDefence(amount);
 		}
 		break;

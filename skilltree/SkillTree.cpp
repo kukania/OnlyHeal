@@ -78,7 +78,7 @@ void SkillTree::addSkill(Node _node) {
 int SkillTree::acquire(SkillID _ID) {
 	/*find skill*/
 	if (skills.find(_ID) == skills.end()) 
-		return;
+		return 0;
 	/*acquired precede condition*/
 	bool prec = true;
 	if(skills.find(_ID)->second.getPrec())	// if need precede acquirement

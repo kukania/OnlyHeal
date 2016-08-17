@@ -1,6 +1,6 @@
 #pragma once
 #include"MonsterSkillFear.h"
-#include"../Character.h"
+#include"../characters/Character.h"
 MonsterSkillFear::MonsterSkillFear():Skill(1000, "fear", 0, 0, 0, 0, false) {
 	factor = 0;
 }
@@ -10,6 +10,7 @@ MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, str
 }
 int MonsterSkillFear::setTier(Tier in) {
 	myTier = in;
+	return 0;
 }
 int MonsterSkillFear::activate(Character *t, Character c) {
 	int damage[6], defence[6];
@@ -38,6 +39,7 @@ int MonsterSkillFear::activate(Character *t, Character c) {
 		t[i].getStatus()->addRGBDamage(rgbDamage[i]);
 		t[i].getStatus()->addRGBDefence(rgbDefence[i]);
 	}
+	return 0;
 }
 
 string MonsterSkillFear::getName() {
