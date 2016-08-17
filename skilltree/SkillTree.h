@@ -1,20 +1,48 @@
 #pragma once
 #include "../parts/Skill.h"
+#include <vector>
+#include <map>
+
+#define LEARN_COST 5
+
+class Node;
+
+typedef map<SkillID, Node> s_map;
+typedef pair<SkillID, Node> s_pair;
 
 class Node {
 private:
-	int		ID;
-	bool	unlock;
+	SkillID		ID;
+	SkillID		prec;
+	bool		acquire;
 public:
-	Node();
-	Node(int);
-	Node(int, bool);
+	/*Constructor*/
+	Node(SkillID);
+	Node(SkillID, SkillID);
+	Node(SkillID, SkillID, bool);
+	/*getter*/
+	SkillID		getID();
+	SkillID		getPrec();
+	bool		getAcquire();
+	/*setter*/
+	void		setID(SkillID);
+	void		setPrec(SkillID);
+	void		setAcquire(bool);
 };
 
 class SkillTree {
 private:
 	int		point;
-	Skill	*leaf[30];
+	s_map	skills;
 public:
-
+	/*Constructor*/
+	SkillTree();
+	/*getter*/
+	int		getPoint();
+	/*setter*/
+	void	setPoint(int);
+	/*main use*/
+	void	addPoint(int);
+	void	addSkill(Node);
+	int		acquire(SkillID);
 };

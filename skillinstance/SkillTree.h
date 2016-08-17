@@ -4,17 +4,20 @@
 class Node {
 private:
 	int		ID;
-	bool	unlock;
+	bool	acquire;
 public:
 	Node();
 	Node(int);
 	Node(int, bool);
+	int		getID();
+	bool	getAcquire();
+	void	setID(int);
+	void	setAcquire(bool);
 };
 
 class SkillTree {
 private:
 	int		point;
-	Skill	*leaf[30];
 public:
 
 };
