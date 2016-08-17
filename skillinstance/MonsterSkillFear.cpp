@@ -12,7 +12,7 @@ int MonsterSkillFear::setTier(Tier in) {
 	myTier = in;
 	return 0;
 }
-int MonsterSkillFear::activate(Character *t, Character c) {
+int MonsterSkillFear::activate(Character *t, Character &c) {
 	int damage[6], defence[6];
 	RGB rgbDamage[6], rgbDefence[6];
 	for (int i = 0; i < 6; i++) {
