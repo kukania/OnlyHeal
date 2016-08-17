@@ -1,17 +1,6 @@
 #include "SkillTree.h"
-
-// debug function
-bool isRange(char *an, int a, int max, int min) {
-	if (a < min) {
-		printf("[%s: %d] is little than MIN: %d\n", an, a, min);
-		return false;
-	}
-	if (a > max) {
-		printf("[%s: %d] is larger than MAX: %d\n", an, a, max);
-		return false;
-	}
-	return true;
-}
+#include "../skillinstance/HealSkill.h"
+#include "../myUtility.h"
 
 Node::Node(SkillID _ID) {
 	Node(_ID, 0, false);
@@ -78,7 +67,7 @@ void SkillTree::addSkill(Node _node) {
 int SkillTree::acquire(SkillID _ID) {
 	/*find skill*/
 	if (skills.find(_ID) == skills.end()) 
-		return 0;
+		return -1;
 	/*acquired precede condition*/
 	bool prec = true;
 	if(skills.find(_ID)->second.getPrec())	// if need precede acquirement
@@ -90,4 +79,16 @@ int SkillTree::acquire(SkillID _ID) {
 		addPoint(-LEARN_COST);
 	}
 	return 0;
+}
+
+void initHealSkillTree() {
+	SkillTree hst;
+	hst.addSkill(Node(1, 0));
+	hst.addSkill(Node(8, 1));
+	hst.addSkill(Node(15, 1));
+	for (int i = 1; i < 7; i++) {
+		hst.addSkill(Node(i + 1, i));
+		hst.addSkill(Node(i + 8, i + 7));
+		hst.addSkill(Node(i + 15, i + 14));
+	}
 }

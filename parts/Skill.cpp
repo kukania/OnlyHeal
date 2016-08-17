@@ -1,8 +1,5 @@
 #include "Skill.h"
-#include <cstdio>
-using namespace std;
-
-bool isRange(char *, int, int, int);
+#include "../myUtility.h"
 
 Skill::Skill(SkillID _ID, string _name, SkillID _parent, 
 time_ms _cooltime, time_s _time, Type _type, bool _multi) {
@@ -86,16 +83,4 @@ bool Skill::able() {
 }
 bool Skill::isMulti(){
 	return multi;
-}
-// debug function
-bool isRange(char *an, int a, int max, int min){
-	if (a < min){
-		printf ("[%s: %d] is little than MIN: %d\n", an, a, min);
-		return false;
-	}
-	if (a > max){
-		printf ("[%s: %d] is larger than MAX: %d\n", an, a, max);
-		return false;
-	}
-	return true;
 }

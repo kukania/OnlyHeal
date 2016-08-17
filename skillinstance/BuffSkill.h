@@ -2,7 +2,6 @@
 
 #include "../parts/Skill.h"
 #include "../characters/Character.h"
-#include <stdlib.h>
 
 #define S_DAMAGE	0
 #define	S_SPEED		1

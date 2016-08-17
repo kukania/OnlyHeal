@@ -2,7 +2,6 @@
 
 #include "../parts/Skill.h"
 #include "../characters/Character.h"
-#include <stdlib.h>
 
 class MeleeSkill :public Skill {
 private:
