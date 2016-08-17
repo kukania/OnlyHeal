@@ -15,4 +15,5 @@ public:
 	short checkRGBValue(int);
 	static void ErrorDetector(int);
 	RGB operator+ (RGB a);
+	RGB operator*(float);
 };

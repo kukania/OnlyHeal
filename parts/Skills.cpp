@@ -2,10 +2,13 @@
 #include "../Character.h"
 #include <stdlib.h>
 
+<<<<<<< HEAD
 #define S_DAMAGE	0
 #define	S_SPEED		1
 #define S_ARMOR		2
 #define	S_RGB		3
+=======
+>>>>>>> acc2affcea82165997a2c990a8a9fa94f2fd0960
 
 class HealSkill : Skill {
 private:

@@ -64,3 +64,10 @@ RGB RGB::getRGBRandom() {
 	temp.setB((16 - i) * 16 + rand() % 16);
 	return temp;
 }
+RGB RGB::operator*(float input) {
+	RGB temp;
+	temp.setR(this->R*input);
+	temp.setG(this->G*input);
+	temp.setB(this->B*input);
+	return temp;
+}
