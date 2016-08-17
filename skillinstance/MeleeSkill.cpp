@@ -1,14 +1,5 @@
 #include "MeleeSkill.h"
-
-float calcRGB(RGB rgb1, RGB rgb2) {
-	int a = rgb1.getR() - rgb2.getR();
-	if (a < 0) a = 0;
-	int b = rgb1.getG() - rgb2.getG();
-	if (b < 0) b = 0;
-	int c = rgb1.getB() - rgb2.getB();
-	if (c < 0) c = 0;
-	return (a + b + c) / (3 * 255);
-}
+#include "myUtility.h"
 
 MeleeSkill::MeleeSkill(SkillID _ID, string _name, SkillID _parent,
 	time_ms _cooltime, time_s _time, bool _multi, float _factor)
