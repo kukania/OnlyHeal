@@ -9,5 +9,6 @@ public:
 	MonsterSkillFear();
 	MonsterSkillFear(float, Tier,SkillID now, string, SkillID prev, time_ms, time_s);
 	string getName();
+	int setTier(Tier);
 	virtual int activate(Character *t, Character c);
 };
