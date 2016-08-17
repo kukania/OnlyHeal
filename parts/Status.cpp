@@ -73,6 +73,10 @@ RGB			Status::getRGBDefence() {
 float 		Status::getSpeed() {
 	return this->items[2].getTier().getValue() / 10000 + speed;
 }
+int			Status::addSpeed(float in) {
+	speed += in;
+	return 0;
+}
 bool		Status::equipItem(Item input) {
 	items[input.getType()] = input;
 	RGBdamage = items[0].getRGB() + items[2].getRGB();

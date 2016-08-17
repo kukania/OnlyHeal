@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../parts/Skill.h"
-#include "../Character.h"
+#include "../characters/Character.h"
 
 #define S_DAMAGE	0
 #define	S_SPEED		1
