@@ -7,17 +7,16 @@
 #define S_DAMAGE	0
 #define	S_SPEED		1
 #define S_ARMOR		2
-#define	S_RGB_ALL	3
-#define S_RGB_R		4
-#define S_RGB_G		5
-#define S_RGB_B		6
+#define	S_RGB_DAM	3
+#define S_RGB_DEF	4
 
-class BuffSkill : Skill {
+class BuffSkill : public Skill {
 private:
-	float	value;
+	float	value;	// max buff
 	int		stype;
+	RGB		rgb;
 public:
 	BuffSkill();
-	BuffSkill(SkillID, string, SkillID, time_ms, time_s, bool, float, int);
-	virtual int activate(Character *t, Character c);
+	BuffSkill(SkillID, string, SkillID, time_ms, time_s, bool, float, RGB, int);
+	virtual int activate(Character *t, Character &c);
 };

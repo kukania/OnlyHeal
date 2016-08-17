@@ -7,6 +7,9 @@ using namespace std;
 #define T_HEAL  0
 #define T_BUFF  1
 #define T_DEBU  2
+#define T_TANK	3
+#define T_MELEE 4
+#define T_RANGE 5
 
 typedef int SkillID;
 typedef int Type;
@@ -47,7 +50,7 @@ public:
 	void		setType(Type);
 	void 		setMulti(bool);
 	// main use
-	virtual int activate(Character *, Character) = 0;
+	virtual int activate(Character *, Character &) = 0;
 	void		setCooldown(); 	// when use skill
 	bool		able();
 	bool 		isMulti();

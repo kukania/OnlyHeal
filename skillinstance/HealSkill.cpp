@@ -6,7 +6,7 @@ HealSkill::HealSkill(SkillID _ID, string _name, SkillID _parent,
 	:Skill(_ID, _name, _parent, _cooltime, _time, T_HEAL, _multi) {
 	factor = _factor;
 }
-int HealSkill::activate(Character *t, Character c) {
+int HealSkill::activate(Character *t, Character &c) {
 	int power = c.getStatus()->getDamage();
 	int amount = factor * power / time;
 	setCooldown();
@@ -24,7 +24,7 @@ int HealSkill::activate(Character *t, Character c) {
 	return 0;
 }
 
-void initSkills() {
+void initHealSkills() {
 	HealSkill hs[22];
 	string  sPrefix[7] = { "기본", "숙련", "완숙", "전문", "기적", "전설", "신화" };
 	float   fCoeffi[7] = { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };
