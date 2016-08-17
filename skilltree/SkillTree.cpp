@@ -83,7 +83,7 @@ int SkillTree::acquire(SkillID _ID) {
 
 void initHealSkillTree() {
 	SkillTree hst;
-	hst.addSkill(Node(1));
+	hst.addSkill(Node(1, 0));
 	hst.addSkill(Node(8, 1));
 	hst.addSkill(Node(15, 1));
 	for (int i = 1; i < 7; i++) {
