@@ -30,6 +30,9 @@ Tier Status::evalTier() {
 		items[2].getTier().getLevel()) / 3+(damage - 100 + defence - 100)/10);
 	return temp;
 }
+int Status::addSpeed(float a) {
+	return 0;
+}
 int	Status::addHP(int input) {
 	HP += input;
 	if (HP > MaxHP) HP = MaxHP;

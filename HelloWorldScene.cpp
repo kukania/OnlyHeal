@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "skilltree/SkillTree.h"
 
 USING_NS_CC;
 
@@ -51,6 +52,9 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
+	SkillTree st;
+	initHealSkillTree(&st);
+	int a = 0;
 
     // add a label shows "Hello World"
     // create and initialize a label
