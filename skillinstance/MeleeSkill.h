@@ -2,6 +2,7 @@
 
 #include "../parts/Skill.h"
 #include "../characters/Character.h"
+#include <vector>
 
 class MeleeSkill :public Skill {
 private:
@@ -11,3 +12,5 @@ public:
 	MeleeSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
 	virtual int activate(Character *t, Character &c);
 };
+
+void initMeleeSkill(vector<Skill *>);

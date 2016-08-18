@@ -1,5 +1,5 @@
 #pragma once
-#include "../parts/Status.h"
+#include "../parts/Status.h" 	//Problem
 #include "../parts/Skill.h"
 #include "../parts/Tier.h"
 #include<vector>

@@ -1,6 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "skilltree/SkillTree.h"
+#include "characters\MeleeNPC.h"
 
 USING_NS_CC;
 
@@ -52,9 +52,7 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
-	SkillTree st;
-	initHealSkillTree(&st);
-	int a = 0;
+	Character temp = MeleeNPC(1, 2);
 
     // add a label shows "Hello World"
     // create and initialize a label
