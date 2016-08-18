@@ -3,12 +3,12 @@
 
 Item::Item() {
 	Tier temp = Tier(1);
-	Item(temp, 0, RGB());
+	Item(temp, 0, MyRGB());
 }
-Item::Item(Tier _tier, int _type, RGB _rgb) {
+Item::Item(Tier _tier, int _type, MyRGB _rgb) {
 	setTier(_tier);
 	setType(_type);
-	setRGB(_rgb);
+	setMyRGB(_rgb);
 }
 
 void Item::setTier(Tier _tier) {
@@ -17,7 +17,7 @@ void Item::setTier(Tier _tier) {
 void Item::setType(int _type) {
 	type = _type;
 }
-void Item::setRGB(RGB _rgb) {
+void Item::setMyRGB(MyRGB _rgb) {
 	rgb = _rgb;
 }
 
@@ -27,6 +27,6 @@ Tier Item::getTier() {
 int Item::getType() {
 	return type;
 }
-RGB Item::getRGB() {
+MyRGB Item::getMyRGB() {
 	return rgb;
 }

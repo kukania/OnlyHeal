@@ -16,8 +16,8 @@ public:
 	}
 	Character(Tier tier) :myStatus(tier) {}
 	int beAttacked(int);
-	int beBuffedDefence(RGB);
-	int beBuffedDamage(RGB);
+	int beBuffedDefence(MyRGB);
+	int beBuffedDamage(MyRGB);
 	int setType(int);
 	int getType();
 	Status* getStatus();

@@ -13,7 +13,7 @@ bool isRange(char *an, int a, int max, int min) {
 	return true;
 }
 
-float calcRGB(RGB rgb1, RGB rgb2) {
+float calcMyRGB(MyRGB rgb1, MyRGB rgb2) {
 	int a = rgb1.getR() - rgb2.getR();
 	if (a < 0) a = 0;
 	int b = rgb1.getG() - rgb2.getG();

@@ -15,7 +15,7 @@ Status::Status(Tier input) {
 	for (int i = 0; i < 3; i++) {
 		items[i].setType(i);
 		items[i].setTier(Tier::getSimillarTier(input.getLevel()));
-		items[i].setRGB(RGB::getRGBRandom());
+		items[i].setMyRGB(MyRGB::getMyRGBRandom());
 		equipItem(items[i]);
 	}
 	agro = -1;
@@ -53,19 +53,19 @@ int			Status::addDefence(int input) {
 long long	Status::getDefence() {
 	return this->items[1].getTier().getValue() + defence;
 }
-RGB			Status::getRGBDamage() {
-	return RGBdamage;
+MyRGB			Status::getMyRGBDamage() {
+	return MyRGBdamage;
 }
-int			Status::setRGBDamage(RGB input) {
-	RGBdamage = input;
+int			Status::setMyRGBDamage(MyRGB input) {
+	MyRGBdamage = input;
 	return true;
 }
-int			Status::setRGBDefence(RGB input) {
-	RGBdefence = input;
+int			Status::setMyRGBDefence(MyRGB input) {
+	MyRGBdefence = input;
 	return true;
 }
-RGB			Status::getRGBDefence() {
-	return RGBdefence;
+MyRGB			Status::getMyRGBDefence() {
+	return MyRGBdefence;
 }
 float 		Status::getSpeed() {
 	return this->items[2].getTier().getValue() / 10000 + speed;
@@ -76,16 +76,16 @@ int			Status::addSpeed(float in) {
 }
 bool		Status::equipItem(Item input) {
 	items[input.getType()] = input;
-	RGBdamage = items[0].getRGB() + items[2].getRGB();
-	RGBdefence = items[1].getRGB() + items[2].getRGB();
+	MyRGBdamage = items[0].getMyRGB() + items[2].getMyRGB();
+	MyRGBdefence = items[1].getMyRGB() + items[2].getMyRGB();
 	return 0;
 }
-int			Status::addRGBDamage(RGB input) {
-	RGBdamage = RGBdamage + input;
+int			Status::addMyRGBDamage(MyRGB input) {
+	MyRGBdamage = MyRGBdamage + input;
 	return 0;
 }
-int			Status::addRGBDefence(RGB input) {
-	RGBdefence = input + RGBdefence;
+int			Status::addMyRGBDefence(MyRGB input) {
+	MyRGBdefence = input + MyRGBdefence;
 	return 0;
 }
 long long	Status::addMaxHP(int input) {

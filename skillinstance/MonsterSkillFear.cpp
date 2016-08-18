@@ -14,7 +14,7 @@ int MonsterSkillFear::setTier(Tier in) {
 }
 int MonsterSkillFear::activate(Character *t, Character &c) {
 	int damage[6], defence[6];
-	RGB rgbDamage[6], rgbDefence[6];
+	MyRGB rgbDamage[6], rgbDefence[6];
 	for (int i = 0; i < 6; i++) {
 		if (i == 1) continue;
 		damage[i] = factor*t[i].getStatus()->getDamage();
@@ -23,11 +23,11 @@ int MonsterSkillFear::activate(Character *t, Character &c) {
 		defence[i] =factor* t[i].getStatus()->getDefence();
 		t[i].getStatus()->addDefence(-1 * defence[i]);
 		
-		rgbDamage[i] = (t[i].getStatus()->getRGBDamage())*factor;
-		t[i].getStatus()->addRGBDamage(rgbDamage[i]*-1);
+		rgbDamage[i] = (t[i].getStatus()->getMyRGBDamage())*factor;
+		t[i].getStatus()->addMyRGBDamage(rgbDamage[i]*-1);
 		
-		rgbDefence[i] = t[i].getStatus()->getRGBDefence()*factor;
-		t[i].getStatus()->addRGBDefence(rgbDefence[i]*-1);
+		rgbDefence[i] = t[i].getStatus()->getMyRGBDefence()*factor;
+		t[i].getStatus()->addMyRGBDefence(rgbDefence[i]*-1);
 	}
 	//sleep
 
@@ -36,8 +36,8 @@ int MonsterSkillFear::activate(Character *t, Character &c) {
 		if (i == 1) continue;
 		t[i].getStatus()->addDamage( damage[i]);
 		t[i].getStatus()->addDefence(defence[i]);
-		t[i].getStatus()->addRGBDamage(rgbDamage[i]);
-		t[i].getStatus()->addRGBDefence(rgbDefence[i]);
+		t[i].getStatus()->addMyRGBDamage(rgbDamage[i]);
+		t[i].getStatus()->addMyRGBDefence(rgbDefence[i]);
 	}
 	return 0;
 }

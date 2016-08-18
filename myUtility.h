@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdio>
-#include "parts/RGB.h"
+#include "parts/MyRGB.h"
 
 bool isRange(char *, int, int, int);
-float calcRGB(RGB rgb1, RGB rgb2);
+float calcMyRGB(MyRGB rgb1, MyRGB rgb2);

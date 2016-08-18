@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "RGB.h"
+#include "MyRGB.h"
 #include "Tier.h"
 using namespace std;
 
@@ -8,16 +8,16 @@ class Item {
 public:
 	Tier	tier;
 	int		type;
-	RGB		rgb;
+	MyRGB		rgb;
 
 	Item();
-	Item(Tier, int, RGB);
+	Item(Tier, int, MyRGB);
 
 	void setTier(Tier);
 	void setType(int);
-	void setRGB(RGB);
+	void setMyRGB(MyRGB);
 
 	Tier	getTier();
 	int		getType();
-	RGB		getRGB();
+	MyRGB		getMyRGB();
 };

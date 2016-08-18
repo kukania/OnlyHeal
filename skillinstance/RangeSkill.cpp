@@ -8,10 +8,10 @@ RangeSkill::RangeSkill(SkillID _ID, string _name, SkillID _parent,
 }
 int RangeSkill::activate(Character *t, Character &c) {
 	int power = c.getStatus()->getDamage();
-	RGB rgb1, rgb2;
-	rgb1 = c.getStatus()->getRGBDamage();
-	rgb2 = t[1].getStatus()->getRGBDefence();
-	int amount = (1 + calcRGB(rgb1, rgb2))*(c.getStatus()->getDamage() - t[1].getStatus()->getDefence() / 4);
+	MyRGB rgb1, rgb2;
+	rgb1 = c.getStatus()->getMyRGBDamage();
+	rgb2 = t[1].getStatus()->getMyRGBDefence();
+	int amount = (1 + calcMyRGB(rgb1, rgb2))*(c.getStatus()->getDamage() - t[1].getStatus()->getDefence() / 4);
 	setCooldown();
 	for (int i = 0; i < time; i++) {
 		t[1].beAttacked(amount / time);

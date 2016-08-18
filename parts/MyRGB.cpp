@@ -1,8 +1,8 @@
 #pragma once
 #include<cstdio>
-#include "RGB.h"
+#include "MyRGB.h"
 #include<random>
-void RGB::ErrorDetector(int v) {
+void MyRGB::ErrorDetector(int v) {
 	switch (v) {
 	case 0:
 		printf("OVERFLOW");
@@ -12,42 +12,42 @@ void RGB::ErrorDetector(int v) {
 		break;
 	}
 }
-RGB::RGB() { this->R = this->G = this->B = 0; }
-RGB::RGB(int a, int b, int c) { R = a; G = b; B = c; }
-RGB RGB::operator+ (RGB a) {
-	RGB temp;
+MyRGB::MyRGB() { this->R = this->G = this->B = 0; }
+MyRGB::MyRGB(int a, int b, int c) { R = a; G = b; B = c; }
+MyRGB MyRGB::operator+ (MyRGB a) {
+	MyRGB temp;
 	temp.setR(this->R + a.getR());
 	temp.setG(this->G + a.getG());
 	temp.setB(this->B + a.getB());
 	return temp;
 }
-short RGB::checkRGBValue(int value) {
+short MyRGB::checkMyRGBValue(int value) {
 	return 1;
 }
 
-short RGB::setB(short b) {
-	int temp = this->checkRGBValue(b);
+short MyRGB::setB(short b) {
+	int temp = this->checkMyRGBValue(b);
 	if (temp == 1) {
 		this->B = b;
 	}
 	return temp;
 }
-short RGB::setG(short b) {
-	int temp = this->checkRGBValue(b);
+short MyRGB::setG(short b) {
+	int temp = this->checkMyRGBValue(b);
 	if (temp == 1) {
 		this->G = b;
 	}return temp;
 }
-short RGB::setR(short b) {
-	int temp = this->checkRGBValue(b);
+short MyRGB::setR(short b) {
+	int temp = this->checkMyRGBValue(b);
 	if (temp == 1) {
 		this->R = b;
 	}return temp;
 }
-short RGB::getR() { return this->R; }
-short RGB::getG() { return this->G; }
-short RGB::getB() { return this->B; }
-RGB RGB::getRGBRandom() {
+short MyRGB::getR() { return this->R; }
+short MyRGB::getG() { return this->G; }
+short MyRGB::getB() { return this->B; }
+MyRGB MyRGB::getMyRGBRandom() {
 	int arr[17],i;
 	arr[0] = 0;
 	for (i = 1; i <=16; i++) {
@@ -58,14 +58,14 @@ RGB RGB::getRGBRandom() {
 		if (value <=arr[i])
 			break;
 	}
-	RGB temp;
+	MyRGB temp;
 	temp.setR((16 - i) * 16 + rand() % 16);
 	temp.setG((16 - i) * 16 + rand() % 16);
 	temp.setB((16 - i) * 16 + rand() % 16);
 	return temp;
 }
-RGB RGB::operator*(float input) {
-	RGB temp;
+MyRGB MyRGB::operator*(float input) {
+	MyRGB temp;
 	temp.setR(this->R*input);
 	temp.setG(this->G*input);
 	temp.setB(this->B*input);

@@ -5,7 +5,7 @@
 
 BuffSkill::BuffSkill() :Skill(999, "1234", 0, 0, 0, 0, false) {};
 BuffSkill::BuffSkill(SkillID _ID, string _name, SkillID _parent,
-	time_ms _cooltime, time_s _time, bool _multi, float _value, RGB _rgb, int _stype)
+	time_ms _cooltime, time_s _time, bool _multi, float _value, MyRGB _rgb, int _stype)
 	:Skill(_ID, _name, _parent, _cooltime, _time, T_BUFF, _multi) {
 	value	= _value;
 	stype	= _stype;
@@ -74,9 +74,9 @@ int BuffSkill::activate(Character *t, Character &c) {
 			t[0].getStatus()->addDefence(-amount);
 		}
 		break;
-	case S_RGB_DAM:
+	case S_MyRGB_DAM:
 		if (isMulti()) {
-			RGB amount = rgb*factor;
+			MyRGB amount = rgb*factor;
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDamage(amount);
 			}
@@ -88,7 +88,7 @@ int BuffSkill::activate(Character *t, Character &c) {
 			}
 		}
 		else {
-			RGB amount = rgb*factor;
+			MyRGB amount = rgb*factor;
 			t[0].beBuffedDamage(amount);
 			//sleep
 			factor *= -1;
@@ -96,9 +96,9 @@ int BuffSkill::activate(Character *t, Character &c) {
 			t[0].beBuffedDamage(amount);
 		}
 		break;
-	case S_RGB_DEF:
+	case S_MyRGB_DEF:
 		if (isMulti()) {
-			RGB amount = rgb*factor;
+			MyRGB amount = rgb*factor;
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDefence(amount);
 			}
@@ -110,7 +110,7 @@ int BuffSkill::activate(Character *t, Character &c) {
 			}
 		}
 		else {
-			RGB amount = rgb*factor;
+			MyRGB amount = rgb*factor;
 			t[0].beBuffedDefence(amount);
 			//sleep
 			factor *= -1;
@@ -126,5 +126,5 @@ int BuffSkill::activate(Character *t, Character &c) {
 
 void initBuffSkill() {
 	BuffSkill *bs[10];
-	bs[0] = new BuffSkill(51, "goodbuff", 0, 10 * SECOND, 30, false, 0.3f, RGB(0, 0, 0), S_DAMAGE);
+	bs[0] = new BuffSkill(51, "goodbuff", 0, 10 * SECOND, 30, false, 0.3f, MyRGB(0, 0, 0), S_DAMAGE);
 }

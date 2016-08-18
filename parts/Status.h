@@ -1,5 +1,5 @@
 #pragma once
-#include "RGB.h"
+#include "MyRGB.h"
 class Item;
 class Tier;
 class Status {
@@ -9,8 +9,8 @@ private:
 	long long	MaxHP;
 	long long	damage;
 	long long	defence;
-	RGB			RGBdamage;
-	RGB			RGBdefence;
+	MyRGB			MyRGBdamage;
+	MyRGB			MyRGBdefence;
 	float		speed;
 	Item		*items; //change to array
 public:
@@ -28,13 +28,13 @@ public:
 	int			setAgro(int);
 	int			getAgro();
 	int			addAgro(int);
-	int			setRGBDamage(RGB);
-	int			setRGBDefence(RGB);
-	int			addRGBDamage(RGB);
-	int			addRGBDefence(RGB);
+	int			setMyRGBDamage(MyRGB);
+	int			setMyRGBDefence(MyRGB);
+	int			addMyRGBDamage(MyRGB);
+	int			addMyRGBDefence(MyRGB);
 	int			addSpeed(float);
-	RGB			getRGBDamage();
-	RGB			getRGBDefence();
+	MyRGB			getMyRGBDamage();
+	MyRGB			getMyRGBDefence();
 	float		getSpeed();
 	bool		equipItem(Item);
 	Tier		evalTier();
