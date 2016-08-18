@@ -2,7 +2,6 @@
 
 #include "../parts/Skill.h"
 #include "../characters/Character.h"
-#include <stdlib.h>
 
 class TankSkill :public Skill {
 private:
@@ -11,3 +10,5 @@ public:
 	TankSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
 	virtual int activate(Character *, Character &);
 };
+
+void initTankSkill(vector<Skill *>);

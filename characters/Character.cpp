@@ -1,6 +1,6 @@
 #pragma once
 #include "Character.h"
-#include<random>
+#include <random>
 int Character::beAttacked(int damage) {
 	myStatus.addHP(-damage);
 	if (myStatus.getHP() == 0)

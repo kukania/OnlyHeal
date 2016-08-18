@@ -5,21 +5,21 @@
 
 #define LEARN_COST 5
 
-class Node;
+class sNode;
 
-typedef map<SkillID, Node> s_map;
-typedef pair<SkillID, Node> s_pair;
+typedef map<SkillID, sNode> s_map;
+typedef pair<SkillID, sNode> s_pair;
 
-class Node {
+class sNode {
 private:
 	SkillID		ID;
 	SkillID		prec;
 	bool		acquire;
 public:
 	/*Constructor*/
-	Node(SkillID);
-	Node(SkillID, SkillID);
-	Node(SkillID, SkillID, bool);
+	sNode(SkillID);
+	sNode(SkillID, SkillID);
+	sNode(SkillID, SkillID, bool);
 	/*getter*/
 	SkillID		getID();
 	SkillID		getPrec();
@@ -43,6 +43,8 @@ public:
 	void	setPoint(int);
 	/*main use*/
 	void	addPoint(int);
-	void	addSkill(Node);
+	void	addSkill(sNode);
 	int		acquire(SkillID);
 };
+
+void initHealSkillTree(SkillTree *);

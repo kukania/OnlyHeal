@@ -39,7 +39,7 @@ bool Skill::getMulti(){
 }
 // setter
 void Skill::setID(SkillID _ID){
-	if (isRange("ID", _ID, 9999, 1)) return;
+	if (!isRange("ID", _ID, 9999, 1)) return;
 	ID = _ID;
 	return;
 }
@@ -48,24 +48,24 @@ void Skill::setName(string _name) {
 	return;
 }
 void Skill::setParent(SkillID _parent) {
-	if (isRange("Parent", _parent, 9999, 0)) return;
+	if (!isRange("Parent", _parent, 9999, 0)) return;
 	parent = _parent;
 	return;
 }
 void Skill::setCooltime(time_ms _cooltime) {
-	if (isRange("Cooltime", _cooltime, 999*MINUTE, 0))
+	if (!isRange("Cooltime", _cooltime, 999*MINUTE, 0))
 		_cooltime = 0;
 	cooltime = _cooltime;
 	return;
 }
 void Skill::setTime(time_s _time){
-	if (isRange("Time", _time, 999*MINUTE, 0))
+	if (!isRange("Time", _time, 999*MINUTE, 0))
 		_time = 0;
 	time = _time;
 	return;
 }
 void Skill::setType(Type _type) {
-	if (isRange("Type", _type, 999, 0));
+	if (!isRange("Type", _type, 999, 0));
 	type = _type;
 	return;
 }

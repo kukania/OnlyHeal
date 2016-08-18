@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "characters\MeleeNPC.h"
 
 USING_NS_CC;
 
@@ -51,6 +52,7 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
+	Character temp = MeleeNPC(1, 2);
 
     // add a label shows "Hello World"
     // create and initialize a label
