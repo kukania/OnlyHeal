@@ -10,3 +10,5 @@ public:
 	RangeSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
 	virtual int activate(Character *, Character &);
 };
+
+void initRangeSkill(vector<Skill *>);
