@@ -11,4 +11,4 @@ public:
 	virtual int activate(Character *, Character &);
 };
 
-void initTankSkill(vector<Skill *>);
+void initTankSkill(vector<Skill *> &);

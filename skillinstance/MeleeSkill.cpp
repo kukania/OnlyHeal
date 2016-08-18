@@ -21,7 +21,7 @@ int MeleeSkill::activate(Character *t, Character &c) {
 	return 0;
 }
 
-void initMeleeSkill(vector<Skill *> _ss) {
+void initMeleeSkill(vector<Skill *> &_ss) {
 	Skill *ms[14];
 	string  sPrefix[7] = { "기본", "숙련", "완숙", "전문", "기적", "전설", "신화" };
 	float   fCoeffi[7] = { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };

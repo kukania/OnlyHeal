@@ -11,4 +11,4 @@ public:
 	virtual int activate(Character *, Character &);
 };
 
-void initRangeSkill(vector<Skill *>);
+void initRangeSkill(vector<Skill *> &);

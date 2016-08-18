@@ -13,4 +13,4 @@ public:
 	virtual int activate(Character *t, Character &c);
 };
 
-void initMeleeSkill(vector<Skill *>);
+void initMeleeSkill(vector<Skill *> &);
