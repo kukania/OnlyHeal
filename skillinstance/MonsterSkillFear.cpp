@@ -29,8 +29,9 @@ int MonsterSkillFear::activate(Character *t, Character &c) {
 		rgbDefence[i] = t[i].getStatus()->getMyRGBDefence()*factor;
 		t[i].getStatus()->addMyRGBDefence(rgbDefence[i]*-1);
 	}
+	
+	
 	//sleep
-
 
 	for (int i = 0; i < 6; i++) {
 		if (i == 1) continue;

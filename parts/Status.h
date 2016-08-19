@@ -5,10 +5,10 @@ class Tier;
 class Status {
 private:
 	int			agro;
-	long long	HP;
-	long long	MaxHP;
-	long long	damage;
-	long long	defence;
+	int	HP;
+	int	MaxHP;
+	int	damage;
+	int	defence;
 	MyRGB			MyRGBdamage;
 	MyRGB			MyRGBdefence;
 	float		speed;
@@ -16,15 +16,15 @@ private:
 public:
 	Status();//player
 	Status(Tier); //NPC,MONSTER
-	long long	setMaxHP();
-	long long	addMaxHP(int);
-	long long	getMaxHP();
+	int	setMaxHP();
+	int	addMaxHP(int);
+	int	getMaxHP();
 	int			addHP(int);
-	long long	getHP();
+	int	getHP();
 	int			addDamage(int);
-	long long	getDamage();
+	int	getDamage();
 	int			addDefence(int);
-	long long	getDefence();
+	int	getDefence();
 	int			setAgro(int);
 	int			getAgro();
 	int			addAgro(int);

@@ -36,21 +36,21 @@ int	Status::addHP(int input) {
 	if (HP < 0) HP = 0;
 	return 0;
 }
-long long	Status::getHP() {
+int	Status::getHP() {
 	return HP;
 }
 int	Status::addDamage(int input) {
 	damage += input;
 	return 0;
 }
-long long	Status::getDamage() {
+int	Status::getDamage() {
 	return this->items[0].getTier().getValue() + damage;
 }
 int			Status::addDefence(int input) {
 	defence += input;
 	return 0;
 }
-long long	Status::getDefence() {
+int	Status::getDefence() {
 	return this->items[1].getTier().getValue() + defence;
 }
 MyRGB			Status::getMyRGBDamage() {
@@ -88,16 +88,16 @@ int			Status::addMyRGBDefence(MyRGB input) {
 	MyRGBdefence = input + MyRGBdefence;
 	return 0;
 }
-long long	Status::addMaxHP(int input) {
+int	Status::addMaxHP(int input) {
 	MaxHP += input;
 	setMaxHP();
 	return 0;
 }
-long long	Status::setMaxHP() {
+int	Status::setMaxHP() {
 	MaxHP = this->evalTier().getValue() * 10+MaxHP;
 	return 0;
 }
-long long	Status::getMaxHP() {
+int	Status::getMaxHP() {
 	return MaxHP;
 }
 int			Status::setAgro(int input) {
