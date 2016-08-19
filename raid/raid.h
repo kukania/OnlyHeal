@@ -12,4 +12,5 @@ private:
 public:
 	Raid(Character);
 	void printInfo();
+	void battle();
 };

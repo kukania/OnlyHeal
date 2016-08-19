@@ -3,13 +3,9 @@
 MeleeNPC::MeleeNPC(Tier _tier, int _index)
 	:Character(_tier) {
 	index = _index;
-	int skillnum = 1;
+	int skillnum = 3;
 	initSkillset(skillnum);
 	return;
-}
-int MeleeNPC::doAttack(Character *t) {
-	mySkillSet[rand() % mySkillSet.size()]->activate(t, t[index]);
-	return 0;
 }
 
 void MeleeNPC::initSkillset(int _num) {

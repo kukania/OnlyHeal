@@ -36,5 +36,6 @@ int Tier::setValue() {
 		temp *= 10;
 		temp += label[3-i] * 3 + (rand() % 3) + 1;
 	}
+	value = temp;
 	return 0;
 }

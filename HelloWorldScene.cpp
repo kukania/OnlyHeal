@@ -61,7 +61,8 @@ bool HelloWorld::init()
 	Character temp = MeleeNPC(Tier(1), 0);
 	printf("Hello world\n");
 	Raid raid = Raid(temp);
-	raid.printInfo();
+	raid.battle();
+
 
     // add a label shows "Hello World"
     // create and initialize a label
