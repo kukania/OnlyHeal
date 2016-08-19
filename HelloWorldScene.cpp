@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "characters\MeleeNPC.h"
+#include "raid\raid.h"
 
 USING_NS_CC;
 
@@ -17,6 +18,11 @@ Scene* HelloWorld::createScene()
 
     // return the scene
     return scene;
+}
+
+void *aaa(void *a) {
+	printf("HEllo world\n");
+	return NULL;
 }
 
 // on "init" you need to initialize your instance
@@ -52,8 +58,10 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
-	Character temp = MeleeNPC(Tier(1), 2);
+	Character temp = MeleeNPC(Tier(1), 0);
 	printf("Hello world\n");
+	Raid raid = Raid(temp);
+	raid.printInfo();
 
     // add a label shows "Hello World"
     // create and initialize a label

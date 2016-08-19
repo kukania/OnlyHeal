@@ -19,7 +19,7 @@ int Monster::setFindTarget(Character *t) {
 Monster::Monster(Tier myTier):Character(myTier){
 	Skill * firstSkill = new RangeSkill(1, "전체강타", 1, 0, 0, true, 1);
 	Character::mySkillSet.push_back(firstSkill);
-	firstSkill = new MonsterSkillFear(0.1, myTier, 10, "공포", 10, 10, 10);
+	firstSkill = new MonsterSkillFear(0.1, myTier, 10, "fre", 10, 10, 10);
 	Character::mySkillSet.push_back(firstSkill);
 }
 
