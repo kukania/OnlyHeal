@@ -51,6 +51,7 @@ public:
 	void 		setMulti(bool);
 	// main use
 	virtual int activate(Character *, Character &) = 0;
+	virtual int activate(Character *, Character &,int) = 0;
 	void		setCooldown(); 	// when use skill
 	bool		able();
 	bool 		isMulti();

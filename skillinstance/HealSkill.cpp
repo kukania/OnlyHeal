@@ -19,7 +19,7 @@ int HealSkill::activate(Character *t, Character &c) {
 		else {
 			t[0].getStatus()->addHP(amount);
 		}
-		_sleep(1000);
+		//_sleep(1000);
 	}
 	return 0;
 }
@@ -38,4 +38,7 @@ void initHealSkills() {
 		hs[i + 14] = HealSkill(i + 15, sPrefix[i] + "Èú»ù", i + 14, fCoeffi[i], false, fCoeffi[i] * 2, 10);
 	}
 	hs[21] = HealSkill(22, "1234", 4, 5, true, 3, 5);
+}
+int HealSkill::activate(Character *, Character &, int) {
+	return 0;
 }

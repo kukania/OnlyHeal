@@ -9,6 +9,9 @@ private:
 public:
 	TankSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
 	virtual int activate(Character *, Character &);
+	virtual int activate(Character *, Character &, int) {
+		return 0;
+	}
 };
 
 void initTankSkill(vector<Skill *> &);
