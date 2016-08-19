@@ -9,5 +9,4 @@ private:
 	void	initSkillset(int);
 public:
 	MeleeNPC(Tier, int);
-	int doAttack(Character *);
 };

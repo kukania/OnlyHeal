@@ -3,7 +3,7 @@
 RangeNPC::RangeNPC(Tier _tier, int _index)
 	:Character(_tier) {
 	index = _index;
-	int skillnum = 1;
+	int skillnum = 3;
 	initSkillset(skillnum);
 	return;
 }

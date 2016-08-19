@@ -11,11 +11,24 @@ Raid::Raid(Character _user) {
 	list[5] = RangeNPC(base, 5);
 }
 void Raid::printInfo() {
+	printf("============PRINT INFO==========\n");
 	for (int i = 0; i < 6; i++) {
 		Status *temp = list[i].getStatus();
-		printf("Agro: %d\nDamage: %d\nDefence: %d\nHP: %d, MaxHP: %d\nRDa: %d, RDe: %d\nSpeed: %f\n",
-			temp->getAgro(), temp->getDamage(), temp->getDefence(),
-			temp->getHP(), temp->getMaxHP(), temp->getMyRGBDamage(),
-			temp->getMyRGBDefence(), temp->getSpeed());
+		printf("NUMBER: %d\n", i);
+		printf("Agro: %d, Speed: %f\nDamage: %d\nDefence: %d\nHP: %d, MaxHP: %d\n",
+			temp->getAgro(), temp->getSpeed(), (int)temp->getDamage(), (int)temp->getDefence(),
+			(int)temp->getHP(), (int)temp->getMaxHP());
 	}
+	return;
+}
+void Raid::battle() {
+	bool end = false;
+	printInfo();
+	while (!end) {
+		for (int i = 0; i < 6; i++) {
+			list[i].doAttack(list);
+		}
+		printInfo();
+	}
+	return;
 }
