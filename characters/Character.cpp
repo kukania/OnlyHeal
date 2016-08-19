@@ -9,8 +9,13 @@ int Character::beAttacked(int damage) {
 }
 int Character::doAttack(Character *input) {
 	//Skill 0 ´Â ÆòÅ¸, input 0 = player 1=monster
-	Skill* temp = mySkillSet[rand() % (mySkillSet.size()-1) + 1];
-	temp = temp->able() ? temp : mySkillSet[0];
+	Skill* temp;
+	if (mySkillSet.size() - 1 == 0)
+		temp = mySkillSet[0];
+	else {
+		temp = mySkillSet[rand() % (mySkillSet.size() - 1) + 1];
+		temp = temp->able() ? temp : mySkillSet[0];
+	}
 	if (temp->isMulti()) {
 		temp->activate(input, *this);
 	}
