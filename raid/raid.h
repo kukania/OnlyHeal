@@ -6,11 +6,10 @@
 #include "..\characters\MeleeNPC.h"
 #include "..\characters\RangeNPC.h"
 
-#include 
-
 class Raid {
 private:
 	Character *list;
 public:
 	Raid(Character);
+	void printInfo();
 };
