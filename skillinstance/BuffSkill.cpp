@@ -124,6 +124,80 @@ int BuffSkill::activate(Character *t, Character &c) {
 	return 0;
 }
 
+int BuffSkill::activate(Character *t, Character &c, int a) {
+	int power = c.getStatus()->getDamage();
+	float factor = (power / 9999)*value*a;
+	setCooldown();
+	switch (stype) {
+	case S_DAMAGE:
+		if (isMulti()) {
+			int amount[4];
+			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
+				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getDamage()*factor;
+				t[i].getStatus()->addDamage(amount[i - MEMBER_BEGIN]);
+			}
+		}
+		else {
+			int amount = t[0].getStatus()->getDamage()*factor;
+			t[0].getStatus()->addDamage(amount);
+		}
+		break;
+	case S_SPEED:
+		if (isMulti()) {
+			float amount[4];
+			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
+				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getSpeed()*factor;
+				t[i].getStatus()->addSpeed(amount[i - MEMBER_BEGIN]);
+			}
+		}
+		else {
+			float amount = t[0].getStatus()->getSpeed()*factor;
+			t[0].getStatus()->addSpeed(amount);
+		}
+		break;
+	case S_ARMOR:
+		if (isMulti()) {
+			int amount[4];
+			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
+				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getDefence()*factor;
+				t[i].getStatus()->addDefence(amount[i - MEMBER_BEGIN]);
+			}
+		}
+		else {
+			int amount = t[0].getStatus()->getDefence()*factor;
+			t[0].getStatus()->addDefence(amount);
+		}
+		break;
+	case S_MyRGB_DAM:
+		if (isMulti()) {
+			MyRGB amount = rgb*factor;
+			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
+				t[i].beBuffedDamage(amount);
+			}
+		}
+		else {
+			MyRGB amount = rgb*factor;
+			t[0].beBuffedDamage(amount);
+		}
+		break;
+	case S_MyRGB_DEF:
+		if (isMulti()) {
+			MyRGB amount = rgb*factor;
+			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
+				t[i].beBuffedDefence(amount);
+			}
+		}
+		else {
+			MyRGB amount = rgb*factor;
+			t[0].beBuffedDefence(amount);
+		}
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
 void initBuffSkill() {
 	BuffSkill *bs[10];
 	bs[0] = new BuffSkill(51, "goodbuff", 0, 10 * SECOND, 30, false, 0.3f, MyRGB(0, 0, 0), S_DAMAGE);
