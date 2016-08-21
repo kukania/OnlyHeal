@@ -116,6 +116,5 @@ void Status::initStatus(Tier a) {
 		equipItem(items[i]);
 	}
 
-	//////////////////aaa
-	aa
+	//////////////////초기화코드
 }

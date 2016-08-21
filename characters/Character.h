@@ -8,6 +8,7 @@ private:
 	int type;
 	bool isDie;
 	Status myStatus;
+	Character *list;
 public:
 	std::vector<Skill*> mySkillSet;
 	Character() {
@@ -21,6 +22,8 @@ public:
 	int setType(int);
 	int getType();
 	Status* getStatus();
-	int doAttack(Character *);
+	void setCharacterList(Character *);
+	Character * getCharacterList();
+	int doAttack(float);
 	bool checkDie();
 };

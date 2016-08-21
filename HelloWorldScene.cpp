@@ -58,11 +58,7 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
-	Character temp = MeleeNPC(Tier(1), 0);
-	printf("Hello world\n");
-	Raid raid = Raid(temp);
-	raid.battle();
-
+	this->doRaid();
 
     // add a label shows "Hello World"
     // create and initialize a label
@@ -84,11 +80,8 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    
     return true;
 }
-
-
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
@@ -101,7 +94,13 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() and exit(0) as given above,instead trigger a custom event created in RootViewController.mm as below*/
     
     //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
-    
-    
+    //_eventDispatcher->dispatchEvent(&customEndEvent);   
+}
+void HelloWorld::doRaid() {
+	Character temp = MeleeNPC(Tier(1), 0);
+	printf("Hello world\n");
+	Raid raid = Raid(temp);
+	/*for (int i = 0; i < 6; i++) {
+		this->schedule(raid.list[i].doAttack, raid.list[i].getStatus()->getSpeed());
+	}*/
 }

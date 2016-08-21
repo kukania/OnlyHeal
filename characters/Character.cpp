@@ -7,7 +7,8 @@ int Character::beAttacked(int damage) {
 		isDie = true;
 	return true;
 }
-int Character::doAttack(Character *input) {
+int Character::doAttack(float dt) {
+	Character *input = this->list;
 	//Skill 0 ´Â ÆòÅ¸, input 0 = player 1=monster
 	Skill* temp;
 	if (mySkillSet.size() - 1 == 0)
@@ -57,4 +58,11 @@ int Character::setType(int type) {
 }
 int Character::getType() {
 	return type;
+}
+void Character::setCharacterList(Character *input) {
+	this->list = input;
+}
+
+Character * Character::getCharacterList() {
+	return list;
 }

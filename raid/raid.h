@@ -8,8 +8,9 @@
 
 class Raid {
 private:
-	Character *list;
+	//Character *list;
 public:
+	Character *list;
 	Raid(Character);
 	void printInfo();
 	void battle();

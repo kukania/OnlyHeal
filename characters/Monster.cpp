@@ -26,3 +26,9 @@ Monster::Monster(Tier myTier):Character(myTier){
 Monster::Monster() :Character() {
 
 }
+
+int Monster::doAttack(float d) {
+	this->setFindTarget(this->getCharacterList());
+	Character::doAttack(d);
+	return 0;
+}

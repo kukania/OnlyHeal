@@ -9,6 +9,10 @@ Raid::Raid(Character _user) {
 	list[3] = MeleeNPC(base, 3);
 	list[4] = MeleeNPC(base, 4);
 	list[5] = RangeNPC(base, 5);
+
+	for (int i = 0; i < 6; i++) {
+		list[i].setCharacterList(list);
+	}
 }
 void Raid::printInfo() {
 	printf("============PRINT INFO==========\n");
@@ -24,11 +28,5 @@ void Raid::printInfo() {
 void Raid::battle() {
 	bool end = false;
 	printInfo();
-	while (!end) {
-		for (int i = 0; i < 6; i++) {
-			list[i].doAttack(list);
-		}
-		printInfo();
-	}
 	return;
 }
