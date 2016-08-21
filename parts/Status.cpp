@@ -19,7 +19,7 @@ Status::Status(Tier input) {
 		equipItem(items[i]);
 	}
 	agro = -1;
-	this->MaxHP=HP = 1000;
+	this->MaxHP = 1000;
 	damage =  100;
 	defence = 100;
 	speed = 1.0;
@@ -110,4 +110,12 @@ int			Status::getAgro() {
 int			Status::addAgro(int input) {
 	agro += input;
 	return 0;
+}
+void Status::initStatus(Tier a) {
+	for (int i = 0; i < 3; i++) {
+		equipItem(items[i]);
+	}
+
+	//////////////////aaa
+	aa
 }

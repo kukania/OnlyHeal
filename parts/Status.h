@@ -16,6 +16,7 @@ private:
 public:
 	Status();//player
 	Status(Tier); //NPC,MONSTER
+	void initStatus(Tier);
 	int	setMaxHP();
 	int	addMaxHP(int);
 	int	getMaxHP();
