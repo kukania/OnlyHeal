@@ -2,8 +2,10 @@
 #include "../parts/Status.h" 	//Problem
 #include "../parts/Skill.h"
 #include "../parts/Tier.h"
+#include "cocos2d.h"
 #include<vector>
-class Character {
+
+class Character{
 private:
 	int type;
 	bool isDie;
