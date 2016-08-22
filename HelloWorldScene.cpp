@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "characters\MeleeNPC.h"
+#include "skillinstance\HealSkill.h"
 
 USING_NS_CC;
 
@@ -52,7 +53,13 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
-
+	vector<Skill *> ss;
+	HealSkill::initHealSkill(ss);
+	ss[0]->initWithFile("images/skill2.png");
+	ss[0]->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	this->addChild(ss[0], 1);
+	printf("Hello world\n");
+	
     // add a label shows "Hello World"
     // create and initialize a label
     

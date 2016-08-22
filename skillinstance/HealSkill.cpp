@@ -38,6 +38,9 @@ void HealSkill::initHealSkill(vector<Skill *> &_ss) {
 		hs[i + 14] = new HealSkill(i + 15, sPrefix[i] + "Èú»ù", fCoeffi[i], false, fCoeffi[i] * 2, 10);
 	}
 	hs[21] = new HealSkill(22, "1234", 5, true, 3, 5);
+	for (int i = 0; i < 22; i++) {
+		_ss.push_back(hs[i]);
+	}
 }
 int HealSkill::activate(Character *, Character &, int) {
 	return 0;

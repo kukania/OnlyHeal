@@ -31,13 +31,13 @@ protected:
 
 public:	
 	// ID, name, cooltime, time, type, multi
-	Skill(SkillID, string, time_ms, time_ms, Type, bool);
+	Skill(SkillID, string, time_ms, time_s, Type, bool);
 	// getter
 	SkillID 	getID();
 	string		getName();
 	time_ms 	getCooltime();
 	time_ms 	getCooldown();
-	time_ms 	getTime();
+	time_s 	getTime();
 	Type		getType();
 	bool 		getMulti();
 	// setter

@@ -1,8 +1,7 @@
 #include "Skill.h"
 #include "../myUtility.h"
 
-Skill::Skill(SkillID _ID, string _name, 
-time_ms _cooltime, time_s _time, Type _type, bool _multi) {
+Skill::Skill(SkillID _ID, string _name, time_ms _cooltime, time_s _time, Type _type, bool _multi) {
 	setID(_ID);
 	setName(_name);
 	setCooltime(_cooltime);
