@@ -7,8 +7,7 @@ BuffSkill::BuffSkill()
 	:Skill(9999, "UNKNOW_BUFF", 0, 1, buff, false) {
 
 };
-BuffSkill::BuffSkill(SkillID ID, string name, time_ms cooltime, 
-	time_s time, bool multi, float value, MyRGB rgb, StatType stype)
+BuffSkill::BuffSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)
 	:Skill(ID, name, cooltime, time, buff,_multi) {
 	_value	= value;
 	_stype	= stype;
@@ -132,7 +131,7 @@ int BuffSkill::activate(Character *t, Character &c) {
 int BuffSkill::activate(Character *t, Character &c, int a) {
 #define ADD_FIELD(field) getStatus()->add##field
 #define GET_FIELD(field) getStatus()->get##field()
-#define AFFECT(field)\
+#define AFFECT_INT(field)\
 	if(isMulti()){\
 		for (int i = MEMBER_BEGIN; i < MEMBER_END; i++){\
 			int amount = t[i].GET_FIELD(field)*factor;\
@@ -143,7 +142,7 @@ int BuffSkill::activate(Character *t, Character &c, int a) {
 		int amount = t[0].GET_FIELD(field)*factor;\
 		t[0].ADD_FIELD(field)(amount);\
 	}
-#define AFFECT2(field)\
+#define AFFECT_RGB(field)\
 	if (isMulti()) {\
 		MyRGB amount = _rgb*factor;\
 		for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {\
@@ -160,26 +159,26 @@ int BuffSkill::activate(Character *t, Character &c, int a) {
 	setCooldown();
 	switch (_stype) {
 	case damage:
-		AFFECT(Damage)
+		AFFECT_INT(Damage)
 		break;
 	case speed:
-		AFFECT(Speed)
+		AFFECT_INT(Speed)
 		break;
 	case armor:
-		AFFECT(Defence)
+		AFFECT_INT(Defence)
 		break;
 	case rgbDa:
-		AFFECT2(Damage)
+		AFFECT_RGB(Damage)
 		break;
 	case rgbDe:
-		AFFECT2(Defence)
+		AFFECT_RGB(Defence)
 		break;
 	default:
 		break;
 	}
 	return 0;
-#undef AFFECT2
-#undef AFFECT
+#undef AFFECT_RGB
+#undef AFFECT_INT
 #undef GET_FIELD
 #undef ADD_FIELD
 }

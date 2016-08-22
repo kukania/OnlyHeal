@@ -24,10 +24,10 @@ int isRange(char *argName, int argValue, int max, int min) {
 float calcRGBFomula(MyRGB rgbAttack, MyRGB rgbBeaten) {
 	int tempR, tempG, tempB;
 	tempR = rgbAttack.getR() - rgbBeaten.getR();
-	if (0 > tempR) 	tempR = 0;
+	if (tempR < 0) 	tempR = 0;
 	tempG = rgbAttack.getG() - rgbBeaten.getG();
-	if (0 > tempG) 	tempG = 0;
+	if (tempG < 0) 	tempG = 0;
 	tempB = rgbAttack.getB() - rgbBeaten.getB();
-	if (0 > tempB) 	tempB = 0;
+	if (tempB < 0) 	tempB = 0;
 	return (tempR+tempG+tempB) / (3 * 255);
 }
