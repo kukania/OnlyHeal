@@ -1,7 +1,7 @@
 #include "HealSkill.h"
 
-HealSkill::HealSkill() :Skill(999, "1234", 0, 0, 0, 0, false) {};
-HealSkill::HealSkill(SkillID _ID, string _name, SkillID _parent,
+HealSkill::HealSkill() :Skill(999, "1234", 0, 0, 0, false) {};
+HealSkill::HealSkill(SkillID _ID, string _name, 
 	time_ms _cooltime, time_s _time, bool _multi, float _factor)
 	:Skill(_ID, _name, _parent, _cooltime, _time, T_HEAL, _multi) {
 	factor = _factor;

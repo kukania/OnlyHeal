@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "cocos2d.h"
 using namespace std;
 
 #define SECOND  1000
@@ -18,11 +19,10 @@ typedef int time_s;
 
 class Character;
 
-class Skill {
+class Skill :public cocos2d::Sprite{
 protected:
-	int 		ID;
+	SkillID 	ID;
 	string 		name;
-	int 		parent; 		// ID of parent skill
 	time_ms 	cooltime; 		// static time for cooldown
 	time_ms 	cooldown; 		// dynamic value of cooldown
 	time_s 		time; 			// persistant time of skill
@@ -30,12 +30,11 @@ protected:
 	bool 		multi;
 
 public:	
-	// ID, name, parent, cooltime, time, type, multi
-	Skill(SkillID, string, SkillID, time_ms, time_ms, Type, bool);
+	// ID, name, cooltime, time, type, multi
+	Skill(SkillID, string, time_ms, time_ms, Type, bool);
 	// getter
 	SkillID 	getID();
 	string		getName();
-	SkillID		getParent();
 	time_ms 	getCooltime();
 	time_ms 	getCooldown();
 	time_ms 	getTime();
@@ -44,9 +43,8 @@ public:
 	// setter
 	void 		setID(SkillID);
 	void		setName(string);
-	void		setParent(SkillID);
 	void		setCooltime(time_ms);
-	void 		setTime(time_ms);
+	void 		setTime(time_s);
 	void		setType(Type);
 	void 		setMulti(bool);
 	// main use

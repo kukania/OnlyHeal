@@ -7,7 +7,7 @@ class TankSkill :public Skill {
 private:
 	float	factor;
 public:
-	TankSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
+	TankSkill(SkillID, string, time_ms, time_s, bool, float);
 	virtual int activate(Character *, Character &);
 	virtual int activate(Character *, Character &, int) {
 		return 0;

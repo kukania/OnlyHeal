@@ -1,11 +1,10 @@
 #include "Skill.h"
 #include "../myUtility.h"
 
-Skill::Skill(SkillID _ID, string _name, SkillID _parent, 
+Skill::Skill(SkillID _ID, string _name, 
 time_ms _cooltime, time_s _time, Type _type, bool _multi) {
 	setID(_ID);
 	setName(_name);
-	setParent(_parent);
 	setCooltime(_cooltime);
 	setTime(_time);
 	setType(_type);
@@ -18,9 +17,6 @@ SkillID Skill::getID(){
 }
 string Skill::getName() {
 	return name;
-}
-SkillID Skill::getParent() {
-	return parent;
 }
 time_ms Skill::getCooltime() {
 	return cooltime;
@@ -45,11 +41,6 @@ void Skill::setID(SkillID _ID){
 }
 void Skill::setName(string _name) {
 	name = _name;
-	return;
-}
-void Skill::setParent(SkillID _parent) {
-	if (!isRange("Parent", _parent, 9999, 0)) return;
-	parent = _parent;
 	return;
 }
 void Skill::setCooltime(time_ms _cooltime) {

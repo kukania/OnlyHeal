@@ -1,9 +1,9 @@
 #include "MeleeSkill.h"
 #include "myUtility.h"
 
-MeleeSkill::MeleeSkill(SkillID _ID, string _name, SkillID _parent,
+MeleeSkill::MeleeSkill(SkillID _ID, string _name, 
 	time_ms _cooltime, time_s _time, bool _multi, float _factor)
-	:Skill(_ID, _name, _parent, _cooltime, _time, T_MELEE, _multi) {
+	:Skill(_ID, _name, _cooltime, _time, T_MELEE, _multi) {
 	factor = _factor;
 }
 int MeleeSkill::activate(Character *t, Character &c) {
