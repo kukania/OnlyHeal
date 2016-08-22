@@ -52,8 +52,8 @@ void Skill::setCooltime(time_ms cooltime) {
 	return;
 }
 void Skill::setTime(time_s time){
-	if (isRange("Time", time, 999*MINUTE, 0) != 0)
-		time = 0;
+	if (isRange("Time", time, 999*MINUTE, 1) != 0)
+		time = 1;
 	_time = time;
 	return;
 }

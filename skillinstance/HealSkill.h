@@ -5,7 +5,7 @@
 
 class HealSkill :public Skill{
 private:
-	float	factor;
+	float	_factor;
 public:
 	HealSkill();
 	HealSkill(SkillID, string, time_ms, time_s, bool, float);

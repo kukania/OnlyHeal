@@ -3,26 +3,30 @@
 #define MEMBER_BEGIN	2
 #define MEMBER_END		6
 
-BuffSkill::BuffSkill() :Skill(999, "1234", 0, 0, buff, false) {};
-BuffSkill::BuffSkill(SkillID _ID, string _name, 
-	time_ms _cooltime, time_s _time, bool _multi, float _value, MyRGB _rgb, int _stype)
-	:Skill(_ID, _name, _cooltime, _time, buff, _multi) {
-	value	= _value;
-	stype	= _stype;
-	rgb		= _rgb;
+BuffSkill::BuffSkill() 
+	:Skill(9999, "UNKNOW_BUFF", 0, 1, buff, false) {
+
+};
+BuffSkill::BuffSkill(SkillID ID, string name, time_ms cooltime, 
+	time_s time, bool multi, float value, MyRGB rgb, StatType stype)
+	:Skill(ID, name, cooltime, time, buff,_multi) {
+	_value	= value;
+	_stype	= stype;
+	_rgb	= rgb;
 }
 
 int BuffSkill::activate(Character *t, Character &c) {
+#define ADD_FIELD(field) getStatus()->add##field
 	int power = c.getStatus()->getDamage();
-	float factor = (power / 9999)*value;
+	float factor = (power / 9999)*_value;
 	setCooldown();
-	switch (stype) {
-	case S_DAMAGE:
+	switch (_stype) {
+	case damage:
 		if (isMulti()) {
 			int amount[4];
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getDamage()*factor;
-				t[i].getStatus()->addDamage(amount[i - MEMBER_BEGIN]);
+				t[i].ADD_FIELD(Damage)(amount[i - MEMBER_BEGIN]);
 			}
 			//_sleep(1000 * time);
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
@@ -36,7 +40,7 @@ int BuffSkill::activate(Character *t, Character &c) {
 			t[0].getStatus()->addDamage(-amount);
 		}
 		break;
-	case S_SPEED:
+	case speed:
 		if (isMulti()) {
 			float amount[4];
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
@@ -55,7 +59,7 @@ int BuffSkill::activate(Character *t, Character &c) {
 			t[0].getStatus()->addSpeed(-amount);
 		}
 		break;
-	case S_ARMOR:
+	case armor:
 		if (isMulti()) {
 			int amount[4];
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
@@ -74,47 +78,47 @@ int BuffSkill::activate(Character *t, Character &c) {
 			t[0].getStatus()->addDefence(-amount);
 		}
 		break;
-	case S_MyRGB_DAM:
+	case rgbDa:
 		if (isMulti()) {
-			MyRGB amount = rgb*factor;
+			MyRGB amount = _rgb*factor;
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDamage(amount);
 			}
 			//_sleep
 			factor *= -1;
-			amount = rgb*factor;
+			amount = _rgb*factor;
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDamage(amount);
 			}
 		}
 		else {
-			MyRGB amount = rgb*factor;
+			MyRGB amount = _rgb*factor;
 			t[0].beBuffedDamage(amount);
 			//sleep
 			factor *= -1;
-			amount = rgb*factor;
+			amount = _rgb*factor;
 			t[0].beBuffedDamage(amount);
 		}
 		break;
-	case S_MyRGB_DEF:
+	case rgbDe:
 		if (isMulti()) {
-			MyRGB amount = rgb*factor;
+			MyRGB amount = _rgb*factor;
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDefence(amount);
 			}
 			//_sleep
 			factor *= -1;
-			amount = rgb*factor;
+			amount = _rgb*factor;
 			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
 				t[i].beBuffedDefence(amount);
 			}
 		}
 		else {
-			MyRGB amount = rgb*factor;
+			MyRGB amount = _rgb*factor;
 			t[0].beBuffedDefence(amount);
 			//sleep
 			factor *= -1;
-			amount = rgb*factor;
+			amount = _rgb*factor;
 			t[0].beBuffedDefence(amount);
 		}
 		break;
@@ -122,83 +126,65 @@ int BuffSkill::activate(Character *t, Character &c) {
 		break;
 	}
 	return 0;
+#undef ADD_FIELD
 }
 
 int BuffSkill::activate(Character *t, Character &c, int a) {
+#define ADD_FIELD(field) getStatus()->add##field
+#define GET_FIELD(field) getStatus()->get##field()
+#define AFFECT(field)\
+	if(isMulti()){\
+		for (int i = MEMBER_BEGIN; i < MEMBER_END; i++){\
+			int amount = t[i].GET_FIELD(field)*factor;\
+			t[i].ADD_FIELD(field)(amount);\
+		}\
+	}\
+	else{\
+		int amount = t[0].GET_FIELD(field)*factor;\
+		t[0].ADD_FIELD(field)(amount);\
+	}
+#define AFFECT2(field)\
+	if (isMulti()) {\
+		MyRGB amount = _rgb*factor;\
+		for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {\
+			t[i].beBuffed##field(amount);\
+		}\
+	}\
+	else {\
+		MyRGB amount = _rgb*factor;\
+		t[0].beBuffed##field(amount);\
+	}
+
 	int power = c.getStatus()->getDamage();
-	float factor = (power / 9999)*value*a;
+	float factor = (power / 9999)*_value*a;
 	setCooldown();
-	switch (stype) {
-	case S_DAMAGE:
-		if (isMulti()) {
-			int amount[4];
-			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
-				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getDamage()*factor;
-				t[i].getStatus()->addDamage(amount[i - MEMBER_BEGIN]);
-			}
-		}
-		else {
-			int amount = t[0].getStatus()->getDamage()*factor;
-			t[0].getStatus()->addDamage(amount);
-		}
+	switch (_stype) {
+	case damage:
+		AFFECT(Damage)
 		break;
-	case S_SPEED:
-		if (isMulti()) {
-			float amount[4];
-			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
-				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getSpeed()*factor;
-				t[i].getStatus()->addSpeed(amount[i - MEMBER_BEGIN]);
-			}
-		}
-		else {
-			float amount = t[0].getStatus()->getSpeed()*factor;
-			t[0].getStatus()->addSpeed(amount);
-		}
+	case speed:
+		AFFECT(Speed)
 		break;
-	case S_ARMOR:
-		if (isMulti()) {
-			int amount[4];
-			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
-				amount[i - MEMBER_BEGIN] = t[i].getStatus()->getDefence()*factor;
-				t[i].getStatus()->addDefence(amount[i - MEMBER_BEGIN]);
-			}
-		}
-		else {
-			int amount = t[0].getStatus()->getDefence()*factor;
-			t[0].getStatus()->addDefence(amount);
-		}
+	case armor:
+		AFFECT(Defence)
 		break;
-	case S_MyRGB_DAM:
-		if (isMulti()) {
-			MyRGB amount = rgb*factor;
-			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
-				t[i].beBuffedDamage(amount);
-			}
-		}
-		else {
-			MyRGB amount = rgb*factor;
-			t[0].beBuffedDamage(amount);
-		}
+	case rgbDa:
+		AFFECT2(Damage)
 		break;
-	case S_MyRGB_DEF:
-		if (isMulti()) {
-			MyRGB amount = rgb*factor;
-			for (int i = MEMBER_BEGIN; i < MEMBER_END; i++) {
-				t[i].beBuffedDefence(amount);
-			}
-		}
-		else {
-			MyRGB amount = rgb*factor;
-			t[0].beBuffedDefence(amount);
-		}
+	case rgbDe:
+		AFFECT2(Defence)
 		break;
 	default:
 		break;
 	}
 	return 0;
+#undef AFFECT2
+#undef AFFECT
+#undef GET_FIELD
+#undef ADD_FIELD
 }
 
 void initBuffSkill() {
 	BuffSkill *bs[10];
-	bs[0] = new BuffSkill(51, "goodbuff", 10 * SECOND, 30, false, 0.3f, MyRGB(0, 0, 0), S_DAMAGE);
+	bs[0] = new BuffSkill(51, "goodbuff", 10 * SECOND, 30, false, 0.3f, MyRGB(0, 0, 0), damage);
 }

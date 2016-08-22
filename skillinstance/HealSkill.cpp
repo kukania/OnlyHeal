@@ -2,16 +2,16 @@
 
 HealSkill::HealSkill()
 	:Skill(9999, "UNKOWN_HEAL", 0, 1, heal, false){
-	factor = 1.0f;
+	_factor = 1.0f;
 }
-HealSkill::HealSkill(SkillID _ID, string _name, time_ms _cooltime, 
-	time_s _time, bool _multi, float _factor)
-	:Skill(_ID, _name, _cooltime, _time, heal, _multi) {
-	factor = _factor;
+HealSkill::HealSkill(SkillID ID, string name, time_ms cooltime, 
+	time_s time, bool multi, float factor)
+	:Skill(ID, name, cooltime, time, heal, multi) {
+	_factor = factor;
 }
 int HealSkill::activate(Character *t, Character &c) {
-	int power = c.getStatus()->getDamage();
-	int amount = factor * power / getTime();
+	int power	= c.getStatus()->getDamage();
+	int amount	= _factor * power / getTime();
 	setCooldown();
 	for (int i = 0; i < getTime(); i++) {
 		if (isMulti()) {
@@ -22,7 +22,6 @@ int HealSkill::activate(Character *t, Character &c) {
 		else {
 			t[0].getStatus()->addHP(amount);
 		}
-		//_sleep(1000);
 	}
 	return 0;
 }
