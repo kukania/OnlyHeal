@@ -5,52 +5,53 @@ using namespace std;
 
 #define SECOND  1000
 #define MINUTE  1000000
-#define T_HEAL  0
-#define T_BUFF  1
-#define T_DEBU  2
-#define T_TANK	3
-#define T_MELEE 4
-#define T_RANGE 5
 
 typedef int SkillID;
 typedef int Type;
 typedef int time_ms;
 typedef int time_s;
 
+enum SkillType {
+	heal, buff, debuff,
+	tank, melee, range,
+	unknown
+};
+
 class Character;
 
 class Skill :public cocos2d::Sprite{
 protected:
-	SkillID 	ID;
-	string 		name;
-	time_ms 	cooltime; 		// static time for cooldown
-	time_ms 	cooldown; 		// dynamic value of cooldown
-	time_s 		time; 			// persistant time of skill
-	Type 		type; 			// type of skill
-	bool 		multi;
+	SkillID 	_ID;
+	string 		_name;
+	time_ms 	_cooltime; 		// static time for cooldown
+	time_ms 	_cooldown; 		// dynamic value of cooldown
+	time_s 		_time; 			// persistant time of skill
+	SkillType 	_type; 			// type of skill
+	bool 		_multi;
 
 public:	
 	// ID, name, cooltime, time, type, multi
-	Skill(SkillID, string, time_ms, time_s, Type, bool);
+	Skill(SkillID, string, time_ms, time_s, SkillType, bool);
 	// getter
 	SkillID 	getID();
 	string		getName();
 	time_ms 	getCooltime();
 	time_ms 	getCooldown();
-	time_s 	getTime();
-	Type		getType();
+	time_s 		getTime();
+	SkillType	getType();
 	bool 		getMulti();
 	// setter
 	void 		setID(SkillID);
 	void		setName(string);
 	void		setCooltime(time_ms);
 	void 		setTime(time_s);
-	void		setType(Type);
+	void		setType(SkillType);
 	void 		setMulti(bool);
 	// main use
 	virtual int activate(Character *, Character &) = 0;
-	virtual int activate(Character *, Character &,int) = 0;
-	void		setCooldown(); 	// when use skill
+	virtual int activate(Character *, Character &, int) = 0;
+	void		setCooldown();
 	bool		able();
 	bool 		isMulti();
+	void		printInfo();
 };

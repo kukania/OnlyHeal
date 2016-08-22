@@ -1,24 +1,33 @@
+/*
+FileName:	myUtility.cpp
+Revision:	2016/08/23 by PorcaM
+*/
+
 #include "myUtility.h"
 
-// debug function
-bool isRange(char *an, int a, int max, int min) {
-	if (a < min) {
-		printf("[%s: %d] is little than MIN: %d\n", an, a, min);
-		return false;
+// Return value: 0(Success), 1(Over), -1(Less)
+int isRange(char *argName, int argValue, int max, int min) {
+	int retVal = 0;
+	if (min > argValue) {
+		printf("[%s: %d] is little than MIN: %d\n", 
+		argName, argValue, min);
+		retVal = -1;
 	}
-	if (a > max) {
-		printf("[%s: %d] is larger than MAX: %d\n", an, a, max);
-		return false;
+	if (max < argValue) {
+		printf("[%s: %d] is larger than MAX: %d\n", 
+		argName, argValue, max);
+		retVal = 1;
 	}
-	return true;
+	return retVal;
 }
 
-float calcMyRGB(MyRGB rgb1, MyRGB rgb2) {
-	int a = rgb1.getR() - rgb2.getR();
-	if (a < 0) a = 0;
-	int b = rgb1.getG() - rgb2.getG();
-	if (b < 0) b = 0;
-	int c = rgb1.getB() - rgb2.getB();
-	if (c < 0) c = 0;
-	return (a + b + c) / (3 * 255);
+float calcRGBFomula(MyRGB rgbAttack, MyRGB rgbBeaten) {
+	int tempR, tempG, tempB;
+	tempR = rgbAttack.getR() - rgbBeaten.getR();
+	if (0 > tempR) 	tempR = 0;
+	tempG = rgbAttack.getG() - rgbBeaten.getG();
+	if (0 > tempG) 	tempG = 0;
+	tempB = rgbAttack.getB() - rgbBeaten.getB();
+	if (0 > tempB) 	tempB = 0;
+	return (tempR+tempG+tempB) / (3 * 255);
 }

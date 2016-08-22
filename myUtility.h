@@ -1,6 +1,11 @@
+/*
+FileName: 	myUtility.h
+Revision: 	2016/08/23 by PorcaM
+*/
+
 #pragma once
 #include <cstdio>
 #include "parts/MyRGB.h"
 
-bool isRange(char *, int, int, int);
-float calcMyRGB(MyRGB rgb1, MyRGB rgb2);
+int 	isRange(char *, int, int, int);
+float 	calcRGBFomula(MyRGB rgbAttack, MyRGB rgbBeaten);

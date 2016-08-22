@@ -3,10 +3,10 @@
 #define MEMBER_BEGIN	2
 #define MEMBER_END		6
 
-BuffSkill::BuffSkill() :Skill(999, "1234", 0, 0, 0, false) {};
+BuffSkill::BuffSkill() :Skill(999, "1234", 0, 0, buff, false) {};
 BuffSkill::BuffSkill(SkillID _ID, string _name, 
 	time_ms _cooltime, time_s _time, bool _multi, float _value, MyRGB _rgb, int _stype)
-	:Skill(_ID, _name, _cooltime, _time, T_BUFF, _multi) {
+	:Skill(_ID, _name, _cooltime, _time, buff, _multi) {
 	value	= _value;
 	stype	= _stype;
 	rgb		= _rgb;

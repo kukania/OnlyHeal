@@ -1,16 +1,19 @@
 #include "HealSkill.h"
 
-HealSkill::HealSkill() :Skill(999, "1234", 0, 0, 0, false) {};
-HealSkill::HealSkill(SkillID _ID, string _name, 
-	time_ms _cooltime, time_s _time, bool _multi, float _factor)
-	:Skill(_ID, _name, _cooltime, _time, T_HEAL, _multi) {
+HealSkill::HealSkill()
+	:Skill(9999, "UNKOWN_HEAL", 0, 1, heal, false){
+	factor = 1.0f;
+}
+HealSkill::HealSkill(SkillID _ID, string _name, time_ms _cooltime, 
+	time_s _time, bool _multi, float _factor)
+	:Skill(_ID, _name, _cooltime, _time, heal, _multi) {
 	factor = _factor;
 }
 int HealSkill::activate(Character *t, Character &c) {
 	int power = c.getStatus()->getDamage();
-	int amount = factor * power / time;
+	int amount = factor * power / getTime();
 	setCooldown();
-	for (int i = 0; i < time; i++) {
+	for (int i = 0; i < getTime(); i++) {
 		if (isMulti()) {
 			for (int i = 2; i < 6; i++) {
 				t[i].getStatus()->addHP(amount);
