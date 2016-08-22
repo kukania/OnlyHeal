@@ -1,4 +1,5 @@
 #include "TankNPC.h"
+#include "skillinstance\TankSkill.h"
 
 TankNPC::TankNPC(Tier _tier, int _index)
 	:Character(_tier) {
@@ -14,7 +15,7 @@ int TankNPC::doAttack(Character *t) {
 
 void TankNPC::initSkillset(int _num) {
 	vector<Skill *> entire;
-	initTankSkill(entire);
+	TankSkill::initTankSkill(entire);
 	for (int i = 0; i < _num; i++) {
 		mySkillSet.push_back(entire[i]);
 	}

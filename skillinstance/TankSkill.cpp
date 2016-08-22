@@ -15,15 +15,15 @@ int TankSkill::activate(Character *t, Character &c) {
 	return 0;
 }
 
-void initTankSkill(vector<Skill *> &_ss) {
+void TankSkill::initTankSkill(vector<Skill *> &_ss) {
 	Skill *ms[14];
 	string  sPrefix[7] = { "기본", "숙련", "완숙", "전문", "기적", "전설", "신화" };
 	float   fCoeffi[7] = { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };
 	for (int i = 0; i < 7; i++) {
-		ms[i] = new TankSkill(50 + i, sPrefix[i] + "도발", 49 + i, fCoeffi[i], 1, false, fCoeffi[i]);
+		ms[i] = new TankSkill(50 + i, sPrefix[i] + "도발", fCoeffi[i], 1, false, fCoeffi[i]);
 	}
 	for (int i = 0; i < 7; i++) {
-		ms[i + 7] = new TankSkill(57 + i, sPrefix[i] + "포효", 56 + i, fCoeffi[i], 10, false, fCoeffi[i] * 2);
+		ms[i + 7] = new TankSkill(57 + i, sPrefix[i] + "포효", fCoeffi[i], 10, true, fCoeffi[i] * 2);
 	}
 	for (int i = 0; i < 14; i++) {
 		_ss.push_back(ms[i]);
