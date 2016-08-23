@@ -5,13 +5,13 @@
 
 class TankSkill :public Skill {
 private:
-	float	factor;
+	float	_factor;
 public:
-	TankSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
+	TankSkill();
+	TankSkill(SkillID, string, time_ms, time_s, bool, float);
 	virtual int activate(Character *, Character &);
 	virtual int activate(Character *, Character &, int) {
 		return 0;
 	}
+	static void initTankSkill(vector<Skill *> &);
 };
-
-void initTankSkill(vector<Skill *> &);

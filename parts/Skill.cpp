@@ -1,86 +1,87 @@
 #include "Skill.h"
 #include "../myUtility.h"
+#include <cstdio>
 
-Skill::Skill(SkillID _ID, string _name, SkillID _parent, 
-time_ms _cooltime, time_s _time, Type _type, bool _multi) {
-	setID(_ID);
-	setName(_name);
-	setParent(_parent);
-	setCooltime(_cooltime);
-	setTime(_time);
-	setType(_type);
-	setMulti(_multi);
-	cooldown = 0;
+Skill::Skill(SkillID ID, string name, time_ms cooltime, 
+time_s time, SkillType type, bool multi) {
+	setID(ID);
+	setName(name);
+	setCooltime(cooltime);
+	setTime(time);
+	setType(type);
+	setMulti(multi);
+	_cooldown = 0;
 }
 // getter
 SkillID Skill::getID(){
-	return ID;
+	return _ID;
 }
 string Skill::getName() {
-	return name;
-}
-SkillID Skill::getParent() {
-	return parent;
+	return _name;
 }
 time_ms Skill::getCooltime() {
-	return cooltime;
+	return _cooltime;
 }
 time_ms Skill::getCooldown() {
-	return cooldown;
+	return _cooldown;
 }
 time_s Skill::getTime(){
-	return time;
+	return _time;
 }
-Type Skill::getType() {
-	return type;
+SkillType Skill::getType() {
+	return _type;
 }
 bool Skill::getMulti(){
-	return multi;
+	return _multi;
 }
 // setter
-void Skill::setID(SkillID _ID){
-	if (!isRange("ID", _ID, 9999, 1)) return;
-	ID = _ID;
+void Skill::setID(SkillID ID){
+	if (isRange("ID", ID, 9999, 1) != 0) 
+		return;
+	_ID = ID;
 	return;
 }
-void Skill::setName(string _name) {
-	name = _name;
+void Skill::setName(string name) {
+	_name = name;
 	return;
 }
-void Skill::setParent(SkillID _parent) {
-	if (!isRange("Parent", _parent, 9999, 0)) return;
-	parent = _parent;
+void Skill::setCooltime(time_ms cooltime) {
+	if (isRange("Cooltime", cooltime, 999*MINUTE, 0) != 0)
+		cooltime = 0;
+	_cooltime = cooltime;
 	return;
 }
-void Skill::setCooltime(time_ms _cooltime) {
-	if (!isRange("Cooltime", _cooltime, 999*MINUTE, 0))
-		_cooltime = 0;
-	cooltime = _cooltime;
+void Skill::setTime(time_s time){
+	if (isRange("Time", time, 999*MINUTE, 1) != 0)
+		time = 1;
+	_time = time;
 	return;
 }
-void Skill::setTime(time_s _time){
-	if (!isRange("Time", _time, 999*MINUTE, 0))
-		_time = 0;
-	time = _time;
+void Skill::setType(SkillType type) {
+	if (isRange("Type", type, 999, 0) != 0)
+		type = unknown;
+	_type = type;
 	return;
 }
-void Skill::setType(Type _type) {
-	if (!isRange("Type", _type, 999, 0));
-	type = _type;
+void Skill::setMulti(bool multi){
+	_multi = multi;
 	return;
 }
-void Skill::setMulti(bool _multi){
-	multi = _multi;
-	return;
-}
-// main use
+// Activate when use skill
+// setup cooldown as cooltime
 void Skill::setCooldown() {
-	cooldown = cooltime;
+	_cooldown = _cooltime;
 	return;
 }
+// Check cooldown is clear
 bool Skill::able() {
-	return (!cooldown);
+	return (!_cooldown);
 }
 bool Skill::isMulti(){
-	return multi;
+	return _multi;
+}
+void Skill::printInfo() {
+	string typeName[7] = { "heal", "buff", "debuff", "tank", "melee", "range", "unknown" };
+	printf("[%s] %d %s\n", typeName[getType()].c_str(), getID(), getName().c_str());
+	return;
 }

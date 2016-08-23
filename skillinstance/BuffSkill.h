@@ -3,20 +3,18 @@
 #include "../parts/Skill.h"
 #include "../characters/Character.h"
 
-#define S_DAMAGE	0
-#define	S_SPEED		1
-#define S_ARMOR		2
-#define	S_MyRGB_DAM	3
-#define S_MyRGB_DEF	4
+enum StatType {
+	damage, speed, armor, rgbDa, rgbDe
+};
 
 class BuffSkill : public Skill {
 private:
-	float	value;	// max buff
-	int		stype;
-	MyRGB		rgb;
+	float		_value;
+	StatType	_stype;
+	MyRGB		_rgb;
 public:
 	BuffSkill();
-	BuffSkill(SkillID, string, SkillID, time_ms, time_s, bool, float, MyRGB, int);
+	BuffSkill(SkillID, string, time_ms, time_s, bool, float, MyRGB, StatType);
 	virtual int activate(Character *t, Character &c);
 	virtual int activate(Character *t, Character &c, int a);
 };

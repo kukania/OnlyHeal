@@ -5,13 +5,13 @@
 
 class RangeSkill :public Skill {
 private:
-	float	factor;
+	float	_factor;
 public:
-	RangeSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
+	RangeSkill();
+	RangeSkill(SkillID, string, time_ms, time_s, bool, float);
 	virtual int activate(Character *, Character &);
 	virtual int activate(Character *, Character &, int) {
 		return 0;
 	}
+	static void initRangeSkill(vector<Skill *> &);
 };
-
-void initRangeSkill(vector<Skill *> &);

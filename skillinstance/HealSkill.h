@@ -5,11 +5,11 @@
 
 class HealSkill :public Skill{
 private:
-	float	factor;
+	float	_factor;
 public:
 	HealSkill();
-	// ID, name, parent, cooltime, time, multi, factor
-	HealSkill(SkillID, string, SkillID, time_ms, time_s, bool, float);
+	HealSkill(SkillID, string, time_ms, time_s, bool, float);
 	virtual int activate(Character *t, Character &c);
 	virtual int activate(Character *, Character &, int);
+	static void initHealSkill(vector<Skill *> &);
 };

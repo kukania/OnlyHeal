@@ -1,4 +1,5 @@
 #include "RangeNPC.h"
+#include "skillinstance\RangeSkill.h"
 
 RangeNPC::RangeNPC(Tier _tier, int _index)
 	:Character(_tier) {
@@ -14,7 +15,7 @@ int RangeNPC::doAttack(Character *t) {
 
 void RangeNPC::initSkillset(int _num) {
 	vector<Skill *> entire;
-	initRangeSkill(entire);
+	RangeSkill::initRangeSkill(entire);
 	for (int i = 0; i < _num; i++) {
 		mySkillSet.push_back(entire[i]);
 	}

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Character.h"
-#include "skillinstance\RangeSkill.h"
 
 class RangeNPC :public Character {
 private:

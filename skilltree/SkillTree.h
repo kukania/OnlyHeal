@@ -3,12 +3,12 @@
 #include <vector>
 #include <map>
 
-#define LEARN_COST 5
+#define LEARN_COST 	5
 
 class sNode;
 
-typedef map<SkillID, sNode> s_map;
-typedef pair<SkillID, sNode> s_pair;
+typedef map<SkillID, sNode> 	s_map;
+typedef pair<SkillID, sNode> 	s_pair;
 
 class sNode {
 private:
@@ -16,7 +16,6 @@ private:
 	SkillID		prec;
 	bool		acquire;
 public:
-	/*Constructor*/
 	sNode(SkillID);
 	sNode(SkillID, SkillID);
 	sNode(SkillID, SkillID, bool);
