@@ -4,7 +4,7 @@ Revision:	2016/08/23 by PorcaM
 */
 
 #include "RaidScene.h"
-#include "characters\Monster.h"
+#include "characters\Character.h"
 
 USING_NS_CC;
 
@@ -56,6 +56,14 @@ bool Raid::init()
 
 	/////////////////////////////
 	// 3. add your codes below
+	Character *cl[6];
+	Tier tempT = Tier(1);
+	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
+	string rl[6] = { "melee.png", "monster.png", "tank.png", "melee.png", "melee.png", "range.png" };
+	for (int i = 0; i < 6; i++) {
+		cl[i] = Character::create(rl[i], tempT, tl[i], 5);
+		this->addChild(cl[i]);
+	}
 
 
 	return true;
