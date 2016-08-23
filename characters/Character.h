@@ -5,13 +5,14 @@
 #include "cocos2d.h"
 #include<vector>
 
-class Character{
+class Character :public cocos2d::Sprite{
 private:
 	int type;
 	bool isDie;
 	Status myStatus;
 	Character *list;
 public:
+	static Character* create(const string& file, Tier t, string& typeOfChar, int skill);
 	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;

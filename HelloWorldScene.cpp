@@ -58,7 +58,13 @@ bool HelloWorld::init()
 
     /////////////////////////////
     // 3. add your codes below...
-	this->doRaid();
+
+	Tier t(2);
+	string temp2 = "MeleeNPC";
+	MeleeNPC* myNPC = (MeleeNPC*)Character::create("black.png", t, temp2, 1);
+	myNPC->setVisible(true);
+	myNPC->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	this->addChild(myNPC, 1);
 
     // add a label shows "Hello World"
     // create and initialize a label
@@ -80,6 +86,7 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+
     return true;
 }
 void HelloWorld::menuCloseCallback(Ref* pSender)
@@ -95,12 +102,4 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);   
-}
-void HelloWorld::doRaid() {
-	Character temp = MeleeNPC(Tier(1), 0);
-	printf("Hello world\n");
-	Raid raid = Raid(temp);
-	/*for (int i = 0; i < 6; i++) {
-		this->schedule(raid.list[i].doAttack, raid.list[i].getStatus()->getSpeed());
-	}*/
 }

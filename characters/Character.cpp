@@ -1,6 +1,38 @@
 #pragma once
 #include "Character.h"
+#include "MeleeNPC.h"
+#include "TankNPC.h"
+#include "RangeNPC.h"
+#include "Monster.h"
+#include<string>
+//user
 #include <random>
+
+Character* Character::create(const std::string& file, Tier t, string& typeOfChar, int skill) {
+	Character *myCharacter=nullptr;
+	if (typeOfChar.compare("User")==0) {
+		//user
+	}
+	else if (typeOfChar.compare("MeleeNPC") == 0) {
+		myCharacter = new MeleeNPC(t, skill);
+	}
+	else if (typeOfChar.compare("Monster") == 0) {
+		myCharacter = new Monster(t);
+	}
+	else if (typeOfChar.compare("RangeNPC") == 0) {
+		myCharacter = new RangeNPC(t, skill);
+	}
+	else if (typeOfChar.compare("TankNPC") == 0) {
+		myCharacter = new TankNPC(t, skill);
+	}
+	if (myCharacter && myCharacter->initWithFile(file.c_str()))
+	{
+		myCharacter->autorelease();
+		return myCharacter;
+	}
+	CC_SAFE_DELETE(myCharacter);
+	return nullptr;
+}
 int Character::beAttacked(int damage) {
 	myStatus.addHP(-damage);
 	if (myStatus.getHP() == 0)
