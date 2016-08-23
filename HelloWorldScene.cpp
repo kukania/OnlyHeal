@@ -1,7 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "skillinstance\SkillFactory.h"
-
+#include "statusHexa.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -18,17 +18,26 @@ bool HelloWorld::init()
     if ( !Layer::init() ){
         return false;
     }
-
-	auto backGround = DrawNode::create();
+	makeBackGround();
+	return true;
+}
+void HelloWorld::makeBackGround() {
+	backGround = DrawNode::create();
 	Vec2 corners[4] = {
-		Vec2(0,100),
-		Vec2(100,100),
-		Vec2(100,0),
+		Vec2(0,960),
+		Vec2(540,960),
+		Vec2(540,0),
 		Vec2(0,0)
 	};
-	backGround->drawPolygon(corners, 4, Color4F(1.0f, 0.3f, 0.3f, 1), 3, Color4F(1.0f, 0.3f, 0.3f, 1));
+	backGround->drawPolygon(corners, 4, Color4F(1.0f, 1.0f, 1.0f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
 	this->addChild(backGround);
-    return true;
+
+	this->statusHexa = DrawNode::create();
+	StatusHexa temp(200);
+	statusHexa->drawPolygon(temp.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
+	backGround->addChild(this->statusHexa);
+	this->statusHexa->setPosition(270, 490);
+
 }
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
