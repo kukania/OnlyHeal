@@ -61,41 +61,67 @@ bool Raid::init()
 	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
 	string rl[6] = { "melee.png", "monster.png", "tank.png", "melee.png", "melee.png", "range.png" };
 
+	int borderline = visibleSize.height - 240;
+
 	auto playerLayer = Layer::create();
-	this->addChild(playerLayer);
+	Sprite *player[5];
+	for (int i = 0; i < 5; i++)
+		player[i] = Sprite::create("plate2.png");
 	Character *cl[6];
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0, j = 0; i < 6; i++) {
 		if (i == 1) continue;
 		cl[i] = Character::create(rl[i], tempT, tl[i], 5);
-		cl[i]->setPosition(Vec2(0, -100 * i));
+		cl[i]->setPosition(Vec2(0, 0));
 		cl[i]->setScale(0.5f);
-		cl[i]->setAnchorPoint(Vec2(0.5, 0.5));
-		playerLayer->addChild(cl[i]);
+		cl[i]->setAnchorPoint(Vec2(0, 0));
+		player[j++]->addChild(cl[i]);
 	}
-	playerLayer->setPosition(200, 600);
+	for (int i = 0; i < 5; i++) {
+		player[i]->setAnchorPoint(Vec2(0, 1));
+		player[i]->setPosition(Vec2(0, -120 * i));
+
+	}
+	for (int i = 0; i < 5; i++)
+		playerLayer->addChild(player[i]);
+	playerLayer->setAnchorPoint(Vec2(0, 1));
+	playerLayer->setPosition(0, borderline);
+	this->addChild(playerLayer);
 
 	auto bossLayer		= Layer::create();
-	this->addChild(bossLayer);
 	cl[1] = Character::create(rl[1], tempT, tl[1], 5);
-	cl[1]->setPosition(Vec2(0, 0));
+	cl[1]->setPosition(Vec2(visibleSize.width / 2, 120));
 	cl[1]->setScale(1.0f);
 	cl[1]->setAnchorPoint(Vec2(0.5, 0.5));
 	bossLayer->addChild(cl[1]);
-	bossLayer->setPosition(Vec2(visibleSize.width / 2, visibleSize.height-150));
+	auto bossHP = Sprite::create("hp1.png");
+	bossHP->setAnchorPoint(Vec2(0, 0.5));
+	bossHP->setPosition(Vec2(0, 0));
+	bossHP->setScale(1.0f);
+	bossLayer->addChild(bossHP);
+	auto RGBbg = Sprite::create("plate.png");
+	auto RGBLog = Label::create("my message\n100\n100\n100", "fonts/arial", 20);
+	RGBLog->setAnchorPoint(Vec2(0, 1));
+	RGBLog->setPosition(Vec2(0, RGBbg->getContentSize().height));
+	RGBbg->addChild(RGBLog);
+	RGBbg->setPosition(Vec2(80, 120));
+	bossLayer->addChild(RGBbg);
+	bossLayer->setPosition(Vec2(0, borderline));
+	this->addChild(bossLayer);
 
 	auto skillLayer = Layer::create();
-	this->addChild(skillLayer);
 	Skill *sl[5];
 	for (int i = 0; i < 5; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
 		sl[i]->printInfo();
 		sl[i]->initWithFile("images/skill2.png");
-		sl[i]->setPosition(Vec2(0, -100 * i));
-		sl[i]->setAnchorPoint(Vec2(0.5, 0.5));
+		sl[i]->setPosition(Vec2(0, -120 * i));
+		sl[i]->setAnchorPoint(Vec2(1, 1));
 		sl[i]->setScale(0.5f);
 		skillLayer->addChild(sl[i]);
 	}
-	skillLayer->setPosition(Vec2(400, 600));
+	skillLayer->setAnchorPoint(Vec2(1, 1));
+	skillLayer->setPosition(Vec2(visibleSize.width, borderline));
+	this->addChild(skillLayer);
 
 	return true;
 }
