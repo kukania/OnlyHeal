@@ -19,6 +19,7 @@ Status::Status(Tier input) {
 		equipItem(items[i]);
 	}
 	agro = -1;
+	HP = 1000;
 	this->MaxHP = 1000;
 	damage =  100;
 	defence = 100;

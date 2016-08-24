@@ -5,6 +5,7 @@
 #include "RangeNPC.h"
 #include "Monster.h"
 #include<string>
+#include <cstdio>
 //user
 #include <random>
 

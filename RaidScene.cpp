@@ -6,6 +6,7 @@ Revision:	2016/08/23 by PorcaM
 #include "RaidScene.h"
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
+#include <cstdio>
 
 USING_NS_CC;
 
@@ -57,6 +58,16 @@ bool Raid::init()
 
 	/////////////////////////////
 	// 3. add your codes below
+	auto backGround = DrawNode::create();
+	Vec2 corners[4] = {
+		Vec2(0,960),
+		Vec2(540,960),
+		Vec2(540,0),
+		Vec2(0,0)
+	};
+	backGround->drawPolygon(corners, 4, Color4F(1.0f, 1.0f, 1.0f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
+	this->addChild(backGround);
+
 	Tier tempT = Tier(1);
 	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
 	string rl[6] = { "melee.png", "monster.png", "tank.png", "melee.png", "melee.png", "range.png" };
@@ -77,9 +88,14 @@ bool Raid::init()
 		player[j++]->addChild(cl[i]);
 	}
 	for (int i = 0; i < 5; i++) {
+		Sprite *temp = Sprite::create("hp2.png");
+		temp->setName("hp_bar");
+		player[i]->addChild(temp);
+		Label *temp2 = Label::create("fuuuuuuuuk", "fonts/arial", 12);
+		temp2->setName("hp_log");
+		player[i]->addChild(temp2);
 		player[i]->setAnchorPoint(Vec2(0, 1));
 		player[i]->setPosition(Vec2(0, -120 * i));
-
 	}
 	for (int i = 0; i < 5; i++)
 		playerLayer->addChild(player[i]);
@@ -92,6 +108,9 @@ bool Raid::init()
 	cl[1]->setPosition(Vec2(visibleSize.width / 2, 120));
 	cl[1]->setScale(1.0f);
 	cl[1]->setAnchorPoint(Vec2(0.5, 0.5));
+	{
+		printf("Boss HP: %d\nBoss MaxHP: %d\n", cl[1]->getStatus()->getHP(), cl[1]->getStatus()->getMaxHP());
+	}
 	bossLayer->addChild(cl[1]);
 	auto bossHP = Sprite::create("hp1.png");
 	bossHP->setAnchorPoint(Vec2(0, 0.5));
@@ -112,7 +131,6 @@ bool Raid::init()
 	Skill *sl[5];
 	for (int i = 0; i < 5; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
-		sl[i]->printInfo();
 		sl[i]->initWithFile("images/skill2.png");
 		sl[i]->setPosition(Vec2(0, -120 * i));
 		sl[i]->setAnchorPoint(Vec2(1, 1));
