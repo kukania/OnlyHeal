@@ -3,6 +3,7 @@
 #include "skillinstance\SkillFactory.h"
 #include "statusHexa.h"
 
+
 #include<iostream>
 using namespace std;
 

@@ -1,4 +1,5 @@
 #include "statusHexa.h"
+
 #include<cmath>
 StatusHexa::StatusHexa(float value) {
 	this->y=this->x = 0.0f;
