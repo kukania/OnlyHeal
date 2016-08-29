@@ -4,7 +4,7 @@
 #include "Tier.h"
 Status::Status() {
 	agro=-1;
-	HP=1000;
+	this->MaxHPDefault=HP=1000;
 	damage=100;
 	defence=100;
 	speed=1.0;
@@ -20,10 +20,11 @@ Status::Status(Tier input) {
 	}
 	agro = -1;
 	HP = 1000;
-	this->MaxHP = 1000;
+	this->MaxHPDefault = 1000;
 	damage =  100;
 	defence = 100;
 	speed = 1.0;
+	setMaxHP();
 }
 Tier Status::evalTier() {
 	Tier temp;
@@ -95,7 +96,7 @@ int	Status::addMaxHP(int input) {
 	return 0;
 }
 int	Status::setMaxHP() {
-	MaxHP = this->evalTier().getValue() * 10+MaxHP;
+	MaxHP = this->evalTier().getValue() * 10+MaxHPDefault;
 	return 0;
 }
 int	Status::getMaxHP() {
@@ -118,4 +119,16 @@ void Status::initStatus(Tier a) {
 	}
 
 	//////////////////초기화코드
+}
+
+void		Status::addMaxHPDefault(int a) {
+	this->MaxHPDefault += a;
+	setMaxHP();
+}
+int			Status::getMaxHPDefault() {
+	return this->MaxHPDefault;
+}
+void		Status::setMaxHPDefault(int a) {
+	this->MaxHPDefault = a;
+	setMaxHP();
 }

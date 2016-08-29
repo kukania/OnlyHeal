@@ -7,6 +7,7 @@ private:
 	int			agro;
 	int	HP;
 	int	MaxHP;
+	int MaxHPDefault;
 	int	damage;
 	int	defence;
 	MyRGB		MyRGBdamage;
@@ -39,4 +40,7 @@ public:
 	float		getSpeed();
 	bool		equipItem(Item);
 	Tier		evalTier();
+	void		addMaxHPDefault(int);
+	int			getMaxHPDefault();
+	void		setMaxHPDefault(int);
 };

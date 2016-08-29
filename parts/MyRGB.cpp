@@ -22,6 +22,10 @@ MyRGB MyRGB::operator+ (MyRGB a) {
 	return temp;
 }
 short MyRGB::checkMyRGBValue(int value) {
+	if (value > 255)
+		return 0;
+	else if (value < 0)
+		return 2;
 	return 1;
 }
 
@@ -30,19 +34,39 @@ short MyRGB::setB(short b) {
 	if (temp == 1) {
 		this->B = b;
 	}
+	else if (temp == 0) {
+		this->B = 255;
+	}
+	else {
+		this->B = 0;
+	}
 	return temp;
 }
 short MyRGB::setG(short b) {
 	int temp = this->checkMyRGBValue(b);
 	if (temp == 1) {
 		this->G = b;
-	}return temp;
+	}
+	else if (temp == 0) {
+		this->G = 255;
+	}
+	else {
+		this->G = 0;
+	}
+	return temp;
 }
 short MyRGB::setR(short b) {
 	int temp = this->checkMyRGBValue(b);
 	if (temp == 1) {
 		this->R = b;
-	}return temp;
+	}
+	else if (temp == 0) {
+		this->R = 255;
+	}
+	else {
+		this->R = 0;
+	}
+	return temp;
 }
 short MyRGB::getR() { return this->R; }
 short MyRGB::getG() { return this->G; }
