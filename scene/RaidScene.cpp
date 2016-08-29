@@ -7,7 +7,7 @@ Modified:	2016/08/29 by PorcaM
 #include "RaidScene.h"
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
-#include "scene\RaidComponent\UnitFrameFactory.h"
+#include "RaidComponent\UnitFrame.h"
 #include "ui/CocosGUI.h"
 #include <cstdio>
 
@@ -67,7 +67,7 @@ bool Raid::init()
 	string tl[6] = { "Monster", "MeleeNPC", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
 	Character *cl[6];
 	for (int i = 0; i < 6; i++) {
-		cl[0] = Character::create(tempT, tl[i], 5);
+		cl[i] = Character::create(tempT, tl[i], 5);
 	}
 	int borderline = visibleSize.height - 240;
 
@@ -75,13 +75,16 @@ bool Raid::init()
 	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
 		uf[i] = new UnitFrame(cl[i + 1]);
-		uf[i]->setPosition(Vec2(0, i*-120));
+		uf[i]->setScale(1.6f);
+		uf[i]->setAnchorPoint(Vec2(0, 1));
+		uf[i]->setPosition(Vec2(0, i*-140));
 		UnitGrid->addChild(uf[i]);
 	}
+	UnitGrid->setAnchorPoint(Vec2(0, 1));
 	UnitGrid->setPosition(Vec2(0, borderline));
 	this->addChild(UnitGrid);
 
-	auto bossLayer		= Layer::create();
+	auto bossLayer = Layer::create();
 	cl[1]->setPosition(Vec2(visibleSize.width / 2, 120));
 	cl[1]->setScale(1.0f);
 	cl[1]->setAnchorPoint(Vec2(0.5, 0.5));
@@ -102,7 +105,7 @@ bool Raid::init()
 	RGBbg->setPosition(Vec2(80, 120));
 	bossLayer->addChild(RGBbg);
 	bossLayer->setPosition(Vec2(0, borderline));
-	//this->addChild(bossLayer);
+	this->addChild(bossLayer);
 
 	auto skillLayer = Layer::create();
 	Skill *sl[5];
@@ -116,7 +119,7 @@ bool Raid::init()
 	}
 	skillLayer->setAnchorPoint(Vec2(1, 1));
 	skillLayer->setPosition(Vec2(visibleSize.width, borderline));
-	//this->addChild(skillLayer);
+	this->addChild(skillLayer);
 
 	return true;
 }
