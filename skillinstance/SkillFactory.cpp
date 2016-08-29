@@ -18,11 +18,11 @@ Skill *SkillFactory::getSkill(SkillType type) {
 		break;
 	case tank:
 		break;
-	case melee:
+	case melee_atk:
 		break;
-	case range:
+	case range_atk:
 		break;
-	case unknown:
+	case unknown_skill:
 		break;
 	default:
 		break;

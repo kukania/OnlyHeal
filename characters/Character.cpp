@@ -5,6 +5,7 @@
 #include "RangeNPC.h"
 #include "Monster.h"
 #include<string>
+#include <cstdio>
 //user
 #include <random>
 
@@ -15,15 +16,19 @@ Character* Character::create(const std::string& file, Tier t, string& typeOfChar
 	}
 	else if (typeOfChar.compare("MeleeNPC") == 0) {
 		myCharacter = new MeleeNPC(t, skill);
+		myCharacter->setType(melee);
 	}
 	else if (typeOfChar.compare("Monster") == 0) {
 		myCharacter = new Monster(t);
+		myCharacter->setType(monster);
 	}
 	else if (typeOfChar.compare("RangeNPC") == 0) {
 		myCharacter = new RangeNPC(t, skill);
+		myCharacter->setType(range);
 	}
 	else if (typeOfChar.compare("TankNPC") == 0) {
 		myCharacter = new TankNPC(t, skill);
+		myCharacter->setType(tanker);
 	}
 	if (myCharacter && myCharacter->initWithFile(file.c_str()))
 	{
@@ -84,11 +89,11 @@ int Character::beBuffedDamage(MyRGB input) {
 Status* Character::getStatus() {
 	return &myStatus;
 }
-int Character::setType(int type) {
+int Character::setType(CharacterType type) {
 	this->type = type;
 	return 0;
 }
-int Character::getType() {
+CharacterType Character::getType() {
 	return type;
 }
 void Character::setCharacterList(Character *input) {

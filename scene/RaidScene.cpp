@@ -1,11 +1,14 @@
 /*
 FileName:	RaidScene.cpp
 Revision:	2016/08/23 by PorcaM
+Modified:	2016/08/25 by PorcaM
 */
 
 #include "RaidScene.h"
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
+#include "scene\RaidComponent\UnitFrameFactory.h"
+#include <cstdio>
 
 USING_NS_CC;
 
@@ -57,9 +60,11 @@ bool Raid::init()
 
 	/////////////////////////////
 	// 3. add your codes below
+	//setBackground(Color4F(1, 1, 1, 1));
+
 	Tier tempT = Tier(1);
 	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
-	string rl[6] = { "melee.png", "monster.png", "tank.png", "melee.png", "melee.png", "range.png" };
+	string rl[6] = { "melee.png", "monster.png", "tanker.png", "melee.png", "melee.png", "range.png" };
 
 	int borderline = visibleSize.height - 240;
 
@@ -76,22 +81,25 @@ bool Raid::init()
 		cl[i]->setAnchorPoint(Vec2(0, 0));
 		player[j++]->addChild(cl[i]);
 	}
-	for (int i = 0; i < 5; i++) {
-		player[i]->setAnchorPoint(Vec2(0, 1));
-		player[i]->setPosition(Vec2(0, -120 * i));
 
+	auto UnitGrid = Layer::create();
+	UnitFrame *uf[5];
+	for (int i = 0; i < 5; i++) {
+		uf[i] = UnitFrameFactory::getUnitFrame(cl[i]);
+		UnitGrid->addChild(uf[i]);
+		uf[i]->setPosition(Vec2(0, i*-120));
 	}
-	for (int i = 0; i < 5; i++)
-		playerLayer->addChild(player[i]);
-	playerLayer->setAnchorPoint(Vec2(0, 1));
-	playerLayer->setPosition(0, borderline);
-	this->addChild(playerLayer);
+	UnitGrid->setPosition(Vec2(10, borderline));
+	this->addChild(UnitGrid);
 
 	auto bossLayer		= Layer::create();
 	cl[1] = Character::create(rl[1], tempT, tl[1], 5);
 	cl[1]->setPosition(Vec2(visibleSize.width / 2, 120));
 	cl[1]->setScale(1.0f);
 	cl[1]->setAnchorPoint(Vec2(0.5, 0.5));
+	{
+		printf("Boss HP: %d\nBoss MaxHP: %d\n", cl[1]->getStatus()->getHP(), cl[1]->getStatus()->getMaxHP());
+	}
 	bossLayer->addChild(cl[1]);
 	auto bossHP = Sprite::create("hp1.png");
 	bossHP->setAnchorPoint(Vec2(0, 0.5));
@@ -112,7 +120,6 @@ bool Raid::init()
 	Skill *sl[5];
 	for (int i = 0; i < 5; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
-		sl[i]->printInfo();
 		sl[i]->initWithFile("images/skill2.png");
 		sl[i]->setPosition(Vec2(0, -120 * i));
 		sl[i]->setAnchorPoint(Vec2(1, 1));
@@ -138,4 +145,23 @@ void Raid::menuCloseCallback(Ref* pSender)
 
 	//EventCustom customEndEvent("game_scene_close_event");
 	//_eventDispatcher->dispatchEvent(&customEndEvent);   
+}
+
+/*
+Custom class functions
+Help for generating instances.
+2016/08/24 by PorcaM
+*/
+void Raid::setBackground(Color4F color) {
+	auto visibleSize	= Director::getInstance()->getVisibleSize();
+	auto backGround		= DrawNode::create();
+	Vec2 corners[4]		= {
+		Vec2(0, visibleSize.height),
+		Vec2(visibleSize.width, visibleSize.height),
+		Vec2(visibleSize.width, 0),
+		Vec2(0, 0)
+	};
+	backGround->drawPolygon(corners, 4, color, 0, color);
+	this->addChild(backGround);
+	return;
 }

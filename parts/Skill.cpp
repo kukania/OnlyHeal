@@ -59,7 +59,7 @@ void Skill::setTime(time_s time){
 }
 void Skill::setType(SkillType type) {
 	if (isRange("Type", type, 999, 0) != 0)
-		type = unknown;
+		type = unknown_skill;
 	_type = type;
 	return;
 }
