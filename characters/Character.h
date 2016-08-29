@@ -22,7 +22,7 @@ private:
 	Status			myStatus;
 	Character		*list;
 public:
-	static Character* create(const string& file, Tier t, string& typeOfChar, int skill);
+	static Character* create(Tier t, string& typeOfChar, int skill);
 	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;

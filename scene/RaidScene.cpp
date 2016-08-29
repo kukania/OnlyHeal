@@ -1,13 +1,14 @@
 /*
 FileName:	RaidScene.cpp
 Revision:	2016/08/23 by PorcaM
-Modified:	2016/08/25 by PorcaM
+Modified:	2016/08/29 by PorcaM
 */
 
 #include "RaidScene.h"
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
-#include "scene\RaidComponent\UnitFrameFactory.h"
+#include "RaidComponent\UnitFrame.h"
+#include "ui/CocosGUI.h"
 #include <cstdio>
 
 USING_NS_CC;
@@ -60,40 +61,30 @@ bool Raid::init()
 
 	/////////////////////////////
 	// 3. add your codes below
-	//setBackground(Color4F(1, 1, 1, 1));
+	setBackground(Color4F(1, 1, 1, 1));
 
 	Tier tempT = Tier(1);
-	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
-	string rl[6] = { "melee.png", "monster.png", "tanker.png", "melee.png", "melee.png", "range.png" };
-
-	int borderline = visibleSize.height - 240;
-
-	auto playerLayer = Layer::create();
-	Sprite *player[5];
-	for (int i = 0; i < 5; i++)
-		player[i] = Sprite::create("plate2.png");
+	string tl[6] = { "Monster", "MeleeNPC", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
 	Character *cl[6];
-	for (int i = 0, j = 0; i < 6; i++) {
-		if (i == 1) continue;
-		cl[i] = Character::create(rl[i], tempT, tl[i], 5);
-		cl[i]->setPosition(Vec2(0, 0));
-		cl[i]->setScale(0.5f);
-		cl[i]->setAnchorPoint(Vec2(0, 0));
-		player[j++]->addChild(cl[i]);
+	for (int i = 0; i < 6; i++) {
+		cl[i] = Character::create(tempT, tl[i], 5);
 	}
+	int borderline = visibleSize.height - 240;
 
 	auto UnitGrid = Layer::create();
 	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
-		uf[i] = UnitFrameFactory::getUnitFrame(cl[i]);
+		uf[i] = new UnitFrame(cl[i + 1]);
+		uf[i]->setScale(1.6f);
+		uf[i]->setAnchorPoint(Vec2(0, 1));
+		uf[i]->setPosition(Vec2(0, i*-140));
 		UnitGrid->addChild(uf[i]);
-		uf[i]->setPosition(Vec2(0, i*-120));
 	}
-	UnitGrid->setPosition(Vec2(10, borderline));
+	UnitGrid->setAnchorPoint(Vec2(0, 1));
+	UnitGrid->setPosition(Vec2(0, borderline));
 	this->addChild(UnitGrid);
 
-	auto bossLayer		= Layer::create();
-	cl[1] = Character::create(rl[1], tempT, tl[1], 5);
+	auto bossLayer = Layer::create();
 	cl[1]->setPosition(Vec2(visibleSize.width / 2, 120));
 	cl[1]->setScale(1.0f);
 	cl[1]->setAnchorPoint(Vec2(0.5, 0.5));

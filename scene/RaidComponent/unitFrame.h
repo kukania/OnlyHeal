@@ -13,8 +13,8 @@ USING_NS_CC;
 class UnitFrame : public Layer{
 private: 
 	Character	*_character;
-	Sprite		*_background, *_icon;
-	Label		*_hp, *_dps;
+	Sprite		*_background, *_icon, *_hpbar;
+	Label		*_hplog, *_dpslog;
 public:
 	UnitFrame(Character *);
 	Character *getCharacter();

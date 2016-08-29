@@ -9,8 +9,8 @@
 //user
 #include <random>
 
-Character* Character::create(const std::string& file, Tier t, string& typeOfChar, int skill) {
-	Character *myCharacter=nullptr;
+Character* Character::create(Tier t, string& typeOfChar, int skill) {
+	Character *myCharacter = nullptr;
 	if (typeOfChar.compare("User")==0) {
 		//user
 	}
@@ -30,13 +30,7 @@ Character* Character::create(const std::string& file, Tier t, string& typeOfChar
 		myCharacter = new TankNPC(t, skill);
 		myCharacter->setType(tanker);
 	}
-	if (myCharacter && myCharacter->initWithFile(file.c_str()))
-	{
-		myCharacter->autorelease();
-		return myCharacter;
-	}
-	CC_SAFE_DELETE(myCharacter);
-	return nullptr;
+	return myCharacter;
 }
 int Character::beAttacked(int damage) {
 	myStatus.addHP(-damage);
