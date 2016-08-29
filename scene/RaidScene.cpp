@@ -8,6 +8,7 @@ Modified:	2016/08/29 by PorcaM
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
 #include "RaidComponent\UnitFrame.h"
+#include "RaidComponent\BossFrame.h"
 #include "ui/CocosGUI.h"
 #include <cstdio>
 
@@ -105,7 +106,10 @@ bool Raid::init()
 	RGBbg->setPosition(Vec2(80, 120));
 	bossLayer->addChild(RGBbg);
 	bossLayer->setPosition(Vec2(0, borderline));
-	this->addChild(bossLayer);
+	//this->addChild(bossLayer);
+	BossFrame *bf = new BossFrame(cl[0]);
+	bf->setPosition(Vec2(0, 0));
+	this->addChild(bf);
 
 	auto skillLayer = Layer::create();
 	Skill *sl[5];
