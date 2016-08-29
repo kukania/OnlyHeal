@@ -9,23 +9,23 @@ private:
 	int	MaxHP;
 	int	damage;
 	int	defence;
-	MyRGB			MyRGBdamage;
-	MyRGB			MyRGBdefence;
+	MyRGB		MyRGBdamage;
+	MyRGB		MyRGBdefence;
 	float		speed;
 	Item		*items; //change to array
 public:
 	Status();//player
 	Status(Tier); //NPC,MONSTER
-	void initStatus(Tier);
-	int	setMaxHP();
-	int	addMaxHP(int);
-	int	getMaxHP();
+	void		initStatus(Tier);
+	int			setMaxHP();
+	int			addMaxHP(int);
+	int			getMaxHP();
 	int			addHP(int);
-	int	getHP();
+	int			getHP();
 	int			addDamage(int);
-	int	getDamage();
+	int			getDamage();
 	int			addDefence(int);
-	int	getDefence();
+	int			getDefence();
 	int			setAgro(int);
 	int			getAgro();
 	int			addAgro(int);
@@ -34,8 +34,8 @@ public:
 	int			addMyRGBDamage(MyRGB);
 	int			addMyRGBDefence(MyRGB);
 	int			addSpeed(float);
-	MyRGB			getMyRGBDamage();
-	MyRGB			getMyRGBDefence();
+	MyRGB		getMyRGBDamage();
+	MyRGB		getMyRGBDefence();
 	float		getSpeed();
 	bool		equipItem(Item);
 	Tier		evalTier();

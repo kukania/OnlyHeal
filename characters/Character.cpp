@@ -40,7 +40,7 @@ int Character::beAttacked(int damage) {
 }
 int Character::doAttack(float dt) {
 	Character *input = this->list;
-	//Skill 0 는 평타, input 0 = player 1=monster
+	//Skill 0 는 평타, input 0 = monster 1=player
 	Skill* temp;
 	if (mySkillSet.size() - 1 == 0)
 		temp = mySkillSet[0];

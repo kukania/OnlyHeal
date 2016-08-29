@@ -8,16 +8,13 @@ class Item {
 public:
 	Tier	tier;
 	int		type;
-	MyRGB		rgb;
-
+	MyRGB	rgb;
 	Item();
 	Item(Tier, int, MyRGB);
-
-	void setTier(Tier);
-	void setType(int);
-	void setMyRGB(MyRGB);
-
+	void	setTier(Tier);
+	void	setType(int);
+	void	setMyRGB(MyRGB);
 	Tier	getTier();
 	int		getType();
-	MyRGB		getMyRGB();
+	MyRGB	getMyRGB();
 };

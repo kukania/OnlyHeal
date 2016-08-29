@@ -22,8 +22,10 @@ bool HelloWorld::init()
 		return false;
 	}
 	positionArr.assign(10, Vec2(0, 0));
+	
 	scrollViewShow = false;
 	menuBtnTouched = false;
+
 	makeBackGround();
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -66,12 +68,14 @@ void HelloWorld::makeBackGround() {
 	firstChar->setScale(1.6f);
 	firstChar->setPosition(20, 100);
 	firstChar->setTag(0);
+	positionArr[CHA] = firstChar->getPosition();
 
 	auto secondChar = Sprite::create("rac.png");
 	characterGroup->addChild(secondChar);
 	secondChar->setPosition(270, 100);
 	secondChar->setScale(1.6f);
 	secondChar->setTag(1);
+	positionArr[RAC] = secondChar->getPosition();
 
 	auto thirdChar = Sprite::create("ter.png");
 	characterGroup->addChild(thirdChar);
@@ -79,6 +83,8 @@ void HelloWorld::makeBackGround() {
 	thirdChar->setPosition(520, 100);
 	thirdChar->setScale(1.6f);
 	thirdChar->setTag(2);
+	positionArr[TER] = thirdChar->getPosition();
+
 	/*scroll view test -start-*/
 	scrollView = ui::ScrollView::create();
 	scrollView->setContentSize(Size(500, 110));
@@ -116,7 +122,6 @@ void HelloWorld::makeBackGround() {
 	menuBtn->setSwallowTouches(false);
 	menuBtn->setTitleFontSize(20);
 	menuBtn->setScale9Enabled(true);
-	menuBtn->setCapInsets(Rect(47.5, 47.5, 25, 25));
 	menuBtn->setContentSize(Size(100, 100));
 	backGround->addChild(menuBtn);
 	menuBtn->setName("menuBtn");
@@ -125,11 +130,14 @@ void HelloWorld::makeBackGround() {
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
 	CCLOG("location x:%f, y:%f", location.x, location.y);
+	
 	auto scV = (ui::ScrollView*)backGround->getChildByName("scrollView");
 	if (scrollViewShow&&scV->getBoundingBox().containsPoint(location))
 		return true;
+
 	if (this->checkCharacterGroup(location))
 		return true;
+
 	auto btn=(ui::Button*)backGround->getChildByName("menuBtn");
 	auto rect = btn->getBoundingBox();
 	if (rect.containsPoint(location)) {
@@ -140,8 +148,8 @@ bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	return true;
 }
 void HelloWorld::onTouchMoved(Touch *t, Event *e) {
+	Point p = t->getLocation();
 	if (this->menuBtnTouched) {
-		Point p = t->getLocation();
 		auto btn = ((ui::Button*)backGround->getChildByName("menuBtn"));
 		btn->setPosition(p);
 	}
@@ -178,6 +186,9 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 				characterGroup->runAction(action);
 				auto action2 = ScaleBy::create(0.1, 0.625f);
 				auto action3 = MoveBy::create(0.1, Point(0, 50));
+				/*
+				ScrollView Type set
+				*/
 				for (int i = 0; i < 5; i < i++) {
 					auto btn = ui::Button::create();
 					btn->loadTextures("box.png", "box.png", "box.png");
@@ -188,10 +199,12 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 					btn->setScale9Enabled(true);
 					btn->setContentSize(Size(80, 80));
 					btn->setTag(i);
-					btn->addTouchEventListener([](Ref* sender, ui::Button::TouchEventType e) {
+					btn->addTouchEventListener([&](Ref* sender, ui::Button::TouchEventType e) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
 							int a = ((ui::Button*)sender)->getTag();
-							CCLOG("hello tag:%d",a);
+							/*
+								item equipment 
+							*/
 						}
 					});
 					this->scrollView->addChild(btn);

@@ -6,8 +6,9 @@
 #include<vector>
 USING_NS_CC;
 
-#define MENUBTN 4
-#define SCROLLVIEW 3
+enum positionName{
+	CHA,RAC,TER,SCROLLVIEW, MENUBTN
+};
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -16,9 +17,12 @@ public:
 	DrawNode* backGround;
 	cocos2d::Layer* characterGroup;
 	DrawNode* statusHexa;
+
 	bool menuBtnTouched;
 	bool scrollViewShow;
-    static cocos2d::Scene* createScene();
+	short scrollViewType;
+
+	static cocos2d::Scene* createScene();
 	void makeBackGround();
 	bool checkCharacterGroup(Point);
 	
