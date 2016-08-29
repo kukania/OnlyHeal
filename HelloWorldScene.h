@@ -7,6 +7,7 @@
 USING_NS_CC;
 
 #define MENUBTN 4
+#define SCROLLVIEW 3
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -16,6 +17,7 @@ public:
 	cocos2d::Layer* characterGroup;
 	DrawNode* statusHexa;
 	bool menuBtnTouched;
+	bool scrollViewShow;
     static cocos2d::Scene* createScene();
 	void makeBackGround();
 	bool checkCharacterGroup(Point);

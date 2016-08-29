@@ -22,6 +22,8 @@ bool HelloWorld::init()
 		return false;
 	}
 	positionArr.assign(10, Vec2(0, 0));
+	scrollViewShow = false;
+	menuBtnTouched = false;
 	makeBackGround();
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -58,51 +60,41 @@ void HelloWorld::makeBackGround() {
 	backGround->addChild(characterGroup);
 	characterGroup->setPosition(0, 375);
 
-	auto firstChar = Sprite::create("temp.png");
+	auto firstChar = Sprite::create("char.png");
 	characterGroup->addChild(firstChar);
 	firstChar->setAnchorPoint(Vec2(0.0f, 0.5f));
+	firstChar->setScale(1.6f);
 	firstChar->setPosition(20, 100);
-	firstChar->setScaleY(0.7f);
 	firstChar->setTag(0);
 
-	auto secondChar = Sprite::create("temp.png");
+	auto secondChar = Sprite::create("rac.png");
 	characterGroup->addChild(secondChar);
 	secondChar->setPosition(270, 100);
-	secondChar->setScaleY(0.7f);
+	secondChar->setScale(1.6f);
 	secondChar->setTag(1);
 
-	auto thirdChar = Sprite::create("temp.png");
+	auto thirdChar = Sprite::create("ter.png");
 	characterGroup->addChild(thirdChar);
 	thirdChar->setAnchorPoint(Vec2(1.0f, 0.5f));
 	thirdChar->setPosition(520, 100);
-	thirdChar->setScaleY(0.7f);
+	thirdChar->setScale(1.6f);
 	thirdChar->setTag(2);
 	/*scroll view test -start-*/
 	scrollView = ui::ScrollView::create();
 	scrollView->setContentSize(Size(500, 110));
 	scrollView->setInnerContainerSize(Size(1080, 110));
+	scrollView->setBackGroundImageScale9Enabled(true);
+	scrollView->setBackGroundImage("rect.png");
 	scrollView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
-	scrollView->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::SOLID);
-	scrollView->setBackGroundColor(Color3B(255, 0, 0));
 	scrollView->setBounceEnabled(true);
 	scrollView->setTouchEnabled(true);
-	scrollView->setSwallowTouches(true);
+	scrollView->setSwallowTouches(false);
 	scrollView->setPosition(Point(20, 375));
 	backGround->addChild(scrollView);
 	scrollView->setVisible(false);
-	
+	positionArr[SCROLLVIEW] = scrollView->getPosition();
+	scrollView->setName("scrollView");
 	/*scroll view test -end-*/
-	auto menuBtn = ui::Button::create("temp.png", "temp.png", "temp.png");
-	menuBtn->setPosition(Vec2(270, 100));
-	menuBtn->setTouchEnabled(true);
-	menuBtn->setSwallowTouches(false);
-	menuBtn->setTitleText("hello");
-	menuBtn->setTitleFontSize(20);
-	menuBtn->setScale9Enabled(true);
-	menuBtn->setContentSize(Size(100, 100));
-	backGround->addChild(menuBtn);
-	menuBtn->setName("menuBtn");
-	positionArr[MENUBTN] = menuBtn->getPosition();
 
 	auto partyLabel = Label::createWithSystemFont("party go","",30,Size(300,100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	partyLabel->setPosition(Vec2(270, 200));
@@ -117,10 +109,25 @@ void HelloWorld::makeBackGround() {
 	skillTree->setVisible(false);
 	skillTree->setName("skillTreeBtn");
 	backGround->addChild(skillTree);
+
+	auto menuBtn = ui::Button::create("menu.png", "menu.png", "");
+	menuBtn->setPosition(Vec2(270, 100));
+	menuBtn->setTouchEnabled(true);
+	menuBtn->setSwallowTouches(false);
+	menuBtn->setTitleFontSize(20);
+	menuBtn->setScale9Enabled(true);
+	menuBtn->setCapInsets(Rect(47.5, 47.5, 25, 25));
+	menuBtn->setContentSize(Size(100, 100));
+	backGround->addChild(menuBtn);
+	menuBtn->setName("menuBtn");
+	positionArr[MENUBTN] = menuBtn->getPosition();
 }
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
 	CCLOG("location x:%f, y:%f", location.x, location.y);
+	auto scV = (ui::ScrollView*)backGround->getChildByName("scrollView");
+	if (scrollViewShow&&scV->getBoundingBox().containsPoint(location))
+		return true;
 	if (this->checkCharacterGroup(location))
 		return true;
 	auto btn=(ui::Button*)backGround->getChildByName("menuBtn");
@@ -165,6 +172,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		Rect rect = spr->getBoundingBox();
 		if (rect.containsPoint(location)) {
 			if (touchNum == -1) {
+				scrollViewShow = true;
 				flag = true;
 				auto action = MoveBy::create(0.1, Point(0, 100));
 				characterGroup->runAction(action);
@@ -172,12 +180,13 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 				auto action3 = MoveBy::create(0.1, Point(0, 50));
 				for (int i = 0; i < 5; i < i++) {
 					auto btn = ui::Button::create();
-					btn->loadTextures("temp.png", "temp.png", "temp.png");
+					btn->loadTextures("box.png", "box.png", "box.png");
 					btn->setTouchEnabled(true);
+					btn->setSwallowTouches(false);
 					btn->setAnchorPoint(Vec2(0, 0));
-					btn->setPosition(Vec2(10 + i * 100, 10));
+					btn->setPosition(Vec2(20 + i * 100, 15));
 					btn->setScale9Enabled(true);
-					btn->setContentSize(Size(90, 90));
+					btn->setContentSize(Size(80, 80));
 					btn->setTag(i);
 					btn->addTouchEventListener([](Ref* sender, ui::Button::TouchEventType e) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
@@ -203,6 +212,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		}
 	}
 	if (!flag && touchNum != -1) {
+		scrollViewShow = false;
 		touchNum = -1;
 		auto action = MoveBy::create(0.1, Point(0, -100));
 		characterGroup->runAction(action);
