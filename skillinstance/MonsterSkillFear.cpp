@@ -1,10 +1,12 @@
 #pragma once
 #include"MonsterSkillFear.h"
 #include"../characters/Character.h"
-MonsterSkillFear::MonsterSkillFear():Skill(1000, "fear", 0, 0, unknown, false) {
+MonsterSkillFear::MonsterSkillFear()
+	:Skill(1000, "fear", 0, 0, unknown_skill, false) {
 	factor = 0;
 }
-MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c):Skill(now,S_name,cool,c,unknown,true){
+MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c)
+	: Skill(now, S_name, cool, c, unknown_skill, true) {
 	myTier = T_input;
 	this->myTier = myFloat;
 }

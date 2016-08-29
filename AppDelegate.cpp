@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "RaidScene.h"
+#include "scene\RaidScene.h"
 
 USING_NS_CC;
 

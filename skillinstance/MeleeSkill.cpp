@@ -2,11 +2,11 @@
 #include "myUtility.h"
 
 MeleeSkill::MeleeSkill()
-	:Skill(9999, "UNKOWN_MELEE", 0, 1, melee, false) {
+	:Skill(9999, "UNKOWN_MELEE", 0, 1, melee_atk, false) {
 	_factor = 1.0f;
 }
 MeleeSkill::MeleeSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
-	:Skill(ID, name, cooltime, time, melee, multi) {
+	:Skill(ID, name, cooltime, time, melee_atk, multi) {
 	_factor = factor;
 }
 int MeleeSkill::activate(Character *t, Character &c) {

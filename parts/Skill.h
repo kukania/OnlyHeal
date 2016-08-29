@@ -13,8 +13,8 @@ typedef int time_s;
 
 enum SkillType {
 	heal, buff, debuff,
-	tank, melee, range,
-	unknown
+	tank, melee_atk, range_atk,
+	unknown_skill
 };
 
 class Character;

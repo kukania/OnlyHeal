@@ -2,11 +2,11 @@
 #include "../myUtility.h"
 
 RangeSkill::RangeSkill()
-	:Skill(9999, "UNKOWN_RANGE", 0, 1, range, false) {
+	:Skill(9999, "UNKOWN_RANGE", 0, 1, range_atk, false) {
 	_factor = 1.0f;
 }
 RangeSkill::RangeSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
-	:Skill(ID, name, cooltime, time, range, multi) {
+	:Skill(ID, name, cooltime, time, range_atk, multi) {
 	_factor = factor;
 }
 int RangeSkill::activate(Character *t, Character &c) {

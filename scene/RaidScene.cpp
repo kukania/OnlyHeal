@@ -1,11 +1,13 @@
 /*
 FileName:	RaidScene.cpp
 Revision:	2016/08/23 by PorcaM
+Modified:	2016/08/25 by PorcaM
 */
 
 #include "RaidScene.h"
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
+#include "scene\RaidComponent\UnitFrameFactory.h"
 #include <cstdio>
 
 USING_NS_CC;
@@ -58,19 +60,11 @@ bool Raid::init()
 
 	/////////////////////////////
 	// 3. add your codes below
-	auto backGround = DrawNode::create();
-	Vec2 corners[4] = {
-		Vec2(0,960),
-		Vec2(540,960),
-		Vec2(540,0),
-		Vec2(0,0)
-	};
-	backGround->drawPolygon(corners, 4, Color4F(1.0f, 1.0f, 1.0f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
-	this->addChild(backGround);
+	//setBackground(Color4F(1, 1, 1, 1));
 
 	Tier tempT = Tier(1);
 	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
-	string rl[6] = { "melee.png", "monster.png", "tank.png", "melee.png", "melee.png", "range.png" };
+	string rl[6] = { "melee.png", "monster.png", "tanker.png", "melee.png", "melee.png", "range.png" };
 
 	int borderline = visibleSize.height - 240;
 
@@ -87,21 +81,16 @@ bool Raid::init()
 		cl[i]->setAnchorPoint(Vec2(0, 0));
 		player[j++]->addChild(cl[i]);
 	}
+
+	auto UnitGrid = Layer::create();
+	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
-		Sprite *temp = Sprite::create("hp2.png");
-		temp->setName("hp_bar");
-		player[i]->addChild(temp);
-		Label *temp2 = Label::create("fuuuuuuuuk", "fonts/arial", 12);
-		temp2->setName("hp_log");
-		player[i]->addChild(temp2);
-		player[i]->setAnchorPoint(Vec2(0, 1));
-		player[i]->setPosition(Vec2(0, -120 * i));
+		uf[i] = UnitFrameFactory::getUnitFrame(cl[i]);
+		UnitGrid->addChild(uf[i]);
+		uf[i]->setPosition(Vec2(0, i*-120));
 	}
-	for (int i = 0; i < 5; i++)
-		playerLayer->addChild(player[i]);
-	playerLayer->setAnchorPoint(Vec2(0, 1));
-	playerLayer->setPosition(0, borderline);
-	this->addChild(playerLayer);
+	UnitGrid->setPosition(Vec2(10, borderline));
+	this->addChild(UnitGrid);
 
 	auto bossLayer		= Layer::create();
 	cl[1] = Character::create(rl[1], tempT, tl[1], 5);
@@ -156,4 +145,23 @@ void Raid::menuCloseCallback(Ref* pSender)
 
 	//EventCustom customEndEvent("game_scene_close_event");
 	//_eventDispatcher->dispatchEvent(&customEndEvent);   
+}
+
+/*
+Custom class functions
+Help for generating instances.
+2016/08/24 by PorcaM
+*/
+void Raid::setBackground(Color4F color) {
+	auto visibleSize	= Director::getInstance()->getVisibleSize();
+	auto backGround		= DrawNode::create();
+	Vec2 corners[4]		= {
+		Vec2(0, visibleSize.height),
+		Vec2(visibleSize.width, visibleSize.height),
+		Vec2(visibleSize.width, 0),
+		Vec2(0, 0)
+	};
+	backGround->drawPolygon(corners, 4, color, 0, color);
+	this->addChild(backGround);
+	return;
 }
