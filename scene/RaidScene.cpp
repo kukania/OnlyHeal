@@ -1,7 +1,7 @@
 /*
 FileName:	RaidScene.cpp
 Revision:	2016/08/23 by PorcaM
-Modified:	2016/08/25 by PorcaM
+Modified:	2016/08/29 by PorcaM
 */
 
 #include "RaidScene.h"
@@ -60,7 +60,7 @@ bool Raid::init()
 
 	/////////////////////////////
 	// 3. add your codes below
-	//setBackground(Color4F(1, 1, 1, 1));
+	setBackground(Color4F(1, 1, 1, 1));
 
 	Tier tempT = Tier(1);
 	string tl[6] = { "MeleeNPC", "Monster", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
@@ -85,11 +85,14 @@ bool Raid::init()
 	auto UnitGrid = Layer::create();
 	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
-		uf[i] = UnitFrameFactory::getUnitFrame(cl[i]);
+		uf[i] = UnitFrameFactory::getUnitFrame(cl[0]);
 		UnitGrid->addChild(uf[i]);
 		uf[i]->setPosition(Vec2(0, i*-120));
 	}
-	UnitGrid->setPosition(Vec2(10, borderline));
+	/*uf[0] = UnitFrameFactory::getUnitFrame(cl[0]);
+	UnitGrid->addChild(uf[0]);
+	uf[0]->setPosition(Vec2(0, 0));*/
+	UnitGrid->setPosition(Vec2(0, borderline));
 	this->addChild(UnitGrid);
 
 	auto bossLayer		= Layer::create();
@@ -114,7 +117,7 @@ bool Raid::init()
 	RGBbg->setPosition(Vec2(80, 120));
 	bossLayer->addChild(RGBbg);
 	bossLayer->setPosition(Vec2(0, borderline));
-	this->addChild(bossLayer);
+	//this->addChild(bossLayer);
 
 	auto skillLayer = Layer::create();
 	Skill *sl[5];
@@ -128,7 +131,7 @@ bool Raid::init()
 	}
 	skillLayer->setAnchorPoint(Vec2(1, 1));
 	skillLayer->setPosition(Vec2(visibleSize.width, borderline));
-	this->addChild(skillLayer);
+	//this->addChild(skillLayer);
 
 	return true;
 }
