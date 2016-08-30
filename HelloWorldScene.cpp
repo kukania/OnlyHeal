@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "skillinstance\SkillFactory.h"
 #include "statusHexa.h"
-
+#include "partyLayer.h"
 #include<iostream>
 using namespace std;
 
@@ -22,15 +22,15 @@ bool HelloWorld::init()
 		return false;
 	}
 	positionArr.assign(10, Vec2(0, 0));
-	
+
 	scrollViewShow = false;
 	menuBtnTouched = false;
 
 	makeBackGround();
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
-	listener->onTouchMoved= CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
-	listener->onTouchEnded= CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	return true;
@@ -102,7 +102,7 @@ void HelloWorld::makeBackGround() {
 	scrollView->setName("scrollView");
 	/*scroll view test -end-*/
 
-	auto partyLabel = Label::createWithSystemFont("party go","",30,Size(300,100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	auto partyLabel = Label::createWithSystemFont("party go", "", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	partyLabel->setPosition(Vec2(270, 200));
 	partyLabel->setColor(Color3B::BLACK);
 	partyLabel->setVisible(false);
@@ -126,11 +126,12 @@ void HelloWorld::makeBackGround() {
 	backGround->addChild(menuBtn);
 	menuBtn->setName("menuBtn");
 	positionArr[MENUBTN] = menuBtn->getPosition();
+
 }
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
 	CCLOG("location x:%f, y:%f", location.x, location.y);
-	
+
 	auto scV = (ui::ScrollView*)backGround->getChildByName("scrollView");
 	if (scrollViewShow&&scV->getBoundingBox().containsPoint(location))
 		return true;
@@ -138,7 +139,7 @@ bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	if (this->checkCharacterGroup(location))
 		return true;
 
-	auto btn=(ui::Button*)backGround->getChildByName("menuBtn");
+	auto btn = (ui::Button*)backGround->getChildByName("menuBtn");
 	auto rect = btn->getBoundingBox();
 	if (rect.containsPoint(location)) {
 		((Label*)backGround->getChildByName("skillTreeBtn"))->setVisible(true);
@@ -156,13 +157,18 @@ void HelloWorld::onTouchMoved(Touch *t, Event *e) {
 }
 void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 	if (this->menuBtnTouched) {
-		auto sB=(Label*)backGround->getChildByName("skillTreeBtn");
-		auto pB=(Label*)backGround->getChildByName("partyBtn");
+		auto sB = (Label*)backGround->getChildByName("skillTreeBtn");
+		auto pB = (Label*)backGround->getChildByName("partyBtn");
 		if (sB->getBoundingBox().containsPoint(t->getLocation())) {
-		
+			//skillTreeLayer
 		}
 		else if (pB->getBoundingBox().containsPoint(t->getLocation())) {
-		
+			//partyLayer
+			/*
+				make party list
+			*/
+			PartyLayer partyLayer;
+			this->backGround->addChild(partyLayer.content);
 		}
 		sB->setVisible(false);
 		pB->setVisible(false);
@@ -203,7 +209,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
 							int a = ((ui::Button*)sender)->getTag();
 							/*
-								item equipment 
+								item equipment
 							*/
 						}
 					});
@@ -212,7 +218,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 				auto callFunc = CallFunc::create([&]() {
 					this->scrollView->setVisible(true);
 				});
-				auto seq = Sequence::create(action2, action3, callFunc,NULL);
+				auto seq = Sequence::create(action2, action3, callFunc, NULL);
 				statusHexa->runAction(seq);
 				touchNum = i;
 				break;
@@ -234,7 +240,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		auto callFunc = CallFunc::create([&]() {
 			this->scrollView->setVisible(false);
 		});
-		auto seq = Sequence::create(callFunc,action3, action2, NULL);
+		auto seq = Sequence::create(callFunc, action3, action2, NULL);
 		statusHexa->runAction(seq);
 	}
 	return false;
