@@ -54,3 +54,11 @@ void BossFrame::initRGB() {
 	this->addChild(rgbLayer);
 	return;
 }
+
+void BossFrame::initDamage() {
+	string _data = "";
+	_damagelog = Label::create(_data, "fonts/arial.ttf", 24);
+	_damagelog->setPosition(Vec2(250, 100));
+	this-> addChild(_damagelog);
+	return;
+}
