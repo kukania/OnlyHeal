@@ -81,12 +81,13 @@ bool Raid::init()
 		uf[i]->setPosition(Vec2(0, i*-140));
 		UnitGrid->addChild(uf[i]);
 	}
-	UnitGrid->setAnchorPoint(Vec2(0, 1));
-	UnitGrid->setPosition(Vec2(0, borderline));
+	//UnitGrid->setAnchorPoint(Vec2(0, 1));
+	UnitGrid->setPosition(Vec2(0, borderline-160));
 	this->addChild(UnitGrid);
 
 	BossFrame *bf = new BossFrame(cl[0]);
-	bf->setPosition(Vec2(visibleSize.width/2, borderline));
+	bf->setScale(1.6f);
+	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
 	this->addChild(bf);
 
 	auto skillLayer = Layer::create();

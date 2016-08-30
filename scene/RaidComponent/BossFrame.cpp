@@ -10,7 +10,7 @@ BossFrame::BossFrame(Character *character) {
 	initIcon();
 	initHP();
 	initRGB();
-	//initDamage();
+	initDamage();
 }
 
 void BossFrame::setCharacter(Character *character) {
@@ -50,15 +50,16 @@ void BossFrame::initRGB() {
 #undef	GET_RGB_STRING
 	_rgblog = Label::create(_data, "fonts/arial.ttf", 24);
 	rgbLayer->addChild(_rgblog);
-	rgbLayer->setPosition(Vec2(250, 100));
+	rgbLayer->setPosition(Vec2(-120, 20));
 	this->addChild(rgbLayer);
 	return;
 }
 
 void BossFrame::initDamage() {
-	string _data = "";
+	string _data = "1234";
 	_damagelog = Label::create(_data, "fonts/arial.ttf", 24);
-	_damagelog->setPosition(Vec2(250, 100));
-	this-> addChild(_damagelog);
+	_damagelog->setColor(Color3B(255, 125, 0));
+	_damagelog->setPosition(Vec2(110, 0));
+	this-> addChild(_damagelog, 10);
 	return;
 }
