@@ -1,6 +1,7 @@
 /*
 FileName:	BossFrame.cpp
 Revision:	2016/08/29 by PorcaM
+Modified:	2016/08/30 by PorcaM
 */
 
 #include "BossFrame.h"
