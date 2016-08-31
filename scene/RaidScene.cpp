@@ -1,7 +1,7 @@
 /*
 FileName:	RaidScene.cpp
 Revision:	2016/08/23 by PorcaM
-Modified:	2016/08/29 by PorcaM
+Modified:	2016/08/30 by PorcaM
 */
 
 #include "RaidScene.h"
@@ -72,17 +72,17 @@ bool Raid::init()
 	}
 	int borderline = visibleSize.height - 240;
 
-	auto UnitGrid = Layer::create();
+	auto UnitGrid = CCLayerColor::create();
+	UnitGrid->initWithColor(Color4B(0, 0, 0, 255));
 	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
 		uf[i] = new UnitFrame(cl[i + 1]);
-		uf[i]->setScale(1.6f);
-		uf[i]->setAnchorPoint(Vec2(0, 1));
-		uf[i]->setPosition(Vec2(0, i*-140));
+		uf[i]->setPosition(Vec2(0, i*-90));
 		UnitGrid->addChild(uf[i]);
 	}
-	//UnitGrid->setAnchorPoint(Vec2(0, 1));
-	UnitGrid->setPosition(Vec2(0, borderline-160));
+	UnitGrid->setAnchorPoint(Vec2(0, 1));
+	UnitGrid->setPosition(Vec2(0, borderline));
+	UnitGrid->setScale(1.6f);
 	this->addChild(UnitGrid);
 
 	BossFrame *bf = new BossFrame(cl[0]);
