@@ -14,7 +14,7 @@ SkillFrame::SkillFrame(Skill *skill) {
 }
 
 void SkillFrame::initBG() {
-	string _path = "images/bg.png";
+	string _path = "images/skillbg.png";
 	_bg = Sprite::create(_path);
 	this->addChild(_bg);
 	return;
@@ -23,6 +23,7 @@ void SkillFrame::initBG() {
 void SkillFrame::initLabel() {
 	string _data = _skill->getName();
 	_label = Label::create(_data, "fonts/arial.ttf", 24);
+	_label->setTextColor(Color4B(0, 0, 0, 255));
 	this->addChild(_label);
 	return;
 }
