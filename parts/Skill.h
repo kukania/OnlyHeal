@@ -19,7 +19,7 @@ enum SkillType {
 
 class Character;
 
-class Skill :public cocos2d::Sprite{
+class Skill{
 protected:
 	SkillID 	_ID;
 	string 		_name;

@@ -9,6 +9,7 @@ Modified:	2016/08/30 by PorcaM
 #include "skillinstance\SkillFactory.h"
 #include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
+#include "RaidComponent\SkillFrame.h"
 #include "ui/CocosGUI.h"
 #include <cstdio>
 
@@ -73,7 +74,7 @@ bool Raid::init()
 	int borderline = visibleSize.height - 240;
 
 	auto UnitGrid = CCLayerColor::create();
-	UnitGrid->initWithColor(Color4B(0, 0, 0, 255));
+	//UnitGrid->initWithColor(Color4B(0, 0, 0, 255));
 	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
 		uf[i] = new UnitFrame(cl[i + 1]);
@@ -90,7 +91,7 @@ bool Raid::init()
 	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
 	this->addChild(bf);
 
-	auto skillLayer = Layer::create();
+	/*auto skillLayer = Layer::create();
 	Skill *sl[5];
 	for (int i = 0; i < 5; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
@@ -102,7 +103,20 @@ bool Raid::init()
 	}
 	skillLayer->setAnchorPoint(Vec2(1, 1));
 	skillLayer->setPosition(Vec2(visibleSize.width, borderline));
-	this->addChild(skillLayer);
+	this->addChild(skillLayer);*/
+
+	auto SkillGrid = Layer::create();
+	const int skillnum = 5;
+	Skill *sl[skillnum];
+	SkillFrame *sf[skillnum];
+	for (int i = 0; i < skillnum; i++) {
+		sl[i] = SkillFactory::getSkill(heal);
+		sf[i] = new SkillFrame(sl[i]);
+		sf[i]->setPosition(Vec2(0, i*-100));
+		SkillGrid->addChild(sf[i]);
+	}
+	SkillGrid->setPosition(Vec2(500, borderline));
+	this->addChild(SkillGrid);
 
 	return true;
 }
