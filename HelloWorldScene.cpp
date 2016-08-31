@@ -22,7 +22,8 @@ bool HelloWorld::init()
 		return false;
 	}
 	positionArr.assign(10, Vec2(0, 0));
-
+	short a = 0;
+	p = new Player(Tier(a));
 	scrollViewShow = false;
 	menuBtnTouched = false;
 

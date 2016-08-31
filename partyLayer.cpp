@@ -28,7 +28,7 @@ PartyLayer::PartyLayer() {
 	spr->addChild(cancelBtn);
 	
 	this->scrollView = ui::ScrollView::create();
-	scrollView->setContentSize(Size(490, 900));
+	scrollView->setContentSize(Size(490, 840));
 	scrollView->setSwallowTouches(false);
 	scrollView->setInnerContainerSize(Size(490, 1800));
 	scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
@@ -39,8 +39,13 @@ PartyLayer::PartyLayer() {
 		auto btn = ui::Button::create("partyFrame.png", "partyFrame.png", "partyFrame.png");
 		btn->setScale9Enabled(true);
 		btn->setContentSize(Size(470, 300));
-		btn->setAnchorPoint(Point(0, 0));
-		btn->setPosition(Point(0, 0));
+		btn->setAnchorPoint(Point(0, 1));
+		btn->setPosition(Point(10, 1790-300*i));
+		btn->addTouchEventListener([](Ref*sender, ui::Button::TouchEventType e) {
+			if (e == ui::Button::TouchEventType::ENDED) {
+				
+			}
+		});
 		scrollView->addChild(btn);
 	}
 	content->addChild(scrollView);

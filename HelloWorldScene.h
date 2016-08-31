@@ -3,7 +3,9 @@
 
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
+#include "characters/Player.h"
 #include<vector>
+
 USING_NS_CC;
 
 enum positionName{
@@ -12,6 +14,7 @@ enum positionName{
 class HelloWorld : public cocos2d::Layer
 {
 public:
+	Player *p;
 	std::vector<Vec2>positionArr;
 	ui::ScrollView* scrollView;
 	DrawNode* backGround;
