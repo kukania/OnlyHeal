@@ -205,7 +205,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 					btn->setScale9Enabled(true);
 					btn->setContentSize(Size(80, 80));
 					btn->setTag(i);
-					btn->addTouchEventListener([&](Ref* sender, ui::Button::TouchEventType e) {
+					btn->addTouchEventListener([this](Ref* sender, ui::Button::TouchEventType e) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
 							int a = ((ui::Button*)sender)->getTag();
 							/*
