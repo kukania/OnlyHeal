@@ -15,7 +15,7 @@ void Inventory::equipedItemChange(int index) {
 	equiped = &itemList[index];
 }
 void Inventory::sortItemList() {
-	std::sort(itemList.begin(), itemList.end(), this->sortFunction);
+	std::sort(itemList.begin(), itemList.end(), sortFunction);
 }
 bool Inventory::sortFunction(Item a, Item b) {
 	return a.getTier().getLevel() > b.getTier().getLevel();

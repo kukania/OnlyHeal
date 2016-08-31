@@ -132,3 +132,8 @@ void		Status::setMaxHPDefault(int a) {
 	this->MaxHPDefault = a;
 	setMaxHP();
 }
+void		Status::setItemWithNum(Item a, int num) {
+	num %= 3;
+	this->items[num] = a;
+	this->equipItem(a);
+}

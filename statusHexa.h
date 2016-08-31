@@ -10,5 +10,5 @@ public:
 	StatusHexa(float value);
 	void setSize(float value);
 	void setPosition(float x, float y);
-	void setStatusVertex(Character user);
+	void setStatusVertex(Character *user);
 };

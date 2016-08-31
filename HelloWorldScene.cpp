@@ -50,12 +50,14 @@ void HelloWorld::makeBackGround() {
 	this->statusHexa = DrawNode::create();
 	StatusHexa temp(175);
 	statusHexa->drawPolygon(temp.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
-	/*
-		temp.setStatusVertex(character);
-		statusHexa->addChild()
-	*/
 	backGround->addChild(this->statusHexa);
 	this->statusHexa->setPosition(270, 750);
+
+
+	temp.setStatusVertex(p);
+	this->playerStatusHexa = DrawNode::create();
+	playerStatusHexa->drawPolygon(temp.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
+	statusHexa->addChild(this->playerStatusHexa);
 
 	characterGroup = Layer::create();
 	characterGroup->setColor(Color3B(255, 255, 255));

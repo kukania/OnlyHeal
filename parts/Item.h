@@ -3,7 +3,9 @@
 #include "MyRGB.h"
 #include "Tier.h"
 using namespace std;
-
+enum ItemEnum {
+	WEAPON, ARMOR, ARTIFACT
+};
 class Item {
 public:
 	Tier	tier;

@@ -10,5 +10,5 @@ public :
 	void deleteItemList(int index);
 	void equipedItemChange(int index);
 	void sortItemList();
-	bool sortFunction(Item a, Item b);
+	static bool sortFunction(Item a, Item b);
 };

@@ -20,6 +20,7 @@ public:
 	DrawNode* backGround;
 	cocos2d::Layer* characterGroup;
 	DrawNode* statusHexa;
+	DrawNode* playerStatusHexa;
 
 	bool menuBtnTouched;
 	bool scrollViewShow;
