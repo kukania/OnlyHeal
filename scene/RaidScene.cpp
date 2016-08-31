@@ -8,6 +8,7 @@ Modified:	2016/08/29 by PorcaM
 #include "characters\Character.h"
 #include "skillinstance\SkillFactory.h"
 #include "RaidComponent\UnitFrame.h"
+#include "RaidComponent\BossFrame.h"
 #include "ui/CocosGUI.h"
 #include <cstdio>
 
@@ -80,32 +81,14 @@ bool Raid::init()
 		uf[i]->setPosition(Vec2(0, i*-140));
 		UnitGrid->addChild(uf[i]);
 	}
-	UnitGrid->setAnchorPoint(Vec2(0, 1));
-	UnitGrid->setPosition(Vec2(0, borderline));
+	//UnitGrid->setAnchorPoint(Vec2(0, 1));
+	UnitGrid->setPosition(Vec2(0, borderline-160));
 	this->addChild(UnitGrid);
 
-	auto bossLayer = Layer::create();
-	cl[1]->setPosition(Vec2(visibleSize.width / 2, 120));
-	cl[1]->setScale(1.0f);
-	cl[1]->setAnchorPoint(Vec2(0.5, 0.5));
-	{
-		printf("Boss HP: %d\nBoss MaxHP: %d\n", cl[1]->getStatus()->getHP(), cl[1]->getStatus()->getMaxHP());
-	}
-	bossLayer->addChild(cl[1]);
-	auto bossHP = Sprite::create("hp1.png");
-	bossHP->setAnchorPoint(Vec2(0, 0.5));
-	bossHP->setPosition(Vec2(0, 0));
-	bossHP->setScale(1.0f);
-	bossLayer->addChild(bossHP);
-	auto RGBbg = Sprite::create("plate.png");
-	auto RGBLog = Label::create("my message\n100\n100\n100", "fonts/arial", 20);
-	RGBLog->setAnchorPoint(Vec2(0, 1));
-	RGBLog->setPosition(Vec2(0, RGBbg->getContentSize().height));
-	RGBbg->addChild(RGBLog);
-	RGBbg->setPosition(Vec2(80, 120));
-	bossLayer->addChild(RGBbg);
-	bossLayer->setPosition(Vec2(0, borderline));
-	this->addChild(bossLayer);
+	BossFrame *bf = new BossFrame(cl[0]);
+	bf->setScale(1.6f);
+	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
+	this->addChild(bf);
 
 	auto skillLayer = Layer::create();
 	Skill *sl[5];
