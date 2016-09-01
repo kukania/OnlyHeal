@@ -3,8 +3,11 @@
 #include "skillinstance\SkillFactory.h"
 #include "statusHexa.h"
 #include "partyLayer.h"
+#include "ConvertKorean.h"
+
 #include<iostream>
 using namespace std;
+
 
 USING_NS_CC;
 
@@ -22,12 +25,12 @@ bool HelloWorld::init()
 		return false;
 	}
 	positionArr.assign(10, Vec2(0, 0));
-	short a = 0;
-	p = new Player(Tier(a));
+	p = new Player();
 	scrollViewShow = false;
 	menuBtnTouched = false;
 
 	makeBackGround();
+	makePlayerWithItem();
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
@@ -131,6 +134,16 @@ void HelloWorld::makeBackGround() {
 	positionArr[MENUBTN] = menuBtn->getPosition();
 
 }
+void HelloWorld::makePlayerWithItem() {
+	Tier *t;
+	for (int i = WEAPON; i <=ARTIFACT; i++) {
+		for (int j = 0; j < 5; j++) {
+			t = new Tier((rand() % 81));
+			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom());
+			p->inventory[i].pushItemList(*w);
+		}
+	}
+}
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
 	CCLOG("location x:%f, y:%f", location.x, location.y);
@@ -188,26 +201,31 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		auto spr = characterGroup->getChildByTag(i);
 		Rect rect = spr->getBoundingBox();
 		if (rect.containsPoint(location)) {
-			if (touchNum == -1) {
+			if (touchNum == -1 || touchNum!=i) {
+				touchNum = i;
 				scrollViewShow = true;
 				flag = true;
 				auto action = MoveBy::create(0.1, Point(0, 100));
 				characterGroup->runAction(action);
 				auto action2 = ScaleBy::create(0.1, 0.625f);
 				auto action3 = MoveBy::create(0.1, Point(0, 50));
-				/*
-				ScrollView Type set
-				*/
-				for (int i = 0; i < 5; i < i++) {
+				/*ScrollView Type set, content size*/
+				Size temp = scrollView->getInnerContainerSize();
+				temp.width = p->inventory[touchNum].itemList.size() * 100 + 40;
+				scrollView->setInnerContainerSize(temp);
+				scrollView->removeAllChildren();
+				/**/
+				for (int j = 0; j < p->inventory[touchNum].itemList.size(); j++) {
+					Item tempItem = p->inventory[touchNum].itemList[j];
 					auto btn = ui::Button::create();
 					btn->loadTextures("box.png", "box.png", "box.png");
 					btn->setTouchEnabled(true);
 					btn->setSwallowTouches(false);
 					btn->setAnchorPoint(Vec2(0, 0));
-					btn->setPosition(Vec2(20 + i * 100, 15));
+					btn->setPosition(Vec2(20 + j * 100, 15));
 					btn->setScale9Enabled(true);
 					btn->setContentSize(Size(80, 80));
-					btn->setTag(i);
+					btn->setTag(j);
 					btn->addTouchEventListener([this](Ref* sender, ui::Button::TouchEventType e) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
 							int a = ((ui::Button*)sender)->getTag();
@@ -216,6 +234,10 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 							*/
 						}
 					});
+
+					auto txt = Label::createWithSystemFont(_AtoU8(tempItem.getTier().getTierByString().c_str()),"",28);
+					txt->setPosition(Point(40,40));
+					btn->addChild(txt);
 					this->scrollView->addChild(btn);
 				}
 				auto callFunc = CallFunc::create([&]() {
@@ -223,7 +245,6 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 				});
 				auto seq = Sequence::create(action2, action3, callFunc, NULL);
 				statusHexa->runAction(seq);
-				touchNum = i;
 				break;
 			}
 			else {

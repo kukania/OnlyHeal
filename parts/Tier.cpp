@@ -1,6 +1,8 @@
 #pragma once
 #include "Tier.h"
 #include <random>
+
+
 Tier::Tier(short input) {
 	setLevel(input);
 }
@@ -38,4 +40,23 @@ int Tier::setValue() {
 	}
 	value = temp;
 	return 0;
+}
+std::string Tier::getTierByString() {
+	std::string a;
+	for (int i = 0; i < 4; i++) {
+		switch (label[i]) {
+		case 0:
+			a += "Å·";
+			break;
+		case 1:
+			a += "¿¥";
+			break;
+		case 2:
+			a += "°«";
+			break;
+		}
+		if (i == 1)
+			a += "\n";
+	}
+	return a;
 }

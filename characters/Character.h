@@ -26,7 +26,7 @@ public:
 	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;
-		type = unknown;
+		type = healer;
 	}
 	Character(Tier tier) :myStatus(tier) {}
 	int beAttacked(int);

@@ -6,7 +6,14 @@
 class Player :public Character {
 public:
 	int nowInventory;
-	Inventory invetory[3];
-	Player(Tier a) :Character(a) { this->setType(CharacterType::healer); }
+	Inventory inventory[3];
+	Player(){ 
+		inventory[WEAPON].type = WEAPON;
+		inventory[WEAPON].equiped = NULL;
+		inventory[ARMOR].type = ARMOR;
+		inventory[ARMOR].equiped = NULL;
+		inventory[ARTIFACT].type = ARTIFACT;
+		inventory[ARTIFACT].equiped = NULL;
+	}
 	void equipSelectedItem(int index);
 };

@@ -32,6 +32,9 @@ public:
 	
     virtual bool init();
     
+	//debug
+	void makePlayerWithItem();
+
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
 	virtual bool onTouchBegan(Touch* touch, Event*);

@@ -1,5 +1,6 @@
 #pragma once
 #include <random>
+#include<string>
 #define MAX_LEVEL 80
 #define MAX_LABEL 2
 
@@ -22,7 +23,7 @@ public:
 
 	int getValue();
 	int setValue();
-
+	std::string	getTierByString();
 	static short label2level(short *_label) {
 		short ret = 0;
 		for (int i = 0; i < 4; i++) {
