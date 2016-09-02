@@ -1,9 +1,9 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "skillinstance\SkillFactory.h"
-#include "statusHexa.h"
 #include "partyLayer.h"
 #include "ConvertKorean.h"
+#include "OHDialog.h"
 
 #include<iostream>
 using namespace std;
@@ -31,6 +31,12 @@ bool HelloWorld::init()
 
 	makeBackGround();
 	makePlayerWithItem();
+
+	statusHexaContent.setStatusVertex(p);
+	this->playerStatusHexa = DrawNode::create();
+	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
+	statusHexa->addChild(this->playerStatusHexa);
+	
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
@@ -51,16 +57,10 @@ void HelloWorld::makeBackGround() {
 	this->addChild(backGround);
 
 	this->statusHexa = DrawNode::create();
-	StatusHexa temp(175);
-	statusHexa->drawPolygon(temp.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
+	this->statusHexaContent=StatusHexa(175);
+	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
 	backGround->addChild(this->statusHexa);
 	this->statusHexa->setPosition(270, 750);
-
-
-	temp.setStatusVertex(p);
-	this->playerStatusHexa = DrawNode::create();
-	playerStatusHexa->drawPolygon(temp.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
-	statusHexa->addChild(this->playerStatusHexa);
 
 	characterGroup = Layer::create();
 	characterGroup->setColor(Color3B(255, 255, 255));
@@ -115,7 +115,7 @@ void HelloWorld::makeBackGround() {
 	partyLabel->setName("partyBtn");
 	backGround->addChild(partyLabel);
 
-	auto skillTree = Label::createWithSystemFont("skillTree go", "", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	auto skillTree = Label::createWithTTF("skillTree go", "sandol.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	skillTree->setPosition(Vec2(270, 300));
 	skillTree->setColor(Color3B::BLACK);
 	skillTree->setVisible(false);
@@ -142,6 +142,7 @@ void HelloWorld::makePlayerWithItem() {
 			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom());
 			p->inventory[i].pushItemList(*w);
 		}
+		p->equipSelectedItem(0,i);
 	}
 }
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
@@ -196,27 +197,20 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 	static int touchNum = -1;
 	location.x -= characterGroup->getPosition().x;
 	location.y -= characterGroup->getPosition().y;
-	bool flag = false;
+	bool flag = false; //flag for scrollview not visible
 	for (int i = 0; i < 3; i++) {
 		auto spr = characterGroup->getChildByTag(i);
 		Rect rect = spr->getBoundingBox();
 		if (rect.containsPoint(location)) {
-			if (touchNum == -1 || touchNum!=i) {
-				touchNum = i;
-				scrollViewShow = true;
-				flag = true;
-				auto action = MoveBy::create(0.1, Point(0, 100));
-				characterGroup->runAction(action);
-				auto action2 = ScaleBy::create(0.1, 0.625f);
-				auto action3 = MoveBy::create(0.1, Point(0, 50));
+			if (touchNum != i) { //scrollVIew setting
 				/*ScrollView Type set, content size*/
 				Size temp = scrollView->getInnerContainerSize();
-				temp.width = p->inventory[touchNum].itemList.size() * 100 + 40;
+				temp.width = p->inventory[i].itemList.size() * 100 + 40;
 				scrollView->setInnerContainerSize(temp);
 				scrollView->removeAllChildren();
-				/**/
-				for (int j = 0; j < p->inventory[touchNum].itemList.size(); j++) {
-					Item tempItem = p->inventory[touchNum].itemList[j];
+				/*add items*/
+				for (int j = 0; j < p->inventory[i].itemList.size(); j++) {
+					Item &tempItem = p->inventory[i].itemList[j];
 					auto btn = ui::Button::create();
 					btn->loadTextures("box.png", "box.png", "box.png");
 					btn->setTouchEnabled(true);
@@ -229,17 +223,36 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 					btn->addTouchEventListener([this](Ref* sender, ui::Button::TouchEventType e) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
 							int a = ((ui::Button*)sender)->getTag();
-							/*
-								item equipment
-							*/
+							CCLOG("%d", touchNum);
+							OHDialog dialog(Size(400, 200), "test", "test");
+							dialog.addedTo(this->backGround);
 						}
 					});
 
-					auto txt = Label::createWithSystemFont(_AtoU8(tempItem.getTier().getTierByString().c_str()),"",28);
-					txt->setPosition(Point(40,40));
+					auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "sandol.ttf", 32);
+					txt->setPosition(Point(40, 40));
 					btn->addChild(txt);
+					if (&tempItem == p->inventory[i].equiped) {
+						auto equipedLabel = Label::createWithTTF(_AtoU8("ÀåÂøÁß"), "sandol.ttf", 24);
+						Size eqlSize = equipedLabel->getContentSize();
+						auto labelLayer = LayerColor::create(Color4B(255, 0, 255, 255), eqlSize.width,eqlSize.height);
+						equipedLabel->setAnchorPoint(Point(0, 0));
+						equipedLabel->setPosition(Point(0,0));
+						labelLayer->addChild(equipedLabel);
+						labelLayer->setPosition(Point(8, 25));
+						btn->addChild(labelLayer);
+					}
 					this->scrollView->addChild(btn);
 				}
+			}
+			if (touchNum == -1 ) {
+				scrollViewShow = true;
+				flag = true;
+				touchNum = i;
+				auto action = MoveBy::create(0.1, Point(0, 100));
+				characterGroup->runAction(action);
+				auto action2 = ScaleBy::create(0.1, 0.625f);
+				auto action3 = MoveBy::create(0.1, Point(0, 50));
 				auto callFunc = CallFunc::create([&]() {
 					this->scrollView->setVisible(true);
 				});

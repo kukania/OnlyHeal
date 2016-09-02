@@ -5,7 +5,6 @@
 #include <stringapiset.h>
 #include <stdexcept>
 
-
 class MultiByteConverter
 {
 public:
