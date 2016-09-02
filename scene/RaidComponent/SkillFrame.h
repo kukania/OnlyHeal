@@ -8,7 +8,7 @@ Modified:	2016/08/31 by PorcaM
 #include "parts\Skill.h"
 USING_NS_CC;
 
-class SkillFrame : public Layer {
+class SkillFrame : public CCLayerColor {
 private:
 	Skill	*_skill;
 	Sprite	*_bg;

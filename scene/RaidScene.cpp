@@ -80,9 +80,9 @@ bool Raid::init()
 		uf[i]->setPosition(Vec2(0, i*-90));
 		UnitGrid->addChild(uf[i]);
 	}
-	UnitGrid->setAnchorPoint(Vec2(0, 0));
-	UnitGrid->setPosition(Vec2(0, borderline));
 	UnitGrid->setScale(1.6f);
+	UnitGrid->setAnchorPoint(Vec2(0, 0));
+	UnitGrid->setPosition(Vec2(0, borderline-100));
 	this->addChild(UnitGrid);
 
 	BossFrame *bf = new BossFrame(cl[0]);
@@ -90,20 +90,21 @@ bool Raid::init()
 	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
 	this->addChild(bf);
 	
-	auto SkillGrid = CCLayerColor::create();
+	auto SkillGrid = Layer::create();
 	const int skillnum = 5;
 	Skill *sl[skillnum];
 	SkillFrame *sf[skillnum];
 	for (int i = 0; i < skillnum; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
 		sf[i] = new SkillFrame(sl[i]);
+		sf[i]->initWithColor(Color4B(0, 0, 255, 128));
+		sf[i]->setAnchorPoint(Vec2(1, 0));
 		sf[i]->setPosition(Vec2(0, i*-60));
 		SkillGrid->addChild(sf[i]);
 	}
-	SkillGrid->setAnchorPoint(Vec2(0, 0));
-	SkillGrid->setPosition(Vec2(visibleSize.width-30, borderline));
 	SkillGrid->setScale(1.6f);
-	SkillGrid->initWithColor(Color4B(255, 0, 0, 128));
+	SkillGrid->setAnchorPoint(Vec2(0, 0));
+	SkillGrid->setPosition(Vec2(visibleSize.width-30, borderline-80));
 	this->addChild(SkillGrid,10);
 
 	return true;
@@ -134,7 +135,7 @@ void Raid::setBackground(Color4F color) {
 void initUnitGrid() {
 	return;
 }
-void initBossFrame() {
+void Raid::initBossFrame(Character *character) {
 	return;
 }
 void initSkillGrid() {
