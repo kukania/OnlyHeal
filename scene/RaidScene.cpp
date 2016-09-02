@@ -9,6 +9,7 @@ Modified:	2016/08/30 by PorcaM
 #include "skillinstance\SkillFactory.h"
 #include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
+#include "RaidComponent\SkillFrame.h"
 #include "ui/CocosGUI.h"
 #include <cstdio>
 
@@ -73,59 +74,50 @@ bool Raid::init()
 	int borderline = visibleSize.height - 240;
 
 	auto UnitGrid = CCLayerColor::create();
-	UnitGrid->initWithColor(Color4B(0, 0, 0, 255));
 	UnitFrame *uf[5];
 	for (int i = 0; i < 5; i++) {
 		uf[i] = new UnitFrame(cl[i + 1]);
 		uf[i]->setPosition(Vec2(0, i*-90));
 		UnitGrid->addChild(uf[i]);
 	}
-	UnitGrid->setAnchorPoint(Vec2(0, 1));
-	UnitGrid->setPosition(Vec2(0, borderline));
 	UnitGrid->setScale(1.6f);
+	UnitGrid->setAnchorPoint(Vec2(0, 0));
+	UnitGrid->setPosition(Vec2(0, borderline-100));
 	this->addChild(UnitGrid);
 
 	BossFrame *bf = new BossFrame(cl[0]);
 	bf->setScale(1.6f);
 	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
 	this->addChild(bf);
-
-	auto skillLayer = Layer::create();
-	Skill *sl[5];
-	for (int i = 0; i < 5; i++) {
+	
+	auto SkillGrid = Layer::create();
+	const int skillnum = 5;
+	Skill *sl[skillnum];
+	SkillFrame *sf[skillnum];
+	for (int i = 0; i < skillnum; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
-		sl[i]->initWithFile("images/skill2.png");
-		sl[i]->setPosition(Vec2(0, -120 * i));
-		sl[i]->setAnchorPoint(Vec2(1, 1));
-		sl[i]->setScale(0.5f);
-		skillLayer->addChild(sl[i]);
+		sf[i] = new SkillFrame(sl[i]);
+		sf[i]->initWithColor(Color4B(0, 0, 255, 128));
+		sf[i]->setAnchorPoint(Vec2(1, 0));
+		sf[i]->setPosition(Vec2(0, i*-60));
+		SkillGrid->addChild(sf[i]);
 	}
-	skillLayer->setAnchorPoint(Vec2(1, 1));
-	skillLayer->setPosition(Vec2(visibleSize.width, borderline));
-	this->addChild(skillLayer);
+	SkillGrid->setScale(1.6f);
+	SkillGrid->setAnchorPoint(Vec2(0, 0));
+	SkillGrid->setPosition(Vec2(visibleSize.width-30, borderline-80));
+	this->addChild(SkillGrid,10);
 
 	return true;
 }
 void Raid::menuCloseCallback(Ref* pSender)
 {
-	//Close the cocos2d-x game scene and quit the application
 	Director::getInstance()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
-#endif
-
-	/*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() and exit(0) as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-	//EventCustom customEndEvent("game_scene_close_event");
-	//_eventDispatcher->dispatchEvent(&customEndEvent);   
+#endif 
 }
 
-/*
-Custom class functions
-Help for generating instances.
-2016/08/24 by PorcaM
-*/
 void Raid::setBackground(Color4F color) {
 	auto visibleSize	= Director::getInstance()->getVisibleSize();
 	auto backGround		= DrawNode::create();
@@ -137,5 +129,15 @@ void Raid::setBackground(Color4F color) {
 	};
 	backGround->drawPolygon(corners, 4, color, 0, color);
 	this->addChild(backGround);
+	return;
+}
+
+void initUnitGrid() {
+	return;
+}
+void Raid::initBossFrame(Character *character) {
+	return;
+}
+void initSkillGrid() {
 	return;
 }
