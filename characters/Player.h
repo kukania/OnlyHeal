@@ -5,7 +5,6 @@
 
 class Player :public Character {
 public:
-	int nowInventory;
 	Inventory inventory[3];
 	Player(){ 
 		inventory[WEAPON].type = WEAPON;
@@ -15,5 +14,5 @@ public:
 		inventory[ARTIFACT].type = ARTIFACT;
 		inventory[ARTIFACT].equiped = NULL;
 	}
-	void equipSelectedItem(int index);
+	void equipSelectedItem(int index,int type);
 };

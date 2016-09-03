@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
+#include "statusHexa.h"
 #include "characters/Player.h"
 #include<vector>
 
@@ -21,15 +22,17 @@ public:
 	cocos2d::Layer* characterGroup;
 	DrawNode* statusHexa;
 	DrawNode* playerStatusHexa;
+	StatusHexa statusHexaContent;
 
 	bool menuBtnTouched;
-	bool scrollViewShow;
+	bool scrollViewShow;//flag for touch event
 	short scrollViewType;
 
 	static cocos2d::Scene* createScene();
 	void makeBackGround();
 	bool checkCharacterGroup(Point);
-	
+	void drawPlayerStatusHexa();
+
     virtual bool init();
     
 	//debug
