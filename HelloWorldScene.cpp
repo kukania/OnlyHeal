@@ -224,7 +224,7 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 						if (e == ui::Button::TouchEventType::BEGAN) {
 							int a = ((ui::Button*)sender)->getTag();
 							CCLOG("%d", touchNum);
-							OHDialog dialog(Size(400, 200), "test", "test");
+							OHDialog dialog(Size(400, 200), "테스트", "장착하시겠습니까?");
 							dialog.addedTo(this->backGround);
 						}
 					});

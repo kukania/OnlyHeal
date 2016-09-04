@@ -7,13 +7,13 @@ OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {
 	dialogContent = ui::Scale9Sprite::create("dialog.png");
 	dialogContent->setContentSize(layerSize);
 	
-	auto dialogTitle = Label::createWithTTF(title.c_str(), "sandol.ttf",35);
+	auto dialogTitle = Label::createWithTTF(_AtoU8(title.c_str()), "sandol.ttf",35);
 	dialogTitle->setColor(Color3B(0, 0, 0));
 	dialogTitle->setPosition(Point(10, layerSize.height- 10));
 	dialogTitle->setAnchorPoint(Point(0, 1));
 	dialogContent->addChild(dialogTitle);
 
-	auto dcontent = Label::createWithTTF(content.c_str(), "sandol.ttf", 50);
+	auto dcontent = Label::createWithTTF(_AtoU8(content.c_str()), "sandol.ttf", 50);
 	dcontent->setColor(Color3B(0, 0, 0));
 	dcontent->setPosition(Point(10, layerSize.height-40));
 	dcontent->setAnchorPoint(Point(0, 1));
@@ -41,7 +41,12 @@ OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {
 	cancelLabel->setPosition(Point(layerSize.width / 8, layerSize.height / 6));
 	cancelBtn->addChild(cancelLabel);
 	dialogContent->addChild(cancelBtn);
-
+	cancelBtn->addTouchEventListener([](Ref *sender,ui::Button::TouchEventType e) {
+		if (e == ui::Button::TouchEventType::ENDED) {
+			ui::Button *btn = (ui::Button*)sender;
+			btn->getParent()->removeFromParent();
+		}
+	});
 }
 void OHDialog::addedTo(Node* a) {
 	dialogContent->setPosition(Vec2(270, 490));
