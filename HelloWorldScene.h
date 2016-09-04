@@ -16,6 +16,7 @@ class HelloWorld : public cocos2d::Layer
 {
 public:
 	Player *p;
+	int touchNum;
 	std::vector<Vec2>positionArr;
 	ui::ScrollView* scrollView;
 	DrawNode* backGround;
@@ -32,7 +33,7 @@ public:
 	void makeBackGround();
 	bool checkCharacterGroup(Point);
 	void drawPlayerStatusHexa();
-
+	void scrollViewSetting(int);
     virtual bool init();
     
 	//debug

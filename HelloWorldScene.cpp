@@ -31,11 +31,8 @@ bool HelloWorld::init()
 
 	makeBackGround();
 	makePlayerWithItem();
-
-	statusHexaContent.setStatusVertex(p);
-	this->playerStatusHexa = DrawNode::create();
-	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
-	statusHexa->addChild(this->playerStatusHexa);
+	drawPlayerStatusHexa();
+	this->touchNum = -1;
 	
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -145,9 +142,21 @@ void HelloWorld::makePlayerWithItem() {
 		p->equipSelectedItem(0,i);
 	}
 }
+void HelloWorld::drawPlayerStatusHexa() {
+
+	DrawNode* t = (DrawNode*)statusHexa->getChildByName("playerStatus");
+	if (t != NULL) {
+		t->removeFromParent();
+	}
+
+	statusHexaContent.setStatusVertex(p);
+	this->playerStatusHexa = DrawNode::create();
+	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
+	playerStatusHexa->setName("playerStatus");
+	statusHexa->addChild(this->playerStatusHexa);
+}
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
-	CCLOG("location x:%f, y:%f", location.x, location.y);
 
 	auto scV = (ui::ScrollView*)backGround->getChildByName("scrollView");
 	if (scrollViewShow&&scV->getBoundingBox().containsPoint(location))
@@ -194,7 +203,6 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 	((ui::Button*)backGround->getChildByName("menuBtn"))->setPosition(positionArr[MENUBTN]);
 }
 bool HelloWorld::checkCharacterGroup(Point location) {
-	static int touchNum = -1;
 	location.x -= characterGroup->getPosition().x;
 	location.y -= characterGroup->getPosition().y;
 	bool flag = false; //flag for scrollview not visible
@@ -202,48 +210,8 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		auto spr = characterGroup->getChildByTag(i);
 		Rect rect = spr->getBoundingBox();
 		if (rect.containsPoint(location)) {
-			if (touchNum != i) { //scrollVIew setting
-				/*ScrollView Type set, content size*/
-				Size temp = scrollView->getInnerContainerSize();
-				temp.width = p->inventory[i].itemList.size() * 100 + 40;
-				scrollView->setInnerContainerSize(temp);
-				scrollView->removeAllChildren();
-				/*add items*/
-				for (int j = 0; j < p->inventory[i].itemList.size(); j++) {
-					Item &tempItem = p->inventory[i].itemList[j];
-					auto btn = ui::Button::create();
-					btn->loadTextures("box.png", "box.png", "box.png");
-					btn->setTouchEnabled(true);
-					btn->setSwallowTouches(false);
-					btn->setAnchorPoint(Vec2(0, 0));
-					btn->setPosition(Vec2(20 + j * 100, 15));
-					btn->setScale9Enabled(true);
-					btn->setContentSize(Size(80, 80));
-					btn->setTag(j);
-					btn->addTouchEventListener([this](Ref* sender, ui::Button::TouchEventType e) {
-						if (e == ui::Button::TouchEventType::BEGAN) {
-							int a = ((ui::Button*)sender)->getTag();
-							CCLOG("%d", touchNum);
-							OHDialog dialog(Size(400, 200), "테스트", "장착하시겠습니까?");
-							dialog.addedTo(this->backGround);
-						}
-					});
-
-					auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "sandol.ttf", 32);
-					txt->setPosition(Point(40, 40));
-					btn->addChild(txt);
-					if (&tempItem == p->inventory[i].equiped) {
-						auto equipedLabel = Label::createWithTTF(_AtoU8("장착중"), "sandol.ttf", 24);
-						Size eqlSize = equipedLabel->getContentSize();
-						auto labelLayer = LayerColor::create(Color4B(255, 0, 255, 255), eqlSize.width,eqlSize.height);
-						equipedLabel->setAnchorPoint(Point(0, 0));
-						equipedLabel->setPosition(Point(0,0));
-						labelLayer->addChild(equipedLabel);
-						labelLayer->setPosition(Point(8, 25));
-						btn->addChild(labelLayer);
-					}
-					this->scrollView->addChild(btn);
-				}
+			if (touchNum != i) {
+				scrollViewSetting(i);
 			}
 			if (touchNum == -1 ) {
 				scrollViewShow = true;
@@ -281,6 +249,60 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		statusHexa->runAction(seq);
 	}
 	return false;
+}
+void HelloWorld::scrollViewSetting(int i) {
+	//scrollVIew setting
+	/*ScrollView Type set, content size*/
+	Size temp = scrollView->getInnerContainerSize();
+	temp.width = p->inventory[i].itemList.size() * 100 + 40;
+	scrollView->setInnerContainerSize(temp);
+	scrollView->removeAllChildren();
+	/*add items*/
+	for (int j = 0; j < p->inventory[i].itemList.size(); j++) {
+		Item &tempItem = p->inventory[i].itemList[j];
+		string str = tempItem.toString();
+		auto btn = ui::Button::create();
+		btn->loadTextures("box.png", "box.png", "box.png");
+		btn->setTouchEnabled(true);
+		btn->setSwallowTouches(false);
+		btn->setAnchorPoint(Vec2(0, 0));
+		btn->setPosition(Vec2(20 + j * 100, 15));
+		btn->setScale9Enabled(true);
+		btn->setContentSize(Size(80, 80));
+		btn->setTag(j);
+		btn->addTouchEventListener([i,this, str](Ref* sender, ui::Button::TouchEventType e) {
+			if (e == ui::Button::TouchEventType::BEGAN) {
+				int a = ((ui::Button*)sender)->getTag();
+				OHDialog dialog(Size(400, 250), "테스트", str + "장착하시겠습니까?");
+				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
+					if (e == ui::Button::TouchEventType::ENDED) {
+						int deb;
+						this->p->equipSelectedItem(a, this->touchNum);
+						this->drawPlayerStatusHexa();
+						this->scrollViewSetting(i);
+						ui::Button *t = (ui::Button*)sender;
+						t->getParent()->removeFromParent();
+					}
+				});
+				dialog.addedTo(this->backGround);
+			}
+		});
+
+		auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "sandol.ttf", 32);
+		txt->setPosition(Point(40, 40));
+		btn->addChild(txt);
+		if (&tempItem == p->inventory[i].equiped) {
+			auto equipedLabel = Label::createWithTTF(_AtoU8("장착중"), "sandol.ttf", 24);
+			Size eqlSize = equipedLabel->getContentSize();
+			auto labelLayer = LayerColor::create(Color4B(255, 0, 255, 255), eqlSize.width, eqlSize.height);
+			equipedLabel->setAnchorPoint(Point(0, 0));
+			equipedLabel->setPosition(Point(0, 0));
+			labelLayer->addChild(equipedLabel);
+			labelLayer->setPosition(Point(8, 25));
+			btn->addChild(labelLayer);
+		}
+		this->scrollView->addChild(btn);
+	}
 }
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
