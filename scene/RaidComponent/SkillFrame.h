@@ -5,14 +5,15 @@ Modified:	2016/08/31 by PorcaM
 */
 
 #include "cocos2d.h"
+#include "ui\CocosGUI.h"
 #include "parts\Skill.h"
 USING_NS_CC;
 
-class SkillFrame : public CCLayerColor {
+class SkillFrame : public CCNode {
 private:
-	Skill	*_skill;
-	Sprite	*_bg;
-	Label	*_label;
+	Skill		*_skill;
+	ui::Button	*_button;
+	Label		*_label;
 public:
 	SkillFrame(Skill *);
 	void initBG();

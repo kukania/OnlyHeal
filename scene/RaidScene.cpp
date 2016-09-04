@@ -17,37 +17,21 @@ USING_NS_CC;
 
 Scene* Raid::createScene()
 {
-	// 'scene' is an autorelease object
 	auto scene = Scene::create();
-
-	// 'layer' is an autorelease object
 	auto layer = Raid::create();
-
-	// add layer as a child to scene
 	scene->addChild(layer);
-
-	// return the scene
 	return scene;
 }
-
-// on "init" you need to initialize your instance
 bool Raid::init()
 {
-	//////////////////////////////
-	// 1. super init first
 	if (!Layer::init())
 	{
 		return false;
 	}
-
+	
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	/////////////////////////////
-	// 2. add a menu item with "X" image, which is clicked to quit the program
-	//    you may modify it.
-
-	// add a "close" icon to exit the progress. it's an autorelease object
 	auto closeItem = MenuItemImage::create(
 		"CloseNormal.png",
 		"CloseSelected.png",
@@ -56,13 +40,11 @@ bool Raid::init()
 	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width / 2,
 		origin.y + closeItem->getContentSize().height / 2));
 
-	// create menu, it's an autorelease object
 	auto menu = Menu::create(closeItem, NULL);
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu, 1);
 
-	/////////////////////////////
-	// 3. add your codes below
+	// PorcaM
 	setBackground(Color4F(1, 1, 1, 1));
 
 	Tier tempT = Tier(1);
@@ -97,7 +79,6 @@ bool Raid::init()
 	for (int i = 0; i < skillnum; i++) {
 		sl[i] = SkillFactory::getSkill(heal);
 		sf[i] = new SkillFrame(sl[i]);
-		sf[i]->initWithColor(Color4B(0, 0, 255, 128));
 		sf[i]->setAnchorPoint(Vec2(1, 0));
 		sf[i]->setPosition(Vec2(0, i*-60));
 		SkillGrid->addChild(sf[i]);
@@ -105,7 +86,7 @@ bool Raid::init()
 	SkillGrid->setScale(1.6f);
 	SkillGrid->setAnchorPoint(Vec2(0, 0));
 	SkillGrid->setPosition(Vec2(visibleSize.width-30, borderline-80));
-	this->addChild(SkillGrid,10);
+	this->addChild(SkillGrid, 10);
 
 	return true;
 }

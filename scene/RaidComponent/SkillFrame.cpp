@@ -6,6 +6,7 @@ Modified:	2016/08/31 by PorcaM
 
 #include "SkillFrame.h"
 #include <string>
+#include <cstdio>
 
 SkillFrame::SkillFrame(Skill *skill) {
 	_skill = skill;
@@ -15,8 +16,11 @@ SkillFrame::SkillFrame(Skill *skill) {
 
 void SkillFrame::initBG() {
 	string _path = "images/skillbg.png";
-	_bg = Sprite::create(_path);
-	this->addChild(_bg);
+	_button = ui::Button::create(_path);
+	_button->addTouchEventListener([](Ref *sender, ui::Button::Widget::TouchEventType type) {
+		printf("button is touched!\n");
+	});
+	this->addChild(_button);
 	return;
 }
 
