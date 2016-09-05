@@ -5,12 +5,12 @@ Modified:	2016/08/30 by PorcaM
 */
 
 #include "RaidScene.h"
-#include "characters\Character.h"
-#include "skillinstance\Factory\HealSkillFactory.h"
+#include "ui/CocosGUI.h"
 #include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
 #include "RaidComponent\SkillFrame.h"
-#include "ui/CocosGUI.h"
+#include "characters\Character.h"
+#include "skillinstance\Factory\HealSkillFactory.h"
 #include <cstdio>
 
 USING_NS_CC;
