@@ -17,8 +17,9 @@ SkillFrame::SkillFrame(Skill *skill) {
 void SkillFrame::initBG() {
 	string _path = "images/skillbg.png";
 	_button = ui::Button::create(_path);
-	_button->addTouchEventListener([](Ref *sender, ui::Button::Widget::TouchEventType type) {
-		printf("button is touched!\n");
+	_button->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		printf("Touch event type: %d\n", type);
+		printf("Touch event sender: \n");
 	});
 	this->addChild(_button);
 	return;
@@ -26,8 +27,9 @@ void SkillFrame::initBG() {
 
 void SkillFrame::initLabel() {
 	string _data = _skill->getName();
-	_label = Label::create(_data, "fonts/arial.ttf", 24);
+	_label = Label::create(_data, "fonts/sdCrayon.ttf", 16);
 	_label->setTextColor(Color4B(0, 0, 0, 255));
+	_label->setWidth(50);
 	this->addChild(_label);
 	return;
 }

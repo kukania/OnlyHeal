@@ -1,6 +1,7 @@
 /*
 FileName: 	SkillFactory.h
 Revision: 	2016/08/23 by PorcaM
+Modified:	2016/09/05 by PorcaM
 */
 
 #pragma once
@@ -10,5 +11,10 @@ USING_NS_CC;
 
 class SkillFactory{
 public:
-	static Skill *getSkill(SkillType);
+	virtual Skill *createSkill(SkillType);
+};
+
+class HealSkillFactory : public SkillFactory {
+public:
+	virtual Skill *createSkill(SkillType);
 };

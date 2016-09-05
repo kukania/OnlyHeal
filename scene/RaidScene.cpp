@@ -6,7 +6,7 @@ Modified:	2016/08/30 by PorcaM
 
 #include "RaidScene.h"
 #include "characters\Character.h"
-#include "skillinstance\SkillFactory.h"
+#include "skillinstance\HealSkillFactory.h"
 #include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
 #include "RaidComponent\SkillFrame.h"
@@ -64,7 +64,7 @@ bool Raid::init()
 	}
 	UnitGrid->setScale(1.6f);
 	UnitGrid->setAnchorPoint(Vec2(0, 0));
-	UnitGrid->setPosition(Vec2(0, borderline-100));
+	UnitGrid->setPosition(Vec2(0, borderline-160));
 	this->addChild(UnitGrid);
 
 	BossFrame *bf = new BossFrame(cl[0]);
@@ -72,12 +72,13 @@ bool Raid::init()
 	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
 	this->addChild(bf);
 	
-	auto SkillGrid = Layer::create();
+	auto SkillGrid = CCNode::create();
 	const int skillnum = 5;
-	Skill *sl[skillnum];
+	HealSkillFactory hsf;
+	hsf.initAllSkills();
+	Skill** sl = hsf.getSkillsList(skillnum);
 	SkillFrame *sf[skillnum];
 	for (int i = 0; i < skillnum; i++) {
-		sl[i] = SkillFactory::getSkill(heal);
 		sf[i] = new SkillFrame(sl[i]);
 		sf[i]->setAnchorPoint(Vec2(1, 0));
 		sf[i]->setPosition(Vec2(0, i*-60));
@@ -85,7 +86,7 @@ bool Raid::init()
 	}
 	SkillGrid->setScale(1.6f);
 	SkillGrid->setAnchorPoint(Vec2(0, 0));
-	SkillGrid->setPosition(Vec2(visibleSize.width-30, borderline-80));
+	SkillGrid->setPosition(Vec2(visibleSize.width-80, borderline-140));
 	this->addChild(SkillGrid, 10);
 
 	return true;
@@ -113,12 +114,12 @@ void Raid::setBackground(Color4F color) {
 	return;
 }
 
-void initUnitGrid() {
+void Raid::initUnitGrid() {
 	return;
 }
 void Raid::initBossFrame(Character *character) {
 	return;
 }
-void initSkillGrid() {
+void Raid::initSkillGrid() {
 	return;
 }
