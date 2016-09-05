@@ -8,7 +8,6 @@
 #include<iostream>
 using namespace std;
 
-
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -105,7 +104,7 @@ void HelloWorld::makeBackGround() {
 	scrollView->setName("scrollView");
 	/*scroll view test -end-*/
 
-	auto partyLabel = Label::createWithSystemFont("party go", "", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	auto partyLabel = Label::createWithTTF("party go", "sandol.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	partyLabel->setPosition(Vec2(270, 200));
 	partyLabel->setColor(Color3B::BLACK);
 	partyLabel->setVisible(false);
@@ -157,14 +156,6 @@ void HelloWorld::drawPlayerStatusHexa() {
 }
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
-
-	auto scV = (ui::ScrollView*)backGround->getChildByName("scrollView");
-	if (scrollViewShow&&scV->getBoundingBox().containsPoint(location))
-		return true;
-
-	if (this->checkCharacterGroup(location))
-		return true;
-
 	auto btn = (ui::Button*)backGround->getChildByName("menuBtn");
 	auto rect = btn->getBoundingBox();
 	if (rect.containsPoint(location)) {
@@ -182,6 +173,14 @@ void HelloWorld::onTouchMoved(Touch *t, Event *e) {
 	}
 }
 void HelloWorld::onTouchEnded(Touch *t, Event *e) {
+	Point location = t->getLocation();
+	auto scV = (ui::ScrollView*)backGround->getChildByName("scrollView");
+	if (scrollViewShow&&scV->getBoundingBox().containsPoint(location))
+		return;
+
+	if (this->checkCharacterGroup(location))
+		return;
+
 	if (this->menuBtnTouched) {
 		auto sB = (Label*)backGround->getChildByName("skillTreeBtn");
 		auto pB = (Label*)backGround->getChildByName("partyBtn");
@@ -194,6 +193,7 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 				make party list
 			*/
 			PartyLayer partyLayer;
+			partyLayer.makePartyBtn(p->getStatus()->evalTier());
 			this->backGround->addChild(partyLayer.content);
 		}
 		sB->setVisible(false);
@@ -271,7 +271,7 @@ void HelloWorld::scrollViewSetting(int i) {
 		btn->setContentSize(Size(80, 80));
 		btn->setTag(j);
 		btn->addTouchEventListener([i,this, str](Ref* sender, ui::Button::TouchEventType e) {
-			if (e == ui::Button::TouchEventType::BEGAN) {
+			if (e == ui::Button::TouchEventType::ENDED) {
 				int a = ((ui::Button*)sender)->getTag();
 				OHDialog dialog(Size(400, 250), "테스트", str + "장착하시겠습니까?");
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {

@@ -4,6 +4,7 @@
 MeleeNPC::MeleeNPC(Tier _tier, int _index)
 	:Character(_tier) {
 	index = _index;
+	this->setType(melee);
 	int skillnum = 3;
 	initSkillset(skillnum);
 	return;

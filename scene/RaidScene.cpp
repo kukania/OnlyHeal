@@ -68,7 +68,7 @@ bool Raid::init()
 	string tl[6] = { "Monster", "MeleeNPC", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
 	Character *cl[6];
 	for (int i = 0; i < 6; i++) {
-		cl[i] = Character::create(tempT, tl[i], 5);
+		cl[i] = Character::create(tempT, tl[i].c_str(), 5);
 	}
 	int borderline = visibleSize.height - 240;
 

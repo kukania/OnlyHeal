@@ -19,12 +19,12 @@ Status::Status(Tier input) {
 		equipItem(items[i]);
 	}
 	agro = -1;
-	HP = 1000;
 	this->MaxHPDefault = 1000;
 	damage =  100;
 	defence = 100;
 	speed = 1.0;
 	setMaxHP();
+	HP = MaxHP;
 }
 Tier Status::evalTier() {
 	Tier temp;

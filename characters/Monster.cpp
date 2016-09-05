@@ -13,6 +13,7 @@ int Monster::setFindTarget(Character *t) {
 			max = temp;
 		}
 	}
+	this->setType(monster);
 	this->targetNum = target;
 	return target;
 }

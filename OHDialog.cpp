@@ -50,5 +50,8 @@ OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {
 }
 void OHDialog::addedTo(Node* a) {
 	dialogContent->setPosition(Vec2(270, 490));
+	dialogContent->setName("Dialog");
+	Node *p = a->getChildByName("Dialog");
+	if (p != NULL) p->removeFromParent();
 	a->addChild(dialogContent);
 }
