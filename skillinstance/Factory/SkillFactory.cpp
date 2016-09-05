@@ -5,12 +5,18 @@ Modified:	2016/09/05 by PorcaM
 */
 
 #include "SkillFactory.h"
+#include <stdlib.h>
+#include <set>
 
 SkillFactory::SkillFactory() {
 	Akashic.clear();
 }
 
-Skill*	SkillFactory::createSkill(SkillType type) {
+Skill*	SkillFactory::getSkill(int index) {
+	return Akashic[index];
+}
+
+Skill*	SkillFactory::createSkill() {
 	Skill* skill = NULL;
 	return skill;
 }

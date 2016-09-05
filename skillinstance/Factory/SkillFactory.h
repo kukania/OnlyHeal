@@ -7,6 +7,7 @@ Modified:	2016/09/05 by PorcaM
 #pragma once
 #include "parts\Skill.h"
 #include "cocos2d.h"
+#include <vector>
 USING_NS_CC;
 
 class SkillFactory{
@@ -14,6 +15,8 @@ protected:
 	vector<Skill*> Akashic;
 public:
 	SkillFactory();
-	virtual Skill*	createSkill(SkillType);
+	virtual void	initAllSkills() = 0;
+	virtual Skill*	createSkill();
+	virtual Skill*	getSkill(int);
 	virtual Skill** getSkillsList(int);
 };
