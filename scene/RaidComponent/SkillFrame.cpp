@@ -7,6 +7,7 @@ Modified:	2016/08/31 by PorcaM
 #include "SkillFrame.h"
 #include <string>
 #include <cstdio>
+#include "ConvertKorean.h"
 
 SkillFrame::SkillFrame(Skill *skill) {
 	_skill = skill;
@@ -27,7 +28,8 @@ void SkillFrame::initBG() {
 
 void SkillFrame::initLabel() {
 	string _data = _skill->getName();
-	_label = Label::create(_data, "fonts/sdCrayon.ttf", 16);
+	_label = Label::createWithTTF(_AtoU8(_data.c_str()), "fonts/sdCrayon.ttf", 24);
+	_label->setAlignment(TextHAlignment::CENTER);
 	_label->setTextColor(Color4B(0, 0, 0, 255));
 	_label->setWidth(50);
 	this->addChild(_label);

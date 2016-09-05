@@ -6,7 +6,7 @@ Modified:	2016/08/30 by PorcaM
 
 #include "RaidScene.h"
 #include "characters\Character.h"
-#include "skillinstance\HealSkillFactory.h"
+#include "skillinstance\Factory\HealSkillFactory.h"
 #include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
 #include "RaidComponent\SkillFrame.h"

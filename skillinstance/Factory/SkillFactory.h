@@ -5,16 +5,15 @@ Modified:	2016/09/05 by PorcaM
 */
 
 #pragma once
-#include "..\parts\Skill.h"
+#include "parts\Skill.h"
 #include "cocos2d.h"
 USING_NS_CC;
 
 class SkillFactory{
+protected:
+	vector<Skill*> Akashic;
 public:
-	virtual Skill *createSkill(SkillType);
-};
-
-class HealSkillFactory : public SkillFactory {
-public:
-	virtual Skill *createSkill(SkillType);
+	SkillFactory();
+	virtual Skill*	createSkill(SkillType);
+	virtual Skill** getSkillsList(int);
 };

@@ -4,12 +4,10 @@ Revision:	2016/09/05 by PorcaM
 */
 
 #include "HealSkillFactory.h"
-#include "HealSkill.h"
+#include "skillinstance\HealSkill.h"
 #include <string>
 #include <stdlib.h>
 #include <set>
-
-HealSkillFactory::HealSkillFactory() { }
 
 Skill*	HealSkillFactory::createSkill() {
 	Skill* skill = new HealSkill();
@@ -46,19 +44,4 @@ void	HealSkillFactory::initAllSkills() {
 		}
 	}
 	return;
-}
-
-Skill**	HealSkillFactory::getSkillsList(int num) {
-	Skill**	skillList = new Skill*[num];
-	set<int> indexList;
-	while (indexList.size() < num) {
-		int index = rand() % Akashic.size();
-		indexList.insert(index);
-	}
-	int i = 0;
-	for (set<int>::iterator si = indexList.begin();
-		si != indexList.end(); si++) {
-		skillList[i++] = Akashic[*si];
-	}
-	return skillList;
 }
