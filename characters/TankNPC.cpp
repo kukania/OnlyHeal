@@ -16,7 +16,7 @@ int TankNPC::doAttack(Character *t) {
 
 void TankNPC::initSkillset(int _num) {
 	vector<Skill *> entire;
-	TankSkill::initTankSkill(entire);
+	//TankSkill::initTankSkill(entire);
 	for (int i = 0; i < _num; i++) {
 		mySkillSet.push_back(entire[i]);
 	}

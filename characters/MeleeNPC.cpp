@@ -12,7 +12,7 @@ MeleeNPC::MeleeNPC(Tier _tier, int _index)
 
 void MeleeNPC::initSkillset(int _num) {
 	vector<Skill *> entire;
-	MeleeSkill::initMeleeSkill(entire);
+	//MeleeSkill::initMeleeSkill(entire);
 	for (int i = 0; i < _num; i++) {
 		mySkillSet.push_back(entire[i]);
 	}

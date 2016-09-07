@@ -16,7 +16,7 @@ int RangeNPC::doAttack(Character *t) {
 
 void RangeNPC::initSkillset(int _num) {
 	vector<Skill *> entire;
-	RangeSkill::initRangeSkill(entire);
+	//RangeSkill::initRangeSkill(entire);
 	for (int i = 0; i < _num; i++) {
 		mySkillSet.push_back(entire[i]);
 	}
