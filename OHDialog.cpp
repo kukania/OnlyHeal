@@ -30,7 +30,6 @@ OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {
 	okBtn->addChild(okLabel);
 	dialogContent->addChild(okBtn);
 
-
 	cancelBtn = ui::Button::create("buttonu.png", "buttond.png", "");
 	cancelBtn->setScale9Enabled(true);
 	cancelBtn->setContentSize(Size(layerSize.width / 5, layerSize.height / 4));

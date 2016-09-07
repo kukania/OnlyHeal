@@ -52,11 +52,24 @@ void HelloWorld::makeBackGround() {
 	backGround->drawPolygon(corners, 4, Color4F(1.0f, 1.0f, 1.0f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
 	this->addChild(backGround);
 
+
+	this->statusLayer = LayerColor::create(Color4B(0,255,0,255));
+	statusLayer->setContentSize(Size(540, 300));
+	statusLayer->setPosition(Point(0,600));
+	backGround->addChild(statusLayer);
+
+	for (int i = 0; i < 4; i++) {
+		showPlayerStatus[i] = Label::createWithTTF("Tier", "sandol.ttf", 28, Size(100, 50));
+		showPlayerStatus[i]->setColor(Color3B(0, 0, 0));
+		showPlayerStatus[i]->setPosition(Point(400, 250 - i * 50));
+		statusLayer->addChild(showPlayerStatus[i]);
+	}
+
 	this->statusHexa = DrawNode::create();
-	this->statusHexaContent=StatusHexa(175);
+	this->statusHexaContent=StatusHexa(130);
 	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
-	backGround->addChild(this->statusHexa);
-	this->statusHexa->setPosition(270, 750);
+	this->statusHexa->setPosition(150, 150);
+	statusLayer->addChild(this->statusHexa);
 
 	characterGroup = Layer::create();
 	characterGroup->setColor(Color3B(255, 255, 255));
@@ -220,12 +233,12 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 				auto action = MoveBy::create(0.1, Point(0, 100));
 				characterGroup->runAction(action);
 				auto action2 = ScaleBy::create(0.1, 0.625f);
-				auto action3 = MoveBy::create(0.1, Point(0, 50));
+				auto action3 = MoveBy::create(0.1, Point(-50,30));
 				auto callFunc = CallFunc::create([&]() {
 					this->scrollView->setVisible(true);
 				});
-				auto seq = Sequence::create(action2, action3, callFunc, NULL);
-				statusHexa->runAction(seq);
+				auto seq = Sequence::create(action2, action3,callFunc, NULL);
+				statusLayer->runAction(seq);
 				break;
 			}
 			else {
@@ -241,12 +254,12 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		auto action = MoveBy::create(0.1, Point(0, -100));
 		characterGroup->runAction(action);
 		auto action2 = ScaleBy::create(0.1, 1.6f);
-		auto action3 = MoveBy::create(0.1, Point(0, -50));
+		auto action3 = MoveBy::create(0.1, Point(50,-30));
 		auto callFunc = CallFunc::create([&]() {
 			this->scrollView->setVisible(false);
 		});
-		auto seq = Sequence::create(callFunc, action3, action2, NULL);
-		statusHexa->runAction(seq);
+		auto seq = Sequence::create(callFunc, action3,action2, NULL);
+		statusLayer->runAction(seq);
 	}
 	return false;
 }
