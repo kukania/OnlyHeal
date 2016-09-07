@@ -12,7 +12,7 @@ Modified:	2016/08/25 by PorcaM
 #include <vector>
 
 enum CharacterType {
-	healer, melee, range, tanker, monster, unknown
+	monster,healer, melee, range, tanker, unknown
 };
 
 class Character :public cocos2d::Sprite{
@@ -22,7 +22,7 @@ private:
 	Status			myStatus;
 	Character		*list;
 public:
-	static Character* create(Tier t, string& typeOfChar, int skill);
+	static Character* create(Tier t, const char* typeOfChar, int skill);
 	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;

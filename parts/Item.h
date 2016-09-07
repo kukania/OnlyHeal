@@ -19,4 +19,5 @@ public:
 	Tier	getTier();
 	int		getType();
 	MyRGB	getMyRGB();
+	string  toString();
 };

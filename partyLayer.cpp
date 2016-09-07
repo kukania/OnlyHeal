@@ -1,6 +1,8 @@
 #pragma once
 #include "partyLayer.h"
+#include "OHDialog.h"
 #include"ui/CocosGUI.h"
+#include "partyContent.h"
 
 PartyLayer::PartyLayer() {
 	content = LayerGradient::create(Color4B(255, 255, 255, 255), Color4B(255, 255, 255, 255));
@@ -30,23 +32,29 @@ PartyLayer::PartyLayer() {
 	this->scrollView = ui::ScrollView::create();
 	scrollView->setContentSize(Size(490, 840));
 	scrollView->setSwallowTouches(false);
-	scrollView->setInnerContainerSize(Size(490, 1800));
+	scrollView->setInnerContainerSize(Size(490, 1050));
 	scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
 	scrollView->setPosition(Point(0,0));
 	scrollView->setBackGroundImageScale9Enabled(true);
 	scrollView->setBackGroundImage("popUpFrame.png");
+	content->addChild(scrollView);
+}
+
+void PartyLayer::makePartyBtn(Tier t) {
 	for (int i = 0; i < 5; i++) {
-		auto btn = ui::Button::create("partyFrame.png", "partyFrame.png", "partyFrame.png");
-		btn->setScale9Enabled(true);
-		btn->setContentSize(Size(470, 300));
+		PartyContent *tempContent = new PartyContent(t);
+		ui::Button*btn = tempContent->content;
 		btn->setAnchorPoint(Point(0, 1));
-		btn->setPosition(Point(10, 1790-300*i));
-		btn->addTouchEventListener([](Ref*sender, ui::Button::TouchEventType e) {
+		btn->setPosition(Point(10, 1030 - 200 * i));
+		btn->setTag(i);
+		btn->addTouchEventListener([tempContent](Ref*sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
-				
+				std::string temp = tempContent->getStringContent();
+				OHDialog dialog(Size(450, 300), "테스트", temp+"참여하시겠습니까?");
+				ui::Button* btn = (ui::Button*)sender;
+				dialog.addedTo(btn->getParent()->getParent()->getParent());
 			}
 		});
 		scrollView->addChild(btn);
 	}
-	content->addChild(scrollView);
 }

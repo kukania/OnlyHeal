@@ -9,7 +9,8 @@
 //user
 #include <random>
 
-Character* Character::create(Tier t, string& typeOfChar, int skill) {
+Character* Character::create(Tier t,const char*input, int skill) {
+	std::string typeOfChar = input;
 	Character *myCharacter = nullptr;
 	if (typeOfChar.compare("User")==0) {
 		//user

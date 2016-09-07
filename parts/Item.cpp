@@ -30,3 +30,29 @@ int Item::getType() {
 MyRGB Item::getMyRGB() {
 	return rgb;
 }
+string Item::toString() {
+	string str = "";
+	str += "등급: \n";
+	str += this->tier.getTierByString() + "\n";
+	str += "타입: ";
+	switch (this->type) {
+	case WEAPON:
+		str += "무기";
+		break;
+	case ARMOR:
+		str += "방어구";
+		break;
+	case ARTIFACT:
+		str += "장신구";
+		break;
+	}
+	str += "\n";
+	char tempValue[20];
+	itoa(this->tier.getValue(), tempValue,10);
+	str += "값: ";
+	for (int i = 0; tempValue[i] != NULL; i++) {
+		str.push_back(tempValue[i]);
+	}
+	str += "\n";
+	return str;
+}

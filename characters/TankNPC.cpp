@@ -6,6 +6,7 @@ TankNPC::TankNPC(Tier _tier, int _index)
 	index = _index;
 	int skillnum = 3;
 	initSkillset(skillnum);
+	this->setType(tanker);
 	return;
 }
 int TankNPC::doAttack(Character *t) {

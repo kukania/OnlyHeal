@@ -5,6 +5,7 @@ RangeNPC::RangeNPC(Tier _tier, int _index)
 	:Character(_tier) {
 	index = _index;
 	int skillnum = 3;
+	this->setType(range);
 	initSkillset(skillnum);
 	return;
 }
