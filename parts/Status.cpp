@@ -9,6 +9,7 @@ Status::Status() {
 	defence=100;
 	speed=1.0;
 	items=new Item[3];
+	setMaxHP();
 }
 Status::Status(Tier input) {
 	items = new Item[3];
@@ -80,6 +81,7 @@ bool		Status::equipItem(Item input) {
 	items[input.getType()] = input;
 	MyRGBdamage = items[0].getMyRGB() + items[2].getMyRGB();
 	MyRGBdefence = items[1].getMyRGB() + items[2].getMyRGB();
+	setMaxHP();
 	return 0;
 }
 int			Status::addMyRGBDamage(MyRGB input) {
