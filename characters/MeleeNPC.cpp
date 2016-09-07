@@ -1,20 +1,24 @@
+/*
+FileName:	MeleeNPC.cpp
+Modified:	2016/09/07 by PorcaM
+*/
+
 #include "MeleeNPC.h"
 #include "skillinstance\MeleeSkill.h"
+#include "skillinstance\Factory\MeleeSkillFactory.h"
+#include <cstdio>
 
-MeleeNPC::MeleeNPC(Tier _tier, int _index)
-	:Character(_tier) {
-	index = _index;
-	this->setType(melee);
-	int skillnum = 3;
-	initSkillset(skillnum);
-	return;
+MeleeNPC::MeleeNPC(Tier tier)
+	:Character(tier) {
+	int skillnum = (tier.getLevel() / 80) * 14;
+	initSkillSet(skillnum);
 }
 
-void MeleeNPC::initSkillset(int _num) {
-	vector<Skill *> entire;
-	MeleeSkill::initMeleeSkill(entire);
-	for (int i = 0; i < _num; i++) {
-		mySkillSet.push_back(entire[i]);
+void	MeleeNPC::initSkillSet(int skillnum) {
+	MeleeSkillFactory msf;
+	Skill** list = msf.getSkillsList(skillnum);
+	for (int i = 0; i < skillnum; i++) {
+		mySkillSet.push_back(list[i]);
 	}
 	return;
 }

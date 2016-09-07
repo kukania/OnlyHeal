@@ -1,24 +1,24 @@
+/*
+FileName:	TankNPC.cpp
+Modified:	2016/09/07 by PorcaM
+*/
+
 #include "TankNPC.h"
 #include "skillinstance\TankSkill.h"
+#include "skillinstance\Factory\TankSkillFactory.h"
+#include <cstdio>
 
-TankNPC::TankNPC(Tier _tier, int _index)
-	:Character(_tier) {
-	index = _index;
-	int skillnum = 3;
-	initSkillset(skillnum);
-	this->setType(tanker);
-	return;
-}
-int TankNPC::doAttack(Character *t) {
-	mySkillSet[rand() % mySkillSet.size()]->activate(t, t[index]);
-	return 0;
+TankNPC::TankNPC(Tier tier)
+	:Character(tier) {
+	int skillnum = (tier.getLevel() / 80) * 14;
+	initSkillSet(skillnum);
 }
 
-void TankNPC::initSkillset(int _num) {
-	vector<Skill *> entire;
-	TankSkill::initTankSkill(entire);
-	for (int i = 0; i < _num; i++) {
-		mySkillSet.push_back(entire[i]);
+void	TankNPC::initSkillSet(int skillnum) {
+	TankSkillFactory tsf;
+	Skill** list = tsf.getSkillsList(skillnum);
+	for (int i = 0; i < skillnum; i++) {
+		mySkillSet.push_back(list[i]);
 	}
 	return;
 }

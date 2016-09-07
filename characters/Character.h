@@ -1,7 +1,7 @@
 /*
 FileName:	Character.h
 Revision:	? by Kukania
-Modified:	2016/08/25 by PorcaM
+Modified:	2016/09/07 by PorcaM
 */
 
 #pragma once
@@ -21,8 +21,9 @@ private:
 	bool			isDie;
 	Status			myStatus;
 	Character		*list;
+	int				_index;		/* In raid, each character need their own index */
 public:
-	static Character* create(Tier t, const char* typeOfChar, int skill);
+	static Character* create(Tier t, const char* typeOfChar, int index);
 	std::vector<Skill*> mySkillSet;
 	Character() {
 		isDie = false;
@@ -39,4 +40,7 @@ public:
 	Character * getCharacterList();
 	int doAttack(float);
 	bool checkDie();
+	int				getIndex();
+	void			setIndex(int);
+	virtual void	initSkillSet(int) = 0;
 };

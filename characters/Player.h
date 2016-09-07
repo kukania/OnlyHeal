@@ -1,3 +1,9 @@
+/*
+FileName:	Player.h
+Revision:	? by Kukania
+Modified:	2016/09/07 by PorcaM
+*/
+
 #pragma once
 #include "Character.h"
 #include "../parts/Inventory.h"
@@ -15,4 +21,5 @@ public:
 		inventory[ARTIFACT].equiped = NULL;
 	}
 	void equipSelectedItem(int index,int type);
+	virtual void	initSkillSet(int);
 };
