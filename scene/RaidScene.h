@@ -9,6 +9,8 @@ Modified:	2016/08/25 by PorcaM
 
 #include "cocos2d.h"
 
+class Character;
+
 class Raid : public cocos2d::Layer
 {
 public:
@@ -29,6 +31,9 @@ public:
 	*/
 	void setBackground(cocos2d::Color4F);
 	void getPlayer();
+	void initUnitGrid();
+	void initBossFrame(Character *);
+	void initSkillGrid();
 };
 
 #endif // __RAID_SCENE_H__

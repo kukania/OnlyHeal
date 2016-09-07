@@ -149,9 +149,9 @@ void HelloWorld::makePlayerWithItem() {
 		for (int j = 0; j < 5; j++) {
 			t = new Tier((rand() % 81));
 			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom());
-			p->inventory[i].pushItemList(*w);
+			//p->inventory[i].pushItemList(*w);
 		}
-		p->equipSelectedItem(0,i);
+		//p->equipSelectedItem(0,i);
 	}
 }
 void HelloWorld::drawPlayerStatusHexa() {
