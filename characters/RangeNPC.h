@@ -1,12 +1,15 @@
+/*
+FileName:	RangeNPC.h
+Modified:	2016/09/07 by PorcaM
+*/
+
 #pragma once
 
 #include "Character.h"
 
 class RangeNPC :public Character {
 private:
-	int		index;
-	void	initSkillset(int);
 public:
-	RangeNPC(Tier, int);
-	int doAttack(Character *);
+	RangeNPC(Tier);
+	virtual void initSkillSet(int);
 };

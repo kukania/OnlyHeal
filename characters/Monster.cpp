@@ -1,3 +1,9 @@
+/*
+FileName:	Monster.cpp
+Revision:	? by Kukania
+Modified:	2016/09/07 by PorcaM
+*/
+
 #pragma once
 #include "Monster.h"
 #include"../skillinstance/RangeSkill.h"
@@ -17,7 +23,8 @@ int Monster::setFindTarget(Character *t) {
 	this->targetNum = target;
 	return target;
 }
-Monster::Monster(Tier myTier):Character(myTier){
+Monster::Monster(Tier myTier)
+	:Character(myTier) {
 	Skill * firstSkill = new RangeSkill(1, "전체강타", 0, 0, true, 1);
 	Character::mySkillSet.push_back(firstSkill);
 	firstSkill = new MonsterSkillFear(0.1, myTier, 10, "fre", 10, 10);
@@ -32,4 +39,8 @@ int Monster::doAttack(float d) {
 	this->setFindTarget(this->getCharacterList());
 	Character::doAttack(d);
 	return 0;
+}
+
+void Monster::initSkillSet(int skillnum) {
+	return;
 }

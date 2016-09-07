@@ -44,7 +44,7 @@ void UnitFrame::setBackground(string path) {
 }
 void UnitFrame::setIcon(string path) {
 	string postfix[4]	= { "healer", "melee", "range", "tanker" };
-	string _path		= path + postfix[_character->getType()] + ".png";
+	string _path		= path + postfix[_character->getType()-1] + ".png";
 	_icon = Sprite::create(_path);
 	_icon->setScale(1.0f);
 	_icon->setAnchorPoint(Vec2(0, 0.5f));

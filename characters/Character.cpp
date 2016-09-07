@@ -1,3 +1,9 @@
+/*
+FileName:	Character.cpp
+Revision:	? by Kukania
+Modified:	2016/09/07 by PorcaM
+*/
+
 #pragma once
 #include "Character.h"
 #include "MeleeNPC.h"
@@ -9,14 +15,14 @@
 //user
 #include <random>
 
-Character* Character::create(Tier t,const char*input, int skill) {
+Character* Character::create(Tier t, const char* input, int index) {
 	std::string typeOfChar = input;
 	Character *myCharacter = nullptr;
-	if (typeOfChar.compare("User")==0) {
+	if (typeOfChar.compare("User") == 0) {
 		//user
 	}
 	else if (typeOfChar.compare("MeleeNPC") == 0) {
-		myCharacter = new MeleeNPC(t, skill);
+		myCharacter = new MeleeNPC(t);
 		myCharacter->setType(melee);
 	}
 	else if (typeOfChar.compare("Monster") == 0) {
@@ -24,13 +30,14 @@ Character* Character::create(Tier t,const char*input, int skill) {
 		myCharacter->setType(monster);
 	}
 	else if (typeOfChar.compare("RangeNPC") == 0) {
-		myCharacter = new RangeNPC(t, skill);
+		myCharacter = new RangeNPC(t);
 		myCharacter->setType(range);
 	}
 	else if (typeOfChar.compare("TankNPC") == 0) {
-		myCharacter = new TankNPC(t, skill);
+		myCharacter = new TankNPC(t);
 		myCharacter->setType(tanker);
 	}
+	myCharacter->setIndex(index);
 	return myCharacter;
 }
 int Character::beAttacked(int damage) {
@@ -97,4 +104,16 @@ void Character::setCharacterList(Character *input) {
 
 Character * Character::getCharacterList() {
 	return list;
+}
+
+int		Character::getIndex() {
+	return _index;
+}
+
+void	Character::setIndex(int index) {
+	if (index < 1 || index > 5) {
+		printf("[OH] Index assign error!\n");
+	}
+	_index = index;
+	return;
 }

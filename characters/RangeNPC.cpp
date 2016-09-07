@@ -1,24 +1,25 @@
+/*
+FileName:	RangeNPC.h
+Modified:	2016/09/07 by PorcaM
+*/
+
 #include "RangeNPC.h"
 #include "skillinstance\RangeSkill.h"
+#include "skillinstance\Factory\RangeSkillFactory.h"
+#include <cstdio>
 
-RangeNPC::RangeNPC(Tier _tier, int _index)
-	:Character(_tier) {
-	index = _index;
-	int skillnum = 3;
-	this->setType(range);
-	initSkillset(skillnum);
-	return;
-}
-int RangeNPC::doAttack(Character *t) {
-	mySkillSet[rand() % mySkillSet.size()]->activate(t, t[index]);
-	return 0;
+RangeNPC::RangeNPC(Tier tier)
+	:Character(tier) {
+	int skillnum = (tier.getLevel() / 80) * 14;
+	initSkillSet(skillnum);
 }
 
-void RangeNPC::initSkillset(int _num) {
-	vector<Skill *> entire;
-	//RangeSkill::initRangeSkill(entire);
-	for (int i = 0; i < _num; i++) {
-		mySkillSet.push_back(entire[i]);
+
+void	RangeNPC::initSkillSet(int skillnum) {
+	RangeSkillFactory rsf;
+	Skill** list = rsf.getSkillsList(skillnum);
+	for (int i = 0; i < skillnum; i++) {
+		mySkillSet.push_back(list[i]);
 	}
 	return;
 }
