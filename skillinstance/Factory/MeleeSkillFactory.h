@@ -1,5 +1,5 @@
 /*
-FileName: 	HealSkillFactory.h
+FileName: 	MeleeSkillFactory.h
 Revision:	2016/09/05 by PorcaM
 */
 
@@ -9,7 +9,7 @@ Revision:	2016/09/05 by PorcaM
 #include "cocos2d.h"
 USING_NS_CC;
 
-class HealSkillFactory :public SkillFactory{
+class MeleeSkillFactory :public SkillFactory{
 public:
 	void	initAllSkills();
 	Skill*	createSkill();

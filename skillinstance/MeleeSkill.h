@@ -13,5 +13,4 @@ public:
 	virtual int activate(Character *, Character &, int) {
 		return 0;
 	}
-	static void initMeleeSkill(vector<Skill *> &);
 };

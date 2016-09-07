@@ -6,8 +6,6 @@ Revision:	2016/09/05 by PorcaM
 #include "HealSkillFactory.h"
 #include "skillinstance\HealSkill.h"
 #include <string>
-#include <stdlib.h>
-#include <set>
 
 Skill*	HealSkillFactory::createSkill() {
 	Skill* skill = new HealSkill();
@@ -17,10 +15,6 @@ Skill*	HealSkillFactory::createSkill() {
 Skill*	HealSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {
 	Skill* skill = new HealSkill(ID, name, cooltime, time, multi, factor);
 	return skill;
-}
-
-Skill*	HealSkillFactory::getSkill(int index) {
-	return Akashic[index];
 }
 
 void	HealSkillFactory::initAllSkills() {
