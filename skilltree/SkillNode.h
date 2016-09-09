@@ -1,6 +1,7 @@
 /*
 FileName: 	SkillNode.h
 Revision: 	2016/09/07 by PorcaM
+Modified: 	2016/09/09 by PorcaM
 */
 
 #include "parts/Skill.h"
@@ -18,4 +19,4 @@ public:
 	void 		setPrev(SkillID);
 	bool 		getLearn();
 	void 		setLearn(bool);
-}
+};

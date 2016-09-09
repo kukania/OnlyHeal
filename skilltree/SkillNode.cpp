@@ -1,13 +1,16 @@
 /*
 FileName: 	SkillNode.cpp
 Revision: 	2016/09/07 by PorcaM
+Modified: 	2016/09/09 by PorcaM
 */
 
 #include "SkillNode.h"
 #include <cstdio>
 
-SkillNode::SkillNode (SkillID id, SkillID prev, bool learn){
-
+SkillNode::SkillNode (SkillID id, SkillID prev = 0, bool learn = false){
+	setID(id);
+	setPrev(prev);
+	setLearn(learn);
 }
 
 SkillID 	SkillNode::getID(){
