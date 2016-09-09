@@ -20,4 +20,6 @@ public:
 	void 		insertSkill (SkillNode*);
 	SkillNode* 	findSkill (SkillID);
 	void 		removeSkill (SkillID);
+	void 		initHealSkillTree ();
+	int 		learnSkill (SkillID);
 };

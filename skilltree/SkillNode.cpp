@@ -21,6 +21,7 @@ void 		SkillNode::setID(SkillID id){
 		printf ("Skill ID is not negative!\n");
 	}
 	_id = id;
+	return;
 }
 SkillID 	SkillNode::getPrev(){
 	return _prev;
@@ -30,10 +31,12 @@ void 		SkillNode::setPrev(SkillID prev){
 		printf ("Skill ID is not negative!\n");
 	}
 	_prev = prev;
+	return;
 }
 bool 		SkillNode::getLearn(){
 	return _learn;
 }
 void 		SkillNode::setLearn(bool learn){
 	_learn = learn;
+	return;
 }
