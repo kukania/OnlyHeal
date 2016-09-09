@@ -21,7 +21,7 @@ void	HealSkillFactory::initAllSkills() {
 	Akashic.clear();
 	string  sLevelPrefix[7]		= { "±âº»", "¼÷·Ã", "¿Ï¼÷", "Àü¹®", "±âÀû", "Àü¼³", "½ÅÈ­" };
 	float   fLevelFactor[7]		= { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };
-	string	sTypePostfix[3]		= { "Èú¸µ", "±¤Èú", "Èú»ù" };
+	string	sTypePostfix[3]		= { "Èú¸µ", "±¤Èú", "¹°¾à" };
 	int		iTypeTime[3]		= { 1, 1, 10 };
 	int		iTypeCooltime[3]	= { 1, 2, 1 };
 	int		iTypeFactor[3]		= { 1, 1, 2 };
