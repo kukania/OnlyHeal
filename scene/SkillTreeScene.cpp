@@ -42,6 +42,12 @@ bool SkillTreeScene::init()
 	*/
 	setBackground(Color4F(1, 1, 1, 1));
 
+	auto outline = Sprite::create ("images/skilltree/outline.png");
+	outline->setScale (1.6f);
+	outline->setAnchorPoint (Vec2 (0.5f, 0.5f));
+	outline->setPosition (Vec2 (visibleSize.width/2, visibleSize.height/2));
+	this->addChild (outline);
+
 
 	return true;
 }
