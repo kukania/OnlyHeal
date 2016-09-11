@@ -13,7 +13,7 @@ typedef map<int, SkillNode*>::iterator	TreeIt;
 
 class SkillTree{
 private:
-	TreeType _tree;
+	TreeType _tree; 	/* Key is Skill's ID. Value is Node for essential information */
 public:
 	SkillTree ();
 	~SkillTree ();

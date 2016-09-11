@@ -11,6 +11,7 @@ SkillTree::SkillTree (){
 	_tree.clear ();
 }
 
+/* clear all allocated nodes */
 SkillTree::~SkillTree (){
 	for (TreeIt ti = _tree.begin ();
 		ti != _tree.end (); ti++){
@@ -45,6 +46,9 @@ void 	SkillTree::removeSkill (SkillID id){
 void 	SkillTree::initHealSkillTree (){
 	insertSkill (new SkillNode (0, 0, true));
 	insertSkill (new SkillNode (1, 0, false));
+	for (int i = 0 ; i < 6; i++){
+		insertSkill (new SkillNode (2+i, 1+i, false));
+	}
 
 	return;
 }

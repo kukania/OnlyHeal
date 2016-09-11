@@ -15,6 +15,7 @@ protected:
 	vector<Skill*> Akashic;
 public:
 	SkillFactory();
+	~SkillFactory();
 	virtual void	initAllSkills() = 0;
 	virtual Skill*	createSkill();
 	virtual Skill*	getSkill(int);

@@ -8,7 +8,7 @@ BuffSkill::BuffSkill()
 
 };
 BuffSkill::BuffSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)
-	:Skill(ID, name, cooltime, time, buff,_multi) {
+	:Skill(ID, name, cooltime, time, buff, _multi) {
 	_value	= value;
 	_stype	= stype;
 	_rgb	= rgb;
@@ -129,6 +129,7 @@ int BuffSkill::activate(Character *t, Character &c) {
 }
 
 int BuffSkill::activate(Character *t, Character &c, int a) {
+	/* macro define */
 #define ADD_FIELD(field) getStatus()->add##field
 #define GET_FIELD(field) getStatus()->get##field()
 #define AFFECT_INT(field)\
@@ -154,6 +155,7 @@ int BuffSkill::activate(Character *t, Character &c, int a) {
 		t[0].beBuffed##field(amount);\
 	}
 
+	/* real code */
 	int power = c.getStatus()->getDamage();
 	float factor = (power / 9999)*_value*a;
 	setCooldown();
