@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
-#include "statusHexa.h"
+#include "scene/statusHexa.h"
 #include "characters/Player.h"
 #include<vector>
 

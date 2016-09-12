@@ -53,7 +53,7 @@ void UnitFrame::setIcon(string path) {
 	return;
 }
 void UnitFrame::setHP() {
-	_hpbar = Sprite::create("images/greenHP.png");
+	_hpbar = Sprite::create("images/raid/greenHP2.png");
 	_hpbar->setScale(1.0f);
 	_hpbar->setAnchorPoint(Vec2(0, 0.5f));
 	_hpbar->setPosition(Vec2(75, 20));

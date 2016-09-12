@@ -1,9 +1,9 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "skillinstance\Factory\SkillFactory.h"
-#include "partyLayer.h"
+#include"scene\partyLayer.h"
 #include "ConvertKorean.h"
-#include "OHDialog.h"
+#include "scene\OHDialog.h"
 
 #include<iostream>
 using namespace std;
@@ -53,7 +53,7 @@ void HelloWorld::makeBackGround() {
 	this->addChild(backGround);
 	
 	/***********************************/
-	this->showPlayerStatus[0] = Label::createWithTTF(_AtoU8("티어"), "sandol.ttf", 55, Size(400, 100), TextHAlignment::CENTER);
+	this->showPlayerStatus[0] = Label::createWithTTF(_AtoU8("티어"), "fonts/sdCrayon.ttf", 55, Size(400, 100), TextHAlignment::CENTER);
 	showPlayerStatus[0]->setColor(Color3B(0, 0, 0));
 	showPlayerStatus[0]->setPosition(Point(270, 900));
 	backGround->addChild(showPlayerStatus[0]);
@@ -71,7 +71,7 @@ void HelloWorld::makeBackGround() {
 	backGround->addChild(characterGroup);
 	characterGroup->setPosition(0, 275);
 
-	auto firstChar = Sprite::create("char.png");
+	auto firstChar = Sprite::create("images/helloworld/char.png");
 	characterGroup->addChild(firstChar);
 	firstChar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	firstChar->setScale(1.6f);
@@ -79,14 +79,14 @@ void HelloWorld::makeBackGround() {
 	firstChar->setTag(0);
 	positionArr[CHA] = firstChar->getPosition();
 
-	auto secondChar = Sprite::create("rac.png");
+	auto secondChar = Sprite::create("images/helloworld/rac.png");
 	characterGroup->addChild(secondChar);
 	secondChar->setPosition(270, 100);
 	secondChar->setScale(1.6f);
 	secondChar->setTag(1);
 	positionArr[RAC] = secondChar->getPosition();
 
-	auto thirdChar = Sprite::create("ter.png");
+	auto thirdChar = Sprite::create("images/helloworld/ter.png");
 	characterGroup->addChild(thirdChar);
 	thirdChar->setAnchorPoint(Vec2(1.0f, 0.5f));
 	thirdChar->setPosition(520, 100);
@@ -99,7 +99,7 @@ void HelloWorld::makeBackGround() {
 	scrollView->setContentSize(Size(500, 110));
 	scrollView->setInnerContainerSize(Size(1080, 110));
 	scrollView->setBackGroundImageScale9Enabled(true);
-	scrollView->setBackGroundImage("rect.png");
+	scrollView->setBackGroundImage("images/helloworld/rect.png");
 	scrollView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
 	scrollView->setBounceEnabled(true);
 	scrollView->setTouchEnabled(true);
@@ -125,7 +125,7 @@ void HelloWorld::makeBackGround() {
 	skillTree->setName("skillTreeBtn");
 	backGround->addChild(skillTree);
 
-	auto menuBtn = ui::Button::create("menu.png", "menu.png", "");
+	auto menuBtn = ui::Button::create("images/helloworld/menu.png", "images/helloworld/menu.png", "");
 	menuBtn->setPosition(Vec2(270, 100));
 	menuBtn->setTouchEnabled(true);
 	menuBtn->setSwallowTouches(false);
@@ -137,19 +137,19 @@ void HelloWorld::makeBackGround() {
 	positionArr[MENUBTN] = menuBtn->getPosition();
 
 	/***********************************/
-	this->showPlayerStatus[1] = Label::createWithTTF(_AtoU8("공격력\n"), "sandol.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
+	this->showPlayerStatus[1] = Label::createWithTTF(_AtoU8("공격력\n"), "fonts/sdCrayon.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
 	showPlayerStatus[1]->setColor(Color3B(0, 0, 0));
 	Point tempP = positionArr[CHA];
 	showPlayerStatus[1]->setPosition(Point(tempP.x + 50, tempP.y + 100));
 	characterGroup->addChild(showPlayerStatus[1]);
 
-	this->showPlayerStatus[2] = Label::createWithTTF(_AtoU8("방어력\n"), "sandol.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
+	this->showPlayerStatus[2] = Label::createWithTTF(_AtoU8("방어력\n"), "fonts/sdCrayon.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
 	showPlayerStatus[2]->setColor(Color3B(0, 0, 0));
 	tempP = positionArr[RAC];
 	showPlayerStatus[2]->setPosition(Point(tempP.x, tempP.y + 100));
 	characterGroup->addChild(showPlayerStatus[2]);
 
-	this->showPlayerStatus[3] = Label::createWithTTF(_AtoU8("체력\n"), "sandol.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
+	this->showPlayerStatus[3] = Label::createWithTTF(_AtoU8("체력\n"), "fonts/sdCrayon.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
 	showPlayerStatus[3]->setColor(Color3B(0, 0, 0));
 	tempP = positionArr[TER];
 	showPlayerStatus[3]->setPosition(Point(tempP.x-50, tempP.y + 100));
@@ -289,7 +289,7 @@ void HelloWorld::scrollViewSetting(int i) {
 		Item &tempItem = p->inventory[i].itemList[j];
 		string str = tempItem.toString();
 		auto btn = ui::Button::create();
-		btn->loadTextures("box.png", "box.png", "box.png");
+		btn->loadTextures("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
 		btn->setTouchEnabled(true);
 		btn->setSwallowTouches(false);
 		btn->setAnchorPoint(Vec2(0, 0));

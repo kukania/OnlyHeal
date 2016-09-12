@@ -10,13 +10,13 @@ PartyLayer::PartyLayer() {
 	content->setPosition(Vec2(25, 40));
 	content->setContentSize(Size(490, 900));
 	
-	auto spr = ui::Scale9Sprite::create("partyFrame.png");
+	auto spr = ui::Scale9Sprite::create("images/party/partyFrame.png");
 	spr->setAnchorPoint(Point(0, 1));
 	spr->setPosition(Point(0, 900));
 	spr->setContentSize(Size(490, 60));
 	content->addChild(spr);
 	
-	cancelBtn = ui::Button::create("partyOutBtn.png", "partyOutBtn.png", "partyOutBtn.png");
+	cancelBtn = ui::Button::create("images/party/partyOutBtn.png", "images/party/partyOutBtn.png", "images/party/partyOutBtn.png");
 	cancelBtn->setAnchorPoint(Point(1, 1));
 	cancelBtn->setPosition(Point(480, 50));
 	cancelBtn->setScale9Enabled(true);
@@ -37,7 +37,7 @@ PartyLayer::PartyLayer() {
 	scrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
 	scrollView->setPosition(Point(0,0));
 	scrollView->setBackGroundImageScale9Enabled(true);
-	scrollView->setBackGroundImage("popUpFrame.png");
+	scrollView->setBackGroundImage("images/party/popUpFrame.png");
 	content->addChild(scrollView);
 }
 

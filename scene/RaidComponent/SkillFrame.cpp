@@ -18,19 +18,19 @@ SkillFrame::SkillFrame(Skill *skill) {
 void SkillFrame::initBG() {
 	string _path = "images/skillbg.png";
 	_button = ui::Button::create(_path);
+	_button->setScale9Enabled(true);
 	_button->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
-		
 	});
-	this->addChild(_button);
 	return;
 }
 
 void SkillFrame::initLabel() {
 	string _data = _skill->getName();
-	_label = Label::createWithTTF(_AtoU8(_data.c_str()), "fonts/sdCrayon.ttf", 24);
-	_label->setAlignment(TextHAlignment::CENTER);
+	_label = Label::createWithTTF(_AtoU8(_data.c_str()), "fonts/sdCrayon.ttf", 30);
 	_label->setTextColor(Color4B(0, 0, 0, 255));
-	_label->setWidth(50);
-	this->addChild(_label);
+	_label->setWidth(60);
+	_label->setAnchorPoint(Point(0.2, 0.3));
+	_label->setPosition(_button->getSize().width / 2, _button->getSize().height / 2);
+	_button->addChild(_label);
 	return;
 }

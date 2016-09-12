@@ -12,9 +12,9 @@ USING_NS_CC;
 class SkillFrame : public CCNode {
 private:
 	Skill		*_skill;
-	ui::Button	*_button;
 	Label		*_label;
 public:
+	ui::Button	*_button;
 	SkillFrame(Skill *);
 	void initBG();
 	void initLabel();

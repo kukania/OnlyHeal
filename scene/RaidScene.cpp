@@ -36,30 +36,25 @@ bool Raid::init()
 	{
 		return false;
 	}
-	
-	auto visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	auto closeItem = MenuItemImage::create(
-		"CloseNormal.png",
-		"CloseSelected.png",
-		CC_CALLBACK_1(Raid::menuCloseCallback, this));
-
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width / 2,
-		origin.y + closeItem->getContentSize().height / 2));
-
-	auto menu = Menu::create(closeItem, NULL);
-	menu->setPosition(Vec2::ZERO);
-	this->addChild(menu, 1);
-
-	/*
-	Below codes are writed by PorcaM
-	*/
 	setBackground(Color4F(1, 1, 1, 1));
-
 	Tier tempT = Tier(1);
-	auto SkillGrid = CCNode::create();
-	const int skillnum = 5;
+	this->makeSkillScrollView();
+	return true;
+}
+
+void Raid::makeSkillScrollView() {
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	const int skillnum = 21;
+	this->scv = ui::ScrollView::create();
+	scv->setContentSize(Size(120,580));
+	scv->setInnerContainerSize(Size(120, 80 * skillnum + 20));
+	scv->setBackGroundImageScale9Enabled(true);
+	scv->setBackGroundImage("images/raid/outline.png");
+	scv->setDirection(ui::ScrollView::Direction::VERTICAL);
+	scv->setBounceEnabled(true);
+	scv->setTouchEnabled(true);
+	scv->setPosition(Point(410, 30));
+
 	HealSkillFactory hsf;
 	hsf.initAllSkills();
 	Skill** sl = hsf.getSkillsList(skillnum);
@@ -67,16 +62,14 @@ bool Raid::init()
 	int borderline = visibleSize.height - 240;
 	for (int i = 0; i < skillnum; i++) {
 		sf[i] = new SkillFrame(sl[i]);
-		sf[i]->setAnchorPoint(Vec2(1, 0));
-		sf[i]->setPosition(Vec2(0, i*-60));
-		SkillGrid->addChild(sf[i]);
+		sf[i]->_button->setContentSize(Size(100, 80));
+		sf[i]->_button->setAnchorPoint(Vec2(0,1));
+		sf[i]->_button->setPosition(Vec2(10, 80*skillnum+i*-80));
+		scv->addChild(sf[i]->_button);
 	}
-	SkillGrid->setScale(1.6f);
-	SkillGrid->setAnchorPoint(Vec2(0, 0));
-	SkillGrid->setPosition(Vec2(visibleSize.width-80, borderline-140));
-	this->addChild(SkillGrid, 10);
-	return true;
+	this->addChild(scv);
 }
+
 void Raid::makeUnitFrame() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	int borderline = visibleSize.height - 240;
