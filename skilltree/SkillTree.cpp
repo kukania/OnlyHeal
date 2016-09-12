@@ -63,3 +63,11 @@ int 	SkillTree::learnSkill (SkillID id){
 	else
 		return 1;
 }
+
+TreeIt SkillTree::getBegin (){
+	return _tree.begin ();
+}
+
+TreeIt SkillTree::getEnd (){
+	return _tree.end ();
+}

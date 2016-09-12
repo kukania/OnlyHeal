@@ -16,7 +16,7 @@ SkillFrame::SkillFrame(Skill *skill) {
 }
 
 void SkillFrame::initBG() {
-	string _path = "images/skillbg.png";
+	string _path = "images/raid/skillbg.png";
 	_button = ui::Button::create(_path);
 	_button->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		

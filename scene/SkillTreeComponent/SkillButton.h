@@ -1,5 +1,5 @@
 /*
-FileName:	SkillTreeFrame.h
+FileName:	SkillButton.h
 Revision:	2016/09/12 by PorcaM
 */
 
@@ -9,13 +9,12 @@ Revision:	2016/09/12 by PorcaM
 #include "ui\CocosGUI.h"
 #include "parts\Skill.h"
 #include "skilltree\SkillTree.h"
-#include "SkillButton.h"
 USING_NS_CC;
 
-class SkillTreeFrame{
+class SkillButton : public CCNode{
 private:
-	SkillButton* pSbv;
+	ui::Button* 	_button;
+	Skill* 			_skill;
 public:
-	SkillTreeFrame (SkillTree*);
-	void initButton ();
+	SkillButton
 };

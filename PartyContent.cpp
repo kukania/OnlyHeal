@@ -1,7 +1,7 @@
 #include"PartyContent.h"
 
 PartyContent::PartyContent(Tier t,Character *p) {
-	content = ui::Button::create("partyFrame.png", "partyFrame.png", "partyFrame.png");
+	content = ui::Button::create("images/party/partyFrame.png", "images/party/partyFrame.png", "images/party/partyFrame.png");
 	content->setScale9Enabled(true);
 	content->setContentSize(Size(470, 200));
 	Size tempS = content->getSize();
@@ -13,15 +13,15 @@ PartyContent::PartyContent(Tier t,Character *p) {
 	list[4] = Character::create(t, "MeleeNPC", 0);
 	list[5] = Character::create(t, "RangeNPC", 0);
 
-	img[monster] = ui::Scale9Sprite::create("dragon.png");
+	img[monster] = ui::Scale9Sprite::create("images/party/dragon.png");
 	img[monster]->setPosition(tempS.width*0.23,tempS.height/2);
-	img[2] = ui::Scale9Sprite::create("icon/tanker.png");
+	img[2] = ui::Scale9Sprite::create("images/party/tanker.png");
 	img[2]->setPosition(tempS.width*0.75, tempS.height*0.75);
-	img[3] = ui::Scale9Sprite::create("icon/melee.png");
+	img[3] = ui::Scale9Sprite::create("images/party/melee.png");
 	img[3]->setPosition(tempS.width*0.75, tempS.height*0.25);
-	img[4] = ui::Scale9Sprite::create("icon/melee.png");
+	img[4] = ui::Scale9Sprite::create("images/party/melee.png");
 	img[4]->setPosition(tempS.width*0.625, tempS.height*0.5);
-	img[5] = ui::Scale9Sprite::create("icon/range.png");
+	img[5] = ui::Scale9Sprite::create("images/party/range.png");
 	img[5]->setPosition(tempS.width*0.875, tempS.height*0.5);
 
 	content->addChild(img[0]);

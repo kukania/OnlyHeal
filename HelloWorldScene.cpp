@@ -288,7 +288,7 @@ void HelloWorld::scrollViewSetting(int i) {
 		Item &tempItem = p->inventory[i].itemList[j];
 		string str = tempItem.toString();
 		auto btn = ui::Button::create();
-		btn->loadTextures("box.png", "box.png", "box.png");
+		btn->loadTextures("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
 		btn->setTouchEnabled(true);
 		btn->setSwallowTouches(false);
 		btn->setAnchorPoint(Vec2(0, 0));
