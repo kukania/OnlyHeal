@@ -54,7 +54,7 @@ void PartyLayer::makePartyBtn(Tier t, Character *p) {
 				OHDialog dialog(Size(450, 300), "테스트", temp+"참여하시겠습니까?");
 				ui::Button* btn = (ui::Button*)sender;
 				dialog.okBtn->addTouchEventListener([tempContent](Ref*sender2, ui::Button::TouchEventType e) {
-					Director::getInstance()->pushScene(Raid::createScene());
+					Director::getInstance()->pushScene(Raid::createScene(tempContent->list));
 				});
 				dialog.addedTo(btn->getParent()->getParent()->getParent());
 				
