@@ -66,6 +66,7 @@ bool SkillTreeScene::init()
 	for (int i = 0; i < 3; i++){
 		string path = "images/skilltree/tab" + num[i] + ".png";
 		tab[i] = ui::Button::create (path.c_str ());
+		tab[i]->setAnchorPoint (Vec2 (0.5f, 0));
 		tab[i]->setPosition (Vec2 (92*(i-1), 205));
 		SkillTreeLayer->addChild (tab[i]);
 	}

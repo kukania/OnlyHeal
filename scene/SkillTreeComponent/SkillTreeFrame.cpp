@@ -27,16 +27,17 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 
 void SkillTreeFrame::initScrollView(){
 	_scrollView = ui::ScrollView::create();
-	_scrollView->setContentSize(Size(500, 110));
-	_scrollView->setInnerContainerSize(Size(1080, 110));
+	_scrollView->setContentSize(Size(200, 250));
+	_scrollView->setInnerContainerSize(Size(1200, 250));
 	_scrollView->setBackGroundImageScale9Enabled(true);
-	_scrollView->setBackGroundImage("images/raid/bg.png");
+	_scrollView->setBackGroundImage("images/skilltree/rect.png");
 	_scrollView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
 	_scrollView->setBounceEnabled(true);
 	_scrollView->setTouchEnabled(true);
 	_scrollView->setSwallowTouches(false);
-	_scrollView->setVisible(true);
 	_scrollView->setName("scrollView");
+	_scrollView->setAnchorPoint (Vec2 (0.5f, 1.0f));
+	_scrollView->setPosition (Vec2 (0, 205));
 	return;
 }
 
