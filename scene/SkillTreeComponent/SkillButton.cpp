@@ -5,6 +5,7 @@ Revision:	2016/09/12 by PorcaM
 
 #include "SkillButton.h"
 #include <string>
+#include <cstdio>
 
 SkillButton::SkillButton (Skill* skill){
 	_skill = skill;
@@ -19,8 +20,9 @@ SkillButton::~SkillButton (){
 void SkillButton::initButton (){
 	string sPath = "images/skilltree/icon_d.png";
 	_button = ui::Button::create (sPath, sPath, sPath);
-	_button->addTouchEventListener([] (Ref *pSender, ui::Button::Widget::TouchEventType type) {
-		pritnf ("I do nothing\n");
+	_button->addTouchEventListener([&] (Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		printf ("I do nothing\n");
+		printf ("Skill Name is %s\n", _skill->getName ());
 	});
 	this->addChild (_button);
 	return;

@@ -12,10 +12,18 @@ SkillFactory::SkillFactory() {
 	Akashic.clear();
 }
 SkillFactory::~SkillFactory(){
-	for (vector<Skill*>::iterator vi = Akashic.begin();
+	for (SVI vi = Akashic.begin();
 	vi != Akashic.end(); vi++){
 		delete *vi; 	/* [PM_Caution] I cannot assure that this code is clear operation */
 	}
+}
+
+SVI 	SkillFactory::getBegin (){
+	return Akashic.begin ();
+}
+
+SVI 	SkillFactory::getEnd (){
+	return Akashic.end ();
 }
 
 Skill*	SkillFactory::getSkill(int index) {

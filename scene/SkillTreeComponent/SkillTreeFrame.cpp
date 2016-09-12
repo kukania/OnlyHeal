@@ -6,18 +6,27 @@ Revision:	2016/09/12 by PorcaM
 #include "SkillTreeFrame.h"
 #include "skillinstance/Factory/HealSkillFactory.h"
 
-SkillTreeFrame::SkillTreeFrame (SkillTree* pSkilltree){
-	pSkilltree->initHealSkillTree ();
-	for (TreeIt ti = pSkilltree->getBegin ();
-		ti != pSkilltree->getEnd (); ti++){
-		insertButton ();
+SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
+	if (type == HealSkilltree) {
+		st.initHealSkillTree ();
+		pSf = new HealSkillFactory ();
+	}
+	else if (type == BuffSkilltree){
+		// no buffskilltree now
+	}
+	else if (type == DebuffSkilltree){
+		// no debuffskilltree now
+	}
+	for (TreeIt ti = st.getBegin ();
+		ti != st.getEnd (); ti++){
+		insertButton (pSf->getSkill (ti->first));
 	}
 }
 
 void SkillTreeFrame::insertButton (Skill* skill){
-	auto temp = new SkillButton ();
-	temp->setPoisition (Vec2 (0, 0));
-	sbv.push_back (temp);
+	auto button = new SkillButton (skill);
+	button->setPosition (Vec2 (0, 0));
+	sbv.push_back (button);
 	return;
 }
 
@@ -26,5 +35,6 @@ SkillTreeFrame::~SkillTreeFrame (){
 		vi != sbv.end (); vi++){
 		delete *vi;
 	}
+	delete pSf;
 	sbv.clear();
 }

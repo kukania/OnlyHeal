@@ -10,14 +10,21 @@ Revision:	2016/09/12 by PorcaM
 #include "parts\Skill.h"
 #include "skilltree\SkillTree.h"
 #include "SkillButton.h"
+#include "skillinstance/Factory/SkillFactory.h"
 #include <vector>
 USING_NS_CC;
 
+enum ST_TYPE{
+	HealSkilltree, BuffSkilltree, DebuffSkilltree
+};
+
 class SkillTreeFrame{
 private:
-	vector<SkillButton*> sbv;
+	vector<SkillButton*> 	sbv;
+	SkillTree 				st;
+	SkillFactory* 			pSf;
 public:
-	SkillTreeFrame (SkillTree*);
+	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();
 	void insertButton (Skill*);
 };
