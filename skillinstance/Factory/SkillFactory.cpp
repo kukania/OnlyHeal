@@ -11,6 +11,12 @@ Modified:	2016/09/05 by PorcaM
 SkillFactory::SkillFactory() {
 	Akashic.clear();
 }
+SkillFactory::~SkillFactory(){
+	for (vector<Skill*>::iterator vi = Akashic.begin();
+	vi != Akashic.end(); vi++){
+		delete *vi; 	/* [PM_Caution] I cannot assure that this code is clear operation */
+	}
+}
 
 Skill*	SkillFactory::getSkill(int index) {
 	return Akashic[index];
@@ -22,6 +28,9 @@ Skill*	SkillFactory::createSkill() {
 }
 
 Skill**	SkillFactory::getSkillsList(int num) {
+	if (num < Akashic.size ()){ 	/* num must be smaller than entire skill number */
+		num = Akashic.size ();
+	}
 	Skill**	skillList = new Skill*[num];
 	set<int> indexList;
 	while (indexList.size() < num) {

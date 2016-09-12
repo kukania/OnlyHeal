@@ -111,7 +111,7 @@ int		Character::getIndex() {
 }
 
 void	Character::setIndex(int index) {
-	if (index < 1 || index > 5) {
+	if (index < 0 || index > 5) {
 		printf("[OH] Index assign error!\n");
 	}
 	_index = index;

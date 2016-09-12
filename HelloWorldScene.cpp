@@ -58,7 +58,7 @@ void HelloWorld::makeBackGround() {
 	showPlayerStatus[0]->setPosition(Point(270, 900));
 	backGround->addChild(showPlayerStatus[0]);
 	/***********************************/
-	
+
 	this->statusHexa = DrawNode::create();
 	this->statusHexaContent=StatusHexa(175);
 	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 1.0, 1.0, 1), 1, Color4F(0.0, 0.0, 0.0, 1));
@@ -111,14 +111,14 @@ void HelloWorld::makeBackGround() {
 	scrollView->setName("scrollView");
 	/*scroll view test -end-*/
 
-	auto partyLabel = Label::createWithTTF("party go", "sandol.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	auto partyLabel = Label::createWithTTF("party go", "fonts/sdCrayon.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	partyLabel->setPosition(Vec2(270, 200));
 	partyLabel->setColor(Color3B::BLACK);
 	partyLabel->setVisible(false);
 	partyLabel->setName("partyBtn");
 	backGround->addChild(partyLabel);
 
-	auto skillTree = Label::createWithTTF("skillTree go", "sandol.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	auto skillTree = Label::createWithTTF("skillTree go", "fonts/sdCrayon.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	skillTree->setPosition(Vec2(270, 300));
 	skillTree->setColor(Color3B::BLACK);
 	skillTree->setVisible(false);
@@ -319,11 +319,11 @@ void HelloWorld::scrollViewSetting(int i) {
 			}
 		});
 
-		auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "sandol.ttf", 32);
+		auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "fonts/sdCrayon.ttf", 32);
 		txt->setPosition(Point(40, 40));
 		btn->addChild(txt);
 		if (&tempItem == p->inventory[i].equiped) {
-			auto equipedLabel = Label::createWithTTF(_AtoU8("ÀåÂøÁß"), "sandol.ttf", 24);
+			auto equipedLabel = Label::createWithTTF(_AtoU8("ÀåÂøÁß"), "fonts/sdCrayon.ttf", 24);
 			Size eqlSize = equipedLabel->getContentSize();
 			auto labelLayer = LayerColor::create(Color4B(255, 0, 255, 255), eqlSize.width, eqlSize.height);
 			equipedLabel->setAnchorPoint(Point(0, 0));

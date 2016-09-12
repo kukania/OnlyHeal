@@ -20,7 +20,7 @@ private:
 	CharacterType	type;
 	bool			isDie;
 	Status			myStatus;
-	Character		*list;
+	Character* 		list; 		/* I cannot understand why character need this list */
 	int				_index;		/* In raid, each character need their own index */
 public:
 	static Character* create(Tier t, const char* typeOfChar, int index);

@@ -52,7 +52,9 @@ bool Raid::init()
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu, 1);
 
-	// PorcaM
+	/*
+	Below codes are writed by PorcaM
+	*/
 	setBackground(Color4F(1, 1, 1, 1));
 
 	Tier tempT = Tier(1);
