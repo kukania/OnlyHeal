@@ -6,12 +6,8 @@ Modified:	2016/08/25 by PorcaM
 
 #ifndef __RAID_SCENE_H__
 #define __RAID_SCENE_H__
-
 #include"characters\Character.h"
 #include "cocos2d.h"
-
-class Character;
-
 class Raid : public cocos2d::Layer
 {
 public:

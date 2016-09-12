@@ -52,6 +52,7 @@ void HelloWorld::makeBackGround() {
 	backGround->drawPolygon(corners, 4, Color4F(1.0f, 1.0f, 1.0f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
 	this->addChild(backGround);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 	this->statusLayer = LayerColor::create(Color4B(0,255,0,255));
@@ -76,6 +77,16 @@ void HelloWorld::makeBackGround() {
 	/***********************************/
 	
 >>>>>>> d73f7b15e7e561f7e5b827bbcc814b60354e5655
+=======
+	
+	/***********************************/
+	this->showPlayerStatus[0] = Label::createWithTTF(_AtoU8("Æ¼¾î"), "sandol.ttf", 55, Size(400, 100), TextHAlignment::CENTER);
+	showPlayerStatus[0]->setColor(Color3B(0, 0, 0));
+	showPlayerStatus[0]->setPosition(Point(270, 900));
+	backGround->addChild(showPlayerStatus[0]);
+	/***********************************/
+
+>>>>>>> dbe9e8adbe840504716f2ab9b6d27ce240e1baa1
 	this->statusHexa = DrawNode::create();
 	this->statusHexaContent=StatusHexa(175);
 	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 1.0, 1.0, 1), 1, Color4F(0.0, 0.0, 0.0, 1));

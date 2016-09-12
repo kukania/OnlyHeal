@@ -59,6 +59,7 @@ bool Raid::init()
 
 	Tier tempT = Tier(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	string tl[6] = { "Monster", "MeleeNPC", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
 	Character *cl[6];
 	for (int i = 0; i < 6; i++) {
@@ -85,6 +86,8 @@ bool Raid::init()
 	
 =======
 >>>>>>> d73f7b15e7e561f7e5b827bbcc814b60354e5655
+=======
+>>>>>>> dbe9e8adbe840504716f2ab9b6d27ce240e1baa1
 	auto SkillGrid = CCNode::create();
 	const int skillnum = 5;
 	HealSkillFactory hsf;
