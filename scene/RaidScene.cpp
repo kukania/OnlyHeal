@@ -58,36 +58,7 @@ bool Raid::init()
 	setBackground(Color4F(1, 1, 1, 1));
 
 	Tier tempT = Tier(1);
-<<<<<<< HEAD
-<<<<<<< HEAD
-	string tl[6] = { "Monster", "MeleeNPC", "TankNPC", "MeleeNPC", "MeleeNPC", "RangeNPC" };
-	Character *cl[6];
-	for (int i = 0; i < 6; i++) {
-		cl[i] = Character::create(tempT, tl[i].c_str(), i);
-	}
-	int borderline = visibleSize.height - 240;
 
-	auto UnitGrid = CCLayerColor::create();
-	UnitFrame *uf[5];
-	for (int i = 0; i < 5; i++) {
-		uf[i] = new UnitFrame(cl[i + 1]);
-		uf[i]->setPosition(Vec2(0, i*-90));
-		UnitGrid->addChild(uf[i]);
-	}
-	UnitGrid->setScale(1.6f);
-	UnitGrid->setAnchorPoint(Vec2(0, 0));
-	UnitGrid->setPosition(Vec2(0, borderline-160));
-	this->addChild(UnitGrid);
-
-	BossFrame *bf = new BossFrame(cl[0]);
-	bf->setScale(1.6f);
-	bf->setPosition(Vec2(visibleSize.width/2, borderline+80));
-	this->addChild(bf);
-	
-=======
->>>>>>> d73f7b15e7e561f7e5b827bbcc814b60354e5655
-=======
->>>>>>> dbe9e8adbe840504716f2ab9b6d27ce240e1baa1
 	auto SkillGrid = CCNode::create();
 	const int skillnum = 5;
 	HealSkillFactory hsf;
