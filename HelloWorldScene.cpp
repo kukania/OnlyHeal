@@ -4,6 +4,7 @@
 #include "partyLayer.h"
 #include "ConvertKorean.h"
 #include "OHDialog.h"
+#include "scene\SkillTreeScene.h"
 
 #include<iostream>
 using namespace std;
@@ -215,6 +216,7 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		auto sB = (Label*)backGround->getChildByName("skillTreeBtn");
 		auto pB = (Label*)backGround->getChildByName("partyBtn");
 		if (sB->getBoundingBox().containsPoint(t->getLocation())) {
+			Director::getInstance()->pushScene(SkillTreeScene::createScene());
 			//skillTreeLayer
 		}
 		else if (pB->getBoundingBox().containsPoint(t->getLocation())) {

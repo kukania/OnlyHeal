@@ -10,6 +10,7 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 	if (type == HealSkilltree) {
 		st.initHealSkillTree ();
 		pSf = new HealSkillFactory ();
+		pSf->initAllSkills();
 	}
 	else if (type == BuffSkilltree){
 		// no buffskilltree now

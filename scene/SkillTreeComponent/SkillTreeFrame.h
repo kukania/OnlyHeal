@@ -18,7 +18,7 @@ enum ST_TYPE{
 	HealSkilltree, BuffSkilltree, DebuffSkilltree
 };
 
-class SkillTreeFrame{
+class SkillTreeFrame : public Layer{
 private:
 	vector<SkillButton*> 	sbv;
 	SkillTree 				st;

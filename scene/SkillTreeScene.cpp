@@ -5,6 +5,7 @@ Revision:	2016/09/11 by PorcaM
 
 #include "SkillTreeScene.h"
 #include "ui/CocosGUI.h"
+#include "SkillTreeComponent\SkillTreeFrame.h"
 #include <string>
 using std::string;
 USING_NS_CC;
@@ -68,6 +69,9 @@ bool SkillTreeScene::init()
 		tab[i]->setPosition (Vec2 (92*(i-1), 205));
 		SkillTreeLayer->addChild (tab[i]);
 	}
+
+	SkillTreeFrame* stf = new SkillTreeFrame (HealSkilltree);
+	this->addChild(stf);
 
 	SkillTreeLayer->setPosition (Vec2 (visibleSize.width/2*1.6, visibleSize.height/2*1.6));
 	SkillTreeLayer->setScale (1.6f);
