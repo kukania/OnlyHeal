@@ -18,13 +18,16 @@ enum ST_TYPE{
 	HealSkilltree, BuffSkilltree, DebuffSkilltree
 };
 
-class SkillTreeFrame : public Layer{
+class SkillTreeFrame {
 private:
-	vector<SkillButton*> 	sbv;
-	SkillTree 				st;
-	SkillFactory* 			pSf;
+	vector<SkillButton*> 	_sbv;
+	SkillTree 				_st;
+	SkillFactory* 			_pSf;
+	ui::ScrollView* 		_scrollView;
 public:
 	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();
 	void insertButton (Skill*);
+	void initScrollView ();
+	ui::ScrollView* getScrollView ();
 };

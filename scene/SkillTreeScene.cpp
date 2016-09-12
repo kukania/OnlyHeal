@@ -71,7 +71,7 @@ bool SkillTreeScene::init()
 	}
 
 	SkillTreeFrame* stf = new SkillTreeFrame (HealSkilltree);
-	this->addChild(stf);
+	SkillTreeLayer->addChild (stf->getScrollView ());
 
 	SkillTreeLayer->setPosition (Vec2 (visibleSize.width/2*1.6, visibleSize.height/2*1.6));
 	SkillTreeLayer->setScale (1.6f);
