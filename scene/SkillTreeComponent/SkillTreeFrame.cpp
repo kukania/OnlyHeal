@@ -15,5 +15,15 @@ SkillTreeFrame::SkillTreeFrame (SkillTree* pSkilltree){
 }
 
 void SkillTreeFrame::initButton (){
-	
+	auto temp = new SkillButton ();
+	sbv.push_back (temp);
+	return;
+}
+
+SkillTreeFrame::~SkillTreeFrame (){
+	for (vector<SkillButton*>::iterator vi = sbv.begin ();
+		vi != sbv.end (); vi++){
+		delete *vi;
+	}
+	sbv.clear();
 }

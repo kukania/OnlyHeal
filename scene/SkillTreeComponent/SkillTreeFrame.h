@@ -10,11 +10,12 @@ Revision:	2016/09/12 by PorcaM
 #include "parts\Skill.h"
 #include "skilltree\SkillTree.h"
 #include "SkillButton.h"
+#include <vector>
 USING_NS_CC;
 
 class SkillTreeFrame{
 private:
-	SkillButton* pSbv;
+	vector<SkillButton*> sbv;
 public:
 	SkillTreeFrame (SkillTree*);
 	void initButton ();
