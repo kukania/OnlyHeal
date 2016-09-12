@@ -5,7 +5,8 @@ Revision:	2016/09/11 by PorcaM
 
 #include "SkillTreeScene.h"
 #include "ui/CocosGUI.h"
-
+#include <string>
+using std::string;
 USING_NS_CC;
 
 Scene* SkillTreeScene::createScene()
@@ -39,15 +40,38 @@ bool SkillTreeScene::init()
 
 	/*
 	Below codes are writed by PorcaM
+	Generate SkillTree Layer
 	*/
-	setBackground(Color4F(1, 1, 1, 1));
-
+	setBackground (Color4F (1, 1, 1, 1));
+	// Layer composition
+	auto SkillTreeLayer = Layer::create();
+	// Outline for visual border
 	auto outline = Sprite::create ("images/skilltree/outline.png");
-	outline->setScale (1.6f);
-	outline->setAnchorPoint (Vec2 (0.5f, 0.5f));
-	outline->setPosition (Vec2 (visibleSize.width/2, visibleSize.height/2));
-	this->addChild (outline);
+	SkillTreeLayer->addChild (outline);
 
+	auto title = Sprite::create ("images/skilltree/title.png");
+	auto closeBtn = ui::Button::create ("images/skilltree/btn_close.png");
+	closeBtn->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		printf ("Touch event type: %d\n", type);
+	});
+	closeBtn->setAnchorPoint (Vec2 (0.5f, 1.0f));
+	closeBtn->setPosition (Vec2 (268, 47));
+	title->addChild (closeBtn);
+	title->setPosition (Vec2 (0, 250));
+	SkillTreeLayer->addChild (title);
+
+	ui::Button* tab[3];
+	string num[3] = { "1", "2", "3" };
+	for (int i = 0; i < 3; i++){
+		string path = "images/skilltree/tab" + num[i] + ".png";
+		tab[i] = ui::Button::create (path.c_str ());
+		tab[i]->setPosition (Vec2 (92*(i-1), 205));
+		SkillTreeLayer->addChild (tab[i]);
+	}
+
+	SkillTreeLayer->setPosition (Vec2 (visibleSize.width/2*1.6, visibleSize.height/2*1.6));
+	SkillTreeLayer->setScale (1.6f);
+	this->addChild (SkillTreeLayer);
 
 	return true;
 }
