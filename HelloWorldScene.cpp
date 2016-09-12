@@ -51,6 +51,7 @@ void HelloWorld::makeBackGround() {
 	};
 	backGround->drawPolygon(corners, 4, Color4F(1.0f, 1.0f, 1.0f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
 	this->addChild(backGround);
+<<<<<<< HEAD
 
 
 	this->statusLayer = LayerColor::create(Color4B(0,255,0,255));
@@ -65,17 +66,27 @@ void HelloWorld::makeBackGround() {
 		statusLayer->addChild(showPlayerStatus[i]);
 	}
 
+=======
+	
+	/***********************************/
+	this->showPlayerStatus[0] = Label::createWithTTF(_AtoU8("티어"), "sandol.ttf", 55, Size(400, 100), TextHAlignment::CENTER);
+	showPlayerStatus[0]->setColor(Color3B(0, 0, 0));
+	showPlayerStatus[0]->setPosition(Point(270, 900));
+	backGround->addChild(showPlayerStatus[0]);
+	/***********************************/
+	
+>>>>>>> d73f7b15e7e561f7e5b827bbcc814b60354e5655
 	this->statusHexa = DrawNode::create();
-	this->statusHexaContent=StatusHexa(130);
-	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
-	this->statusHexa->setPosition(150, 150);
-	statusLayer->addChild(this->statusHexa);
+	this->statusHexaContent=StatusHexa(175);
+	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 1.0, 1.0, 1), 1, Color4F(0.0, 0.0, 0.0, 1));
+	this->statusHexa->setPosition(275, 700);
+	backGround->addChild(this->statusHexa);
 
 	characterGroup = Layer::create();
 	characterGroup->setColor(Color3B(255, 255, 255));
 	characterGroup->setContentSize(Size(540, 200));
 	backGround->addChild(characterGroup);
-	characterGroup->setPosition(0, 375);
+	characterGroup->setPosition(0, 275);
 
 	auto firstChar = Sprite::create("char.png");
 	characterGroup->addChild(firstChar);
@@ -110,7 +121,7 @@ void HelloWorld::makeBackGround() {
 	scrollView->setBounceEnabled(true);
 	scrollView->setTouchEnabled(true);
 	scrollView->setSwallowTouches(false);
-	scrollView->setPosition(Point(20, 375));
+	scrollView->setPosition(Point(20, 275));
 	backGround->addChild(scrollView);
 	scrollView->setVisible(false);
 	positionArr[SCROLLVIEW] = scrollView->getPosition();
@@ -142,6 +153,25 @@ void HelloWorld::makeBackGround() {
 	menuBtn->setName("menuBtn");
 	positionArr[MENUBTN] = menuBtn->getPosition();
 
+	/***********************************/
+	this->showPlayerStatus[1] = Label::createWithTTF(_AtoU8("공격력\n"), "sandol.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
+	showPlayerStatus[1]->setColor(Color3B(0, 0, 0));
+	Point tempP = positionArr[CHA];
+	showPlayerStatus[1]->setPosition(Point(tempP.x + 50, tempP.y + 100));
+	characterGroup->addChild(showPlayerStatus[1]);
+
+	this->showPlayerStatus[2] = Label::createWithTTF(_AtoU8("방어력\n"), "sandol.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
+	showPlayerStatus[2]->setColor(Color3B(0, 0, 0));
+	tempP = positionArr[RAC];
+	showPlayerStatus[2]->setPosition(Point(tempP.x, tempP.y + 100));
+	characterGroup->addChild(showPlayerStatus[2]);
+
+	this->showPlayerStatus[3] = Label::createWithTTF(_AtoU8("체력\n"), "sandol.ttf", 35, Size(100, 65), TextHAlignment::CENTER);
+	showPlayerStatus[3]->setColor(Color3B(0, 0, 0));
+	tempP = positionArr[TER];
+	showPlayerStatus[3]->setPosition(Point(tempP.x-50, tempP.y + 100));
+	characterGroup->addChild(showPlayerStatus[3]);
+	/***********************************/
 }
 void HelloWorld::makePlayerWithItem() {
 	Tier *t;
@@ -149,13 +179,12 @@ void HelloWorld::makePlayerWithItem() {
 		for (int j = 0; j < 5; j++) {
 			t = new Tier((rand() % 81));
 			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom());
-			//p->inventory[i].pushItemList(*w);
+			p->inventory[i].pushItemList(*w);
 		}
-		//p->equipSelectedItem(0,i);
+		p->equipSelectedItem(0,i);
 	}
 }
 void HelloWorld::drawPlayerStatusHexa() {
-
 	DrawNode* t = (DrawNode*)statusHexa->getChildByName("playerStatus");
 	if (t != NULL) {
 		t->removeFromParent();
@@ -163,9 +192,15 @@ void HelloWorld::drawPlayerStatusHexa() {
 
 	statusHexaContent.setStatusVertex(p);
 	this->playerStatusHexa = DrawNode::create();
-	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
+	MyRGB rgbDam = p->getStatus()->getMyRGBDamage(), rgbDef = p->getStatus()->getMyRGBDefence();
+	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(rgbDam.getR(), rgbDam.getG(), rgbDam.getB(), 1), 2, Color4F(rgbDef.getR(), rgbDef.getG(), rgbDef.getB(), 1));
 	playerStatusHexa->setName("playerStatus");
 	statusHexa->addChild(this->playerStatusHexa);
+	
+	showPlayerStatus[0]->setString(_AtoU8(StringUtils::format("티어 %d/81", p->getStatus()->evalTier().getLevel() + 1).c_str()));
+	showPlayerStatus[1]->setString(_AtoU8(StringUtils::format("공격력\n%d", p->getStatus()->getDamage()).c_str()));
+	showPlayerStatus[2]->setString(_AtoU8(StringUtils::format("방어력\n%d", p->getStatus()->getDefence()).c_str()));
+	showPlayerStatus[3]->setString(_AtoU8(StringUtils::format("체력\n%d", p->getStatus()->getMaxHP()).c_str()));
 }
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
@@ -201,12 +236,8 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 			//skillTreeLayer
 		}
 		else if (pB->getBoundingBox().containsPoint(t->getLocation())) {
-			//partyLayer
-			/*
-				make party list
-			*/
 			PartyLayer partyLayer;
-			partyLayer.makePartyBtn(p->getStatus()->evalTier());
+			partyLayer.makePartyBtn(p->getStatus()->evalTier(),p);
 			this->backGround->addChild(partyLayer.content);
 		}
 		sB->setVisible(false);
@@ -232,13 +263,13 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 				touchNum = i;
 				auto action = MoveBy::create(0.1, Point(0, 100));
 				characterGroup->runAction(action);
-				auto action2 = ScaleBy::create(0.1, 0.625f);
-				auto action3 = MoveBy::create(0.1, Point(-50,30));
+				auto action2 = ScaleBy::create(0.1, 0.625);
+				auto action3 = MoveBy::create(0.1, Point(0, 50));
 				auto callFunc = CallFunc::create([&]() {
 					this->scrollView->setVisible(true);
 				});
 				auto seq = Sequence::create(action2, action3,callFunc, NULL);
-				statusLayer->runAction(seq);
+				statusHexa->runAction(seq);
 				break;
 			}
 			else {
@@ -253,13 +284,13 @@ bool HelloWorld::checkCharacterGroup(Point location) {
 		touchNum = -1;
 		auto action = MoveBy::create(0.1, Point(0, -100));
 		characterGroup->runAction(action);
-		auto action2 = ScaleBy::create(0.1, 1.6f);
-		auto action3 = MoveBy::create(0.1, Point(50,-30));
+		auto action2 = ScaleBy::create(0.1, 1.6);
+		auto action3 = MoveBy::create(0.1, Point(0, -50));
 		auto callFunc = CallFunc::create([&]() {
 			this->scrollView->setVisible(false);
 		});
-		auto seq = Sequence::create(callFunc, action3,action2, NULL);
-		statusLayer->runAction(seq);
+		auto seq = Sequence::create(callFunc, action3, action2, NULL);
+		statusHexa->runAction(seq);
 	}
 	return false;
 }
@@ -290,11 +321,15 @@ void HelloWorld::scrollViewSetting(int i) {
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
 					if (e == ui::Button::TouchEventType::ENDED) {
 						int deb;
-						this->p->equipSelectedItem(a, this->touchNum);
-						this->drawPlayerStatusHexa();
-						this->scrollViewSetting(i);
 						ui::Button *t = (ui::Button*)sender;
-						t->getParent()->removeFromParent();
+						if(!this->scrollViewShow)
+							t->getParent()->removeFromParent();
+						else {
+							this->p->equipSelectedItem(a, this->touchNum);
+							this->drawPlayerStatusHexa();
+							this->scrollViewSetting(i);
+							t->getParent()->removeFromParent();
+						}
 					}
 				});
 				dialog.addedTo(this->backGround);

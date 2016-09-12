@@ -11,5 +11,5 @@ class RangeNPC :public Character {
 private:
 public:
 	RangeNPC(Tier);
-	virtual void	initSkillSet(int);
+	virtual void initSkillSet(int);
 };

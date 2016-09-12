@@ -19,8 +19,7 @@ void SkillFrame::initBG() {
 	string _path = "images/skillbg.png";
 	_button = ui::Button::create(_path);
 	_button->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
-		printf("Touch event type: %d\n", type);
-		printf("Touch event sender: \n");
+		
 	});
 	this->addChild(_button);
 	return;

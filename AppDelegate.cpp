@@ -75,7 +75,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
+<<<<<<< HEAD
     auto scene = SkillTreeScene::createScene();
+=======
+    auto scene = HelloWorld::createScene();
+>>>>>>> d73f7b15e7e561f7e5b827bbcc814b60354e5655
     // run
     director->runWithScene(scene);
 

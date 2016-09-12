@@ -1,13 +1,13 @@
 #include"PartyContent.h"
 
-PartyContent::PartyContent(Tier t) {
+PartyContent::PartyContent(Tier t,Character *p) {
 	content = ui::Button::create("partyFrame.png", "partyFrame.png", "partyFrame.png");
 	content->setScale9Enabled(true);
 	content->setContentSize(Size(470, 200));
 	Size tempS = content->getSize();
 
 	list[0] = Character::create(t, "Monster", 0);
-	list[1] = Character::create(t, "User", 0);
+	list[1] = p;
 	list[2] = Character::create(t, "TankNPC", 0);
 	list[3] = Character::create(t, "MeleeNPC", 0);
 	list[4] = Character::create(t, "MeleeNPC", 0);

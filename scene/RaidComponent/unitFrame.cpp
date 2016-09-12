@@ -18,6 +18,7 @@ UnitFrame::UnitFrame(Character *character) {
 	setCharacter(character);
 	setBackground("images/bg.png");
 	setIcon("images/icon/");
+	
 	setHP();
 	setDPS();
 	this->addChild(_background, 0);
@@ -38,7 +39,7 @@ void UnitFrame::setCharacter(Character *character) {
 }
 void UnitFrame::setBackground(string path) {
 	_background = Sprite::create(path);
-	_background->setScale(1.0f);
+	_background->setScaleY(1.0f);
 	_background->setAnchorPoint(Vec2(0, 0.5f));
 	return;
 }
@@ -57,13 +58,13 @@ void UnitFrame::setHP() {
 	_hpbar->setAnchorPoint(Vec2(0, 0.5f));
 	_hpbar->setPosition(Vec2(75, 20));
 	float _hp = _character->getStatus()->getHP()/_character->getStatus()->getMaxHP();
-	_hplog = Label::create(f2s(_hp*100)+"%", "fonts/arial.ttf", 24);
+	_hplog = Label::create(f2s(_hp*100)+"%", "fonts/sdCrayon.ttf", 24);
 	_hplog->setAnchorPoint(Vec2(0, 0.5f));
 	_hplog->setPosition(Vec2(80, 20));
 	return;
 }
 void UnitFrame::setDPS() {
-	_dpslog = Label::create("700k", "fonts/arial.ttf", 36);
+	_dpslog = Label::create("700k", "fonts/sdCrayon.ttf", 36);
 	_dpslog->setAnchorPoint(Vec2(1, 0));
 	_dpslog->setPosition(Vec2(240, -40));
 	return;

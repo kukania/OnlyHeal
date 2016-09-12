@@ -11,5 +11,5 @@ public:
 	ui::Scale9Sprite *img[6];
 	Character *list[6];
 	std::string getStringContent();
-	PartyContent(Tier t);
+	PartyContent(Tier t,Character *p);
 };

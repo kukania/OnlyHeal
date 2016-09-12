@@ -24,7 +24,6 @@ public:
 	DrawNode* statusHexa;
 	DrawNode* playerStatusHexa;
 	StatusHexa statusHexaContent;
-	Layer *statusLayer;
 	Label *showPlayerStatus[4]; //damage,defence,MaxHP,Tier
 
 	bool menuBtnTouched;
