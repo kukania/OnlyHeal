@@ -27,7 +27,7 @@ private:
 public:
 	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();
-	void insertButton (Skill*);
+	void insertButton (Skill*, Vec2);
 	void initScrollView ();
 	ui::ScrollView* getScrollView ();
 };

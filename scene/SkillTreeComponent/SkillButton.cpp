@@ -22,7 +22,7 @@ void SkillButton::initButton (){
 	_button = ui::Button::create (sPath, sPath, sPath);
 	_button->addTouchEventListener([&] (Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf ("I do nothing\n");
-		printf ("Skill Name is %s\n", _skill->getName ());
+		printf ("Skill Name is %s\n", _skill->getName ().c_str ());
 	});
 	this->addChild (_button);
 	return;

@@ -19,16 +19,19 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 	else if (type == DebuffSkilltree){
 		// no debuffskilltree now
 	}
+	int i = 0;
 	for (TreeIt ti = _st.getBegin ();
 		ti != _st.getEnd (); ti++){
-		insertButton (_pSf->getSkill (ti->first));
+		Skill* 	pSkill 		= _pSf->getSkill (ti->first);
+		Vec2 	position 	= Vec2 (100*++i, 100);
+		insertButton (pSkill, position);
 	}
 }
 
 void SkillTreeFrame::initScrollView(){
 	_scrollView = ui::ScrollView::create();
-	_scrollView->setContentSize(Size(200, 250));
-	_scrollView->setInnerContainerSize(Size(1200, 250));
+	_scrollView->setContentSize(Size(280, 400));
+	_scrollView->setInnerContainerSize(Size(1200, 400));
 	_scrollView->setBackGroundImageScale9Enabled(true);
 	_scrollView->setBackGroundImage("images/skilltree/rect.png");
 	_scrollView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
@@ -36,14 +39,14 @@ void SkillTreeFrame::initScrollView(){
 	_scrollView->setTouchEnabled(true);
 	_scrollView->setSwallowTouches(false);
 	_scrollView->setName("scrollView");
-	_scrollView->setAnchorPoint (Vec2 (0.5f, 1.0f));
+	_scrollView->setAnchorPoint (Vec2 (0.5f, 0.98f));
 	_scrollView->setPosition (Vec2 (0, 205));
 	return;
 }
 
-void SkillTreeFrame::insertButton (Skill* skill){
+void SkillTreeFrame::insertButton (Skill* skill, Vec2 position){
 	auto button = new SkillButton (skill);
-	button->setPosition (Vec2 (0, 0));
+	button->setPosition (position);
 	_sbv.push_back (button);
 	_scrollView->addChild (button);
 	return;
