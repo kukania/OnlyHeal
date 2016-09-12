@@ -2,6 +2,7 @@
 #include "partyLayer.h"
 #include "OHDialog.h"
 #include"ui/CocosGUI.h"
+#include"scene/RaidScene.h"
 #include "partyContent.h"
 
 PartyLayer::PartyLayer() {
@@ -40,9 +41,9 @@ PartyLayer::PartyLayer() {
 	content->addChild(scrollView);
 }
 
-void PartyLayer::makePartyBtn(Tier t) {
+void PartyLayer::makePartyBtn(Tier t, Character *p) {
 	for (int i = 0; i < 5; i++) {
-		PartyContent *tempContent = new PartyContent(t);
+		PartyContent *tempContent = new PartyContent(t,p);
 		ui::Button*btn = tempContent->content;
 		btn->setAnchorPoint(Point(0, 1));
 		btn->setPosition(Point(10, 1030 - 200 * i));
@@ -52,7 +53,11 @@ void PartyLayer::makePartyBtn(Tier t) {
 				std::string temp = tempContent->getStringContent();
 				OHDialog dialog(Size(450, 300), "테스트", temp+"참여하시겠습니까?");
 				ui::Button* btn = (ui::Button*)sender;
+				dialog.okBtn->addTouchEventListener([tempContent](Ref*sender2, ui::Button::TouchEventType e) {
+					Director::getInstance()->pushScene(Raid::createScene());
+				});
 				dialog.addedTo(btn->getParent()->getParent()->getParent());
+				
 			}
 		});
 		scrollView->addChild(btn);

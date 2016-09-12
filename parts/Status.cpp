@@ -79,8 +79,8 @@ int			Status::addSpeed(float in) {
 }
 bool		Status::equipItem(Item input) {
 	items[input.getType()] = input;
-	MyRGBdamage = items[0].getMyRGB() + items[2].getMyRGB();
-	MyRGBdefence = items[1].getMyRGB() + items[2].getMyRGB();
+	MyRGBdamage = (items[0].getMyRGB() + items[2].getMyRGB())*0.5;
+	MyRGBdefence = (items[1].getMyRGB() + items[2].getMyRGB())*0.5;
 	setMaxHP();
 	return 0;
 }

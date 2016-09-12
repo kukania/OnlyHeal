@@ -61,7 +61,7 @@ void HelloWorld::makeBackGround() {
 	
 	this->statusHexa = DrawNode::create();
 	this->statusHexaContent=StatusHexa(175);
-	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 0.3f, 0.3f, 1), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
+	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 1.0, 1.0, 1), 1, Color4F(0.0, 0.0, 0.0, 1));
 	this->statusHexa->setPosition(275, 700);
 	backGround->addChild(this->statusHexa);
 
@@ -175,7 +175,8 @@ void HelloWorld::drawPlayerStatusHexa() {
 
 	statusHexaContent.setStatusVertex(p);
 	this->playerStatusHexa = DrawNode::create();
-	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(0.0f, 0.3f, 0.3f, 1), 0, Color4F(0.0f, 0.3f, 0.3f, 1));
+	MyRGB rgbDam = p->getStatus()->getMyRGBDamage(), rgbDef = p->getStatus()->getMyRGBDefence();
+	playerStatusHexa->drawPolygon(statusHexaContent.statusVertex, 6, Color4F(rgbDam.getR(), rgbDam.getG(), rgbDam.getB(), 1), 2, Color4F(rgbDef.getR(), rgbDef.getG(), rgbDef.getB(), 1));
 	playerStatusHexa->setName("playerStatus");
 	statusHexa->addChild(this->playerStatusHexa);
 	
@@ -218,12 +219,8 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 			//skillTreeLayer
 		}
 		else if (pB->getBoundingBox().containsPoint(t->getLocation())) {
-			//partyLayer
-			/*
-				make party list
-			*/
 			PartyLayer partyLayer;
-			partyLayer.makePartyBtn(p->getStatus()->evalTier());
+			partyLayer.makePartyBtn(p->getStatus()->evalTier(),p);
 			this->backGround->addChild(partyLayer.content);
 		}
 		sB->setVisible(false);
@@ -307,11 +304,15 @@ void HelloWorld::scrollViewSetting(int i) {
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
 					if (e == ui::Button::TouchEventType::ENDED) {
 						int deb;
-						this->p->equipSelectedItem(a, this->touchNum);
-						this->drawPlayerStatusHexa();
-						this->scrollViewSetting(i);
 						ui::Button *t = (ui::Button*)sender;
-						t->getParent()->removeFromParent();
+						if(!this->scrollViewShow)
+							t->getParent()->removeFromParent();
+						else {
+							this->p->equipSelectedItem(a, this->touchNum);
+							this->drawPlayerStatusHexa();
+							this->scrollViewSetting(i);
+							t->getParent()->removeFromParent();
+						}
 					}
 				});
 				dialog.addedTo(this->backGround);
