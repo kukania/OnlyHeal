@@ -18,5 +18,6 @@ private:
 	vector<SkillButton*> sbv;
 public:
 	SkillTreeFrame (SkillTree*);
-	void initButton ();
+	~SkillTreeFrame ();
+	void insertButton (Skill*);
 };

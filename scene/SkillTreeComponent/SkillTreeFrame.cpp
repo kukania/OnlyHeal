@@ -10,12 +10,13 @@ SkillTreeFrame::SkillTreeFrame (SkillTree* pSkilltree){
 	pSkilltree->initHealSkillTree ();
 	for (TreeIt ti = pSkilltree->getBegin ();
 		ti != pSkilltree->getEnd (); ti++){
-		
+		insertButton ();
 	}
 }
 
-void SkillTreeFrame::initButton (){
+void SkillTreeFrame::insertButton (Skill* skill){
 	auto temp = new SkillButton ();
+	temp->setPoisition (Vec2 (0, 0));
 	sbv.push_back (temp);
 	return;
 }

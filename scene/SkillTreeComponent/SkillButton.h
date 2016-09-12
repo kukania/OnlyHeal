@@ -14,7 +14,11 @@ USING_NS_CC;
 class SkillButton : public CCNode{
 private:
 	ui::Button* 	_button;
+	Label* 			_label;
 	Skill* 			_skill;
 public:
-	SkillButton
+	SkillButton (Skill* skill);
+	~SkillButton ();
+	void initButton ();
+	void initLabel ();
 };
