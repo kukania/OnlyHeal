@@ -54,6 +54,7 @@ bool SkillTreeScene::init()
 	auto closeBtn = ui::Button::create ("images/skilltree/btn_close.png");
 	closeBtn->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf ("Touch event type: %d\n", type);
+		//Director::getInstance()->popScene();		/* This code is unable */
 	});
 	closeBtn->setAnchorPoint (Vec2 (0.5f, 1.0f));
 	closeBtn->setPosition (Vec2 (268, 47));
