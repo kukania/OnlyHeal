@@ -6,6 +6,7 @@ Revision:	2016/09/12 by PorcaM
 #include "SkillButton.h"
 #include <string>
 #include <cstdio>
+#include "ConvertKorean.h"
 
 SkillButton::SkillButton (Skill* skill){
 	_skill = skill;
@@ -14,7 +15,8 @@ SkillButton::SkillButton (Skill* skill){
 }
 
 SkillButton::~SkillButton (){
-
+	delete _button;
+	delete _label;
 }
 
 void SkillButton::initButton (){
@@ -32,7 +34,10 @@ void SkillButton::initLabel (){
 	string 	sText = _skill->getName ();
 	string 	sFont = "fonts/sdCrayon.ttf";
 	int 	iSize = 24;
-	_label = Label::create (sText, sFont, iSize);
+	_label = Label::create (_AtoU8 (sText.c_str ()), sFont, iSize);
+	_label->setAlignment (TextHAlignment::CENTER);
+	_label->setTextColor (Color4B (0, 0, 0, 255));
+	_label->setWidth (50);
 	this->addChild (_label);
 	return;
 }

@@ -68,12 +68,21 @@ bool SkillTreeScene::init()
 		string path = "images/skilltree/tab" + num[i] + ".png";
 		tab[i] = ui::Button::create (path.c_str ());
 		tab[i]->setAnchorPoint (Vec2 (0.5f, 0));
-		tab[i]->setPosition (Vec2 (92*(i-1), 205));
+		tab[i]->setPosition (Vec2 (92*(i-1), 185));
 		SkillTreeLayer->addChild (tab[i]);
 	}
 
-	SkillTreeFrame* stf = new SkillTreeFrame (HealSkilltree);
-	SkillTreeLayer->addChild (stf->getScrollView ());
+	SkillTreeFrame* stf[3];
+	stf[0] = new SkillTreeFrame (HealSkilltree);
+	stf[1] = new SkillTreeFrame (BuffSkilltree);
+	stf[2] = new SkillTreeFrame (DebuffSkilltree);
+	SkillTreeLayer->addChild (stf[0]->getScrollView ());
+
+	for (int i = 0; i < 3; i++){
+		tab[i]->addTouchEventListener ([&] (Ref *pSender, ui::Button::Widget::TouchEventType type){
+			SkillTreeLayer->addChild (stf[i] -> getScrollView ());
+		});
+	}
 
 	SkillTreeLayer->setPosition (Vec2 (visibleSize.width/2*1.6, visibleSize.height/2*1.6));
 	SkillTreeLayer->setScale (1.6f);

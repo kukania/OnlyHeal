@@ -40,7 +40,7 @@ void SkillTreeFrame::initScrollView(){
 	_scrollView->setSwallowTouches(false);
 	_scrollView->setName("scrollView");
 	_scrollView->setAnchorPoint (Vec2 (0.5f, 0.98f));
-	_scrollView->setPosition (Vec2 (0, 205));
+	_scrollView->setPosition (Vec2 (0, 185));
 	return;
 }
 
