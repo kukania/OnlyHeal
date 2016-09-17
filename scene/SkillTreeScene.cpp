@@ -80,7 +80,7 @@ bool SkillTreeScene::init()
 
 	for (int i = 0; i < 3; i++){
 		tab[i]->addTouchEventListener ([&] (Ref *pSender, ui::Button::Widget::TouchEventType type){
-			SkillTreeLayer->addChild (stf[i] -> getScrollView ());
+			stf[0] = new SkillTreeFrame(BuffSkilltree);
 		});
 	}
 

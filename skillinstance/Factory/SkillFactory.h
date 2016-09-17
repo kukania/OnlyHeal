@@ -25,6 +25,6 @@ public:
 	void 	pushSkill (Skill*);
 	virtual void	initAllSkills() = 0;
 	virtual Skill*	createSkill();
-	virtual Skill*	getSkill(int);
-	virtual Skill** getSkillsList(int);
+	Skill*	getSkill(int);
+	Skill** getSkillsList(int);
 };
