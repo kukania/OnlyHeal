@@ -11,11 +11,8 @@ Modified:	2016/09/05 by PorcaM
 SkillFactory::SkillFactory() {
 	Akashic.clear();
 }
-SkillFactory::~SkillFactory(){
-	for (SVI vi = Akashic.begin();
-	vi != Akashic.end(); vi++){
-		delete *vi; 	/* [PM_Caution] I cannot assure that this code is clear operation */
-	}
+SkillFactory::~SkillFactory(){\
+	clearFactory();
 }
 
 SVI 	SkillFactory::getBegin (){
@@ -24,6 +21,18 @@ SVI 	SkillFactory::getBegin (){
 
 SVI 	SkillFactory::getEnd (){
 	return Akashic.end ();
+}
+
+void 	SkillFactory::clearFactory (){
+	for (SVI vi = getBegin (); vi != getEnd (); vi++){
+		delete *vi;
+	}
+	Akashic.clear ();
+	return;
+}
+
+void 	SkillFactory::pushSkill (Skill* pSkill){
+	Akashic.push_back (pSkill);
 }
 
 Skill*	SkillFactory::getSkill(int index) {

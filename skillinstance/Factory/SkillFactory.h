@@ -21,6 +21,8 @@ public:
 	~SkillFactory();
 	SVI 	getBegin ();
 	SVI 	getEnd ();
+	void 	clearFactory ();
+	void 	pushSkill (Skill*);
 	virtual void	initAllSkills() = 0;
 	virtual Skill*	createSkill();
 	virtual Skill*	getSkill(int);

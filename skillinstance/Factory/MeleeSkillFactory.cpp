@@ -18,7 +18,7 @@ Skill*	MeleeSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime,
 }
 
 void	MeleeSkillFactory::initAllSkills() {
-	Akashic.clear();
+	clearFactory ();
 	string  sLevelPrefix[7]		= { "기본", "숙련", "완숙", "전문", "기적", "전설", "신화" };
 	float   fLevelFactor[7]		= { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };
 	string	sTypePostfix[2]		= { "강타", "출혈" };
@@ -32,7 +32,7 @@ void	MeleeSkillFactory::initAllSkills() {
 			time_s	time		= iTypeTime[j];
 			bool	multi		= false;
 			float	factor		= fLevelFactor[i] * iTypeFactor[j];
-			Akashic.push_back(createSkill(id, skillName, cooltime, time, multi, factor));
+			pushSkill (createSkill(id, skillName, cooltime, time, multi, factor));
 		}
 	}
 	return;

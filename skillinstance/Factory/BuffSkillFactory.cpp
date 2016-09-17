@@ -1,23 +1,23 @@
 /*
-FileName: 	HealSkillFactory.cpp
-Revision:	2016/09/05 by PorcaM
+FileName: 	BuffSkillFactory.cpp
+Revision:	2016/09/17 by PorcaM
 */
 
-#include "HealSkillFactory.h"
-#include "skillinstance\HealSkill.h"
+#include "BuffSkillFactory.h"
+#include "skillinstance\BuffSkill.h"
 #include <string>
 
-Skill*	HealSkillFactory::createSkill() {
+Skill*	BuffSkillFactory::createSkill() {
 	Skill* skill = new HealSkill();
 	return skill;
 }
 
-Skill*	HealSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {
+Skill*	BuffSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {
 	Skill* skill = new HealSkill(ID, name, cooltime, time, multi, factor);
 	return skill;
 }
 
-void	HealSkillFactory::initAllSkills() {
+void	BuffSkillFactory::initAllSkills() {
 	clearFactory ();
 	string  sLevelPrefix[7]		= { "기본", "숙련", "완숙", "전문", "기적", "전설", "신화" };
 	float   fLevelFactor[7]		= { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };
