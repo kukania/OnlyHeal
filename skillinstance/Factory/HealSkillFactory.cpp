@@ -18,7 +18,7 @@ Skill*	HealSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, 
 }
 
 void	HealSkillFactory::initAllSkills() {
-	Akashic.clear();
+	clearFactory ();
 	string  sLevelPrefix[7]		= { "±âº»", "¼÷·Ã", "¿Ï¼÷", "Àü¹®", "±âÀû", "Àü¼³", "½ÅÈ­" };
 	float   fLevelFactor[7]		= { 1.0f, 1.2f, 1.5f, 2.0f, 3.0f, 5.0f, 10.0f };
 	string	sTypePostfix[3]		= { "Èú¸µ", "±¤Èú", "¹°¾à" };
@@ -34,7 +34,7 @@ void	HealSkillFactory::initAllSkills() {
 			time_s	time		= iTypeTime[j];
 			bool	multi		= bTypeMulti[j];
 			float	factor		= fLevelFactor[i] * iTypeFactor[j];
-			Akashic.push_back(createSkill(id, skillName, cooltime, time, multi, factor));
+			pushSkill (createSkill(id, skillName, cooltime, time, multi, factor));
 		}
 	}
 	return;

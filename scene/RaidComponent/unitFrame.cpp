@@ -16,8 +16,8 @@ std::string f2s(float number) {
 
 UnitFrame::UnitFrame(Character *character) {
 	setCharacter(character);
-	setBackground("images/bg.png");
-	setIcon("images/icon/");
+	setBackground("images/raid/bg.png");
+	setIcon("images/raid/");
 	
 	setHP();
 	setDPS();
@@ -53,7 +53,7 @@ void UnitFrame::setIcon(string path) {
 	return;
 }
 void UnitFrame::setHP() {
-	_hpbar = Sprite::create("images/raid/greenHP2.png");
+	_hpbar = Sprite::create("images/raid/greenHP.png");
 	_hpbar->setScale(1.0f);
 	_hpbar->setAnchorPoint(Vec2(0, 0.5f));
 	_hpbar->setPosition(Vec2(75, 20));

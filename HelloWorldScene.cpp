@@ -4,6 +4,7 @@
 #include"scene\partyLayer.h"
 #include "ConvertKorean.h"
 #include "scene\OHDialog.h"
+#include "scene\SkillTreeScene.h"
 
 #include<iostream>
 using namespace std;
@@ -58,7 +59,6 @@ void HelloWorld::makeBackGround() {
 	showPlayerStatus[0]->setPosition(Point(270, 900));
 	backGround->addChild(showPlayerStatus[0]);
 	/***********************************/
-
 	this->statusHexa = DrawNode::create();
 	this->statusHexaContent=StatusHexa(175);
 	statusHexa->drawPolygon(statusHexaContent.corners, 6, Color4F(1.0f, 1.0, 1.0, 1), 1, Color4F(0.0, 0.0, 0.0, 1));
@@ -216,6 +216,7 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		auto sB = (Label*)backGround->getChildByName("skillTreeBtn");
 		auto pB = (Label*)backGround->getChildByName("partyBtn");
 		if (sB->getBoundingBox().containsPoint(t->getLocation())) {
+			Director::getInstance()->pushScene(SkillTreeScene::createScene());
 			//skillTreeLayer
 		}
 		else if (pB->getBoundingBox().containsPoint(t->getLocation())) {

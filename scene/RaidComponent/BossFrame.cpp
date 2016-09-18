@@ -23,7 +23,7 @@ void BossFrame::setCharacter(Character *character) {
 }
 
 void BossFrame::initIcon() {
-	string _path = "images/icon/monster.png";
+	string _path = "images/raid/monster.png";
 	_icon = Sprite::create(_path);
 	_icon->setName("icon");
 	_icon->setPosition(Vec2(0, 0));
@@ -32,7 +32,7 @@ void BossFrame::initIcon() {
 }
 
 void BossFrame::initHP() {
-	string _path = "images/redHP.png";
+	string _path = "images/raid/redHP.png";
 	_hpbar = Sprite::create(_path);
 	_hpbar->setName("hpbar");
 	_hpbar->setPosition(Vec2(0, -100));
@@ -42,7 +42,7 @@ void BossFrame::initHP() {
 
 void BossFrame::initRGB() {
 	Layer *rgbLayer = Layer::create();
-	string _path = "images/plate2.png";
+	string _path = "images/raid/plate2.png";
 	_rgbbg = Sprite::create(_path);
 	_rgbbg->setPosition(Vec2(0, 0));
 	rgbLayer->addChild(_rgbbg);

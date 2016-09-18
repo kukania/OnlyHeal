@@ -4,6 +4,7 @@ Revision: 	2016/09/07 by PorcaM
 Modified: 	2016/09/09 by PorcaM
 */
 
+#pragma once
 #include "parts/Skill.h"
 
 class SkillNode{

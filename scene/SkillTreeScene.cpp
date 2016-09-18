@@ -5,6 +5,7 @@ Revision:	2016/09/11 by PorcaM
 
 #include "SkillTreeScene.h"
 #include "ui/CocosGUI.h"
+#include "SkillTreeComponent\SkillTreeFrame.h"
 #include <string>
 using std::string;
 USING_NS_CC;
@@ -53,6 +54,7 @@ bool SkillTreeScene::init()
 	auto closeBtn = ui::Button::create ("images/skilltree/btn_close.png");
 	closeBtn->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf ("Touch event type: %d\n", type);
+		//Director::getInstance()->popScene();		/* This code is unable */
 	});
 	closeBtn->setAnchorPoint (Vec2 (0.5f, 1.0f));
 	closeBtn->setPosition (Vec2 (268, 47));
@@ -65,8 +67,22 @@ bool SkillTreeScene::init()
 	for (int i = 0; i < 3; i++){
 		string path = "images/skilltree/tab" + num[i] + ".png";
 		tab[i] = ui::Button::create (path.c_str ());
-		tab[i]->setPosition (Vec2 (92*(i-1), 205));
+		tab[i]->setAnchorPoint (Vec2 (0.5f, 0));
+		tab[i]->setPosition (Vec2 (92*(i-1), 185));
+		tab[i]->setName ("tab"+num[i]);
 		SkillTreeLayer->addChild (tab[i]);
+	}
+
+	SkillTreeFrame* stf = new SkillTreeFrame (HealSkilltree);
+	SkillTreeLayer->addChild (stf->getScrollView ());
+
+	for (int i = 0; i < 3; i++){
+		tab[i]->addTouchEventListener ([&, stf] (Ref *pSender, ui::Button::Widget::TouchEventType type){
+			printf (((ui::Button*)pSender)->getName ().c_str ());
+			stf->getScrollView ()->removeFromParent ();
+			//stf->SkillTreeFrame(BuffSkilltree);
+			SkillTreeLayer->addChild (stf->getScrollView ());
+		});
 	}
 
 	SkillTreeLayer->setPosition (Vec2 (visibleSize.width/2*1.6, visibleSize.height/2*1.6));
