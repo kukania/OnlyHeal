@@ -27,15 +27,8 @@ void SkillFrame::initBG() {
 		case ui::Button::Widget::TouchEventType::BEGAN:
 			Raid::selectedNum = btn->getTag();
 			CCLOG("selected %d", Raid::selectedNum);
-			/*
-			btn->retain();
-			btn->removeFromParent();
-			scv->getChildrenCount();
-			layer->addChild(btn);
-			btn->release();*/
 			break;
 		case ui::Button::Widget::TouchEventType::MOVED:
-			//btn->setPosition(layer->movingPoint);
 			break;
 		case ui::Button::Widget::TouchEventType::ENDED:
 			Raid::selectedNum = -1;

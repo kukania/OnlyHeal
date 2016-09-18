@@ -32,6 +32,7 @@ public:
 	Point skillBtnPosition[SKILLNUM];
 	ui::Button *selectedBtn;
 	static int selectedNum;
+	BossFrame *bf;
 	/****************************/
 	/*
 	Custom class functions

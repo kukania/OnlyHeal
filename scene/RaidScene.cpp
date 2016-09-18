@@ -127,7 +127,7 @@ void Raid::makeUnitFrame() {
 	UnitGrid->setPosition(Vec2(0, borderline - 180));
 	this->addChild(UnitGrid);
 
-	BossFrame *bf = new BossFrame(cl[0]);
+	bf = new BossFrame(cl[0]);
 	bf->setScale(1.6f);
 	bf->setPosition(Vec2(visibleSize.width / 2, borderline + 80));
 	this->addChild(bf);
