@@ -3,7 +3,7 @@ FileName:	SkillFrame.cpp
 Revision:	2016/08/30 by PorcaM
 Modified:	2016/08/31 by PorcaM
 */
-
+#include"../RaidScene.h"
 #include "SkillFrame.h"
 #include <string>
 #include <cstdio>
@@ -20,7 +20,29 @@ void SkillFrame::initBG() {
 	_button = ui::Button::create(_path);
 	_button->setScale9Enabled(true);
 	_button->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		ui::Button *btn = (ui::Button*)pSender;
+		ui::ScrollView *scv = (ui::ScrollView*)(btn->getParent()->getParent());
+		Raid *layer = (Raid*)scv->getParent();
+		switch (type) {
+		case ui::Button::Widget::TouchEventType::BEGAN:
+			Raid::selectedNum = btn->getTag();
+			CCLOG("selected %d", Raid::selectedNum);
+			/*
+			btn->retain();
+			btn->removeFromParent();
+			scv->getChildrenCount();
+			layer->addChild(btn);
+			btn->release();*/
+			break;
+		case ui::Button::Widget::TouchEventType::MOVED:
+			//btn->setPosition(layer->movingPoint);
+			break;
+		case ui::Button::Widget::TouchEventType::ENDED:
+			Raid::selectedNum = -1;
+			break;
+		}
 	});
+	_button->setSwallowTouches(false);
 	return;
 }
 

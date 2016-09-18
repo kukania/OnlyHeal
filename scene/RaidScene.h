@@ -9,6 +9,8 @@ Modified:	2016/08/25 by PorcaM
 #include"characters\Character.h"
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
+USING_NS_CC;
+#define SKILLNUM 21
 class Raid : public cocos2d::Layer
 {
 public:
@@ -27,6 +29,9 @@ public:
 	/*************variable*******/
 	Character **cl;
 	cocos2d::ui::ScrollView *scv;
+	Point skillBtnPosition[SKILLNUM];
+	ui::Button *selectedBtn;
+	static int selectedNum;
 	/****************************/
 	/*
 	Custom class functions
@@ -42,6 +47,9 @@ public:
 	/*******************/
 	void makeUnitFrame();
 	void makeSkillScrollView();
+	virtual bool onTouchBegan(Touch* touch, Event*);
+	virtual void onTouchMoved(Touch *touch, Event*);
+	virtual void onTouchEnded(Touch *touch, Event*);
 	//by kukania
 };
 #endif // __RAID_SCENE_H__
