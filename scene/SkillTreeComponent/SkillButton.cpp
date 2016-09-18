@@ -7,6 +7,7 @@ Revision:	2016/09/12 by PorcaM
 #include <string>
 #include <cstdio>
 #include "ConvertKorean.h"
+#include "OHDialog.h"
 
 SkillButton::SkillButton (Skill* skill){
 	_skill = skill;
@@ -23,8 +24,9 @@ void SkillButton::initButton (){
 	string sPath = "images/skilltree/icon_d.png";
 	_button = ui::Button::create (sPath, sPath, sPath);
 	_button->addTouchEventListener([&] (Ref *pSender, ui::Button::Widget::TouchEventType type) {
-		printf ("I do nothing\n");
 		printf ("Skill Name is %s\n", _skill->getName ().c_str ());
+		OHDialog dialog (Size (400, 250), "Learn skill", "Learn this skill?");
+		dialog.addedTo (this);
 	});
 	this->addChild (_button);
 	return;

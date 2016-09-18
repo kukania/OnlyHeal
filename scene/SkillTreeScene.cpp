@@ -69,18 +69,19 @@ bool SkillTreeScene::init()
 		tab[i] = ui::Button::create (path.c_str ());
 		tab[i]->setAnchorPoint (Vec2 (0.5f, 0));
 		tab[i]->setPosition (Vec2 (92*(i-1), 185));
+		tab[i]->setName ("tab"+num[i]);
 		SkillTreeLayer->addChild (tab[i]);
 	}
 
-	SkillTreeFrame* stf[3];
-	stf[0] = new SkillTreeFrame (HealSkilltree);
-	stf[1] = new SkillTreeFrame (BuffSkilltree);
-	stf[2] = new SkillTreeFrame (DebuffSkilltree);
-	SkillTreeLayer->addChild (stf[0]->getScrollView ());
+	SkillTreeFrame* stf = new SkillTreeFrame (HealSkilltree);
+	SkillTreeLayer->addChild (stf->getScrollView ());
 
 	for (int i = 0; i < 3; i++){
 		tab[i]->addTouchEventListener ([&] (Ref *pSender, ui::Button::Widget::TouchEventType type){
-			stf[0] = new SkillTreeFrame(BuffSkilltree);
+			printf (((ui::Button*)pSender)->getName ().c_str ());
+			stf->getScrollView ()->removeFromParent ();
+			stf = new SkillTreeFrame(BuffSkilltree);
+			SkillTreeLayer->addChild (stf->getScrollView ());
 		});
 	}
 

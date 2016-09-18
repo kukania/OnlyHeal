@@ -8,15 +8,20 @@ Modified: 	2016/09/12 by PorcaM
 #include <cstdio>
 
 SkillTree::SkillTree (){
-	_tree.clear ();
+	clear ();
 }
 
 /* clear all allocated nodes */
 SkillTree::~SkillTree (){
-	for (TreeIt ti = _tree.begin ();
-		ti != _tree.end (); ti++){
+	clear ();
+}
+
+void SkillTree::clear (){
+	for (TreeIt ti = getBegin (); ti != getEnd (); ti++){
 		delete ti->second;
 	}
+	_tree.clear ();
+	return;
 }
 
 void 	SkillTree::insertSkill (SkillNode* node){
@@ -44,13 +49,18 @@ void 	SkillTree::removeSkill (SkillID id){
 }
 
 void 	SkillTree::initHealSkillTree (){
-	_tree.clear ();
+	clear ();
 	insertSkill (new SkillNode (0, 0, true));
 	insertSkill (new SkillNode (1, 0, false));
 	for (int i = 0 ; i < 6; i++){
 		insertSkill (new SkillNode (2+i, 1+i, false));
 	}
 
+	return;
+}
+
+void 	SkillTree::initBuffSkillTree (){
+	clear ();
 	return;
 }
 

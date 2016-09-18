@@ -24,6 +24,8 @@ private:
 	SkillTree 				_st;
 	SkillFactory* 			_pSf;
 	ui::ScrollView* 		_scrollView;
+	int 					_height;
+	int 					_innerWidth;
 public:
 	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();

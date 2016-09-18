@@ -22,7 +22,9 @@ public:
 	SkillNode* 	findSkill (SkillID);
 	void 		removeSkill (SkillID);
 	void 		initHealSkillTree ();
+	void 		initBuffSkillTree ();
 	int 		learnSkill (SkillID);
 	TreeIt 		getBegin ();
 	TreeIt 		getEnd ();
+	void 		clear ();
 };

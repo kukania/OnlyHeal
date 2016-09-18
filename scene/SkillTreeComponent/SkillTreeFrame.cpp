@@ -1,12 +1,17 @@
 /*
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
+Modified: 	2016/09/18 by PorcaM
 */
 
 #include "SkillTreeFrame.h"
 #include "skillinstance/Factory/HealSkillFactory.h"
+#include "skillinstance/Factory/BuffSkillFactory.h"
+#include "skillinstance/Factory/DebuffSkillFactory.h"
 
 SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
+	_height = 400;
+	_innerWidth = 1200;
 	initScrollView ();
 	if (type == HealSkilltree) {
 		_st.initHealSkillTree ();
@@ -14,7 +19,9 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 		_pSf->initAllSkills();
 	}
 	else if (type == BuffSkilltree){
-		// no buffskilltree now
+		_st.initBuffSkillTree ();
+		_pSf = new BuffSkillFactory ();
+		_pSf->initAllSkills ();
 	}
 	else if (type == DebuffSkilltree){
 		// no debuffskilltree now
@@ -30,8 +37,8 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 
 void SkillTreeFrame::initScrollView(){
 	_scrollView = ui::ScrollView::create();
-	_scrollView->setContentSize(Size(280, 400));
-	_scrollView->setInnerContainerSize(Size(1200, 400));
+	_scrollView->setContentSize (Size (280, _height));
+	_scrollView->setInnerContainerSize(Size (_innerWidth, _height));
 	_scrollView->setBackGroundImageScale9Enabled(true);
 	_scrollView->setBackGroundImage("images/skilltree/rect.png");
 	_scrollView->setDirection(ui::ScrollView::Direction::HORIZONTAL);
