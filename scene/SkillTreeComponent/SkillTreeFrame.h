@@ -1,6 +1,7 @@
 /*
 FileName:	SkillTreeFrame.h
 Revision:	2016/09/12 by PorcaM
+Modified: 	2016/09/19 by PorcaM
 */
 
 #pragma once
@@ -26,10 +27,11 @@ private:
 	ui::ScrollView* 		_scrollView;
 	int 					_height;
 	int 					_innerWidth;
+	void insertButton (Skill*, Vec2);
+	void initScrollView ();
 public:
 	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();
-	void insertButton (Skill*, Vec2);
-	void initScrollView ();
+	void initWithType (ST_TYPE);
 	ui::ScrollView* getScrollView ();
 };

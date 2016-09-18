@@ -1,7 +1,7 @@
 /*
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/18 by PorcaM
+Modified: 	2016/09/19 by PorcaM
 */
 
 #include "SkillTreeFrame.h"
@@ -13,19 +13,7 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 	_height = 400;
 	_innerWidth = 1200;
 	initScrollView ();
-	if (type == HealSkilltree) {
-		_st.initHealSkillTree ();
-		_pSf = new HealSkillFactory ();
-		_pSf->initAllSkills();
-	}
-	else if (type == BuffSkilltree){
-		_st.initBuffSkillTree ();
-		_pSf = new BuffSkillFactory ();
-		_pSf->initAllSkills ();
-	}
-	else if (type == DebuffSkilltree){
-		// no debuffskilltree now
-	}
+	initWithType (type);
 	int i = 0;
 	for (TreeIt ti = _st.getBegin ();
 		ti != _st.getEnd (); ti++){
@@ -33,6 +21,10 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 		Vec2 	position 	= Vec2 (100*++i, 100);
 		insertButton (pSkill, position);
 	}
+}
+
+void SkillTreeFrame::initWithType (ST_TYPE type){
+	
 }
 
 void SkillTreeFrame::initScrollView(){
