@@ -27,7 +27,7 @@ private:
 	ui::ScrollView* 		_scrollview;
 	int 					_height;
 	int 					_innerWidth;
-	void insertButton (Skill*, Vec2);
+	void insertButton (Skill*, SkillNode*, Vec2);
 	void initScrollView ();
 	void clearScrollview ();
 	void clearButtons ();

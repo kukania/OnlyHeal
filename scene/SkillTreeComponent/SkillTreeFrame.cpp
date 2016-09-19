@@ -36,7 +36,7 @@ void SkillTreeFrame::initWithType (ST_TYPE type){
 	for (TreeIt ti = _skilltree.getBegin (); ti != _skilltree.getEnd (); ti++){
 		Skill* 	pSkill 		= factory -> getSkill (ti->first);
 		Vec2 	position 	= Vec2 (100*++i, 100);
-		insertButton (pSkill, position);
+		insertButton (pSkill, ti->second, position);
 	}
 	return;
 }
@@ -71,8 +71,8 @@ void SkillTreeFrame::clearButtons (){
 	return;
 }
 
-void SkillTreeFrame::insertButton (Skill* skill, Vec2 position){
-	auto button = new SkillButton (skill);
+void SkillTreeFrame::insertButton (Skill* skill, SkillNode* node, Vec2 position){
+	auto button = new SkillButton (skill, node);
 	button->setPosition (position);
 	_buttons.push_back (button);
 	_scrollview->addChild (button);

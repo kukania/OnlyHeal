@@ -17,9 +17,11 @@ private:
 	ui::Button* 	_button;
 	Label* 			_label;
 	Skill* 			_skill;
+	SkillNode* 		_node;
 public:
-	SkillButton (Skill* skill);
+	SkillButton (Skill*, SkillNode*);
 	~SkillButton ();
 	void initButton ();
 	void initLabel ();
+	void updateButton ();
 };

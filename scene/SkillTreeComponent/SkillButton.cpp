@@ -10,8 +10,9 @@ Modified: 	2016/09/19 by PorcaM
 #include "ConvertKorean.h"
 #include "scene/OHDialog.h"
 
-SkillButton::SkillButton (Skill* skill){
+SkillButton::SkillButton (Skill* skill, SkillNode* node){
 	_skill = skill;
+	_node = node;
 	initButton ();
 	initLabel ();
 }
@@ -21,20 +22,23 @@ SkillButton::~SkillButton (){
 	delete _label;
 }
 
-void SkillButton::initButton (){
-	string sPath = "images/skilltree/icon_d.png";
-	_button = ui::Button::create (sPath, sPath, sPath);
+void 
+SkillButton::
+initButton (){
+	_button = ui::Button::create ();
+	updateButton();
 	_button->addTouchEventListener([&] (Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		if (type == ui::Button::TouchEventType::ENDED){
 			printf ("Skill Name is %s\n", _skill->getName ().c_str ());
-			string title 	= "learn skill";
-			string context 	= "learn this skill?\nor equip?";
+			string title 	= "LEARN SKILL";
+			string context 	= "Skill Name: " + _skill -> getName ();
 			OHDialog dialog (Size (400, 250), title, context);
 			dialog.okBtn -> addTouchEventListener ([] (Ref *pSender, ui::Button::Widget::TouchEventType type){
 				/* OK button event */
+				if (true) 		// check
+					;
 			});
-			dialog.addedTo (this);
-			dialog.dialogContent->setPosition (Vec2 (0, 0));
+			dialog.addedTo (Director::getInstance () -> getRunningScene ());
 		}
 	});
 	this->addChild (_button);
@@ -42,7 +46,7 @@ void SkillButton::initButton (){
 }
 
 void SkillButton::initLabel (){
-	string 	name = _skill->getName (); 		/* For code readability*/
+	string 	name = _skill->getName (); 		/* For code readability */
 	string 	font = "fonts/sdCrayon.ttf";
 	int 	size = 24;
 	_label = Label::create (_AtoU8 (name.c_str ()), font, size);
@@ -50,5 +54,12 @@ void SkillButton::initLabel (){
 	_label->setTextColor (Color4B (0, 0, 0, 255));
 	_label->setWidth (50);
 	this->addChild (_label);
+	return;
+}
+
+void SkillButton::updateButton (){
+	string color = (_node->getLearn ()) ? "a" : "d";
+	string path = "images/skilltree/icon_" + color + ".png";
+	_button->loadTextures (path, path, path);
 	return;
 }
