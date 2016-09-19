@@ -6,15 +6,8 @@ Modified:	2016/08/25 by PorcaM
 
 #ifndef __RAID_SCENE_H__
 #define __RAID_SCENE_H__
-<<<<<<< HEAD
 #include "characters\Character.h"
-#include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
-#include "RaidComponent\SkillFrame.h"
-=======
-#include"characters\Character.h"
-#include "RaidComponent\BossFrame.h"
->>>>>>> 989a315e80dd1bb9ac4cc6abded779051bcb362b
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 USING_NS_CC;
