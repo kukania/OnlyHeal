@@ -77,11 +77,9 @@ bool SkillTreeScene::init()
 	SkillTreeLayer->addChild (stf->getScrollView ());
 
 	for (int i = 0; i < 3; i++){
-		tab[i]->addTouchEventListener ([&, stf] (Ref *pSender, ui::Button::Widget::TouchEventType type){
+		tab[i]->addTouchEventListener ([&, stf, i] (Ref *pSender, ui::Button::Widget::TouchEventType type){
 			printf (((ui::Button*)pSender)->getName ().c_str ());
-			stf->getScrollView ()->removeFromParent ();
-			//stf->SkillTreeFrame(BuffSkilltree);
-			SkillTreeLayer->addChild (stf->getScrollView ());
+			stf -> initWithType ((ST_TYPE)i);
 		});
 	}
 
