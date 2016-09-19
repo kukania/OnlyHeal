@@ -9,14 +9,14 @@ MeleeSkill::MeleeSkill(SkillID ID, string name, time_ms cooltime, time_s time, b
 	:Skill(ID, name, cooltime, time, melee_atk, multi) {
 	_factor = factor;
 }
-int MeleeSkill::activate(Character *t, Character &c) {
+int MeleeSkill::activate(Character **t, Character &c) {
 	int power = c.getStatus()->getDamage();
 	int amount = DAMAGE_FOMULA(c, t[1]);
 	setCooldown();
 	for (int i = 0; i < getTime(); i++) {
-		t[1].beAttacked(amount);
+		t[1]->beAttacked(amount);
 		c.getStatus()->addAgro(amount);
-		_sleep(1000);
+		//_sleep(1000);
 	}
 	return 0;
 }

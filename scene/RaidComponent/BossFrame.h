@@ -1,3 +1,4 @@
+#pragma once
 /*
 FileName:	BossFrame.h
 Revision:	2016/08/29 by PorcaM
@@ -12,9 +13,10 @@ USING_NS_CC;
 class BossFrame : public Layer {
 private:
 	Character	*_character;
-	Sprite		*_icon, *_hpbar, *_rgbbg;
+	Sprite		*_hpbar, *_rgbbg;
 	Label		*_hplog, *_damagelog, *_rgblog;
 public:
+	Sprite *_icon;
 	BossFrame(Character *);
 	void setCharacter(Character *);
 	void initIcon();

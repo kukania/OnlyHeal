@@ -6,10 +6,15 @@ Modified:	2016/08/25 by PorcaM
 
 #ifndef __RAID_SCENE_H__
 #define __RAID_SCENE_H__
+<<<<<<< HEAD
 #include "characters\Character.h"
 #include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
 #include "RaidComponent\SkillFrame.h"
+=======
+#include"characters\Character.h"
+#include "RaidComponent\BossFrame.h"
+>>>>>>> 989a315e80dd1bb9ac4cc6abded779051bcb362b
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 USING_NS_CC;
@@ -54,6 +59,14 @@ public:
 	virtual bool onTouchBegan(Touch* touch, Event*);
 	virtual void onTouchMoved(Touch *touch, Event*);
 	virtual void onTouchEnded(Touch *touch, Event*);
+
+	/**schedule**/
+	void moveBossFrame(float fd);
+	void doAttackChar0(float fd);
+	void doAttackChar2(float fd);
+	void doAttackChar3(float fd);
+	void doAttackChar4(float fd);
+	void doAttackChar5(float fd);
 	//by kukania
 };
 #endif // __RAID_SCENE_H__

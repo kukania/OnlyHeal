@@ -1,5 +1,6 @@
 #pragma once
 #include "MyRGB.h"
+
 class Item;
 class Tier;
 class Status {
