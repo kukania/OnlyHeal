@@ -6,9 +6,12 @@ Modified:	2016/08/25 by PorcaM
 
 #ifndef __RAID_SCENE_H__
 #define __RAID_SCENE_H__
-#include"characters\Character.h"
+#include "characters\Character.h"
+#include "RaidComponent\UnitFrame.h"
+#include "RaidComponent\BossFrame.h"
+#include "RaidComponent\SkillFrame.h"
 #include "cocos2d.h"
-#include"ui/CocosGUI.h"
+#include "ui/CocosGUI.h"
 USING_NS_CC;
 #define SKILLNUM 21
 class Raid : public cocos2d::Layer

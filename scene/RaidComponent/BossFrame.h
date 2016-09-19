@@ -3,6 +3,7 @@ FileName:	BossFrame.h
 Revision:	2016/08/29 by PorcaM
 */
 
+#pragma once
 #include "cocos2d.h"
 #include "characters\Character.h"
 #include <string>

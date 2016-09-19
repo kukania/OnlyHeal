@@ -1,7 +1,7 @@
 /*
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/19 by PorcaM
+Modified: 	2016/09/1 by PorcaM
 */
 
 #include "SkillTreeFrame.h"
@@ -12,19 +12,26 @@ Modified: 	2016/09/19 by PorcaM
 SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 	_height = 400;
 	_innerWidth = 1200;
+	_pSkillfactory = new SkillFactory*[3];
+	_pSkillfactory[0] = new HealSkillFactory ();
+	_pSkillfactory[1] = new BuffSkillFactory ();
+	_pSkillfactory[2] = new DebuffSkillFactory ();
+	for (int i = 0; i < 3; i++)
+		_pSkillfactory[i] -> initAllSkills ();
 	initScrollView ();
 	initWithType (type);
-	int i = 0;
-	for (TreeIt ti = _st.getBegin ();
-		ti != _st.getEnd (); ti++){
-		Skill* 	pSkill 		= _pSf->getSkill (ti->first);
-		Vec2 	position 	= Vec2 (100*++i, 100);
-		insertButton (pSkill, position);
-	}
 }
 
 void SkillTreeFrame::initWithType (ST_TYPE type){
-	
+	SkillFactory* factory = _pSkillfactory[(int)type];
+	int i = 0;
+	for (TreeIt ti = _skilltree.getBegin ();
+		ti != _skilltree.getEnd (); ti++){
+		Skill* 	pSkill 		= factory->getSkill (ti->first);
+		Vec2 	position 	= Vec2 (100*++i, 100);
+		insertButton (pSkill, position);
+	}
+	return;
 }
 
 void SkillTreeFrame::initScrollView(){
@@ -46,7 +53,7 @@ void SkillTreeFrame::initScrollView(){
 void SkillTreeFrame::insertButton (Skill* skill, Vec2 position){
 	auto button = new SkillButton (skill);
 	button->setPosition (position);
-	_sbv.push_back (button);
+	_vSkillbutton.push_back (button);
 	_scrollView->addChild (button);
 	return;
 }
@@ -56,10 +63,13 @@ ui::ScrollView* SkillTreeFrame::getScrollView (){
 }
 
 SkillTreeFrame::~SkillTreeFrame (){
-	for (vector<SkillButton*>::iterator vi = _sbv.begin ();
-		vi != _sbv.end (); vi++){
+	for (vector<SkillButton*>::iterator vi = _vSkillbutton.begin ();
+		vi != _vSkillbutton.end (); vi++){
 		delete *vi;
 	}
-	delete _pSf;
-	_sbv.clear();
+	for (int i = 0; i < 3; i++){
+		delete _pSkillfactory[i];
+	}
+	delete _pSkillfactory;
+	_vSkillbutton.clear();
 }
