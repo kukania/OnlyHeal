@@ -43,4 +43,5 @@ public:
 	int				getIndex();
 	void			setIndex(int);
 	virtual void	initSkillSet(int) = 0;
+	int				getUsableSkill();
 };

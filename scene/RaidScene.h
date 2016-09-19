@@ -10,8 +10,13 @@ Modified:	2016/08/25 by PorcaM
 #include "RaidComponent\BossFrame.h"
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
+#include<list>
 USING_NS_CC;
 #define SKILLNUM 21
+struct SkillInfo {
+	Character *cl;
+	int skillNum;
+};
 class Raid : public cocos2d::Layer
 {
 public:
@@ -34,6 +39,7 @@ public:
 	ui::Button *selectedBtn;
 	static int selectedNum;
 	BossFrame *bf;
+	std::list<SkillInfo>skillStorage;
 	/****************************/
 	/*
 	Custom class functions
@@ -55,11 +61,7 @@ public:
 
 	/**schedule**/
 	void moveBossFrame(float fd);
-	void doAttackChar0(float fd);
-	void doAttackChar2(float fd);
-	void doAttackChar3(float fd);
-	void doAttackChar4(float fd);
-	void doAttackChar5(float fd);
+	void playingFunc(float fd);
 	//by kukania
 };
 #endif // __RAID_SCENE_H__

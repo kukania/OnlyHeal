@@ -75,7 +75,7 @@ void Skill::setCooldown() {
 }
 // Check cooldown is clear
 bool Skill::able() {
-	return (!_cooldown);
+	return _cooldown<=0?1:0;
 }
 bool Skill::isMulti(){
 	return _multi;

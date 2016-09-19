@@ -50,7 +50,6 @@ bool Raid::init()
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
 	this->schedule(schedule_selector(Raid::moveBossFrame),3);
-	this->schedule(schedule_selector(Raid::doAttackChar0), 3);
 	return true;
 }
 
@@ -178,19 +177,46 @@ void Raid::moveBossFrame(float fd) {
 	auto action = Sequence::create(move1, move2, NULL);
 	bf->_icon->runAction(action);
 }
+void Raid::playingFunc(float fd) {
+	static double flowedTime=0.0;
+	//character skill& do attack
+	for (int i = 0; i < 6; i++) {
+		if (i == 1) continue;
+		float temp = 1 / cl[i]->getStatus()->getSpeed();
+		int factor1 = temp * 10;
+		int factor2 = flowedTime * 10;
+		//error add character value and calculate;
+		if (factor2%factor1==0||!factor2) {
+			int skillNum = cl[i]->getUsableSkill();
+			Skill *skill=cl[i]->mySkillSet[skillNum];
+			if (skill->getType() == buff) {
+				skill->activate(cl, *cl[i],1);
+			}
+			else if (skill->getType() == debuff) {
+				skill->activate(cl, *cl[i], -1);
+			}
+			else {
+				skill->activate(cl, *cl[i]);
+			}
+			SkillInfo _tSkillInfo;
+			_tSkillInfo.cl = cl[i];
+			_tSkillInfo.skillNum = skillNum;
+			this->skillStorage.push_back(_tSkillInfo);
+		}
+	}
 
-void Raid::doAttackChar0(float fd) {
-	//cl[0]->doAttack(fd);
-}
-void Raid::doAttackChar2(float fd) {
-	//cl[2]->doAttack(fd);
-}
-void Raid::doAttackChar3(float fd) {
-	//cl[3]->doAttack(fd);
-}
-void Raid::doAttackChar4(float fd) {
-	//cl[4]->doAttack(fd);
-}
-void Raid::doAttackChar5(float fd) {
-	//cl[5]->doAttack(fd);
+	for (list<SkillInfo>::iterator it = this->skillStorage.begin(); it != skillStorage.end(); ++it) {
+		Skill *skill = it->cl->mySkillSet[it->skillNum];
+		skill->_cooldown -= fd*1000;
+		if (skill->able()) {
+			skillStorage.erase(it);
+			if (skill->getType() == buff) {
+				skill->activate(cl, *it->cl, -1);
+			}
+			else if (skill->getType() == debuff) {
+				skill->activate(cl, *it->cl, 1);
+			}
+		}
+	}
+	flowedTime += fd;
 }
