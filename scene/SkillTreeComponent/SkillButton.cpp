@@ -7,7 +7,7 @@ Revision:	2016/09/12 by PorcaM
 #include <string>
 #include <cstdio>
 #include "ConvertKorean.h"
-#include "OHDialog.h"
+#include "scene/OHDialog.h"
 
 SkillButton::SkillButton (Skill* skill){
 	_skill = skill;

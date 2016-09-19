@@ -8,13 +8,13 @@ Modified:	2016/09/07 by PorcaM
 #include "Monster.h"
 #include"../skillinstance/RangeSkill.h"
 #include"../skillinstance/MonsterSkillFear.h"
-int Monster::setFindTarget(Character *t) {
+int Monster::setFindTarget(Character **t) {
 	int target=2;
 	int max = 0;
 	for (int i = 0; i < 6; i++) {
 		int temp;
 		if (i == 1)continue;
-		if ((temp = t[i].getStatus()->getAgro()) > max) {
+		if ((temp = t[i]->getStatus()->getAgro()) > max) {
 			target = i;
 			max = temp;
 		}
@@ -27,7 +27,7 @@ Monster::Monster(Tier myTier)
 	:Character(myTier) {
 	Skill * firstSkill = new RangeSkill(1, "전체강타", 0, 0, true, 1);
 	Character::mySkillSet.push_back(firstSkill);
-	firstSkill = new MonsterSkillFear(0.1, myTier, 10, "fre", 10, 10);
+	firstSkill = new MonsterSkillFear(0.1, myTier, 100, "fre", 10, 10);
 	Character::mySkillSet.push_back(firstSkill);
 }
 

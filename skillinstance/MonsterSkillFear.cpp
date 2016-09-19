@@ -9,19 +9,19 @@ MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, str
 	: Skill(now, S_name, cool, c, unknown_skill, true) {
 	myTier = T_input;
 	this->myTier = myFloat;
+	factor = this->myTier.getValue();
 }
 int MonsterSkillFear::setTier(Tier in) {
 	myTier = in;
 	return 0;
 }
-int MonsterSkillFear::activate(Character *t, Character &c, int v) {
+int MonsterSkillFear::activate(Character **t, Character &c, int v) {
 	setCooldown();
-	for (int i = 0; i < 6; i++) {
-		if (i == 1) continue;
-		t[i].getStatus()->addDamage(v * factor*t[i].getStatus()->getDamage());
-		t[i].getStatus()->addDefence(v * factor* t[i].getStatus()->getDefence());
-		t[i].getStatus()->addMyRGBDamage((t[i].getStatus()->getMyRGBDamage())*factor*v);
-		t[i].getStatus()->addMyRGBDefence(t[i].getStatus()->getMyRGBDefence()*factor*v);
+	for (int i = 2; i < 6; i++) {
+		t[i]->getStatus()->addDamage(v * factor*t[i]->getStatus()->getDamage());
+		t[i]->getStatus()->addDefence(v * factor* t[i]->getStatus()->getDefence());
+		t[i]->getStatus()->addMyRGBDamage((t[i]->getStatus()->getMyRGBDamage())*factor*v);
+		t[i]->getStatus()->addMyRGBDefence(t[i]->getStatus()->getMyRGBDefence()*factor*v);
 	}
 
 	return 0;
@@ -35,6 +35,6 @@ string MonsterSkillFear::getName() {
 	v.push_back(le % 10 + '0');
 	return p + v;
 }
-int MonsterSkillFear::activate(Character *t, Character &c) {
+int MonsterSkillFear::activate(Character **t, Character &c) {
 	return 0;
 }

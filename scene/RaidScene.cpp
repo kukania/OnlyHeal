@@ -46,8 +46,11 @@ bool Raid::init()
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 	setBackground(Color4F(1, 1, 1, 1));
-	Tier tempT = Tier(1);
+	
 	this->makeSkillScrollView();
+	//this->schedule(schedule_selector)
+	this->schedule(schedule_selector(Raid::moveBossFrame),3);
+	this->schedule(schedule_selector(Raid::doAttackChar0), 3);
 	return true;
 }
 
@@ -113,6 +116,9 @@ void Raid::onTouchEnded(Touch *touch, Event*) {
 }
 
 void Raid::makeUnitFrame() {
+	for (int i = 0; i < 6; i++) {
+		cl[i]->setCharacterList(cl);
+	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	int borderline = visibleSize.height - 240;
 	auto UnitGrid = CCLayerColor::create();
@@ -164,4 +170,27 @@ void Raid::initBossFrame(Character *character) {
 }
 void Raid::initSkillGrid() {
 	return;
+}
+
+void Raid::moveBossFrame(float fd) {
+	auto move1 = MoveBy::create(fd/2,Point(30,0));
+	auto move2 = MoveBy::create(fd / 2, Point(-30, 0));
+	auto action = Sequence::create(move1, move2, NULL);
+	bf->_icon->runAction(action);
+}
+
+void Raid::doAttackChar0(float fd) {
+	//cl[0]->doAttack(fd);
+}
+void Raid::doAttackChar2(float fd) {
+	//cl[2]->doAttack(fd);
+}
+void Raid::doAttackChar3(float fd) {
+	//cl[3]->doAttack(fd);
+}
+void Raid::doAttackChar4(float fd) {
+	//cl[4]->doAttack(fd);
+}
+void Raid::doAttackChar5(float fd) {
+	//cl[5]->doAttack(fd);
 }

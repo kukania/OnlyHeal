@@ -48,8 +48,8 @@ public:
 	void		setType(SkillType);
 	void 		setMulti(bool);
 	// main use
-	virtual int activate(Character *, Character &) = 0;
-	virtual int activate(Character *, Character &, int) = 0;
+	virtual int activate(Character **, Character &) = 0;
+	virtual int activate(Character **, Character &, int) = 0;
 	void		setCooldown();
 	bool		able();
 	bool 		isMulti();

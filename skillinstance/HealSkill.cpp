@@ -8,23 +8,23 @@ HealSkill::HealSkill(SkillID ID, string name, time_ms cooltime, time_s time, boo
 	:Skill(ID, name, cooltime, time, heal, multi) {
 	_factor = factor;
 }
-int HealSkill::activate(Character *t, Character &c) {
+int HealSkill::activate(Character **t, Character &c) {
 	int power	= c.getStatus()->getDamage();
 	int amount	= _factor * power / getTime();
 	setCooldown();
 	for (int i = 0; i < getTime(); i++) {
 		if (isMulti()) {
 			for (int i = 2; i < 6; i++) {
-				t[i].getStatus()->addHP(amount);
+				t[i]->getStatus()->addHP(amount);
 			}
 		}
 		else {
-			t[0].getStatus()->addHP(amount);
+			t[0]->getStatus()->addHP(amount);
 		}
 	}
 	return 0;
 }
 
-int HealSkill::activate(Character *, Character &, int) {
+int HealSkill::activate(Character **, Character &, int) {
 	return 0;
 }

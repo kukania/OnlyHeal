@@ -8,12 +8,12 @@ TankSkill::TankSkill(SkillID ID, string name, time_ms cooltime, time_s time, boo
 	:Skill(ID, name, cooltime, time, tank, multi) {
 	_factor = factor;
 }
-int TankSkill::activate(Character *t, Character &c) {
+int TankSkill::activate(Character **t, Character &c) {
 	int power = c.getStatus()->getDamage();
 	int amount = power*_factor;
 	for (int i = 0; i < getTime(); i++) {
 		c.getStatus()->addAgro(amount);
-		_sleep(1000);
+		//_sleep(1000);
 	}
 	return 0;
 }
