@@ -1,6 +1,7 @@
 /*
 FileName:	SkillButton.h
 Revision:	2016/09/12 by PorcaM
+Modified: 	2016/09/19 by PorcaM
 */
 
 #pragma once
