@@ -72,7 +72,7 @@ void SkillTreeFrame::clearButtons (){
 }
 
 void SkillTreeFrame::insertButton (Skill* skill, SkillNode* node, Vec2 position){
-	auto button = new SkillButton (skill, node);
+	auto button = new SkillButton (skill, node, _skilltree.findSkill (node->getPrev ()));
 	button->setPosition (position);
 	_buttons.push_back (button);
 	_scrollview->addChild (button);

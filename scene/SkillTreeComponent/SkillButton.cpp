@@ -10,9 +10,13 @@ Modified: 	2016/09/19 by PorcaM
 #include "ConvertKorean.h"
 #include "scene/OHDialog.h"
 
-SkillButton::SkillButton (Skill* skill, SkillNode* node){
+#define TOUCH_END(type) type == ui::Button::TouchEventType::ENDED
+#define TEL_PARAM 		Ref *pSender, ui::Button::Widget::TouchEventType type
+
+SkillButton::SkillButton (Skill* skill, SkillNode* node, SkillNode* prev){
 	_skill = skill;
 	_node = node;
+	_prev = prev;
 	initButton ();
 	initLabel ();
 }
@@ -27,16 +31,29 @@ SkillButton::
 initButton (){
 	_button = ui::Button::create ();
 	updateButton();
-	_button->addTouchEventListener([&] (Ref *pSender, ui::Button::Widget::TouchEventType type) {
-		if (type == ui::Button::TouchEventType::ENDED){
-			printf ("Skill Name is %s\n", _skill->getName ().c_str ());
-			string title 	= "LEARN SKILL";
-			string context 	= "Skill Name: " + _skill -> getName ();
-			OHDialog dialog (Size (400, 250), title, context);
-			dialog.okBtn -> addTouchEventListener ([] (Ref *pSender, ui::Button::Widget::TouchEventType type){
-				/* OK button event */
-				if (true) 		// check
-					;
+	_button->addTouchEventListener([&](TEL_PARAM) {
+		if (TOUCH_END(type)){
+			bool	learn 	= _node -> getLearn ();
+			string 	title	= learn?
+							"EQUIP_SKILL":
+							"LEARN_SKILL";
+			string	prompt	= learn?
+							"equip this skill?\n":
+							"learn this skill?\n";
+			string	info 	= "SkillName: " + _skill -> getName () + "\n" +	"SkillID: " + "\n";
+			OHDialog dialog (Size (400, 250), title, prompt + info);
+			dialog.okBtn -> addTouchEventListener ([=](TEL_PARAM) {
+				if (TOUCH_END(type)){
+					if (_prev -> getLearn () == true && true){
+						/* learn, point */
+						_node -> setLearn (true);
+					}
+					else{
+						printf ("Fail to learn!\n");
+					}
+					updateButton ();
+					((CCNode*)pSender) -> getParent () -> removeFromParent ();
+				}
 			});
 			dialog.addedTo (Director::getInstance () -> getRunningScene ());
 		}
@@ -63,3 +80,6 @@ void SkillButton::updateButton (){
 	_button->loadTextures (path, path, path);
 	return;
 }
+
+#undef TOUCH_END
+#undef TEL_PARAM
