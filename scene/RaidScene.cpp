@@ -50,6 +50,8 @@ bool Raid::init()
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
 	this->schedule(schedule_selector(Raid::moveBossFrame),3);
+	this->schedule(schedule_selector(Raid::playingFunc), 0.1);
+	this->schedule(schedule_selector(Raid::skillCoolDown), 0.1);
 	return true;
 }
 
@@ -117,6 +119,7 @@ void Raid::onTouchEnded(Touch *touch, Event*) {
 void Raid::makeUnitFrame() {
 	for (int i = 0; i < 6; i++) {
 		cl[i]->setCharacterList(cl);
+		cl[i]->_timer = 0.0;
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	int borderline = visibleSize.height - 240;
@@ -182,11 +185,7 @@ void Raid::playingFunc(float fd) {
 	//character skill& do attack
 	for (int i = 0; i < 6; i++) {
 		if (i == 1) continue;
-		float temp = 1 / cl[i]->getStatus()->getSpeed();
-		int factor1 = temp * 10;
-		int factor2 = flowedTime * 10;
-		//error add character value and calculate;
-		if (factor2%factor1==0||!factor2) {
+		if (cl[i]->_timer<=flowedTime) {
 			int skillNum = cl[i]->getUsableSkill();
 			Skill *skill=cl[i]->mySkillSet[skillNum];
 			if (skill->getType() == buff) {
@@ -202,12 +201,16 @@ void Raid::playingFunc(float fd) {
 			_tSkillInfo.cl = cl[i];
 			_tSkillInfo.skillNum = skillNum;
 			this->skillStorage.push_back(_tSkillInfo);
+			cl[i]->_timer += cl[i]->getStatus()->getSpeed();
 		}
 	}
+	flowedTime += fd;
+}
 
+void Raid::skillCoolDown(float fd) {
 	for (list<SkillInfo>::iterator it = this->skillStorage.begin(); it != skillStorage.end(); ++it) {
 		Skill *skill = it->cl->mySkillSet[it->skillNum];
-		skill->_cooldown -= fd*1000;
+		skill->_cooldown -= fd * 1000;
 		if (skill->able()) {
 			skillStorage.erase(it);
 			if (skill->getType() == buff) {
@@ -218,5 +221,4 @@ void Raid::playingFunc(float fd) {
 			}
 		}
 	}
-	flowedTime += fd;
 }
