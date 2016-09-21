@@ -48,6 +48,9 @@ Skill**	SkillFactory::getSkillsList(int num) {
 	if (num < Akashic.size ()){ 	/* num must be smaller than entire skill number */
 		num = Akashic.size ();
 	}
+	if (num < 1){
+		num = 1;
+	}
 	Skill**	skillList = new Skill*[num];
 	set<int> indexList;
 	while (indexList.size() < num) {

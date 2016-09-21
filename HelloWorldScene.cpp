@@ -1,7 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "skillinstance\Factory\SkillFactory.h"
-#include"scene\partyLayer.h"
+#include "scene\partyLayer.h"
 #include "ConvertKorean.h"
 #include "scene\OHDialog.h"
 #include "scene\SkillTreeScene.h"

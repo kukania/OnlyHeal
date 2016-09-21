@@ -5,9 +5,9 @@ Modified:	2016/09/07 by PorcaM
 */
 
 #pragma once
-#include "../parts/Status.h" 	//Problem
-#include "../parts/Skill.h"
-#include "../parts/Tier.h"
+#include "parts/Status.h" 	//Problem
+#include "parts/Skill.h"
+#include "parts/Tier.h"
 #include "cocos2d.h"
 #include <vector>
 

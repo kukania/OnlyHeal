@@ -6,7 +6,7 @@ Modified:	2016/08/25 by PorcaM
 
 #ifndef __RAID_SCENE_H__
 #define __RAID_SCENE_H__
-#include"characters\Character.h"
+#include "characters\Character.h"
 #include "RaidComponent\BossFrame.h"
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"

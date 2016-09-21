@@ -52,9 +52,9 @@ bool SkillTreeScene::init()
 
 	auto title = Sprite::create ("images/skilltree/title.png");
 	auto closeBtn = ui::Button::create ("images/skilltree/btn_close.png");
-	closeBtn->addTouchEventListener([](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+	closeBtn->addTouchEventListener([&](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf ("Touch event type: %d\n", type);
-		//Director::getInstance()->popScene();		/* This code is unable */
+		Director::getInstance()->popScene();
 	});
 	closeBtn->setAnchorPoint (Vec2 (0.5f, 1.0f));
 	closeBtn->setPosition (Vec2 (268, 47));
@@ -77,11 +77,9 @@ bool SkillTreeScene::init()
 	SkillTreeLayer->addChild (stf->getScrollView ());
 
 	for (int i = 0; i < 3; i++){
-		tab[i]->addTouchEventListener ([&, stf] (Ref *pSender, ui::Button::Widget::TouchEventType type){
+		tab[i]->addTouchEventListener ([&, stf, i] (Ref *pSender, ui::Button::Widget::TouchEventType type){
 			printf (((ui::Button*)pSender)->getName ().c_str ());
-			stf->getScrollView ()->removeFromParent ();
-			//stf->SkillTreeFrame(BuffSkilltree);
-			SkillTreeLayer->addChild (stf->getScrollView ());
+			stf -> initWithType ((ST_TYPE)i);
 		});
 	}
 

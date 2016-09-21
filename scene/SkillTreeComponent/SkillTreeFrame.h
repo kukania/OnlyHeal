@@ -21,14 +21,16 @@ enum ST_TYPE{
 
 class SkillTreeFrame {
 private:
-	vector<SkillButton*> 	_sbv;
-	SkillTree 				_st;
-	SkillFactory* 			_pSf;
-	ui::ScrollView* 		_scrollView;
+	vector<SkillButton*> 	_buttons;
+	SkillTree 				_skilltree;
+	SkillFactory** 			_factories;
+	ui::ScrollView* 		_scrollview;
 	int 					_height;
 	int 					_innerWidth;
-	void insertButton (Skill*, Vec2);
+	void insertButton (Skill*, SkillNode*, Vec2);
 	void initScrollView ();
+	void clearScrollview ();
+	void clearButtons ();
 public:
 	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();
