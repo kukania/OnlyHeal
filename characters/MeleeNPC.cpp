@@ -16,6 +16,7 @@ MeleeNPC::MeleeNPC(Tier tier)
 
 void	MeleeNPC::initSkillSet(int skillnum) {
 	MeleeSkillFactory msf;
+	msf.initAllSkills();
 	Skill** list = msf.getSkillsList(skillnum);
 	for (int i = 0; i < skillnum; i++) {
 		mySkillSet.push_back(list[i]);

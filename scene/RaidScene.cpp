@@ -50,7 +50,8 @@ bool Raid::init()
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
 	this->schedule(schedule_selector(Raid::moveBossFrame),3);
-	this->schedule(schedule_selector(Raid::doAttackChar0), 3);
+	this->schedule(schedule_selector(Raid::playingFunc), 0.1);
+	this->schedule(schedule_selector(Raid::skillCoolDown), 0.1);
 	return true;
 }
 
@@ -118,6 +119,7 @@ void Raid::onTouchEnded(Touch *touch, Event*) {
 void Raid::makeUnitFrame() {
 	for (int i = 0; i < 6; i++) {
 		cl[i]->setCharacterList(cl);
+		cl[i]->_timer = 0.0;
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	int borderline = visibleSize.height - 240;
@@ -178,19 +180,45 @@ void Raid::moveBossFrame(float fd) {
 	auto action = Sequence::create(move1, move2, NULL);
 	bf->_icon->runAction(action);
 }
+void Raid::playingFunc(float fd) {
+	static double flowedTime=0.0;
+	//character skill& do attack
+	for (int i = 0; i < 6; i++) {
+		if (i == 1) continue;
+		if (cl[i]->_timer<=flowedTime) {
+			int skillNum = cl[i]->getUsableSkill();
+			Skill *skill=cl[i]->mySkillSet[skillNum];
+			if (skill->getType() == buff) {
+				skill->activate(cl, *cl[i],1);
+			}
+			else if (skill->getType() == debuff) {
+				skill->activate(cl, *cl[i], -1);
+			}
+			else {
+				skill->activate(cl, *cl[i]);
+			}
+			SkillInfo _tSkillInfo;
+			_tSkillInfo.cl = cl[i];
+			_tSkillInfo.skillNum = skillNum;
+			this->skillStorage.push_back(_tSkillInfo);
+			cl[i]->_timer += cl[i]->getStatus()->getSpeed();
+		}
+	}
+	flowedTime += fd;
+}
 
-void Raid::doAttackChar0(float fd) {
-	//cl[0]->doAttack(fd);
-}
-void Raid::doAttackChar2(float fd) {
-	//cl[2]->doAttack(fd);
-}
-void Raid::doAttackChar3(float fd) {
-	//cl[3]->doAttack(fd);
-}
-void Raid::doAttackChar4(float fd) {
-	//cl[4]->doAttack(fd);
-}
-void Raid::doAttackChar5(float fd) {
-	//cl[5]->doAttack(fd);
+void Raid::skillCoolDown(float fd) {
+	for (list<SkillInfo>::iterator it = this->skillStorage.begin(); it != skillStorage.end(); ++it) {
+		Skill *skill = it->cl->mySkillSet[it->skillNum];
+		skill->_cooldown -= fd * 1000;
+		if (skill->able()) {
+			skillStorage.erase(it);
+			if (skill->getType() == buff) {
+				skill->activate(cl, *it->cl, -1);
+			}
+			else if (skill->getType() == debuff) {
+				skill->activate(cl, *it->cl, 1);
+			}
+		}
+	}
 }

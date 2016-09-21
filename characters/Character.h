@@ -23,6 +23,7 @@ private:
 	Character**		list; 		/* I cannot understand why character need this list */
 	int				_index;		/* In raid, each character need their own index */
 public:
+	double			_timer;		/*activate timer*/
 	static Character* create(Tier t, const char* typeOfChar, int index);
 	std::vector<Skill*> mySkillSet;
 	Character() {
@@ -43,4 +44,5 @@ public:
 	int				getIndex();
 	void			setIndex(int);
 	virtual void	initSkillSet(int) = 0;
+	int				getUsableSkill();
 };

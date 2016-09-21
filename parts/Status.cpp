@@ -13,6 +13,9 @@ Status::Status() {
 }
 Status::Status(Tier input) {
 	items = new Item[3];
+	damage = 100;
+	defence = 100;
+	speed = 1.0;
 	for (int i = 0; i < 3; i++) {
 		items[i].setType(i);
 		items[i].setTier(Tier::getSimillarTier(input.getLevel()));
@@ -21,9 +24,6 @@ Status::Status(Tier input) {
 	}
 	agro = -1;
 	this->MaxHPDefault = 1000;
-	damage =  100;
-	defence = 100;
-	speed = 1.0;
 	setMaxHP();
 	HP = MaxHP;
 }
@@ -47,14 +47,20 @@ int	Status::addDamage(int input) {
 	return 0;
 }
 int	Status::getDamage() {
-	return this->items[0].getTier().getValue() + damage;
+	return damage;
+}
+void Status::setDamage() {
+	damage=this->items[0].getTier().getValue() + damage;
 }
 int			Status::addDefence(int input) {
 	defence += input;
 	return 0;
 }
 int	Status::getDefence() {
-	return this->items[1].getTier().getValue() + defence;
+	return defence;
+}
+void Status::setDefence() {
+	defence = this->items[1].getTier().getValue() + defence;
 }
 MyRGB			Status::getMyRGBDamage() {
 	return MyRGBdamage;
@@ -82,6 +88,8 @@ bool		Status::equipItem(Item input) {
 	MyRGBdamage = (items[0].getMyRGB() + items[2].getMyRGB())*0.5;
 	MyRGBdefence = (items[1].getMyRGB() + items[2].getMyRGB())*0.5;
 	setMaxHP();
+	if(input.getType()==WEAPON)setDamage();
+	if (input.getType()==ARMOR)setDefence();
 	return 0;
 }
 int			Status::addMyRGBDamage(MyRGB input) {

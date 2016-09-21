@@ -23,8 +23,7 @@ class Skill{
 protected:
 	SkillID 	_ID;
 	string 		_name;
-	time_ms 	_cooltime; 		// static time for cooldown
-	time_ms 	_cooldown; 		// dynamic value of cooldown
+	time_ms 	_cooltime; 		// static time for cooldown 		
 	time_s 		_time; 			// persistant time of skill
 	SkillType 	_type; 			// type of skill
 	bool 		_multi;
@@ -33,6 +32,7 @@ public:
 	// ID, name, cooltime, time, type, multi
 	Skill(SkillID, string, time_ms, time_s, SkillType, bool);
 	// getter
+	time_ms 	_cooldown;
 	SkillID 	getID();
 	string		getName();
 	time_ms 	getCooltime();

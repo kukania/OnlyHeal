@@ -2,14 +2,14 @@
 #include"MonsterSkillFear.h"
 #include"../characters/Character.h"
 MonsterSkillFear::MonsterSkillFear()
-	:Skill(1000, "fear", 0, 0, unknown_skill, false) {
+	:Skill(1000, "fear", 0, 0, debuff, false) {
 	factor = 0;
 }
 MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c)
-	: Skill(now, S_name, cool, c, unknown_skill, true) {
+	: Skill(now, S_name, cool, c, debuff, true) {
 	myTier = T_input;
 	this->myTier = myFloat;
-	factor = this->myTier.getValue();
+	factor = this->myTier.getValue()/10000;
 }
 int MonsterSkillFear::setTier(Tier in) {
 	myTier = in;
