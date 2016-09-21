@@ -12,7 +12,7 @@ SkillFactory::SkillFactory() {
 	Akashic.clear();
 }
 SkillFactory::~SkillFactory(){\
-	clearFactory();
+	//clearFactory();
 }
 
 SVI 	SkillFactory::getBegin (){
