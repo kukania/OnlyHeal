@@ -10,7 +10,7 @@ Modified:	2016/09/07 by PorcaM
 
 MeleeNPC::MeleeNPC(Tier tier)
 	:Character(tier) {
-	int skillnum = (tier.getLevel() / 80) * 14;
+	int skillnum = (tier.getLevel()*14 / 80);
 	initSkillSet(skillnum);
 }
 
