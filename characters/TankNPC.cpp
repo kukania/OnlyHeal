@@ -16,6 +16,7 @@ TankNPC::TankNPC(Tier tier)
 
 void	TankNPC::initSkillSet(int skillnum) {
 	TankSkillFactory tsf;
+	tsf.initAllSkills();
 	Skill** list = tsf.getSkillsList(skillnum);
 	for (int i = 0; i < skillnum; i++) {
 		mySkillSet.push_back(list[i]);

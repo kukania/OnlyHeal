@@ -17,6 +17,7 @@ RangeNPC::RangeNPC(Tier tier)
 
 void	RangeNPC::initSkillSet(int skillnum) {
 	RangeSkillFactory rsf;
+	rsf.initAllSkills();
 	Skill** list = rsf.getSkillsList(skillnum);
 	for (int i = 0; i < skillnum; i++) {
 		mySkillSet.push_back(list[i]);
