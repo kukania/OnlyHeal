@@ -1,8 +1,14 @@
-/*
+/* ============================================================
 FileName:	SkillTreeFrame.h
 Revision:	2016/09/12 by PorcaM
 Modified: 	2016/09/22 by PorcaM
-*/
+
+This is a set of skillbuttons. 
+Scrollable. 
+Just viewer. 
+This class update nothing. 
+Draw net of skilltree. 
+============================================================ */
 
 #pragma once
 

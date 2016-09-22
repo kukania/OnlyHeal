@@ -1,8 +1,20 @@
-/*
+/* ============================================================
 FileName:	SkillButton.h
 Revision:	2016/09/12 by PorcaM
 Modified: 	2016/09/19 by PorcaM
-*/
+
+SkillButton is in SkillTreeFrame. 
+This is a instance of that. 
+Instance means individual skill. 
+Functions
+	1. Show information to user
+		Information about skill
+		e.g. skill usability, Learning net, 
+	2. Update Skilltree
+		Learn skill. 
+	3. Update SkillSet
+		Equipment skill. 
+============================================================ */
 
 #pragma once
 
