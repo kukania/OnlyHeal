@@ -1,7 +1,7 @@
 /*
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/19 by PorcaM
+Modified: 	2016/09/22 by PorcaM
 */
 
 #include "SkillTreeFrame.h"
@@ -22,6 +22,7 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 	_innerWidth = 1200;
 	initScrollView();
 	initWithType (type);
+	initPoint ();
 }
 
 void SkillTreeFrame::initWithType (ST_TYPE type){
@@ -54,6 +55,18 @@ void SkillTreeFrame::initScrollView(){
 	_scrollview->setName("scrollView");
 	_scrollview->setAnchorPoint (Vec2 (0.5f, 0.98f));
 	_scrollview->setPosition (Vec2 (0, 185));
+	return;
+}
+
+void
+SkillTreeFrame::
+initPoint (){
+	string 	text = _skilltree.getPoint () + "score";
+	string 	font = "fonts/sdCrayon.ttf";
+	int 	size = 24;
+	_point = Label::create (text, font, size);
+	_point->setPosition (Vec2 (0, 0));
+	//_point->addChild (_scrollview);
 	return;
 }
 
