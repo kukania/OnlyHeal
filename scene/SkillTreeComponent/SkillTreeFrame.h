@@ -8,6 +8,15 @@ Scrollable.
 Just viewer. 
 This class update nothing. 
 Draw net of skilltree. 
+
+This class has ? componets. 
+	1. SkillButtonFrame
+		Draw scollview. 
+		Has Skill buttons. 
+		Show network about skilltree. 
+		Has 3 instance with type(Heal, Buff, Debuff). 
+	2. SkillSetFrame
+		
 ============================================================ */
 
 #pragma once
