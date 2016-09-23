@@ -8,6 +8,9 @@ Modified:	2016/09/23 by PorcaM
 #include <cstdio>
 #include <sstream>
 
+#define ANCHOR_LEFT_CENTER	Vec2 (0, 0.5f)
+#define FONT_SDCRAYON 		"fonts/sdCrayon.ttf"
+
 std::string 
 f2s(float number) {
 	std::ostringstream buff;
@@ -18,19 +21,10 @@ f2s(float number) {
 UnitFrame::
 UnitFrame (Character *character) {
 	setCharacter(character);
-	// initBackground ();
-	// initIcon ();
-	
-	setBackground("images/raid/bg.png");
-	setIcon("images/raid/");
-	
-	setHP();
-	setDPS();
-	this->addChild(_background, 0);
-	this->addChild(_icon, 1);
-	this->addChild(_hpbar, 2);
-	this->addChild(_hplog, 3);
-	this->addChild(_dpslog, 4);
+	initBackground ();
+	initIcon ();
+	initHP ();
+	initDPS ();
 }
 
 Character*
@@ -49,43 +43,119 @@ setCharacter (Character *character) {
 	return;
 }
 
-void 
+void
 UnitFrame::
-setBackground (string path) {
+initBackground (){
+	string path = "images/raid/bg.png";
 	_background = Sprite::create (path);
-	_background->setAnchorPoint (Vec2 (0, 0.5f));
+	_background->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	this->addChild (_background, 0);
 	return;
 }
 
-void 
+void
 UnitFrame::
-setIcon (string path) {
-	string postfix[4]	= { "healer", "melee", "range", "tanker" };
-	string _path		= path + postfix[_character->getType()-1] + ".png";
-	_icon = Sprite::create (_path);
-	_icon->setAnchorPoint (Vec2 (0, 0.5f));
+initIcon (){
+	_icon = Sprite::create (getIconPath ());
+	_icon->setAnchorPoint (ANCHOR_LEFT_CENTER);
 	_icon->setPosition (Vec2 (5, 0));
+	this->addChild (_icon, 1);
+	return;
+}
+
+void
+UnitFrame::
+initHPBar (){
+	string path = "images/raid/greenHP.png";
+	_hpbar = Sprite::create (path);
+	_hpbar->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_hpbar->setPosition (Vec2 (75, 20));
+	this->addChild (_hpbar, 2);
+	return;
+}
+
+void
+UnitFrame::
+initHPLog (){
+	int 	curHP = getCharacter ()->getStatus ()->getHP ();
+	int 	maxHP = getCharacter ()->getStatus ()->getMaxHP ();
+	float 	ratio = (float)curHP / maxHP;
+	string 	text = f2s(_ratio * 100) + "%";
+	string	font = FONT_SDCRAYON;
+	int 	size = 24;
+	_hplog = Label::create (text, font, size);
+	_hplog->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_hplog->setPosition (Vec2 (80, 20));
+	this->addChild (_hplog, 3);
+	return;
+}
+
+void
+UnitFrame::
+initHP (){
+	initHPBar ();
+	initHPLog ();
+	return; 
+}
+
+void 
+UnitFrame::
+initDPS () {
+	string 	text = getDpsString ();
+	string 	font = FONT_SDCRAYON;
+	int 	size = 24;
+	_dpslog = Label::create (text, font, size);
+	_dpslog->setAnchorPoint (Vec2 (1, 0));
+	_dpslog->setPosition (Vec2 (240, -40));
+	this->addChild (_dpslog, 4);
 	return;
 }
 
 void 
 UnitFrame::
-setHP () {
-	_hpbar = Sprite::create ("images/raid/greenHP.png");
-	_hpbar->setAnchorPoint (Vec2(0, 0.5f));
-	_hpbar->setPosition (Vec2(75, 20));
-	float _hp = _character->getStatus()->getHP()/_character->getStatus()->getMaxHP();
-	_hplog = Label::create(f2s(_hp*100)+"%", "fonts/sdCrayon.ttf", 24);
-	_hplog->setAnchorPoint(Vec2(0, 0.5f));
-	_hplog->setPosition(Vec2(80, 20));
+updateIcon (){
+	_icon->setTexture (getIconPath ());
 	return;
 }
 
 void 
 UnitFrame::
-setDPS () {
-	_dpslog = Label::create("700k", "fonts/sdCrayon.ttf", 36);
-	_dpslog->setAnchorPoint(Vec2(1, 0));
-	_dpslog->setPosition(Vec2(240, -40));
+updateHP (){
+	_icon->setTexture (getIconPath ());
 	return;
 }
+
+void 
+UnitFrame::
+updateDPS (){
+	string 	text = getDpsString ();
+	_dpslog->setString (text);
+	return;
+}
+
+void 
+UnitFrame::
+updateAll (){
+	updateIcon ();
+	updateHP ();
+	updateDPS ();
+	return;
+}
+
+string
+UnitFrame::
+getIconPath (){
+	string type[4] = {"healer", "melee", "range", "tanker"};
+	string path = "images/raid/" + type[getCharacter ()->getType () - 1] + ".png";
+	return path;
+}
+
+string
+UnitFrame::
+getDpsString (){
+	int damage = getCharacter ()->getStatus ()->getDamage ();
+	return to_string (damage);
+}
+
+#undef ANCHOR_LEFT_CENTER
+#undef FONT_SDCRAYON

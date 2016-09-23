@@ -19,15 +19,22 @@ private:
 	Sprite*		_hpbar;
 	Label*		_hplog;
 	Label*		_dpslog;
+	void 		initBackground ();
 	void 		initIcon ();
+	void 		initHPBar ();
+	void 		initHPLog ();
 	void 		initHP ();
 	void 		initDPS ();
+	void 		updateHPBar ();
+	void 		updateHPLog ();
+	string 		getIconPath ();
+	string 		getDpsString ();
 public:
 	UnitFrame (Character *);
 	Character* 	getCharacter ();
 	void 		setCharacter (Character *);
-	void 		setBackground (string);
-	void 		setIcon (string);
-	void 		setHP ();
-	void 		setDPS ();
+	void 		updateIcon ();
+	void 		updateHP ();
+	void 		updateDPS ();
+	void 		updateAll ();
 };
