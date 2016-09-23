@@ -15,3 +15,15 @@ This class has two (important) component.
 
 #pragma once
 
+#include "skilltree/SkillTree.h"
+#include "skillinstance/Factory/HealSkillFactory.h"
+#include "skillinstance/Factory/BuffSkillFactory.h"
+#include "skillinstance/Factory/DebuffSkillFactory.h"
+
+#include "cocos2d.h"
+#include "ui\CocosGUI.h"
+USING_NS_CC;
+
+class SkillInfo{
+
+};

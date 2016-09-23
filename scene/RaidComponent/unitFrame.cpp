@@ -8,9 +8,9 @@ Modified:	2016/09/23 by PorcaM
 #include <cstdio>
 #include <sstream>
 
-#define ANCHOR_LEFT_CENTER	Vec2 (0, 0.5f)
+#define LEFT_CENTER			Vec2 (0, 0.5f)
 #define FONT_SDCRAYON 		"fonts/sdCrayon.ttf"
-#define DIR_PATH 			string("images/raid/")
+#define STR_RSC_PATH 		string("images/raid/")
 #define GET_FIELD(field) 	getCharacter()->getStatus()->get##field()
 
 UnitFrame::
@@ -47,9 +47,9 @@ setCharacter (Character *character) {
 void
 UnitFrame::
 initBackground (){
-	string path = DIR_PATH + "bg.png";
+	string path = STR_RSC_PATH + "bg.png";
 	_background = Sprite::create (path);
-	_background->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_background->setAnchorPoint (LEFT_CENTER);
 	this->addChild (_background, 0);
 	return;
 }
@@ -61,7 +61,7 @@ void
 UnitFrame::
 initIcon (){
 	_icon = Sprite::create (getIconPath ());
-	_icon->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_icon->setAnchorPoint (LEFT_CENTER);
 	_icon->setPosition (Vec2 (5, 0));
 	this->addChild (_icon, 1);
 	return;
@@ -127,7 +127,7 @@ initHPLog (){
 	string	font = FONT_SDCRAYON;
 	int 	size = 24;
 	_hplog = Label::create (text, font, size);
-	_hplog->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_hplog->setAnchorPoint (LEFT_CENTER);
 	_hplog->setPosition (Vec2 (80, 20));
 	this->addChild (_hplog, 3);
 	return;
@@ -154,9 +154,9 @@ updateHPBar (){
 void
 UnitFrame::
 initHPBar (){
-	string path = DIR_PATH + "greenHP.png";
+	string path = STR_RSC_PATH + "greenHP.png";
 	_hpbar = Sprite::create (path);
-	_hpbar->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_hpbar->setAnchorPoint (LEFT_CENTER);
 	_hpbar->setPosition (Vec2 (75, 20));
 	_hpbar->setScaleX (_hpRatio);
 	this->addChild (_hpbar, 2);
@@ -191,7 +191,7 @@ string
 UnitFrame::
 getIconPath (){
 	string type[4] = {"healer", "melee", "range", "tanker"};
-	string path = DIR_PATH + type[getCharacter ()->getType () - 1] + ".png";
+	string path = STR_RSC_PATH + type[getCharacter ()->getType () - 1] + ".png";
 	return path;
 }
 
@@ -212,7 +212,7 @@ getHPRatioString (){
 	return text;
 }
 
-#undef ANCHOR_LEFT_CENTER
+#undef LEFT_CENTER
 #undef FONT_SDCRAYON
-#undef DIR_PATH 			
+#undef STR_RSC_PATH 			
 #undef GET_FIELD(field) 	

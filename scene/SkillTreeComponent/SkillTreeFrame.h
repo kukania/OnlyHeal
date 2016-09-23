@@ -15,8 +15,11 @@ This class has ? componets.
 		Has Skill buttons. 
 		Show network about skilltree. 
 		Has 3 instance with type(Heal, Buff, Debuff). 
-	2. SkillSetFrame
-		
+	2. PlayerFrame
+		2-1. Skillset
+			Scrollable skill set interface. 
+		2-2. Point
+			Show player's skill point. 
 ============================================================ */
 
 #pragma once
