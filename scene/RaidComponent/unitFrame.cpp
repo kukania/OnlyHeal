@@ -10,13 +10,8 @@ Modified:	2016/09/23 by PorcaM
 
 #define ANCHOR_LEFT_CENTER	Vec2 (0, 0.5f)
 #define FONT_SDCRAYON 		"fonts/sdCrayon.ttf"
-
-std::string 
-f2s(float number) {
-	std::ostringstream buff;
-	buff << number;
-	return buff.str();
-}
+#define DIR_PATH 			string("images/raid/")
+#define GET_FIELD(field) 	getCharacter()->getStatus()->get##field()
 
 UnitFrame::
 UnitFrame (Character *character) {
@@ -27,6 +22,9 @@ UnitFrame (Character *character) {
 	initDPS ();
 }
 
+/* ============================================================
+1. Character
+============================================================ */
 Character*
 UnitFrame::
 getCharacter () {
@@ -43,16 +41,22 @@ setCharacter (Character *character) {
 	return;
 }
 
+/* ============================================================
+2. Background
+============================================================ */
 void
 UnitFrame::
 initBackground (){
-	string path = "images/raid/bg.png";
+	string path = DIR_PATH + "bg.png";
 	_background = Sprite::create (path);
 	_background->setAnchorPoint (ANCHOR_LEFT_CENTER);
 	this->addChild (_background, 0);
 	return;
 }
 
+/* ============================================================
+3. Icon
+============================================================ */
 void
 UnitFrame::
 initIcon (){
@@ -63,41 +67,35 @@ initIcon (){
 	return;
 }
 
-void
+void 
 UnitFrame::
-initHPBar (){
-	string path = "images/raid/greenHP.png";
-	_hpbar = Sprite::create (path);
-	_hpbar->setAnchorPoint (ANCHOR_LEFT_CENTER);
-	_hpbar->setPosition (Vec2 (75, 20));
-	this->addChild (_hpbar, 2);
+updateIcon (){
+	_icon->setTexture (getIconPath ());
 	return;
 }
 
-void
-UnitFrame::
-initHPLog (){
-	int 	curHP = getCharacter ()->getStatus ()->getHP ();
-	int 	maxHP = getCharacter ()->getStatus ()->getMaxHP ();
-	float 	ratio = (float)curHP / maxHP;
-	string 	text = f2s(_ratio * 100) + "%";
-	string	font = FONT_SDCRAYON;
-	int 	size = 24;
-	_hplog = Label::create (text, font, size);
-	_hplog->setAnchorPoint (ANCHOR_LEFT_CENTER);
-	_hplog->setPosition (Vec2 (80, 20));
-	this->addChild (_hplog, 3);
-	return;
-}
-
+/* ============================================================
+4. HP
+============================================================ */
 void
 UnitFrame::
 initHP (){
-	initHPBar ();
 	initHPLog ();
+	initHPBar ();
 	return; 
 }
 
+void 
+UnitFrame::
+updateHP (){
+	updateHPLog ();
+	updateHPBar ();
+	return;
+}
+
+/* ============================================================
+5. DPS
+============================================================ */
 void 
 UnitFrame::
 initDPS () {
@@ -113,26 +111,61 @@ initDPS () {
 
 void 
 UnitFrame::
-updateIcon (){
-	_icon->setTexture (getIconPath ());
-	return;
-}
-
-void 
-UnitFrame::
-updateHP (){
-	_icon->setTexture (getIconPath ());
-	return;
-}
-
-void 
-UnitFrame::
 updateDPS (){
 	string 	text = getDpsString ();
 	_dpslog->setString (text);
 	return;
 }
 
+/* ============================================================
+4-1. HP Log
+============================================================ */
+void
+UnitFrame::
+initHPLog (){
+	string 	text = getHPRatioString ();
+	string	font = FONT_SDCRAYON;
+	int 	size = 24;
+	_hplog = Label::create (text, font, size);
+	_hplog->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_hplog->setPosition (Vec2 (80, 20));
+	this->addChild (_hplog, 3);
+	return;
+}
+
+void 
+UnitFrame::
+updateHPLog (){
+	string 	text = getHPRatioString ();
+	_hplog->setString (text);
+	return;
+}
+
+/* ============================================================
+4-2. HP Bar
+============================================================ */
+void 
+UnitFrame::
+updateHPBar (){
+	_hpbar->setScaleX (_hpRatio);
+	return;
+}
+
+void
+UnitFrame::
+initHPBar (){
+	string path = DIR_PATH + "greenHP.png";
+	_hpbar = Sprite::create (path);
+	_hpbar->setAnchorPoint (ANCHOR_LEFT_CENTER);
+	_hpbar->setPosition (Vec2 (75, 20));
+	_hpbar->setScaleX (_hpRatio);
+	this->addChild (_hpbar, 2);
+	return;
+}
+
+/* ============================================================
+All
+============================================================ */
 void 
 UnitFrame::
 updateAll (){
@@ -142,20 +175,44 @@ updateAll (){
 	return;
 }
 
+/* ============================================================
+Inner calculator functions
+============================================================ */
+
+string
+UnitFrame::
+f2s(float number) {
+	std::ostringstream buff;
+	buff << number;
+	return buff.str();
+}
+
 string
 UnitFrame::
 getIconPath (){
 	string type[4] = {"healer", "melee", "range", "tanker"};
-	string path = "images/raid/" + type[getCharacter ()->getType () - 1] + ".png";
+	string path = DIR_PATH + type[getCharacter ()->getType () - 1] + ".png";
 	return path;
 }
 
 string
 UnitFrame::
 getDpsString (){
-	int damage = getCharacter ()->getStatus ()->getDamage ();
+	int damage = GET_FIELD (Damage);
 	return to_string (damage);
+}
+
+string
+UnitFrame::
+getHPRatioString (){
+	int 	curHP = GET_FIELD (HP);
+	int 	maxHP = GET_FIELD (MaxHP);
+	float 	ratio = _hpRatio = (float)curHP / maxHP;
+	string 	text = f2s(ratio * 100) + "%";
+	return text;
 }
 
 #undef ANCHOR_LEFT_CENTER
 #undef FONT_SDCRAYON
+#undef DIR_PATH 			
+#undef GET_FIELD(field) 	

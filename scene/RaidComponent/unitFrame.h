@@ -19,6 +19,7 @@ private:
 	Sprite*		_hpbar;
 	Label*		_hplog;
 	Label*		_dpslog;
+	float 		_hpRatio;
 	void 		initBackground ();
 	void 		initIcon ();
 	void 		initHPBar ();
@@ -27,8 +28,10 @@ private:
 	void 		initDPS ();
 	void 		updateHPBar ();
 	void 		updateHPLog ();
+	string		f2s (float);
 	string 		getIconPath ();
 	string 		getDpsString ();
+	string 		getHPRatioString ();
 public:
 	UnitFrame (Character *);
 	Character* 	getCharacter ();
