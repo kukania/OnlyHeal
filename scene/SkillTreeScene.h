@@ -1,7 +1,21 @@
-/*
+/* ============================================================
 FileName:	SkillTreeScene.h
 Revision:	2016/09/11 by PorcaM
-*/
+Modified: 	2016/09/22 by PorcaM
+
+Interface for player skill controll. 
+This class has ? components. All in SkillTreeLayer. 
+	1. tabs
+		Controll skilltree type. 
+	2. SkillTreeFrame
+		Draw skill buttons. 
+	3. PlayerInfo
+		Has information of player. 
+		e.g. Point(skill point), skill set(equipment)
+	4. SkillInfo
+		Has information of skills. 
+		Real instances from factory. 
+============================================================ */
 
 #ifndef __SKILLTREE_SCENE_H__
 #define __SKILLTREE_SCENE_H__

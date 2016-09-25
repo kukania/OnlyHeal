@@ -1,7 +1,7 @@
 /*
 FileName: 	SkillTree.cpp
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/09/12 by PorcaM
+Modified: 	2016/09/22 by PorcaM
 */
 
 #include "SkillTree.h"
@@ -9,11 +9,25 @@ Modified: 	2016/09/12 by PorcaM
 
 SkillTree::SkillTree (){
 	clear ();
+	setPoint (0);
 }
 
 /* clear all allocated nodes */
 SkillTree::~SkillTree (){
 	clear ();
+}
+
+unsigned int
+SkillTree::
+getPoint (){
+	return _point;
+}
+
+void
+SkillTree::
+setPoint (unsigned int point){
+	_point = point;
+	return;
 }
 
 void SkillTree::clear (){

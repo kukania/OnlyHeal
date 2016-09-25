@@ -1,7 +1,7 @@
 /*
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/19 by PorcaM
+Modified: 	2016/09/22 by PorcaM
 */
 
 #include "SkillTreeFrame.h"
@@ -9,7 +9,8 @@ Modified: 	2016/09/19 by PorcaM
 #include "skillinstance/Factory/BuffSkillFactory.h"
 #include "skillinstance/Factory/DebuffSkillFactory.h"
 
-SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
+SkillTreeFrame::
+SkillTreeFrame (ST_TYPE type){
 	/* Allocate members */
 	_factories = new SkillFactory*[3];
 	_factories[0] = new HealSkillFactory ();
@@ -22,9 +23,12 @@ SkillTreeFrame::SkillTreeFrame (ST_TYPE type){
 	_innerWidth = 1200;
 	initScrollView();
 	initWithType (type);
+	initPoint ();
 }
 
-void SkillTreeFrame::initWithType (ST_TYPE type){
+void 
+SkillTreeFrame::
+initWithType (ST_TYPE type){
 	clearScrollview ();		/* This order is VERY important! */
 	clearButtons (); 		/* Never call this function before above! */
 	SkillFactory* factory = _factories[(int)type];
@@ -41,7 +45,9 @@ void SkillTreeFrame::initWithType (ST_TYPE type){
 	return;
 }
 
-void SkillTreeFrame::initScrollView(){
+void 
+SkillTreeFrame::
+initScrollView(){
 	_scrollview = ui::ScrollView::create();
 	_scrollview->setContentSize (Size (280, _height));
 	_scrollview->setInnerContainerSize(Size (_innerWidth, _height));
@@ -57,12 +63,29 @@ void SkillTreeFrame::initScrollView(){
 	return;
 }
 
-void SkillTreeFrame::clearScrollview (){
+void
+SkillTreeFrame::
+initPoint (){
+	string 	text = to_string (_skilltree.getPoint ()) + "score";
+	string 	font = "fonts/sdCrayon.ttf";
+	int 	size = 24;
+	_point = Label::create (text, font, size);
+	_point->setPosition (Vec2 (300, 300));
+	_point->setColor (Color3B (0, 0, 0));
+	_scrollview->addChild (_point);
+	return;
+}
+
+void 
+SkillTreeFrame::
+clearScrollview (){
 	_scrollview -> removeAllChildren ();
 	return;
 }
 
-void SkillTreeFrame::clearButtons (){
+void 
+SkillTreeFrame::
+clearButtons (){
 	for (vector<SkillButton*>::iterator vi = _buttons.begin ();
 		vi != _buttons.end (); vi++){
 		delete *vi;
@@ -71,7 +94,9 @@ void SkillTreeFrame::clearButtons (){
 	return;
 }
 
-void SkillTreeFrame::insertButton (Skill* skill, SkillNode* node, Vec2 position){
+void 
+SkillTreeFrame::
+insertButton (Skill* skill, SkillNode* node, Vec2 position){
 	auto button = new SkillButton (skill, node, _skilltree.findSkill (node->getPrev ()));
 	button->setPosition (position);
 	_buttons.push_back (button);
@@ -79,11 +104,14 @@ void SkillTreeFrame::insertButton (Skill* skill, SkillNode* node, Vec2 position)
 	return;
 }
 
-ui::ScrollView* SkillTreeFrame::getScrollView (){
+ui::ScrollView* 
+SkillTreeFrame::
+getScrollView (){
 	return _scrollview;
 }
 
-SkillTreeFrame::~SkillTreeFrame (){
+SkillTreeFrame::
+~SkillTreeFrame (){
 	clearButtons ();
 	for (int i = 0; i < 3; i++){
 		delete _factories[i];
