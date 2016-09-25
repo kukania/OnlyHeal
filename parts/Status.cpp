@@ -30,7 +30,7 @@ Status::Status(Tier input) {
 Tier Status::evalTier() {
 	Tier temp;
 	temp.setLevel((items[0].getTier().getLevel() + items[1].getTier().getLevel() + 
-		items[2].getTier().getLevel()) / 3+(damage - 100 + defence - 100)/10);
+		items[2].getTier().getLevel()) / 3);
 	return temp;
 }
 int	Status::addHP(int input) {

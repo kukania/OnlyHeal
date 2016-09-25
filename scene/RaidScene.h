@@ -63,6 +63,7 @@ public:
 	void moveBossFrame(float fd);
 	void playingFunc(float fd);
 	void skillCoolDown(float fd);
+	void frameUpdate(float fd);
 	//by kukania
 };
 #endif // __RAID_SCENE_H__

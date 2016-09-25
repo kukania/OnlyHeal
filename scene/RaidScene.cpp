@@ -50,8 +50,10 @@ bool Raid::init()
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
 	this->schedule(schedule_selector(Raid::moveBossFrame),3);
-	this->schedule(schedule_selector(Raid::playingFunc), 0.1);
-	this->schedule(schedule_selector(Raid::skillCoolDown), 0.1);
+	this->schedule(schedule_selector(Raid::playingFunc), 0.5);
+	this->schedule(schedule_selector(Raid::skillCoolDown), 0.5);
+	this->schedule(schedule_selector(Raid::frameUpdate),0.5);
+
 	return true;
 }
 
@@ -208,7 +210,9 @@ void Raid::playingFunc(float fd) {
 }
 
 void Raid::skillCoolDown(float fd) {
-	for (list<SkillInfo>::iterator it = this->skillStorage.begin(); it != skillStorage.end(); ++it) {
+	std::list<SkillInfo>::iterator it = this->skillStorage.begin();
+	std::list<SkillInfo>::iterator it2 = std::next(it);
+	while (it != skillStorage.end()) {
 		Skill *skill = it->cl->mySkillSet[it->skillNum];
 		skill->_cooldown -= fd * 1000;
 		if (skill->able()) {
@@ -220,5 +224,13 @@ void Raid::skillCoolDown(float fd) {
 				skill->activate(cl, *it->cl, 1);
 			}
 		}
+		it = it2;
+		if (it != skillStorage.end())it2 = std::next(it);
+	}
+}
+
+void Raid::frameUpdate(float fd) {
+	for (int i = 0; i < 6; i++) {
+		cl[i]->printStatus();
 	}
 }
