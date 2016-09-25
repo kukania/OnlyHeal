@@ -8,6 +8,7 @@ Modified:	2016/08/25 by PorcaM
 #define __RAID_SCENE_H__
 #include "characters\Character.h"
 #include "RaidComponent\BossFrame.h"
+#include "scene/RaidComponent/unitFrame.h"
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
 #include<list>
@@ -34,6 +35,7 @@ public:
 	
 	/*************variable*******/
 	Character **cl;
+	UnitFrame *uf[4];
 	cocos2d::ui::ScrollView *scv;
 	Point skillBtnPosition[SKILLNUM];
 	ui::Button *selectedBtn;

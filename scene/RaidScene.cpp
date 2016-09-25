@@ -6,7 +6,6 @@ Modified:	2016/08/30 by PorcaM
 
 #include "RaidScene.h"
 #include "ui/CocosGUI.h"
-#include "RaidComponent\UnitFrame.h"
 #include "RaidComponent\BossFrame.h"
 #include "RaidComponent\SkillFrame.h"
 #include "characters\Character.h"
@@ -126,7 +125,6 @@ void Raid::makeUnitFrame() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	int borderline = visibleSize.height - 240;
 	auto UnitGrid = CCLayerColor::create();
-	UnitFrame *uf[4];
 	for (int i = 2; i <=5; i++) {
 		uf[i-2] = new UnitFrame(cl[i]);
 		uf[i-2]->setPosition(Vec2(0, (i-2)*-90));
@@ -216,13 +214,13 @@ void Raid::skillCoolDown(float fd) {
 		Skill *skill = it->cl->mySkillSet[it->skillNum];
 		skill->_cooldown -= fd * 1000;
 		if (skill->able()) {
-			skillStorage.erase(it);
 			if (skill->getType() == buff) {
 				skill->activate(cl, *it->cl, -1);
 			}
 			else if (skill->getType() == debuff) {
 				skill->activate(cl, *it->cl, 1);
 			}
+			skillStorage.erase(it);	
 		}
 		it = it2;
 		if (it != skillStorage.end())it2 = std::next(it);
@@ -230,7 +228,6 @@ void Raid::skillCoolDown(float fd) {
 }
 
 void Raid::frameUpdate(float fd) {
-	for (int i = 0; i < 6; i++) {
-		cl[i]->printStatus();
-	}
+	for (int i = 0; i < 4; i++)
+		uf[i]->updateAll();
 }

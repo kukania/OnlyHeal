@@ -30,7 +30,9 @@ public:
 		isDie = false;
 		type = healer;
 	}
-	Character(Tier tier) :myStatus(tier) {}
+	Character(Tier tier) :myStatus(tier) {
+		isDie = false;
+	}
 	int beAttacked(int);
 	int beBuffedDefence(MyRGB);
 	int beBuffedDamage(MyRGB);
@@ -40,12 +42,11 @@ public:
 	void setCharacterList(Character **);
 	Character** getCharacterList();
 	//int doAttack(float);
-	bool checkDie();
+	bool			checkDie();
 	int				getIndex();
 	void			setIndex(int);
 	virtual void	initSkillSet(int) = 0;
 	int				getUsableSkill();
-
 	/*for debug*/
 	void printStatus();
 };

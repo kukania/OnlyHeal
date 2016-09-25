@@ -12,7 +12,6 @@ private:
 public:
 	Monster(Tier tier);
 	Monster();
-	int doAttack(float);
 	int setFindTarget(Character ** t);
 	virtual void	initSkillSet(int);
 };
