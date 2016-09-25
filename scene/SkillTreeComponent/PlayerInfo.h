@@ -11,3 +11,21 @@ This class has player's information used in skilltree.
 		Updated when user want to. 
 ============================================================ */
 
+#pragma once
+
+#include "cocos2d.h"
+#include "ui\CocosGUI.h"
+USING_NS_CC;
+
+#include "parts/Skill.h"
+#include <vector>
+
+#typedef unsigned int 		point_t
+#typedef vector<Skill*> 	skillset_t
+
+class PlayerInfo{
+private:
+	point_t		_point;
+	skillset_t 	_skillslot;
+public:
+};
