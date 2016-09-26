@@ -1,8 +1,8 @@
-/*
+/* ============================================================
 FileName:	BossFrame.cpp
 Revision:	2016/08/29 by PorcaM
-Modified:	2016/08/30 by PorcaM
-*/
+Modified:	2016/09/26 by PorcaM
+============================================================ */
 
 #include "BossFrame.h"
 
@@ -62,5 +62,13 @@ void BossFrame::initDamage() {
 	_damagelog->setColor(Color3B(255, 125, 0));
 	_damagelog->setPosition(Vec2(110, 0));
 	this-> addChild(_damagelog, 10);
+	return;
+}
+
+// Not totally
+void
+BossFrame::
+updateAll (){
+	
 	return;
 }
