@@ -48,7 +48,7 @@ bool Raid::init()
 	
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
-	this->schedule(schedule_selector(Raid::moveBossFrame),3);
+	this->schedule(schedule_selector(Raid::moveBossFrame),0.5);
 	this->schedule(schedule_selector(Raid::playingFunc), 0.5);
 	this->schedule(schedule_selector(Raid::skillCoolDown), 0.5);
 	this->schedule(schedule_selector(Raid::frameUpdate),0.5);
@@ -69,21 +69,6 @@ void Raid::makeSkillScrollView() {
 	scv->setPosition(Point(400, 30));
 	scv->setSwallowTouches(false);
 	scv->setName("scv");
-	HealSkillFactory hsf;
-	hsf.initAllSkills();
-	Skill** sl = hsf.getSkillsList(SKILLNUM);
-	SkillFrame *sf[SKILLNUM];
-	int borderline = visibleSize.height - 240;
-	for (int i = 0; i < SKILLNUM; i++) {
-		sf[i] = new SkillFrame(sl[i]);
-		sf[i]->_button->setContentSize(Size(100, 80));
-		sf[i]->_button->setAnchorPoint(Vec2(0,1));
-		sf[i]->_button->setPosition(Vec2(10, 80* SKILLNUM +i*-80));
-		sf[i]->_button->setTag(i);
-		this->skillBtnPosition[i] = sf[i]->_button->getPosition();
-		scv->addChild(sf[i]->_button);
-	}
-	this->addChild(scv);
 }
 bool Raid::onTouchBegan(Touch* touch, Event*) {
 	Point location = touch->getLocation();
@@ -107,6 +92,23 @@ void Raid::onTouchMoved(Touch *touch, Event*) {
 }
 void Raid::onTouchEnded(Touch *touch, Event*) {
 	if (selectedBtn != NULL) {
+		for (int i = 0; i < 4; i++) {
+			Rect a;
+			a.setRect(uf[i]->getPosition().x, uf[i]->getPosition().y, uf[i]->_background->getContentSize().width*1.6f, uf[i]->_background->getContentSize().height*1.6f);
+			Point endPoint = touch->getLocation();
+			if (a.containsPoint(endPoint)) {
+				CCLOG("intersect");
+				int num = selectedBtn->getTag();
+				if(!cl[1]->mySkillSet[num]->isMulti())
+					cl[1]->mySkillSet[num]->activate(cl, *cl[1], i+2);
+				else
+					cl[1]->mySkillSet[num]->activate(cl, *cl[1]);
+				SkillInfo tempSkillInfo;
+				tempSkillInfo.cl = cl[i];
+				tempSkillInfo.skillNum = num;
+				skillStorage.push_back(tempSkillInfo);
+			}
+		}
 		selectedBtn->retain();
 		selectedBtn->removeFromParent();
 		selectedBtn->setAnchorPoint(Point(0, 1));
@@ -124,21 +126,34 @@ void Raid::makeUnitFrame() {
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	int borderline = visibleSize.height - 240;
-	auto UnitGrid = CCLayerColor::create();
+	
 	for (int i = 2; i <=5; i++) {
 		uf[i-2] = new UnitFrame(cl[i]);
-		uf[i-2]->setPosition(Vec2(0, (i-2)*-90));
-		UnitGrid->addChild(uf[i-2]);
+		uf[i-2]->setPosition(Vec2(0, borderline-180+(i-2)*-(90*1.6f)));
+		uf[i - 2]->setScale(1.6f);
+		this->addChild(uf[i-2]);
 	}
-	UnitGrid->setScale(1.6f);
-	UnitGrid->setAnchorPoint(Vec2(0, 0));
-	UnitGrid->setPosition(Vec2(0, borderline - 180));
-	this->addChild(UnitGrid);
-
 	bf = new BossFrame(cl[0]);
 	bf->setScale(1.6f);
 	bf->setPosition(Vec2(visibleSize.width / 2, borderline + 80));
 	this->addChild(bf);
+
+	HealSkillFactory hsf;
+	hsf.initAllSkills();
+	Skill** sl = hsf.getSkillsList(SKILLNUM);
+	SkillFrame *sf[SKILLNUM];
+	borderline = visibleSize.height - 240;
+	for (int i = 0; i < SKILLNUM; i++) {
+		sf[i] = new SkillFrame(sl[i]);
+		sf[i]->_button->setContentSize(Size(100, 80));
+		sf[i]->_button->setAnchorPoint(Vec2(0, 1));
+		sf[i]->_button->setPosition(Vec2(10, 80 * SKILLNUM + i*-80));
+		sf[i]->_button->setTag(i);
+		cl[1]->mySkillSet.push_back(sl[i]);
+		this->skillBtnPosition[i] = sf[i]->_button->getPosition();
+		scv->addChild(sf[i]->_button);
+	}
+	this->addChild(scv);
 }
 void Raid::menuCloseCallback(Ref* pSender)
 {
