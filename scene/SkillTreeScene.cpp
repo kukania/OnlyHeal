@@ -80,7 +80,7 @@ bool SkillTreeScene::init()
 	for (int i = 0; i < 3; i++){
 		tab[i]->addTouchEventListener ([&, stf, i] (Ref *pSender, ui::Button::Widget::TouchEventType type){
 			printf (((ui::Button*)pSender)->getName ().c_str ());
-			stf -> InitWithType ((SkillTree::Type)i);
+			stf -> InitWithType ((Skill::Type)i);
 		});
 	}
 

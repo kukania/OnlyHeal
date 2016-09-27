@@ -35,7 +35,7 @@ void 	SkillFactory::pushSkill (Skill* pSkill){
 	Akashic.push_back (pSkill);
 }
 
-Skill*	SkillFactory::getSkill(int index) {
+Skill* SkillFactory::getSkill(int index) {
 	return Akashic[index];
 }
 

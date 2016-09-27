@@ -71,7 +71,7 @@ TreeIt SkillTree::getEnd (){
 /* ============================================================
 	Renewaled functions on 27th. 
 ============================================================ */
-void SkillTree::InitWithType(Type type){
+void SkillTree::InitWithType(Skill::Type type){
 	if (type == kHeal) {
 		InitHealSkillTree();
 	} else if (type == kBuff) {
@@ -86,10 +86,13 @@ void SkillTree::InitWithType(Type type){
 
 void SkillTree::InitHealSkillTree(){
 	clear();
+	SkillNode *temp;
 	insertSkill(new SkillNode (0, 0, true));
-	insertSkill(new SkillNode (1, 0, false));
+	insertSkill(temp = new SkillNode (1, 0, false));
+	temp->set_col_n_row(0, 0);
 	for (int i = 0; i < 6; i++){
-		insertSkill(new SkillNode (2+i, 1+i, false));
+		insertSkill(temp = new SkillNode (2+i, 1+i, false));
+		temp->set_col_n_row(i+1, 1);
 	}
 
 	return;

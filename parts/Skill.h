@@ -28,7 +28,14 @@ protected:
 	SkillType 	_type; 			// type of skill
 	bool 		_multi;
 
-public:	
+ public:	
+ 	enum Type{
+ 		kHeal = 0,
+ 		kBuff,
+ 		kDebuff,
+ 		kAgro,
+ 		kAttk
+ 	};
 	// ID, name, cooltime, time, type, multi
 	Skill(SkillID, string, time_ms, time_s, SkillType, bool);
 	// getter

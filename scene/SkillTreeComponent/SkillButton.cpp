@@ -1,14 +1,15 @@
-/*
+/* ============================================================
 FileName:	SkillButton.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/19 by PorcaM
-*/
+Modified: 	2016/09/27 by PorcaM
+============================================================ */
 
 #include "SkillButton.h"
+
 #include <string>
 #include <cstdio>
 #include "ConvertKorean.h"
-#include "scene/OHDialog.h"
+#include "scene\OHDialog.h"
 
 #define TOUCH_END(type) type == ui::Button::TouchEventType::ENDED
 #define TEL_PARAM 		Ref *pSender, ui::Button::Widget::TouchEventType type
@@ -19,6 +20,7 @@ SkillButton::SkillButton (Skill* skill, SkillNode* node, SkillNode* prev){
 	_prev = prev;
 	initButton ();
 	initLabel ();
+	setPosition(Vec2(node->get_col()*100, node->get_row()*100));
 }
 
 SkillButton::~SkillButton (){

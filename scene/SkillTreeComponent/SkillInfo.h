@@ -19,11 +19,20 @@ This class has two (important) component.
 #include "ui\CocosGUI.h"
 USING_NS_CC;
 
-#include "skilltree/SkillTree.h"
+#include "parts\Skill.h"
+#include "skilltree\SkillTree.h"
+#include "skillinstance\Factory\SkillFactory.h"
 #include "skillinstance/Factory/HealSkillFactory.h"
 #include "skillinstance/Factory/BuffSkillFactory.h"
 #include "skillinstance/Factory/DebuffSkillFactory.h"
 
 class SkillInfo{
-
+ public:
+ 	SkillInfo();
+ 	~SkillInfo();
+ 	SkillFactory *get_factory_by_type(Skill::Type type);
+ 	SkillTree *get_skilltree_by_type(Skill::Type type);
+ private:
+ 	SkillFactory **factory_arr_;
+ 	SkillTree **skilltree_arr_;
 };

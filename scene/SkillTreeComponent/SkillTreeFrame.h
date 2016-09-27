@@ -41,25 +41,22 @@ enum ST_TYPE{
 
 class SkillTreeFrame {
  public:
-	SkillTreeFrame (ST_TYPE);
-	~SkillTreeFrame ();
-	void initWithType (ST_TYPE);
 	// renewal
 	SkillTreeFrame();
-	void InitWithType(SkillTree::Type type);
+	void InitWithType(Skill::Type type);
 	void ClearContents();
-	void InsertButton(Skill *skill, SkillNode *node, int col, int row);
+	void InsertButton(Skill *skill);
 	ui::ScrollView *get_scrollview();
+	Skill::Type get_type();
+	void set_type(Skill::Type type);
  private:
-	vector<SkillButton*> 	_buttons;
-	SkillTree 				_skilltree;
-	SkillFactory** 			_factories;
-	void insertButton (Skill*, SkillNode*, Vec2);
 	// renewal
 	void InitScrollView();
 	void ClearScrollview();
 	void ClearButtons();
-	SkillTree get_skilltree();
+	SkillFactory *get_factory();
+	SkillTree *get_skilltree();
+	Skill::Type 			type_;
 	vector<SkillButton *> 	button_vec_;
 	PlayerInfo 				player_info_;
 	SkillInfo 				skill_info_;
