@@ -20,11 +20,12 @@ USING_NS_CC;
 #include "parts/Skill.h"
 #include <vector>
 
-#typedef unsigned int 		point_t
-#typedef vector<Skill*> 	skillset_t
+
 
 class PlayerInfo{
 private:
+	typedef unsigned int 		point_t;
+	typedef vector<Skill*> 	skillset_t;
 	point_t		_point;
 	skillset_t 	_skillslot;
 public:
