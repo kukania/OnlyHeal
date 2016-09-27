@@ -1,7 +1,7 @@
 /* ============================================================
 FileName:	SkillTreeFrame.h
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/22 by PorcaM
+Modified: 	2016/09/27 by PorcaM
 
 This is a set of skillbuttons. 
 Scrollable. 
@@ -24,36 +24,46 @@ This class has ? componets.
 
 #pragma once
 
+#include <vector>
 #include "cocos2d.h"
 #include "ui\CocosGUI.h"
-#include "parts\Skill.h"
-#include "skilltree\SkillTree.h"
-#include "SkillButton.h"
-#include "skillinstance/Factory/SkillFactory.h"
-#include <vector>
 USING_NS_CC;
+#include "parts\Skill.h"
+#include "scene\SkillTreeComponent\PlayerInfo.h"
+#include "scene\SkillTreeComponent\SkillButton.h"
+#include "scene\SkillTreeComponent\SkillInfo.h"
+#include "skillinstance\Factory\SkillFactory.h"
+#include "skilltree\SkillTree.h"
 
 enum ST_TYPE{
 	HealSkilltree, BuffSkilltree, DebuffSkilltree
 };
 
 class SkillTreeFrame {
-private:
-	vector<SkillButton*> 	_buttons;
-	SkillTree 				_skilltree;
-	SkillFactory** 			_factories;
-	ui::ScrollView* 		_scrollview;
-	Label* 					_point;
-	int 					_height;
-	int 					_innerWidth;
-	void insertButton (Skill*, SkillNode*, Vec2);
-	void initScrollView ();
-	void initPoint ();
-	void clearScrollview ();
-	void clearButtons ();
-public:
+ public:
 	SkillTreeFrame (ST_TYPE);
 	~SkillTreeFrame ();
 	void initWithType (ST_TYPE);
-	ui::ScrollView* getScrollView ();
+	// renewal
+	SkillTreeFrame();
+	void InitWithType(SkillTree::Type type);
+	void ClearContents();
+	void InsertButton(Skill *skill, SkillNode *node, int col, int row);
+	ui::ScrollView *get_scrollview();
+ private:
+	vector<SkillButton*> 	_buttons;
+	SkillTree 				_skilltree;
+	SkillFactory** 			_factories;
+	void insertButton (Skill*, SkillNode*, Vec2);
+	// renewal
+	void InitScrollView();
+	void ClearScrollview();
+	void ClearButtons();
+	SkillTree get_skilltree();
+	vector<SkillButton *> 	button_vec_;
+	PlayerInfo 				player_info_;
+	SkillInfo 				skill_info_;
+	ui::ScrollView* 		scrollview_;
+	int 					scrollview_height_;
+	int 					scrollview_inner_width_;
 };

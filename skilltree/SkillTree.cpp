@@ -1,33 +1,20 @@
-/*
+/* ============================================================
 FileName: 	SkillTree.cpp
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/09/22 by PorcaM
-*/
+Modified: 	2016/09/27 by PorcaM
+============================================================ */
 
 #include "SkillTree.h"
+
 #include <cstdio>
 
 SkillTree::SkillTree (){
-	clear ();
-	setPoint (0);
+	// No variable => nothing to do. 
 }
 
 /* clear all allocated nodes */
 SkillTree::~SkillTree (){
-	clear ();
-}
-
-unsigned int
-SkillTree::
-getPoint (){
-	return _point;
-}
-
-void
-SkillTree::
-setPoint (unsigned int point){
-	_point = point;
-	return;
+	clear();  // Clear nodes of tree. 
 }
 
 void SkillTree::clear (){
@@ -62,22 +49,6 @@ void 	SkillTree::removeSkill (SkillID id){
 	return;
 }
 
-void 	SkillTree::initHealSkillTree (){
-	clear ();
-	insertSkill (new SkillNode (0, 0, true));
-	insertSkill (new SkillNode (1, 0, false));
-	for (int i = 0 ; i < 6; i++){
-		insertSkill (new SkillNode (2+i, 1+i, false));
-	}
-
-	return;
-}
-
-void 	SkillTree::initBuffSkillTree (){
-	clear ();
-	return;
-}
-
 int 	SkillTree::learnSkill (SkillID id){
 	SkillNode* skill = findSkill (id);
 	SkillNode* prev = findSkill (skill->getPrev ());
@@ -95,4 +66,41 @@ TreeIt SkillTree::getBegin (){
 
 TreeIt SkillTree::getEnd (){
 	return _tree.end ();
+}
+
+/* ============================================================
+	Renewaled functions on 27th. 
+============================================================ */
+void SkillTree::InitWithType(Type type){
+	if (type == kHeal) {
+		InitHealSkillTree();
+	} else if (type == kBuff) {
+		InitBuffSkillTree();
+	} else if (type == kDebuff) {
+		InitDebuffSkillTree();
+	} else {
+		assert(false);
+	}
+	return;
+}
+
+void SkillTree::InitHealSkillTree(){
+	clear();
+	insertSkill(new SkillNode (0, 0, true));
+	insertSkill(new SkillNode (1, 0, false));
+	for (int i = 0; i < 6; i++){
+		insertSkill(new SkillNode (2+i, 1+i, false));
+	}
+
+	return;
+}
+
+void SkillTree::InitBuffSkillTree(){
+	clear();
+	return;
+}
+
+void SkillTree::InitDebuffSkillTree(){
+	clear();
+	return;
 }
