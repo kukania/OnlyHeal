@@ -8,6 +8,7 @@ Modified:	2016/08/25 by PorcaM
 #define __RAID_SCENE_H__
 #include "characters\Character.h"
 #include "RaidComponent\BossFrame.h"
+#include "scene/RaidComponent/unitFrame.h"
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
 #include<list>
@@ -34,12 +35,16 @@ public:
 	
 	/*************variable*******/
 	Character **cl;
+	UnitFrame *uf[4];
 	cocos2d::ui::ScrollView *scv;
 	Point skillBtnPosition[SKILLNUM];
 	ui::Button *selectedBtn;
 	static int selectedNum;
 	BossFrame *bf;
 	std::list<SkillInfo>skillStorage;
+	bool flagForMutex; //player mutex
+	bool flagForMutex2; //skillStorageMutex
+	int playerSkillTarget;
 	/****************************/
 	/*
 	Custom class functions
@@ -63,6 +68,8 @@ public:
 	void moveBossFrame(float fd);
 	void playingFunc(float fd);
 	void skillCoolDown(float fd);
+	void frameUpdate(float fd);
+	void checkGameOver(float fd);
 	//by kukania
 };
 #endif // __RAID_SCENE_H__

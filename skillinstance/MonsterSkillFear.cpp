@@ -9,7 +9,7 @@ MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, str
 	: Skill(now, S_name, cool, c, debuff, true) {
 	myTier = T_input;
 	this->myTier = myFloat;
-	factor = this->myTier.getValue()/10000;
+	factor = (float)this->myTier.getValue()/10000;
 }
 int MonsterSkillFear::setTier(Tier in) {
 	myTier = in;

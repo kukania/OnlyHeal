@@ -10,6 +10,7 @@ Modified:	2016/09/07 by PorcaM
 #include "TankNPC.h"
 #include "RangeNPC.h"
 #include "Monster.h"
+#include"cocos2d.h"
 #include<string>
 #include <cstdio>
 //user
@@ -115,9 +116,18 @@ void	Character::setIndex(int index) {
 int		Character::getUsableSkill() {
 	int num = rand() % mySkillSet.size();
 	for (int i = num,cnt=0; cnt < mySkillSet.size(); i++,cnt++) {
-		if (i == mySkillSet.size()) i = 0;
+		if (i == mySkillSet.size())
+			i = 0;
 		if (mySkillSet[i]->able())
 			return i;
 	}
 	return 0;
+}
+void Character::printStatus() {
+	std::string a;
+	a += cocos2d::StringUtils::format("Type : [%d] |",this->getType());
+	a += cocos2d::StringUtils::format("CurrentHP: [%d] |", this->getStatus()->getHP());
+	a += cocos2d::StringUtils::format("Damage: [%d] |", this->getStatus()->getDamage());
+	a += cocos2d::StringUtils::format("Defence: [%d]", this->getStatus()->getDefence());
+	printf("%s\n", a.c_str());
 }

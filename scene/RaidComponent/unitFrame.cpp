@@ -5,6 +5,7 @@ Modified:	2016/09/23 by PorcaM
 ============================================================ */
 
 #include "UnitFrame.h"
+
 #include <cstdio>
 #include <sstream>
 
@@ -15,6 +16,7 @@ Modified:	2016/09/23 by PorcaM
 
 UnitFrame::
 UnitFrame (Character *character) {
+	curRatio = 1.0f;
 	setCharacter(character);
 	initBackground ();
 	initIcon ();
@@ -136,8 +138,17 @@ initHPLog (){
 void 
 UnitFrame::
 updateHPLog (){
+	float test=(float)GET_FIELD(HP) / (float)GET_FIELD(MaxHP);
 	string 	text = getHPRatioString ();
 	_hplog->setString (text);
+	//add effect
+	if (curRatio > test) {
+		curRatio = test;
+		auto action = MoveBy::create(0.01,Vec2(5,0));
+		auto action2 = MoveBy::create(0.01, Vec2(-5, 0));
+		auto seq = Sequence::create(action, action2, NULL);
+		this->runAction(seq);
+	}
 	return;
 }
 

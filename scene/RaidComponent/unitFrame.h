@@ -14,12 +14,12 @@ USING_NS_CC;
 class UnitFrame : public CCNode{
 private: 
 	Character*	_character;
-	Sprite*		_background;
 	Sprite*		_icon;
 	Sprite*		_hpbar;
 	Label*		_hplog;
 	Label*		_dpslog;
 	float 		_hpRatio;
+	float		curRatio;
 	void 		initBackground ();
 	void 		initIcon ();
 	void 		initHPBar ();
@@ -33,6 +33,7 @@ private:
 	string 		getDpsString ();
 	string 		getHPRatioString ();
 public:
+	Sprite*		_background;
 	UnitFrame (Character *);
 	Character* 	getCharacter ();
 	void 		setCharacter (Character *);

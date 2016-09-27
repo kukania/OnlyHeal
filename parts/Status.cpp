@@ -25,12 +25,11 @@ Status::Status(Tier input) {
 	agro = -1;
 	this->MaxHPDefault = 1000;
 	setMaxHP();
-	HP = MaxHP;
 }
 Tier Status::evalTier() {
 	Tier temp;
 	temp.setLevel((items[0].getTier().getLevel() + items[1].getTier().getLevel() + 
-		items[2].getTier().getLevel()) / 3+(damage - 100 + defence - 100)/10);
+		items[2].getTier().getLevel()) / 3);
 	return temp;
 }
 int	Status::addHP(int input) {
@@ -101,12 +100,13 @@ int			Status::addMyRGBDefence(MyRGB input) {
 	return 0;
 }
 int	Status::addMaxHP(int input) {
-	MaxHP += input;
+	MaxHPDefault += input;
 	setMaxHP();
 	return 0;
 }
 int	Status::setMaxHP() {
 	MaxHP = this->evalTier().getValue() * 10+MaxHPDefault;
+	HP = MaxHP;
 	return 0;
 }
 int	Status::getMaxHP() {

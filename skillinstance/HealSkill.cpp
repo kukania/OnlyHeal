@@ -25,6 +25,9 @@ int HealSkill::activate(Character **t, Character &c) {
 	return 0;
 }
 
-int HealSkill::activate(Character **, Character &, int) {
+int HealSkill::activate(Character **t, Character &c, int num) {
+	int power = c.getStatus()->getDamage();
+	int amount = _factor * power / getTime();
+	t[num]->getStatus()->addHP(amount);
 	return 0;
 }
