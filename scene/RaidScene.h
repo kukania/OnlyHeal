@@ -42,6 +42,9 @@ public:
 	static int selectedNum;
 	BossFrame *bf;
 	std::list<SkillInfo>skillStorage;
+	bool flagForMutex; //player mutex
+	bool flagForMutex2; //skillStorageMutex
+	int playerSkillTarget;
 	/****************************/
 	/*
 	Custom class functions
@@ -66,6 +69,7 @@ public:
 	void playingFunc(float fd);
 	void skillCoolDown(float fd);
 	void frameUpdate(float fd);
+	void checkGameOver(float fd);
 	//by kukania
 };
 #endif // __RAID_SCENE_H__

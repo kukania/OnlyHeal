@@ -31,4 +31,5 @@ private:
  	Label 		*_damagelog;
  	Label 		*_rgblog;
  	float 		_hpRatio;
+	float		_tempRatio;
 };

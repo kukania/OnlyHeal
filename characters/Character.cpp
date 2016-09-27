@@ -116,7 +116,8 @@ void	Character::setIndex(int index) {
 int		Character::getUsableSkill() {
 	int num = rand() % mySkillSet.size();
 	for (int i = num,cnt=0; cnt < mySkillSet.size(); i++,cnt++) {
-		if (i == mySkillSet.size()) i = 0;
+		if (i == mySkillSet.size())
+			i = 0;
 		if (mySkillSet[i]->able())
 			return i;
 	}

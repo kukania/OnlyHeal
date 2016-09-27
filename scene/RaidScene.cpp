@@ -6,10 +6,11 @@ Modified:	2016/08/30 by PorcaM
 
 #include "RaidScene.h"
 #include "ui/CocosGUI.h"
-#include "RaidComponent\BossFrame.h"
+#include "RaidComponent/BossFrame.h"
 #include "RaidComponent\SkillFrame.h"
 #include "characters\Character.h"
 #include "skillinstance\Factory\HealSkillFactory.h"
+#include "OHDialog.h"
 #include <cstdio>
 
 USING_NS_CC;
@@ -43,6 +44,9 @@ bool Raid::init()
 	listener->onTouchEnded = CC_CALLBACK_2(Raid::onTouchEnded, this);
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	
+	this->flagForMutex = false;
+	this->flagForMutex2 = false;
 
 	setBackground(Color4F(1, 1, 1, 1));
 	
@@ -52,7 +56,7 @@ bool Raid::init()
 	this->schedule(schedule_selector(Raid::playingFunc), 0.5);
 	this->schedule(schedule_selector(Raid::skillCoolDown), 0.5);
 	this->schedule(schedule_selector(Raid::frameUpdate),0.5);
-
+	this->schedule(schedule_selector(Raid::checkGameOver), 0.5);
 	return true;
 }
 
@@ -104,7 +108,7 @@ void Raid::onTouchEnded(Touch *touch, Event*) {
 				else
 					cl[1]->mySkillSet[num]->activate(cl, *cl[1]);
 				SkillInfo tempSkillInfo;
-				tempSkillInfo.cl = cl[i];
+				tempSkillInfo.cl = cl[1];
 				tempSkillInfo.skillNum = num;
 				skillStorage.push_back(tempSkillInfo);
 			}
@@ -200,7 +204,7 @@ void Raid::playingFunc(float fd) {
 	//character skill& do attack
 	for (int i = 0; i < 6; i++) {
 		if (i == 1) continue;
-		if (cl[i]->_timer<=flowedTime) {
+		if (!cl[i]->checkDie()&&cl[i]->_timer<=flowedTime) {
 			int skillNum = cl[i]->getUsableSkill();
 			Skill *skill=cl[i]->mySkillSet[skillNum];
 			if (skill->getType() == buff) {
@@ -241,8 +245,22 @@ void Raid::skillCoolDown(float fd) {
 		if (it != skillStorage.end())it2 = std::next(it);
 	}
 }
-
 void Raid::frameUpdate(float fd) {
 	for (int i = 0; i < 4; i++)
 		uf[i]->updateAll();
+	bf->updateAll();
+}
+void Raid::checkGameOver(float fd) {
+	if (cl[0]->checkDie()){
+		unscheduleAllSelectors();
+		OHDialog popup(Size(500,200),"system","you win!");
+		popup.addedTo(this);
+		CCLOG("game end! win");
+	}
+	else if ((cl[2]->checkDie() && cl[3]->checkDie() && cl[4]->checkDie() && cl[5]->checkDie())) {
+		unscheduleAllSelectors();
+		OHDialog popup(Size(500, 200), "system", "you lose!");
+		popup.addedTo(this);
+		CCLOG("game end! lose");
+	}
 }

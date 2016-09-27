@@ -39,11 +39,13 @@ void BossFrame::initIcon() {
 	_icon->setName("icon");
 	_icon->setPosition(Vec2(0, 0));
 	this->addChild(_icon);
+
 	return;
 }
 
 void BossFrame::initHP() {
 	string _path = "images/raid/redHP.png";
+	_tempRatio = 1.0f;
 	_hpbar = Sprite::create(_path);
 	_hpbar->setName("hpbar");
 	_hpbar->setPosition(Vec2(-172, -100));
@@ -81,7 +83,14 @@ BossFrame::
 updateAll (){
 	int 	curHP = GET_FIELD (HP);
 	int 	maxHP = GET_FIELD (MaxHP);
-	_hpRatio = (float)curHP/maxHP;
+	_hpRatio = (float)curHP / maxHP;
+	if (_tempRatio > _hpRatio) {
+		_tempRatio = _hpRatio;
+		auto action1 = MoveBy::create(0.02f, Vec2(0, 10));
+		auto action2 = MoveBy::create(0.02f, Vec2(0, -10));
+		auto _action = Sequence::create(action1, action2, NULL);
+		_icon->runAction(_action);
+	}
 	_hpbar->setScaleX (_hpRatio);
 	string text = GET_RGB_STRING(R) + "\n" + GET_RGB_STRING(G) + "\n" + GET_RGB_STRING(B);
 	_rgblog->setString (text);

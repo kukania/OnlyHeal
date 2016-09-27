@@ -25,7 +25,6 @@ Status::Status(Tier input) {
 	agro = -1;
 	this->MaxHPDefault = 1000;
 	setMaxHP();
-	HP = MaxHP;
 }
 Tier Status::evalTier() {
 	Tier temp;
@@ -101,12 +100,13 @@ int			Status::addMyRGBDefence(MyRGB input) {
 	return 0;
 }
 int	Status::addMaxHP(int input) {
-	MaxHP += input;
+	MaxHPDefault += input;
 	setMaxHP();
 	return 0;
 }
 int	Status::setMaxHP() {
 	MaxHP = this->evalTier().getValue() * 10+MaxHPDefault;
+	HP = MaxHP;
 	return 0;
 }
 int	Status::getMaxHP() {
