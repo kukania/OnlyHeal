@@ -47,7 +47,7 @@ int SkillNode::get_col(){
 }
 
 void SkillNode::set_col(int val){
-	assert(val<0 && "col cannot be unsigned.");
+	assert(val>=0 && "col cannot be unsigned.");
 	col_ = val;
 	return;
 }
@@ -57,7 +57,7 @@ int SkillNode::get_row(){
 }
 
 void SkillNode::set_row(int val){
-	assert(val<0 && "row cannot be unsigned.");
+	assert(val>=0 && "row cannot be unsigned.");
 	row_ = val;
 	return;
 }

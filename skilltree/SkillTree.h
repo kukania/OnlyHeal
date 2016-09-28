@@ -26,7 +26,7 @@ class SkillTree{
 	TreeIt 		getBegin ();
 	TreeIt 		getEnd ();
 	void 		clear ();
-	void InitWithType(Skil::Type type);
+	void InitWithType(Skill::Type type);
  private:
  	void InitHealSkillTree();
  	void InitBuffSkillTree();

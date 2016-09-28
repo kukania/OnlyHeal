@@ -45,6 +45,7 @@ Modified: 	2016/09/27 by PorcaM
 	Renewaled functions on 27th. 
 ============================================================ */
 SkillTreeFrame::SkillTreeFrame(){
+	set_type(Skill::Type::kHeal);
 	scrollview_height_ 			= 400;
 	scrollview_inner_width_ 	= 1200;
 	InitScrollView();
@@ -56,8 +57,9 @@ void SkillTreeFrame::InitWithType(Skill::Type type) {
 		int i = 0;
 		SkillFactory *factory = get_factory();
 		for (auto it = get_skilltree()->getBegin();
-			it != get_skilltree()->getEnd(); it++) {
-			Skill *skill = factory->getSkill(it->first);
+			it != get_skilltree()->getEnd(); ++it) {
+			if (it == get_skilltree()->getBegin()) continue;
+			Skill *skill = factory->getSkill(it->first-1);
 			InsertButton(skill);
 		}
 		return;
@@ -70,7 +72,7 @@ void SkillTreeFrame::ClearContents() {
 }
 
 void SkillTreeFrame::InsertButton(Skill *skill){
-	SkillNode *node = it->second;
+	SkillNode *node = get_skilltree()->findSkill(skill->getID());
 	SkillNode *prev = get_skilltree()->findSkill(node->getPrev());
 	auto button = new SkillButton(skill, node, prev);
 	get_scrollview()->addChild(button);

@@ -9,6 +9,7 @@ Modified: 	2016/09/27 by PorcaM
 #include <cstdio>
 
 SkillTree::SkillTree (){
+	_tree.clear();
 	// No variable => nothing to do. 
 }
 
@@ -18,10 +19,10 @@ SkillTree::~SkillTree (){
 }
 
 void SkillTree::clear (){
-	for (TreeIt ti = getBegin (); ti != getEnd (); ti++){
+	for (auto ti = getBegin(); ti != getEnd(); ++ti) {
 		delete ti->second;
 	}
-	_tree.clear ();
+	_tree.clear();
 	return;
 }
 
@@ -72,11 +73,11 @@ TreeIt SkillTree::getEnd (){
 	Renewaled functions on 27th. 
 ============================================================ */
 void SkillTree::InitWithType(Skill::Type type){
-	if (type == kHeal) {
+	if (type == Skill::Type::kHeal) {
 		InitHealSkillTree();
-	} else if (type == kBuff) {
+	} else if (type == Skill::Type::kBuff) {
 		InitBuffSkillTree();
-	} else if (type == kDebuff) {
+	} else if (type == Skill::Type::kDebuff) {
 		InitDebuffSkillTree();
 	} else {
 		assert(false);
@@ -90,11 +91,22 @@ void SkillTree::InitHealSkillTree(){
 	insertSkill(new SkillNode (0, 0, true));
 	insertSkill(temp = new SkillNode (1, 0, false));
 	temp->set_col_n_row(0, 0);
-	for (int i = 0; i < 6; i++){
+	insertSkill(temp = new SkillNode (8, 1, false));
+	temp->set_col_n_row(0, 1);
+	insertSkill(temp = new SkillNode (15, 1, false));
+	temp->set_col_n_row(0, 2);
+	for (int i = 0; i < 6; ++i){  // from 2 to 7
 		insertSkill(temp = new SkillNode (2+i, 1+i, false));
+		temp->set_col_n_row(i+1, 0);
+	}
+	for (int i = 0; i < 6; ++i){  // from 9 to 14
+		insertSkill(temp = new SkillNode (9+i, 8+i, false));
 		temp->set_col_n_row(i+1, 1);
 	}
-
+	for (int i = 0; i < 6; ++i){  // from 16 to 21
+		insertSkill(temp = new SkillNode (16+i, 8+i, false));
+		temp->set_col_n_row(i+1, 2);
+	}
 	return;
 }
 
