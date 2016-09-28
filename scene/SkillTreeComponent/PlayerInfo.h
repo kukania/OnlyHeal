@@ -1,6 +1,7 @@
 /* ============================================================
 FileName: 	PlayerInfo.h
 Revision: 	2016/09/22 by PorcaM
+Modified: 	2016/09/28 by PorcaM
 
 This class has player's information used in skilltree. 
 	1. Point
@@ -13,20 +14,32 @@ This class has player's information used in skilltree.
 
 #pragma once
 
+#include <vector>
 #include "cocos2d.h"
 #include "ui\CocosGUI.h"
 USING_NS_CC;
-
-#include "parts/Skill.h"
-#include <vector>
-
-
+#include "parts\Skill.h"  /* Perhaps this Lib is not essential. */
+#include "scene\SkillTreeComponent\SkillButton.h"
 
 class PlayerInfo{
-private:
-	typedef unsigned int 		point_t;
-	typedef vector<Skill*> 	skillset_t;
-	point_t		_point;
-	skillset_t 	_skillslot;
-public:
+ public:
+	const int max_skill_num = 10;
+	typedef int Point;
+	typedef vector<SkillButton *> SkillVec;
+	PlayerInfo();
+	~PlayerInfo();
+	int get_skill_num();
+	void set_skill_num(int skill_num);
+	Point get_point();
+	void set_point(Point point);
+	SkillVec get_slot();
+	ui::ScrollView *get_scrollview();
+ private:
+ 	void InitScrollview();
+ 	void InitLabelPoint();
+ 	int skill_num_;
+	Point point_;
+	SkillVec slot_;
+	ui::ScrollView *scrollview_;
+	Label *label_point_;
 };

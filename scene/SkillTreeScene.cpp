@@ -76,6 +76,7 @@ bool SkillTreeScene::init()
 
 	SkillTreeFrame* stf = new SkillTreeFrame ();
 	SkillTreeLayer->addChild (stf->get_scrollview());
+	SkillTreeLayer->addChild(stf->get_player_info()->get_scrollview());
 
 	for (int i = 0; i < 3; i++){
 		tab[i]->addTouchEventListener ([&, stf, i] (Ref *pSender, ui::Button::Widget::TouchEventType type){

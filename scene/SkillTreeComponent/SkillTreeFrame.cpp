@@ -9,45 +9,13 @@ Modified: 	2016/09/27 by PorcaM
 #include "skillinstance/Factory/HealSkillFactory.h"
 #include "skillinstance/Factory/BuffSkillFactory.h"
 #include "skillinstance/Factory/DebuffSkillFactory.h"
-
-// SkillTreeFrame::
-// SkillTreeFrame (ST_TYPE type){
-// 	/* Allocate members */
-// 	_factories = new SkillFactory*[3];
-// 	_factories[0] = new HealSkillFactory ();
-// 	_factories[1] = new BuffSkillFactory ();
-// 	_factories[2] = new DebuffSkillFactory ();
-// 	for (int i = 0; i < 3; i++)
-// 		_factories[i] -> initAllSkills ();
-// 	/* Set values */
-// 	initWithType (type);
-// }
-
-// void 
-// SkillTreeFrame::
-// initWithType (ST_TYPE type){
-// 	ClearContents();
-// 	SkillFactory* factory = _factories[(int)type];
-// 	/*if		(type == HealSkilltree)
-// 		_skilltree.initHealSkillTree ();
-// 	else if (type == BuffSkilltree)
-// 		_skilltree.initBuffSkillTree ();*/
-// 	int i = 0;
-// 	for (TreeIt ti = get_skilltree().getBegin(); ti != get_skilltree().getEnd (); ti++){
-// 		Skill* 	pSkill 		= factory -> getSkill (ti->first);
-// 		Vec2 	position 	= Vec2 (100*++i, 100);
-// 		//insertButton (pSkill, ti->second, position);
-// 	}
-// 	return;
-// }
-
 /* ============================================================
 	Renewaled functions on 27th. 
 ============================================================ */
 SkillTreeFrame::SkillTreeFrame(){
 	set_type(Skill::Type::kHeal);
 	scrollview_height_ 			= 400;
-	scrollview_inner_width_ 	= 1200;
+	scrollview_inner_width_ 	= 800;
 	InitScrollView();
 	InitWithType(Skill::kHeal);
 }
@@ -94,6 +62,10 @@ void SkillTreeFrame::set_type(Skill::Type type){
 		assert(false);
 	}
 	return;
+}
+
+PlayerInfo *SkillTreeFrame::get_player_info() {
+	return &player_info_;
 }
 
 void SkillTreeFrame::InitScrollView(){

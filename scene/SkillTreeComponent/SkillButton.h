@@ -1,7 +1,7 @@
 /* ============================================================
 FileName:	SkillButton.h
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/27 by PorcaM
+Modified: 	2016/09/28 by PorcaM
 
 SkillButton is in SkillTreeFrame. 
 This is a instance of that. 
@@ -26,16 +26,34 @@ USING_NS_CC;
 
 class SkillButton : public CCNode{
  public:
-	SkillButton (Skill*, SkillNode*, SkillNode*);
+	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev);
 	~SkillButton ();
-	void initButton ();
-	void initLabel ();
-	void updateButton ();
+	auto get_label();
+	void set_label();
+	auto get_button();
+	void set_button();
+	auto get_skill();
+	void set_skill();
+	auto get_node();
+	void set_node();
+	auto get_prev();
+	void set_prev();
+
+	// void initLabel ();
+	// void updateButton ();
+	// void initButton ();
  private:
-	ui::Button* 			_button;
-	Label* 					_label;
-	Skill* 					_skill;
-	SkillNode* 				_node;
-	SkillNode*		_prev;
+ 	void InitLabel();
+ 	void InitButton();
+ 	Label *label_;
+ 	ui::Button *button_;
+	Skill *skill_;
+	SkillNode *node_, *prev_;
+
+	// ui::Button* 			_button;
+	// Label* 					_label;
+	// Skill* 					_skill;
+	// SkillNode* 				_node;
+	// SkillNode*		_prev;
 	const static SkillTree* _tree;
 };

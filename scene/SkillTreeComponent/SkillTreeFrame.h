@@ -49,6 +49,7 @@ class SkillTreeFrame {
 	ui::ScrollView *get_scrollview();
 	Skill::Type get_type();
 	void set_type(Skill::Type type);
+	PlayerInfo *get_player_info();
  private:
 	// renewal
 	void InitScrollView();
