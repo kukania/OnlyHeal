@@ -6,25 +6,117 @@ Modified: 	2016/09/27 by PorcaM
 
 #include "scene\SkillTreeComponent\SkillButton.h"
 
+#include <string>
+
+#include "ConvertKorean.h"
+
 SkillButton::SkillButton(Skill *skill, SkillNode *node, SkillNode *prev){
 
 }
 SkillButton::~SkillButton(){
-
+	delete label_;
+	delete button_;
 }
+void SkillButton::UpdateButtonTexture(){
+	string color = (get_node()->getLearn ()) ? "a" : "d";
+	string path = "images/skilltree/icon_" + color + ".png";
+	get_button()->loadTextures (path, path, path);
+	return;
+}
+void SkillButton::AddEventListener(){
+	get_button()->addTouchEventListener([&](
+										Ref *pSender, 
+										ui::Button::Widget::TouchEventType) {
+// 		if (TOUCH_END(type)){
+// 			bool	learn 	= _node -> getLearn ();
+// 			string 	title	= learn?
+// 							"EQUIP_SKILL":
+// 							"LEARN_SKILL";
+// 			string	prompt	= learn?
+// 							"equip this skill?\n":
+// 							"learn this skill?\n";
+// 			string	info 	= "SkillName: " + _skill -> getName () + "\n" +	"SkillID: " + "\n";
+// 			OHDialog dialog (Size (400, 250), title, prompt + info);
+// 			dialog.okBtn -> addTouchEventListener ([=](TEL_PARAM) {
+// 				if (TOUCH_END(type)){
+// 					if (_prev -> getLearn () == true && true){
+// 						/* learn, point */
+// 						_node -> setLearn (true);
+// 					}
+// 					else{
+// 						printf ("Fail to learn!\n");
+// 					}
+// 					updateButton ();
+// 					((CCNode*)pSender) -> getParent () -> removeFromParent ();
+// 				}
+// 			});
+// 			dialog.addedTo (Director::getInstance () -> getRunningScene ());
+// 		}
+// 	});
+	return;
+}
+void SkillButton::InitLabel(){
+	string text = get_skill()->getName();
+	string font = "fonts/sdCrayon.ttf";
+	int size = 24;
+	auto label = get_label();
+	label = Label::create(_AtoU8 (text.c_str ()), font, size);
+	label->setAlignment(TextHAlignment::CENTER);
+	label->setTextColor(Color4B (0, 0, 0, 255));
+	label->setWidth(50);
+	this->addChild(label);
+	return;
+}
+void SkillButton::InitButton(){
+	auto button = get_button();
+	button = ui::Button::create();
+	UpdateButtonTexture();  /* MUST be called after allocation! */
+	this->addChild(button);
+	return;
+}
+/* ============================================================
+	Getter and Setter. 
+============================================================ */
 auto SkillButton::get_label(){
 	return label_;
-}/*
-void SkillButton::set_label();
-auto SkillButton::get_button();
-void SkillButton::set_button();
-auto SkillButton::get_skill();
-void SkillButton::set_skill();
-auto SkillButton::get_node();
-void SkillButton::set_node();
-auto SkillButton::get_prev();
-void SkillButton::set_prev();*/
+}
+auto SkillButton::get_button(){
+	return button_;
+}
+auto SkillButton::get_skill(){
+	return skill_;
+}
+void SkillButton::set_skill(Skill *skill){
+	if (skill == NULL) {
+		assert(false);
+	}
+	skill_ = skill;
+	return;
+}
+auto SkillButton::get_node(){
+	return node_;
+}
+void SkillButton::set_node(SkillNode *node){
+	if (node == NULL) {
+		assert(false);
+	}
+	node_ = node;
+	return;
+}
+auto SkillButton::get_prev(){
+	return prev_;
+}
+void SkillButton::set_prev(SkillNode *prev){
+	if (prev == NULL) {
+		assert(false);
+	}
+	prev_ = prev;
+	return;
+}
 
+/* ============================================================
+	Legacy
+============================================================ */
 // #include <string>
 // #include <cstdio>
 

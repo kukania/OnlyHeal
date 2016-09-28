@@ -24,24 +24,24 @@ USING_NS_CC;
 #include "parts\Skill.h"
 #include "skilltree\SkillTree.h"
 
+/* ============================================================
+	This class has own members: label, button. 
+	Just view(never edit or delete) members: skill, node, prev. 
+============================================================ */
 class SkillButton : public CCNode{
  public:
 	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev);
 	~SkillButton ();
 	auto get_label();
-	void set_label();
 	auto get_button();
-	void set_button();
 	auto get_skill();
-	void set_skill();
+	void set_skill(Skill *skill);
 	auto get_node();
-	void set_node();
+	void set_node(SkillNode *node);
 	auto get_prev();
-	void set_prev();
-
-	// void initLabel ();
-	// void updateButton ();
-	// void initButton ();
+	void set_prev(SkillNode *prev);
+	void UpdateButtonTexture();
+	void AddEventListener(void (*f)(Ref *pSender, ui::Button::Widget::TouchEventType));
  private:
  	void InitLabel();
  	void InitButton();
@@ -49,11 +49,4 @@ class SkillButton : public CCNode{
  	ui::Button *button_;
 	Skill *skill_;
 	SkillNode *node_, *prev_;
-
-	// ui::Button* 			_button;
-	// Label* 					_label;
-	// Skill* 					_skill;
-	// SkillNode* 				_node;
-	// SkillNode*		_prev;
-	const static SkillTree* _tree;
 };
