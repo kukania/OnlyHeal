@@ -9,6 +9,7 @@ Modified: 	2016/09/27 by PorcaM
 #include <string>
 
 #include "ConvertKorean.h"
+#include "scene\OHDialog.h"
 
 SkillButton::SkillButton(Skill *skill, SkillNode *node, SkillNode *prev){
 
@@ -23,36 +24,46 @@ void SkillButton::UpdateButtonTexture(){
 	get_button()->loadTextures (path, path, path);
 	return;
 }
-void SkillButton::AddEventListener(){
-	get_button()->addTouchEventListener([&](
-										Ref *pSender, 
-										ui::Button::Widget::TouchEventType) {
-// 		if (TOUCH_END(type)){
-// 			bool	learn 	= _node -> getLearn ();
-// 			string 	title	= learn?
-// 							"EQUIP_SKILL":
-// 							"LEARN_SKILL";
-// 			string	prompt	= learn?
-// 							"equip this skill?\n":
-// 							"learn this skill?\n";
-// 			string	info 	= "SkillName: " + _skill -> getName () + "\n" +	"SkillID: " + "\n";
-// 			OHDialog dialog (Size (400, 250), title, prompt + info);
-// 			dialog.okBtn -> addTouchEventListener ([=](TEL_PARAM) {
-// 				if (TOUCH_END(type)){
-// 					if (_prev -> getLearn () == true && true){
-// 						/* learn, point */
-// 						_node -> setLearn (true);
-// 					}
-// 					else{
-// 						printf ("Fail to learn!\n");
-// 					}
-// 					updateButton ();
-// 					((CCNode*)pSender) -> getParent () -> removeFromParent ();
-// 				}
-// 			});
-// 			dialog.addedTo (Director::getInstance () -> getRunningScene ());
-// 		}
-// 	});
+void SkillButton::AddEventListener(EventType type){
+	void (*target)(Ref*, ui::Button::Widget::TouchEventType);
+	if (type == EventType::kAlertDialogLearn){
+		target = SkillButton::AlertDialog();
+	} else if (type == EventType::kAlertDialogEquip) {
+
+	} else if (type == EventType::kAlertDialogUnequip) {
+
+	} else {
+		assert(false);
+	}
+	get_button()->addTouchEventListener(target);
+	return;
+}
+void SkillButton::AlertDialog {
+	if (TOUCH_END(type)){
+		bool	learn 	= _node -> getLearn ();
+		string 	title	= learn?
+						"EQUIP_SKILL":
+						"LEARN_SKILL";
+		string	prompt	= learn?
+						"equip this skill?\n":
+						"learn this skill?\n";
+		string	info 	= "SkillName: " + _skill -> getName () + "\n" +	"SkillID: " + "\n";
+		OHDialog dialog (Size (400, 250), title, prompt + info);
+		dialog.okBtn -> addTouchEventListener ([=](TEL_PARAM) {
+			if (TOUCH_END(type)){
+				if (_prev -> getLearn () == true && true){
+					/* learn, point */
+					_node -> setLearn (true);
+				}
+				else{
+					printf ("Fail to learn!\n");
+				}
+				updateButton ();
+				((CCNode*)pSender) -> getParent () -> removeFromParent ();
+			}
+		});
+		dialog.addedTo (Director::getInstance () -> getRunningScene ());
+	}
 	return;
 }
 void SkillButton::InitLabel(){

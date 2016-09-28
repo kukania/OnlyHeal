@@ -30,6 +30,12 @@ USING_NS_CC;
 ============================================================ */
 class SkillButton : public CCNode{
  public:
+ 	typedef void (*EventListener)(Ref*, ui::Button::Widget::TouchEventType);
+ 	enum EventType{
+ 		kAlertDialogLearn = 0,
+ 		kAlertDialogEquip,
+ 		kAlertDialogUnequip
+ 	};
 	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev);
 	~SkillButton ();
 	auto get_label();
@@ -41,7 +47,9 @@ class SkillButton : public CCNode{
 	auto get_prev();
 	void set_prev(SkillNode *prev);
 	void UpdateButtonTexture();
-	void AddEventListener(void (*f)(Ref *pSender, ui::Button::Widget::TouchEventType));
+	void AddEventListener(EventType type);
+	//static void AlertDialog(Ref *, ui::Button::Widget::TouchEventType);
+	static EventListener AlertDialog;  /* This is a function. */
  private:
  	void InitLabel();
  	void InitButton();
