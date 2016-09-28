@@ -45,6 +45,7 @@ public:
 	bool flagForMutex; //player mutex
 	bool flagForMutex2; //skillStorageMutex
 	int playerSkillTarget;
+	static bool endCheck;
 	/****************************/
 	/*
 	Custom class functions

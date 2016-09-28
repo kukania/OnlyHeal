@@ -16,6 +16,7 @@ Modified:	2016/08/30 by PorcaM
 USING_NS_CC;
 
 int Raid::selectedNum = -1;
+bool Raid::endCheck = false;
 Scene* Raid::createScene()
 {
 	auto scene = Scene::create();
@@ -29,6 +30,7 @@ Scene* Raid::createScene(Character **a) {
 	layer->cl = a;
 	layer->makeUnitFrame();
 	scene->addChild(layer);
+	endCheck = false;
 	return scene;
 }
 bool Raid::init()
@@ -228,6 +230,7 @@ void Raid::playingFunc(float fd) {
 
 void Raid::skillCoolDown(float fd) {
 	std::list<SkillInfo>::iterator it = this->skillStorage.begin();
+	if (it == this->skillStorage.end()) return;
 	std::list<SkillInfo>::iterator it2 = std::next(it);
 	while (it != skillStorage.end()) {
 		Skill *skill = it->cl->mySkillSet[it->skillNum];
@@ -251,15 +254,43 @@ void Raid::frameUpdate(float fd) {
 	bf->updateAll();
 }
 void Raid::checkGameOver(float fd) {
+	if (Raid::endCheck) {
+		this->unschedule(schedule_selector(Raid::checkGameOver));
+		Director::getInstance()->popScene();
+	}
 	if (cl[0]->checkDie()){
-		unscheduleAllSelectors();
+		this->unschedule(schedule_selector(Raid::moveBossFrame));
+		this->unschedule(schedule_selector(Raid::playingFunc));
+		this->unschedule(schedule_selector(Raid::skillCoolDown));
+		this->unschedule(schedule_selector(Raid::frameUpdate));
 		OHDialog popup(Size(500,200),"system","you win!");
+		popup.cancelBtn->setVisible(false);
+		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
+			if (e == ui::Button::TouchEventType::ENDED) {
+				ui::Button *btn = (ui::Button*)sender;
+				btn->getParent()->removeFromParent();
+				Raid::endCheck = true;
+				//Director::getInstance()->popScene();
+			}
+		});
 		popup.addedTo(this);
 		CCLOG("game end! win");
 	}
 	else if ((cl[2]->checkDie() && cl[3]->checkDie() && cl[4]->checkDie() && cl[5]->checkDie())) {
-		unscheduleAllSelectors();
+		this->unschedule(schedule_selector(Raid::moveBossFrame));
+		this->unschedule(schedule_selector(Raid::playingFunc));
+		this->unschedule(schedule_selector(Raid::skillCoolDown));
+		this->unschedule(schedule_selector(Raid::frameUpdate));
 		OHDialog popup(Size(500, 200), "system", "you lose!");
+		popup.cancelBtn->setVisible(false);
+		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
+			if (e == ui::Button::TouchEventType::ENDED) {
+				ui::Button *btn = (ui::Button*)sender;
+				btn->getParent()->removeFromParent();
+				//Director::getInstance()->popScene();
+				Raid::endCheck = true;
+			}
+		});
 		popup.addedTo(this);
 		CCLOG("game end! lose");
 	}

@@ -55,9 +55,10 @@ void PartyLayer::makePartyBtn(Tier t, Character *p) {
 				ui::Button* btn = (ui::Button*)sender;
 				dialog.okBtn->addTouchEventListener([tempContent](Ref*sender2, ui::Button::TouchEventType e) {
 					Director::getInstance()->pushScene(Raid::createScene(tempContent->list));
+					ui::Button * btn2 = (ui::Button*)sender2;
+					btn2->getParent()->removeFromParent();
 				});
 				dialog.addedTo(btn->getParent()->getParent()->getParent());
-				
 			}
 		});
 		scrollView->addChild(btn);
