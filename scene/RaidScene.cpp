@@ -54,10 +54,10 @@ bool Raid::init()
 	
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
+	this->schedule(schedule_selector(Raid::frameUpdate), 0.1);
 	this->schedule(schedule_selector(Raid::moveBossFrame),0.5);
 	this->schedule(schedule_selector(Raid::playingFunc), 0.5);
 	this->schedule(schedule_selector(Raid::skillCoolDown), 0.5);
-	this->schedule(schedule_selector(Raid::frameUpdate),0.5);
 	this->schedule(schedule_selector(Raid::checkGameOver), 0.5);
 	return true;
 }
@@ -164,7 +164,6 @@ void Raid::makeUnitFrame() {
 void Raid::menuCloseCallback(Ref* pSender)
 {
 	Director::getInstance()->end();
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
 #endif 

@@ -1,4 +1,5 @@
 #include "RangeSkill.h"
+#include"../characters/Monster.h"
 #include "../myUtility.h"
 
 RangeSkill::RangeSkill()
@@ -14,7 +15,7 @@ int RangeSkill::activate(Character **t, Character &c) {
 	int amount = DAMAGE_FOMULA(c, t[1]);
 	setCooldown();
 	for (int i = 0; i < getTime(); i++) {
-		t[0]->beAttacked(amount);
+		((Monster*)t[0])->beAttacked(amount);
 		c.getStatus()->addAgro(amount);
 		//_sleep(1000);
 	}

@@ -29,7 +29,7 @@ Monster::Monster(Tier myTier)
 	Character::mySkillSet.push_back(firstSkill);
 	firstSkill = new MonsterSkillFear(0.1, myTier, 100, "fre", 10, 10);
 	Character::mySkillSet.push_back(firstSkill);
-	this->getStatus()->addMaxHP(this->getStatus()->getMaxHP() * 9);
+	this->getStatus()->setMaxHPDefault(this->getStatus()->getMaxHP() * 9);
 }
 
 Monster::Monster() :Character() {
@@ -37,4 +37,10 @@ Monster::Monster() :Character() {
 }
 void Monster::initSkillSet(int skillnum) {
 	return;
+}
+
+int Monster::beAttacked(int a) {
+	Character::beAttacked(a);
+	this->attackedDamage.push(a);
+	return 1;
 }

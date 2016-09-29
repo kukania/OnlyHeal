@@ -9,6 +9,7 @@ Modified:	2016/09/07 by PorcaM
 #include "parts/Skill.h"
 #include "parts/Tier.h"
 #include "cocos2d.h"
+#include<queue>
 #include <vector>
 
 enum CharacterType {

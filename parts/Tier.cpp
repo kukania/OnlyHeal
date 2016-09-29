@@ -43,7 +43,7 @@ int Tier::setValue() {
 }
 std::string Tier::getTierByString() {
 	std::string a;
-	for (int i = 0; i < 4; i++) {
+	for (int i = 3; i >=0; i--) {
 		switch (label[i]) {
 		case 0:
 			a += "Å·";
@@ -55,7 +55,7 @@ std::string Tier::getTierByString() {
 			a += "°«";
 			break;
 		}
-		if (i == 1)
+		if (i == 2)
 			a += "\n";
 	}
 	return a;

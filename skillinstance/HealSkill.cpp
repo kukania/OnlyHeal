@@ -15,7 +15,8 @@ int HealSkill::activate(Character **t, Character &c) {
 	for (int i = 0; i < getTime(); i++) {
 		if (isMulti()) {
 			for (int i = 2; i < 6; i++) {
-				t[i]->getStatus()->addHP(amount);
+				if(!t[i]->checkDie())
+					t[i]->getStatus()->addHP(amount);
 			}
 		}
 		else {
@@ -28,6 +29,11 @@ int HealSkill::activate(Character **t, Character &c) {
 int HealSkill::activate(Character **t, Character &c, int num) {
 	int power = c.getStatus()->getDamage();
 	int amount = _factor * power / getTime();
-	t[num]->getStatus()->addHP(amount);
+	if (t[num]->checkDie())
+		return 0;
+	else {
+		setCooldown();
+		t[num]->getStatus()->addHP(amount);
+	}
 	return 0;
 }

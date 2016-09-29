@@ -6,11 +6,13 @@ class Tier;
 class Status {
 private:
 	int			agro;
-	int	HP;
-	int	MaxHP;
-	int MaxHPDefault;
-	int	damage;
-	int	defence;
+	int			HP;
+	int			MaxHP;
+	int			MaxHPDefault; //pureMHP
+	int			damage;
+	int			defence;
+	int			pureDamage;
+	int			pureDefence;
 	MyRGB		MyRGBdamage;
 	MyRGB		MyRGBdefence;
 	float		speed;
@@ -20,7 +22,6 @@ public:
 	Status(Tier); //NPC,MONSTER
 	void		initStatus(Tier);
 	int			setMaxHP();
-	int			addMaxHP(int);
 	int			getMaxHP();
 	int			addHP(int);
 	int			getHP();

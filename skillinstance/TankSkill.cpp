@@ -11,6 +11,7 @@ TankSkill::TankSkill(SkillID ID, string name, time_ms cooltime, time_s time, boo
 int TankSkill::activate(Character **t, Character &c) {
 	int power = c.getStatus()->getDamage();
 	int amount = power*_factor;
+	setCooldown();
 	for (int i = 0; i < getTime(); i++) {
 		c.getStatus()->addAgro(amount);
 		//_sleep(1000);

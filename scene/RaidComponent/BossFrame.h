@@ -10,6 +10,7 @@ Modified: 	2016/09/26 by PorcaM
 
 #include "cocos2d.h"
 #include "characters\Character.h"
+#include "characters/Monster.h"
 USING_NS_CC;
 
 class BossFrame : public Layer {
@@ -20,11 +21,11 @@ class BossFrame : public Layer {
  	void 	initIcon ();
 	void 	initHP ();
 	void 	initRGB ();
-	void 	initDamage ();
 	void 	updateAll ();
+	void	deleteLabel(Node *);
 	Sprite 		*_icon;
 private:
- 	Character 	*_character;
+ 	Monster 	*_character;
  	Sprite 		*_hpbar;
  	Sprite 		*_rgbbg;
  	Label 		*_hplog;

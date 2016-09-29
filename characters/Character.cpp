@@ -47,32 +47,6 @@ int Character::beAttacked(int damage) {
 		isDie = true;
 	return true;
 }
-//int Character::doAttack(float dt) {
-//	Character **input = this->list;
-//	//Skill 0 ´Â ÆòÅ¸, input 0 = monster 1=player
-//	Skill* temp;
-//	if (mySkillSet.size() - 1 == 0)
-//		temp = mySkillSet[0];
-//	else {
-//		temp = mySkillSet[rand() % (mySkillSet.size() - 1) + 1];
-//		temp = temp->able() ? temp : mySkillSet[0];
-//	}
-//	if (temp->isMulti()) {
-//		if(temp->getID>=100)
-//			temp->activate(input, *this,-1);
-//		else
-//			temp->activate(input, *this);
-//	}
-//	else {
-//		if (this->type == 0) {
-//			temp->activate(input, *this);
-//		}
-//		else if (this->type != 0) {
-//			temp->activate(&input[1], *this);
-//		}
-//	}
-//	return true;
-//}
 bool Character::checkDie() {
 	return isDie;
 }

@@ -5,16 +5,16 @@
 Status::Status() {
 	agro=-1;
 	this->MaxHPDefault=HP=1000;
-	damage=100;
-	defence=100;
+	pureDamage=100;
+	pureDefence=100;
 	speed=1.0;
 	items=new Item[3];
 	setMaxHP();
 }
 Status::Status(Tier input) {
 	items = new Item[3];
-	damage = 100;
-	defence = 100;
+	pureDamage = 100;
+	pureDefence = 100;
 	speed = 1.0;
 	for (int i = 0; i < 3; i++) {
 		items[i].setType(i);
@@ -49,17 +49,17 @@ int	Status::getDamage() {
 	return damage;
 }
 void Status::setDamage() {
-	damage=this->items[0].getTier().getValue() + damage;
+	damage=this->items[0].getTier().getValue() + pureDamage;
 }
 int			Status::addDefence(int input) {
-	defence += input;
+	pureDefence += input;
 	return 0;
 }
 int	Status::getDefence() {
 	return defence;
 }
 void Status::setDefence() {
-	defence = this->items[1].getTier().getValue() + defence;
+	defence = this->items[1].getTier().getValue() + pureDefence;
 }
 MyRGB			Status::getMyRGBDamage() {
 	return MyRGBdamage;
@@ -97,11 +97,6 @@ int			Status::addMyRGBDamage(MyRGB input) {
 }
 int			Status::addMyRGBDefence(MyRGB input) {
 	MyRGBdefence = input + MyRGBdefence;
-	return 0;
-}
-int	Status::addMaxHP(int input) {
-	MaxHPDefault += input;
-	setMaxHP();
 	return 0;
 }
 int	Status::setMaxHP() {
