@@ -43,6 +43,7 @@ Character* Character::create(Tier t, const char* input, int index) {
 }
 int Character::beAttacked(int damage) {
 	myStatus.addHP(-damage);
+	this->attackedDamage.push(damage);
 	if (myStatus.getHP() == 0)
 		isDie = true;
 	return true;

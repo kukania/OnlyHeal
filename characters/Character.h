@@ -24,6 +24,7 @@ private:
 	Character**		list; 		/* I cannot understand why character need this list */
 	int				_index;		/* In raid, each character need their own index */
 public:
+	std::queue<int>		attackedDamage; /*damaged check*/
 	double			_timer;		/*activate timer*/
 	static Character* create(Tier t, const char* typeOfChar, int index);
 	std::vector<Skill*> mySkillSet;

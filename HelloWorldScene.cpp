@@ -5,6 +5,7 @@
 #include "ConvertKorean.h"
 #include "scene\OHDialog.h"
 #include "scene\SkillTreeScene.h"
+#include "scene/ConsumableLayer.h"
 
 #include<iostream>
 using namespace std;
@@ -110,15 +111,22 @@ void HelloWorld::makeBackGround() {
 	scrollView->setName("scrollView");
 	/*scroll view test -end-*/
 
-	auto partyLabel = Label::createWithTTF("party go", "fonts/sdCrayon.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	auto partyLabel = Label::createWithTTF("party go", "fonts/sdCrayon.ttf", 30, Size(200, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
 	partyLabel->setPosition(Vec2(270, 200));
 	partyLabel->setColor(Color3B::BLACK);
 	partyLabel->setVisible(false);
 	partyLabel->setName("partyBtn");
 	backGround->addChild(partyLabel);
 
-	auto skillTree = Label::createWithTTF("skillTree go", "fonts/sdCrayon.ttf", 30, Size(300, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
-	skillTree->setPosition(Vec2(270, 300));
+	auto consumLabel = Label::createWithTTF("consumable", "fonts/sdCrayon.ttf", 30, Size(200, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	consumLabel->setPosition(Vec2(470, 200));
+	consumLabel->setColor(Color3B::BLACK);
+	consumLabel->setVisible(false);
+	consumLabel->setName("consumableBtn");
+	backGround->addChild(consumLabel);
+
+	auto skillTree = Label::createWithTTF("skillTree go", "fonts/sdCrayon.ttf", 30, Size(200, 100), TextHAlignment::CENTER, TextVAlignment::CENTER);
+	skillTree->setPosition(Vec2(70, 200));
 	skillTree->setColor(Color3B::BLACK);
 	skillTree->setVisible(false);
 	skillTree->setName("skillTreeBtn");
@@ -191,6 +199,7 @@ bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	if (rect.containsPoint(location)) {
 		((Label*)backGround->getChildByName("skillTreeBtn"))->setVisible(true);
 		((Label*)backGround->getChildByName("partyBtn"))->setVisible(true);
+		((Label*)backGround->getChildByName("consumableBtn"))->setVisible(true);
 		this->menuBtnTouched = true;
 	}
 	return true;
@@ -214,6 +223,7 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 	if (this->menuBtnTouched) {
 		auto sB = (Label*)backGround->getChildByName("skillTreeBtn");
 		auto pB = (Label*)backGround->getChildByName("partyBtn");
+		auto cB = (Label*)backGround->getChildByName("consumableBtn");
 		if (sB->getBoundingBox().containsPoint(t->getLocation())) {
 			Director::getInstance()->pushScene(SkillTreeScene::createScene());
 			//skillTreeLayer
@@ -224,8 +234,14 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 			partyLayer.content->setName("partyContent");
 			backGround->addChild(partyLayer.content);
 		}
+		else if (cB->getBoundingBox().containsPoint(t->getLocation())) {
+			Size a(400, 600);
+			ConsumableLayer consumableLayer(a,&p->cInventory,5,50);
+			consumableLayer.addedTo(backGround);
+		}
 		sB->setVisible(false);
 		pB->setVisible(false);
+		cB->setVisible(false);
 	}
 	this->menuBtnTouched = false;
 	((ui::Button*)backGround->getChildByName("menuBtn"))->setPosition(positionArr[MENUBTN]);

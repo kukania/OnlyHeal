@@ -35,7 +35,7 @@ public:
 	bool checkCharacterGroup(Point);
 	void drawPlayerStatusHexa();
 	void scrollViewSetting(int);
-    virtual bool init();
+    
     
 	//debug
 	void makePlayerWithItem();
@@ -47,6 +47,7 @@ public:
 	virtual void onTouchEnded(Touch *touch, Event*);
 
     // implement the "static create()" method manually
+	virtual bool init();
     CREATE_FUNC(HelloWorld);
 };
 

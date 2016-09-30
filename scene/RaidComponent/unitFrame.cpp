@@ -142,7 +142,8 @@ updateHPLog (){
 	string 	text = getHPRatioString ();
 	_hplog->setString (text);
 	//add effect
-	if (curRatio > test) {
+	if (_character->attackedDamage.size()!=0) {
+		_character->attackedDamage.pop();
 		curRatio = test;
 		auto action = MoveBy::create(0.01,Vec2(5,0));
 		auto action2 = MoveBy::create(0.01, Vec2(-5, 0));

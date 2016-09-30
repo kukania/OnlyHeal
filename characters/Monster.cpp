@@ -38,9 +38,3 @@ Monster::Monster() :Character() {
 void Monster::initSkillSet(int skillnum) {
 	return;
 }
-
-int Monster::beAttacked(int a) {
-	Character::beAttacked(a);
-	this->attackedDamage.push(a);
-	return 1;
-}

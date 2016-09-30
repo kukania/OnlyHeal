@@ -277,6 +277,7 @@ void Raid::checkGameOver(float fd) {
 		this->unschedule(schedule_selector(Raid::playingFunc));
 		this->unschedule(schedule_selector(Raid::skillCoolDown));
 		this->unschedule(schedule_selector(Raid::frameUpdate));
+		this->unschedule(schedule_selector(Raid::checkGameOver));
 		OHDialog popup(Size(500, 200), "system", "you lose!");
 		popup.cancelBtn->setVisible(false);
 		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
