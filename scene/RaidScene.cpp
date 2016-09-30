@@ -54,7 +54,7 @@ bool Raid::init()
 	
 	this->makeSkillScrollView();
 	//this->schedule(schedule_selector)
-	this->schedule(schedule_selector(Raid::frameUpdate), 0.1);
+	this->schedule(schedule_selector(Raid::frameUpdate), 0.05);
 	this->schedule(schedule_selector(Raid::moveBossFrame),0.5);
 	this->schedule(schedule_selector(Raid::playingFunc), 0.5);
 	this->schedule(schedule_selector(Raid::skillCoolDown), 0.5);
@@ -195,8 +195,8 @@ void Raid::initSkillGrid() {
 }
 
 void Raid::moveBossFrame(float fd) {
-	auto move1 = MoveBy::create(fd/2,Point(30,0));
-	auto move2 = MoveBy::create(fd / 2, Point(-30, 0));
+	auto move1 = MoveBy::create(fd/2,Point(10,0));
+	auto move2 = MoveBy::create(fd / 2, Point(-10, 0));
 	auto action = Sequence::create(move1, move2, NULL);
 	bf->_icon->runAction(action);
 }
@@ -253,15 +253,12 @@ void Raid::frameUpdate(float fd) {
 	bf->updateAll();
 }
 void Raid::checkGameOver(float fd) {
-	if (Raid::endCheck) {
-		this->unschedule(schedule_selector(Raid::checkGameOver));
-		Director::getInstance()->popScene();
-	}
 	if (cl[0]->checkDie()){
 		this->unschedule(schedule_selector(Raid::moveBossFrame));
 		this->unschedule(schedule_selector(Raid::playingFunc));
 		this->unschedule(schedule_selector(Raid::skillCoolDown));
 		this->unschedule(schedule_selector(Raid::frameUpdate));
+		this->unschedule(schedule_selector(Raid::checkGameOver));
 		OHDialog popup(Size(500,200),"system","you win!");
 		popup.cancelBtn->setVisible(false);
 		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
@@ -269,7 +266,7 @@ void Raid::checkGameOver(float fd) {
 				ui::Button *btn = (ui::Button*)sender;
 				btn->getParent()->removeFromParent();
 				Raid::endCheck = true;
-				//Director::getInstance()->popScene();
+				Director::getInstance()->popScene();
 			}
 		});
 		popup.addedTo(this);

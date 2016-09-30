@@ -10,7 +10,6 @@
 using namespace std;
 
 USING_NS_CC;
-
 Scene* HelloWorld::createScene()
 {
 	auto scene = Scene::create();
@@ -222,7 +221,8 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		else if (pB->getBoundingBox().containsPoint(t->getLocation())) {
 			PartyLayer partyLayer;
 			partyLayer.makePartyBtn(p->getStatus()->evalTier(),p);
-			this->backGround->addChild(partyLayer.content);
+			partyLayer.content->setName("partyContent");
+			backGround->addChild(partyLayer.content);
 		}
 		sB->setVisible(false);
 		pB->setVisible(false);
@@ -316,7 +316,7 @@ void HelloWorld::scrollViewSetting(int i) {
 						}
 					}
 				});
-				dialog.addedTo(this->backGround);
+				dialog.addedTo(backGround);
 			}
 		});
 

@@ -4,6 +4,7 @@
 #include"ui/CocosGUI.h"
 #include"scene/RaidScene.h"
 #include "partyContent.h"
+#include "../HelloWorldScene.h"
 
 PartyLayer::PartyLayer() {
 	content = LayerGradient::create(Color4B(255, 255, 255, 255), Color4B(255, 255, 255, 255));
@@ -53,10 +54,12 @@ void PartyLayer::makePartyBtn(Tier t, Character *p) {
 				std::string temp = tempContent->getStringContent();
 				OHDialog dialog(Size(450, 300), "테스트", temp+"참여하시겠습니까?");
 				ui::Button* btn = (ui::Button*)sender;
-				dialog.okBtn->addTouchEventListener([tempContent](Ref*sender2, ui::Button::TouchEventType e) {
+				Node * t = btn->getParent()->getParent()->getParent();
+				dialog.okBtn->addTouchEventListener([tempContent,t](Ref*sender2, ui::Button::TouchEventType e) {
 					Director::getInstance()->pushScene(Raid::createScene(tempContent->list));
 					ui::Button * btn2 = (ui::Button*)sender2;
 					btn2->getParent()->removeFromParent();
+					t->removeFromParent();
 				});
 				dialog.addedTo(btn->getParent()->getParent()->getParent());
 			}

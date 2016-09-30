@@ -28,9 +28,13 @@ public:
 	int			addDamage(int);
 	void		setDamage();
 	int			getDamage();
+	void		addPureDamage(int);
+
 	int			addDefence(int);
 	void		setDefence();
 	int			getDefence();
+	void		addPureDefence(int);
+
 	int			setAgro(int);
 	int			getAgro();
 	int			addAgro(int);

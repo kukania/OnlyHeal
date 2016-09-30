@@ -142,3 +142,6 @@ void		Status::setItemWithNum(Item a, int num) {
 	this->items[num] = a;
 	this->equipItem(a);
 }
+
+void		Status::addPureDamage(int a) { this->pureDamage += a; }
+void		Status::addPureDefence(int a) { this->pureDefence += a; }

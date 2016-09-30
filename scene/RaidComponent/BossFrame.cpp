@@ -73,13 +73,6 @@ updateAll() {
 	int 	curHP = GET_FIELD(HP);
 	int 	maxHP = GET_FIELD(MaxHP);
 	_hpRatio = (float)curHP / maxHP;
-	if (_tempRatio > _hpRatio) {
-		_tempRatio = _hpRatio;
-		auto action1 = MoveBy::create(0.02f, Vec2(0, 10));
-		auto action2 = MoveBy::create(0.02f, Vec2(0, -10));
-		auto _action = Sequence::create(action1, action2, NULL);
-		_icon->runAction(_action);
-	}
 
 	if (_character->attackedDamage.size()) {
 		string _data = to_string(_character->attackedDamage.front());
@@ -93,7 +86,14 @@ updateAll() {
 		auto action3 = CallFuncN::create(CC_CALLBACK_1(BossFrame::deleteLabel, this));
 		auto spawn = Spawn::create(action1, action2, NULL);
 		auto seq = Sequence::create(spawn, action3, NULL);
+
 		_damagelog->runAction(seq);
+		action1 = MoveBy::create(0.02f, Vec2(0, 10));
+		auto action4 = MoveBy::create(0.02f, Vec2(0, -10));
+		auto _action = Sequence::create(action1, action4, NULL);
+		_icon->runAction(_action);
+		
+
 	}
 	_hpbar->setScaleX(_hpRatio);
 	string text = GET_RGB_STRING(R) + "\n" + GET_RGB_STRING(G) + "\n" + GET_RGB_STRING(B);
