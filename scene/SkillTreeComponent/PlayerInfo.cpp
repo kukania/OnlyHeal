@@ -1,26 +1,17 @@
 /* ============================================================
 FileName: 	PlayerInfo.h
 Revision: 	2016/09/27 by PorcaM
-Modified: 	2016/09/28 by PorcaM
+Modified: 	2016/10/01 by PorcaM
 ============================================================ */
 
 #include "scene\SkillTreeComponent\PlayerInfo.h"
 
 #include <string>
 
-PlayerInfo::PlayerInfo(){
-	set_point(100);
-	set_skill_num(0);
-	get_slot().reserve(kMaxSkillNum);
-	InitScrollview();
-	InitLabelPoint();
-}
-
-PlayerInfo::~PlayerInfo(){
-	get_slot().clear();
-}
-
-int PlayerInfo::get_skill_num(){
+/* ============================================================
+	Getter and Setter. 
+============================================================ */
+auto PlayerInfo::get_skill_num(){
 	return skill_num_;
 }
 
@@ -32,7 +23,7 @@ void PlayerInfo::set_skill_num(int skill_num){
 	return;
 }
 
-PlayerInfo::Point PlayerInfo::get_point(){
+auto PlayerInfo::get_point(){
 	return point_;
 }
 
@@ -42,6 +33,7 @@ void PlayerInfo::set_point(Point point){
 		point = 0;
 	}
 	point_ = point;
+	UpdateLabelPoint();
 	return;
 }
 
@@ -51,6 +43,25 @@ PlayerInfo::SkillVec PlayerInfo::get_slot(){
 
 ui::ScrollView *PlayerInfo::get_scrollview(){
 	return scrollview_;
+}
+
+/* ============================================================
+	Public
+============================================================ */
+PlayerInfo::PlayerInfo(){
+	get_slot().reserve(kMaxSkillNum);
+	InitScrollview();
+	InitLabelPoint();
+	set_point(10);
+	set_skill_num(0);
+}
+PlayerInfo::~PlayerInfo(){
+	get_slot().clear();
+}
+void PlayerInfo::UpdateLabelPoint(){
+	string text = "Your Point: " + to_string(get_point());
+	label_point_->setString(text);
+	return;
 }
 
 void PlayerInfo::InitScrollview(){

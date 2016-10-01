@@ -43,6 +43,7 @@ void SkillTreeFrame::InsertButton(Skill *skill){
 	SkillNode *node = get_skilltree()->findSkill(skill->getID());
 	SkillNode *prev = get_skilltree()->findSkill(node->getPrev());
 	auto button = new SkillButton(skill, node, prev, SkillButton::Type::kNotLearned);
+	button->set_player_info(get_player_info());
 	get_scrollview()->addChild(button);
 	return;
 }

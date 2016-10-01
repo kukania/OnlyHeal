@@ -155,9 +155,7 @@ void SkillButton::InitButton(){
 }
 void SkillButton::CallbackLearn(){
 	set_callback([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
-		printf("function2\n");
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
-			printf("Evnet listener called!\n");
 			string title = "LEARN_SKILL";
 			string prompt = "Do you want to learn this skill?\n";
 			string info = "SkillName: " + get_skill()->getName();
@@ -167,14 +165,15 @@ void SkillButton::CallbackLearn(){
 					auto learn = get_prev()->getLearn();
 					auto point = get_player_info()->get_point();
 					auto need = 5;
-					if (learn == true && point > need) {
+					if (learn == false) {
+						printf("Learn prev skill first!\n");
+					} else if (point < need) {
+						printf("No point\n");
+					} else {
 						get_node()->setLearn(true);
 						get_player_info()->set_point(point - need);
 						UpdateButtonTexture();
 						printf("Success learn!\n");
-					}
-					else {
-						printf("Fail to learn!\n");
 					}
 					((CCNode*)pSender)->getParent()->removeFromParent();
 				}
@@ -187,7 +186,6 @@ void SkillButton::CallbackLearn(){
 void SkillButton::CallbackEquip(){
 	set_callback([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
-			printf("Evnet listener called!\n");
 			string title = "EQUIP SKILL";
 				string prompt = "Do you want to equip this skill?\n";
 				string info = "SkillName: " + get_skill()->getName();
@@ -210,7 +208,6 @@ void SkillButton::CallbackEquip(){
 void SkillButton::CallbackUnequip(){
 	set_callback([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
-			printf("Evnet listener called!\n");
 			string title = "UNEQUIP SKILL";
 				string prompt = "Do you want to unequip this skill?\n";
 				string info = "SkillName: " + get_skill()->getName();
