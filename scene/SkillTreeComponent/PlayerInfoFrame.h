@@ -15,18 +15,18 @@ USING_NS_CC;
 
 class PlayerInfoFrame : public CCNode{
  public:
- 	typedef vector<SkillIcon *> Slot;
+ 	typedef vector<SkillIcon *> IconVec;
  	PlayerInfoFrame();
  	~PlayerInfoFrame();
  	auto get_label_point();
  	auto get_scrollview();
- 	auto get_slot();
+ 	auto get_icons();
  	void InsertIcon(int index, Skill *skill);
  private:
  	void InitLabelPoint();
  	void InitScrollview();
- 	void InitSlot();
+ 	void InitIcons();
  	Label *label_point_;
  	ui::ScrollView *scrollview_;
- 	Slot slot_;  // members in scroll
+ 	IconVec icons_;  // members in scroll
 };

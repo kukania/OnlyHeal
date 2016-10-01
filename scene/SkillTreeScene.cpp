@@ -63,6 +63,8 @@ bool SkillTreeScene::init()
 		Title
 	============================================================ */
 	auto title = Sprite::create ("images/skilltree/title.png");
+	title->setPosition(Vec2(0, 250));
+	SkillTreeLayer->addChild(title);
 	auto closeBtn = ui::Button::create ("images/skilltree/btn_close.png");
 	closeBtn->addTouchEventListener([&](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf ("Touch event type: %d\n", type);
@@ -70,9 +72,7 @@ bool SkillTreeScene::init()
 	});
 	closeBtn->setAnchorPoint (Vec2 (0.5f, 1.0f));
 	closeBtn->setPosition (Vec2 (268, 47));
-	title->addChild (closeBtn);
-	title->setPosition (Vec2 (0, 250));
-	SkillTreeLayer->addChild (title);
+	title->addChild(closeBtn);
 	/* ============================================================
 		Tabs
 	============================================================ */
@@ -89,8 +89,8 @@ bool SkillTreeScene::init()
 	/* ============================================================
 		Skilltree Frame
 	============================================================ */
-	SkillTreeFrame* stf = new SkillTreeFrame ();
-	SkillTreeLayer->addChild (stf->get_scrollview());
+	/*SkillTreeFrame* stf = new SkillTreeFrame ();
+	SkillTreeLayer->addChild (stf->get_scrollview());*/
 	/* ============================================================
 		Player Information Frame
 	============================================================ */
@@ -98,12 +98,12 @@ bool SkillTreeScene::init()
 	pif->setPositionY(-270);
 	SkillTreeLayer->addChild(pif);
 
-	for (int i = 0; i < 3; i++){
+	/*for (int i = 0; i < 3; i++){
 		tab[i]->addTouchEventListener ([&, stf, i] (Ref *pSender, ui::Button::Widget::TouchEventType type){
 			printf (((ui::Button*)pSender)->getName ().c_str ());
 			stf -> InitWithType ((Skill::Type)i);
 		});
-	}
+	}*/
 	return true;
 }
 void SkillTreeScene::menuCloseCallback(Ref* pSender)

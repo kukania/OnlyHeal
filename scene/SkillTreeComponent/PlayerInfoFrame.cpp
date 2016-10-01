@@ -17,8 +17,8 @@ auto PlayerInfoFrame::get_label_point(){
 auto PlayerInfoFrame::get_scrollview(){
 	return scrollview_;
 }
-auto PlayerInfoFrame::get_slot(){
-	return slot_;
+auto PlayerInfoFrame::get_icons(){
+	return icons_;
 }
 /* ============================================================
 	Public
@@ -26,7 +26,7 @@ auto PlayerInfoFrame::get_slot(){
 PlayerInfoFrame::PlayerInfoFrame(){
 	InitLabelPoint();
  	InitScrollview();
- 	InitSlot();
+ 	InitIcons();
  	for (int i = 0; i < 10; ++i) {
  		InsertIcon(i, NULL);
  	}
@@ -34,17 +34,17 @@ PlayerInfoFrame::PlayerInfoFrame(){
 PlayerInfoFrame::~PlayerInfoFrame(){
 	delete label_point_;
 	delete scrollview_;
-	for (auto it = slot_.begin(); it != slot_.end(); it++) {
+	for (auto it = icons_.begin(); it != icons_.end(); it++) {
 		if (*it) {
 			delete *it;
 		}
 	}
-	slot_.clear();
+	icons_.clear();
 }
 void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
 	auto *icon = new SkillIcon(skill);
 	icon->setPosition(Vec2(50+index*100, 50));
-	slot_.push_back(icon);
+	icons_.push_back(icon);
 	scrollview_->addChild(icon);
 	return;
 }
@@ -81,7 +81,7 @@ void PlayerInfoFrame::InitScrollview(){
 	this->addChild(scrollview_);
 	return;
 }
-void PlayerInfoFrame::InitSlot(){
-	slot_.clear();
+void PlayerInfoFrame::InitIcons(){
+	icons_.clear();
 	return;
 }
