@@ -57,12 +57,12 @@ void PlayerInfoFrame::InitLabelPoint(){
 	int size = 24;
 	label_point_ = Label::create(text, font, size);
 	label_point_->setTextColor(Color4B(0, 0, 0, 255));
-	label_point_->setPosition(Vec2(0, 150-size));
+	label_point_->setPosition(Vec2(0, 130-size));
 	this->addChild(label_point_);
 	return;
 }
 void PlayerInfoFrame::InitScrollview(){
-	int scrollview_height = 150;
+	int scrollview_height = 130;
 	int scrollview_inner_width = 10*100;
 	scrollview_ = ui::ScrollView::create();
 	scrollview_->setContentSize(Size(280, scrollview_height));

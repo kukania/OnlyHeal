@@ -14,7 +14,7 @@ Modified: 	2016/09/27 by PorcaM
 ============================================================ */
 SkillTreeFrame::SkillTreeFrame(){
 	set_type(Skill::Type::kHeal);
-	scrollview_height_ 			= 400;
+	scrollview_height_ 			= 330;
 	scrollview_inner_width_ 	= 800;
 	InitScrollView();
 	InitWithType(Skill::kHeal);
