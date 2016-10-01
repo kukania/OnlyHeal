@@ -19,13 +19,12 @@ This class has player's information used in skilltree.
 #include "ui\CocosGUI.h"
 USING_NS_CC;
 #include "parts\Skill.h"  /* Perhaps this Lib is not essential. */
-#include "scene\SkillTreeComponent\SkillButton.h"
 
 class PlayerInfo{
  public:
-	const int max_skill_num = 10;
+	const int kMaxSkillNum = 10;
 	typedef int Point;
-	typedef vector<SkillButton *> SkillVec;
+	typedef vector<Skill *> SkillVec;
 	PlayerInfo();
 	~PlayerInfo();
 	int get_skill_num();

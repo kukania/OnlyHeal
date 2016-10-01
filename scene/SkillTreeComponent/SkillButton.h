@@ -22,6 +22,7 @@ Functions
 #include "ui\CocosGUI.h"
 USING_NS_CC;
 #include "parts\Skill.h"
+#include "scene/SkillTreeComponent/PlayerInfo.h"
 #include "skilltree\SkillTree.h"
 
 /* ============================================================
@@ -30,14 +31,20 @@ USING_NS_CC;
 ============================================================ */
 class SkillButton : public CCNode{
  public:
- 	typedef void (*EventListener)(Ref*, ui::Button::Widget::TouchEventType);
+ 	typedef void EventListener(Ref *pSender, ui::Button::Widget::TouchEventType type);
  	enum EventType{
  		kAlertDialogLearn = 0,
  		kAlertDialogEquip,
  		kAlertDialogUnequip
  	};
+ 	enum Part{
+ 		kSkillTree = 0,
+ 		kPlayerSlot
+ 	};
 	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev);
 	~SkillButton ();
+	auto get_player_info();
+	void set_player_info(PlayerInfo *player_info);
 	auto get_label();
 	auto get_button();
 	auto get_skill();
@@ -46,13 +53,17 @@ class SkillButton : public CCNode{
 	void set_node(SkillNode *node);
 	auto get_prev();
 	void set_prev(SkillNode *prev);
+	void UpdateButton();
 	void UpdateButtonTexture();
+	void UpdateButtonEvent();
 	void AddEventListener(EventType type);
-	//static void AlertDialog(Ref *, ui::Button::Widget::TouchEventType);
-	static EventListener AlertDialog;  /* This is a function. */
+	/*void AlertDialogLearn(Ref *pSender, ui::Button::Widget::TouchEventType type);
+	void AlertDialogEquip(Ref *pSender, ui::Button::Widget::TouchEventType type);
+	void AlertDialogUnequip(Ref *pSender, ui::Button::Widget::TouchEventType type);*/
  private:
  	void InitLabel();
  	void InitButton();
+	PlayerInfo *player_info_;
  	Label *label_;
  	ui::Button *button_;
 	Skill *skill_;

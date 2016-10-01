@@ -9,9 +9,9 @@ Modified: 	2016/09/28 by PorcaM
 #include <string>
 
 PlayerInfo::PlayerInfo(){
-	set_point(0);
+	set_point(100);
 	set_skill_num(0);
-	get_slot().reserve(max_skill_num);
+	get_slot().reserve(kMaxSkillNum);
 	InitScrollview();
 	InitLabelPoint();
 }
@@ -26,7 +26,6 @@ int PlayerInfo::get_skill_num(){
 
 void PlayerInfo::set_skill_num(int skill_num){
 	if (skill_num < 0){
-		assert(false && "skill_num annot be unsiged");
 		skill_num = 0;
 	}
 	skill_num_ = skill_num;
