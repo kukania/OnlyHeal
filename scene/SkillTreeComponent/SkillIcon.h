@@ -1,7 +1,7 @@
 /* ============================================================
-FileName: 	PlayerInfoFrame.h
-Revision: 	2016/10/01 by PorcaM
-Modified: 	2016/10/01 by PorcaM
+FileName: 	SkillIcon.h
+Revision: 	2016/10/02 by PorcaM
+Modified: 	2016/10/02 by PorcaM
 ============================================================ */
 
 #pragma once
@@ -11,15 +11,10 @@ Modified: 	2016/10/01 by PorcaM
 #include "ui/CocosGUI.h"
 USING_NS_CC;
 
-class PlayerInfoFraem : public CCNode{
+class SkillIcon : public CCNode{
  public:
- 	typedef vector<SkillButton *> Slot;
- 	PlayerInfoFrame();
- 	~PlayerInfoFrame();
- 	auto get_label_point();
- 	auto get_scrollview();
- 	auto get_slot();
- 	void InsertSkill(Skill *skill);
+ 	SkillIcon();
+ 	~SkillIcon();
  private:
  	void InitLabelPoint();
  	void InitScrollview();

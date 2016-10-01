@@ -31,8 +31,8 @@ class PlayerInfo{
 	void set_skill_num(int skill_num);
 	auto get_point();
 	void set_point(Point point);
-	SkillVec get_slot();
-	ui::ScrollView *get_scrollview();
+	auto get_slot();
+	auto get_scrollview();
 	void UpdateLabelPoint();
  private:
  	void InitScrollview();

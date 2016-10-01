@@ -14,7 +14,6 @@ Modified: 	2016/10/01 by PorcaM
 auto PlayerInfo::get_skill_num(){
 	return skill_num_;
 }
-
 void PlayerInfo::set_skill_num(int skill_num){
 	if (skill_num < 0){
 		skill_num = 0;
@@ -22,29 +21,23 @@ void PlayerInfo::set_skill_num(int skill_num){
 	skill_num_ = skill_num;
 	return;
 }
-
 auto PlayerInfo::get_point(){
 	return point_;
 }
-
 void PlayerInfo::set_point(Point point){
 	if (point < 0){
-		assert(false && "point cannot be unsigned.");
 		point = 0;
 	}
 	point_ = point;
 	UpdateLabelPoint();
 	return;
 }
-
-PlayerInfo::SkillVec PlayerInfo::get_slot(){
+auto PlayerInfo::get_slot(){
 	return slot_;
 }
-
-ui::ScrollView *PlayerInfo::get_scrollview(){
+auto *PlayerInfo::get_scrollview(){
 	return scrollview_;
 }
-
 /* ============================================================
 	Public
 ============================================================ */
