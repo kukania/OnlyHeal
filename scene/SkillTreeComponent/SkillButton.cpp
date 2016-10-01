@@ -42,8 +42,20 @@ void SkillButton::set_player_info(PlayerInfo *player_info){
 auto SkillButton::get_label(){
 	return label_;
 }
+void SkillButton::set_label(Label *label){
+	if (label == NULL) {
+		assert(false);
+	}
+	label_ = label;
+}
 auto SkillButton::get_button(){
 	return button_;
+}
+void SkillButton::set_button(ui::Button *button){
+	if (button == NULL) {
+		assert(false);
+	}
+	button_ = button;
 }
 auto SkillButton::get_skill(){
 	return skill_;
@@ -84,6 +96,9 @@ SkillButton::SkillButton(Skill *skill, SkillNode *node, SkillNode *prev){
 	set_node(node);
 	set_prev(prev);
 	set_belong_to(kSkillTree);
+	InitLabel();
+	InitButton();
+	setPosition(Vec2(node->get_col() * 100, node->get_row() * 100));
 }
 SkillButton::~SkillButton(){
 	delete label_;
@@ -206,8 +221,8 @@ void SkillButton::InitLabel(){
 	string text = get_skill()->getName();
 	string font = "fonts/sdCrayon.ttf";
 	int size = 24;
+	set_label(Label::create(_AtoU8(text.c_str()), font, size));
 	auto label = get_label();
-	label = Label::create(_AtoU8 (text.c_str ()), font, size);
 	label->setAlignment(TextHAlignment::CENTER);
 	label->setTextColor(Color4B (0, 0, 0, 255));
 	label->setWidth(50);
@@ -215,10 +230,10 @@ void SkillButton::InitLabel(){
 	return;
 }
 void SkillButton::InitButton(){
+	set_button(ui::Button::create());
 	auto button = get_button();
-	button = ui::Button::create();
 	UpdateButtonTexture();  /* MUST be called after allocation! */
-	UpdateButtonEvent();
+	//UpdateButtonEvent();
 	this->addChild(button);
 	return;
 }

@@ -48,7 +48,9 @@ class SkillButton : public CCNode{
 	auto get_player_info();
 	void set_player_info(PlayerInfo *player_info);
 	auto get_label();
+	void set_label(Label *label);
 	auto get_button();
+	void set_button(ui::Button *button);
 	auto get_skill();
 	void set_skill(Skill *skill);
 	auto get_node();
@@ -65,7 +67,8 @@ class SkillButton : public CCNode{
  	Label *label_;
  	ui::Button *button_;
 	Skill *skill_;
-	SkillNode *node_, *prev_;
+	SkillNode *node_;
+	SkillNode *prev_;
 	PlayerInfo *player_info_;
 	BelongTo belong_to_;
 };
