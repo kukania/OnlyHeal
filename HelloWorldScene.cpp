@@ -6,6 +6,7 @@
 #include "scene\OHDialog.h"
 #include "scene\SkillTreeScene.h"
 #include "scene/ConsumableLayer.h"
+#include "parts/consumableItem.h"
 
 #include<iostream>
 using namespace std;
@@ -31,6 +32,7 @@ bool HelloWorld::init()
 
 	makeBackGround();
 	makePlayerWithItem();
+	makePlayerConsumable();
 	drawPlayerStatusHexa();
 	this->touchNum = -1;
 	
@@ -163,6 +165,8 @@ void HelloWorld::makeBackGround() {
 	characterGroup->addChild(showPlayerStatus[3]);
 	/***********************************/
 }
+
+//debug
 void HelloWorld::makePlayerWithItem() {
 	Tier *t;
 	for (int i = WEAPON; i <=ARTIFACT; i++) {
@@ -174,10 +178,18 @@ void HelloWorld::makePlayerWithItem() {
 		p->equipSelectedItem(0,i);
 	}
 }
+void HelloWorld::makePlayerConsumable() {
+	Consumable * temp;
+	for (int i = 0; i < 13; i++) {
+		temp = new Consumable(Consumable::CType::DAMAGE,i*10);
+		p->cInventory.pushConsumable(temp);
+	}
+}
+//end debug
 void HelloWorld::drawPlayerStatusHexa() {
 	DrawNode* t = (DrawNode*)statusHexa->getChildByName("playerStatus");
 	if (t != NULL) {
-		t->removeFromParent();
+		t->removeFromParentAndCleanup(true);
 	}
 
 	statusHexaContent.setStatusVertex(p);
@@ -236,8 +248,9 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		}
 		else if (cB->getBoundingBox().containsPoint(t->getLocation())) {
 			Size a(400, 600);
-			ConsumableLayer consumableLayer(a,&p->cInventory,5,50);
+			ConsumableLayer consumableLayer(a,&p->cInventory,5,80);
 			consumableLayer.addedTo(backGround);
+			consumableLayer.loadData();
 		}
 		sB->setVisible(false);
 		pB->setVisible(false);
@@ -323,12 +336,12 @@ void HelloWorld::scrollViewSetting(int i) {
 						int deb;
 						ui::Button *t = (ui::Button*)sender;
 						if(!this->scrollViewShow)
-							t->getParent()->removeFromParent();
+							t->getParent()->removeFromParentAndCleanup(true);
 						else {
 							this->p->equipSelectedItem(a, this->touchNum);
 							this->drawPlayerStatusHexa();
 							this->scrollViewSetting(i);
-							t->getParent()->removeFromParent();
+							t->getParent()->removeFromParentAndCleanup(true);
 						}
 					}
 				});

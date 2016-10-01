@@ -41,4 +41,8 @@ public:
 	void 		updateHP ();
 	void 		updateDPS ();
 	void 		updateAll ();
+	~UnitFrame() {
+		CCLOG("UNIT frame remove");
+		this->autorelease();
+	}
 };

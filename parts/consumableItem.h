@@ -18,6 +18,7 @@ public:
 	void setName(string);
 	void setContent(string);
 	void setOwner(Character *);
+	CType getType();
 	std::list<Consumable*>::iterator it;
 private:
 	CType type;

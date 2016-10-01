@@ -43,7 +43,7 @@ OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {
 	cancelBtn->addTouchEventListener([](Ref *sender,ui::Button::TouchEventType e) {
 		if (e == ui::Button::TouchEventType::ENDED) {
 			ui::Button *btn = (ui::Button*)sender;
-			btn->getParent()->removeFromParent();
+			btn->getParent()->removeFromParentAndCleanup(true);
 		}
 	});
 }

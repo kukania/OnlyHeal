@@ -1,5 +1,8 @@
 #include"ConsumableLayer.h"
 #include"../ConvertKorean.h"
+#include"ConsumableComponent.h"
+#include "parts/consumableItem.h"
+#include<list>
 ConsumableLayer::ConsumableLayer(Size cSize, ConsumableInventory * inven, int column,int cellHeight) {
 	this->contentsSize = cSize;
 	this->inven = inven;
@@ -38,22 +41,39 @@ ConsumableLayer::ConsumableLayer(Size cSize, ConsumableInventory * inven, int co
 	content->addChild(btn);
 
 	this->scv = ui::ScrollView::create();
-	scv->setContentSize(Size(cSize.width-10,cSize.height-60));
+	scv->setContentSize(this->contentsSize);
 	scv->setAnchorPoint(Point(1, 1));
-	scv->setPosition(Point(cSize.width - 5, cSize.height - 55));
+	scv->setPosition(Point(cSize.width - 10, cSize.height - 55));
 	scv->setBackGroundImageScale9Enabled(true);
 	scv->setBackGroundImage("images/helloworld/rect.png");
 	scv->setDirection(ui::ScrollView::Direction::VERTICAL);
 	scv->setBounceEnabled(true);
 	scv->setTouchEnabled(true);
-	scv->setSwallowTouches(false);
+	scv->setSwallowTouches(true);
 	content->addChild(scv);
 
-	this->cellWidth = cSize.width / column;
+	this->cellWidth = (contentsSize.width-10) / column;
 	this->cellHeight = cellHeight;
 }
-void ConsumableLayer::reloadData() {
-	
+void ConsumableLayer::loadData() {
+	int rows = this->inven->consumableList.size() / column;
+	rows += this->inven->consumableList.size() % column == 0 ? 0 : 1;
+	scv->setInnerContainerSize(Size(contentsSize.width,rows*this->cellHeight+10));
+	Point position; position.x = 5; ;
+	position.y = rows*this->cellHeight > contentsSize.height ? rows*this->cellHeight - 5 : contentsSize.height - 5;
+	std::list<Consumable*>::iterator it = inven->consumableList.begin();
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < this->column; j++) {
+			if (it == inven->consumableList.end()) break;
+			ConsumableComponent *temp = new ConsumableComponent(Size(cellWidth, cellHeight), *it++);
+			temp->setPosition(position);
+			temp->addedTo(scv);
+			position.x += cellWidth;
+		}
+		if (it == inven->consumableList.end()) break;
+		position.y -= cellHeight;
+		position.x = 5;
+	}
 }
 void ConsumableLayer::addedTo(Node * parent) {
 	parent->addChild(this->content);

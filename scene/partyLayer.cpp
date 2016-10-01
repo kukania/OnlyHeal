@@ -25,7 +25,7 @@ PartyLayer::PartyLayer() {
 	cancelBtn->addTouchEventListener([&](Ref*sender, ui::Button::TouchEventType e) {
 		switch (e) {
 		case ui::Button::TouchEventType::BEGAN:
-			((Sprite*)((ui::Button*)sender)->getParent())->getParent()->removeFromParent();
+			((Sprite*)((ui::Button*)sender)->getParent())->getParent()->removeFromParentAndCleanup(true);
 			break;
 		}
 	});
@@ -60,10 +60,12 @@ void PartyLayer::makePartyBtn(Tier t, Character *p) {
 					ui::Button * btn2 = (ui::Button*)sender2;
 					btn2->getParent()->removeFromParent();
 					t->removeFromParent();
+					tempContent->selected = true;
 				});
 				dialog.addedTo(btn->getParent()->getParent()->getParent());
 			}
 		});
+		contents[i] = tempContent;
 		scrollView->addChild(btn);
 	}
 }

@@ -42,10 +42,7 @@ public:
 	static int selectedNum;
 	BossFrame *bf;
 	std::list<SkillInfo>skillStorage;
-	bool flagForMutex; //player mutex
-	bool flagForMutex2; //skillStorageMutex
 	int playerSkillTarget;
-	static bool endCheck;
 	/****************************/
 	/*
 	Custom class functions
@@ -71,6 +68,10 @@ public:
 	void skillCoolDown(float fd);
 	void frameUpdate(float fd);
 	void checkGameOver(float fd);
+	~Raid() {
+		CCLOG("destructor!");
+		this->autorelease();
+	}
 	//by kukania
 };
 #endif // __RAID_SCENE_H__

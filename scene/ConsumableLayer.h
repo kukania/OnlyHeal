@@ -10,7 +10,7 @@ USING_NS_CC;
 class ConsumableLayer{
 public:
 	ConsumableLayer(Size,ConsumableInventory *,int,int);
-	void reloadData();
+	void loadData();
 	void addedTo(Node *);
 private:
 	ui::ScrollView* scv;

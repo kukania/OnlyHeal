@@ -16,7 +16,7 @@ Modified:	2016/08/30 by PorcaM
 USING_NS_CC;
 
 int Raid::selectedNum = -1;
-bool Raid::endCheck = false;
+
 Scene* Raid::createScene()
 {
 	auto scene = Scene::create();
@@ -30,7 +30,6 @@ Scene* Raid::createScene(Character **a) {
 	layer->cl = a;
 	layer->makeUnitFrame();
 	scene->addChild(layer);
-	endCheck = false;
 	return scene;
 }
 bool Raid::init()
@@ -46,9 +45,6 @@ bool Raid::init()
 	listener->onTouchEnded = CC_CALLBACK_2(Raid::onTouchEnded, this);
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-	
-	this->flagForMutex = false;
-	this->flagForMutex2 = false;
 
 	setBackground(Color4F(1, 1, 1, 1));
 	
@@ -81,7 +77,7 @@ bool Raid::onTouchBegan(Touch* touch, Event*) {
 	if (selectedNum != -1) {
 		ui::Button * btn = (ui::Button *)scv->getChildByTag(selectedNum);
 		btn->retain();
-		btn->removeFromParent();
+		btn->removeFromParentAndCleanup(true);
 		this->addChild(btn);
 		btn->setAnchorPoint(Point(0.5, 0.5));
 		btn->setPosition(location);
@@ -116,7 +112,7 @@ void Raid::onTouchEnded(Touch *touch, Event*) {
 			}
 		}
 		selectedBtn->retain();
-		selectedBtn->removeFromParent();
+		selectedBtn->removeFromParentAndCleanup(true);
 		selectedBtn->setAnchorPoint(Point(0, 1));
 		selectedBtn->setPosition(skillBtnPosition[selectedBtn->getTag()]);
 		scv->addChild(selectedBtn);
@@ -264,8 +260,7 @@ void Raid::checkGameOver(float fd) {
 		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
 				ui::Button *btn = (ui::Button*)sender;
-				btn->getParent()->removeFromParent();
-				Raid::endCheck = true;
+				btn->getParent()->removeFromParentAndCleanup(true);
 				Director::getInstance()->popScene();
 			}
 		});
@@ -283,9 +278,8 @@ void Raid::checkGameOver(float fd) {
 		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
 				ui::Button *btn = (ui::Button*)sender;
-				btn->getParent()->removeFromParent();
-				//Director::getInstance()->popScene();
-				Raid::endCheck = true;
+				btn->getParent()->removeFromParentAndCleanup(true);
+				Director::getInstance()->popScene();
 			}
 		});
 		popup.addedTo(this);

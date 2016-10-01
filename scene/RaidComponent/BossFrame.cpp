@@ -104,5 +104,5 @@ updateAll() {
 #undef GET_FIELD
 #undef GET_RGB_STRING
 void	BossFrame::deleteLabel(Node *node) {
-	node->removeFromParent();
+	node->removeFromParentAndCleanup(true);
 }

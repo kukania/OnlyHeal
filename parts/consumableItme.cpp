@@ -37,8 +37,8 @@ void Consumable::consume() {
 	}
 }
 string Consumable::toString() {
-	string str = "템명 :"+this->name + "/n";
-	str += "설명 :" + this->contents;
+	string str = "템명 :" + this->name;
+	str += "\n설명 :" + this->contents;
 	return str;
 }
 void Consumable::setName(string name) {
@@ -50,4 +50,6 @@ void Consumable::setContent(string contents) {
 void Consumable::setOwner(Character * owner) {
 	this->owner = owner;
 }
-
+Consumable::CType Consumable::getType() {
+	return this->type;
+}

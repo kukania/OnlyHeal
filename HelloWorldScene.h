@@ -39,6 +39,7 @@ public:
     
 	//debug
 	void makePlayerWithItem();
+	void makePlayerConsumable();
 
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);

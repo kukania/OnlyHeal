@@ -51,4 +51,7 @@ public:
 	int				getUsableSkill();
 	/*for debug*/
 	void printStatus();
+	~Character() {
+		CCLOG("Character destructor");
+	}
 };

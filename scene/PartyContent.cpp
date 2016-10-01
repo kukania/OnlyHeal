@@ -1,6 +1,7 @@
 #include"PartyContent.h"
 
 PartyContent::PartyContent(Tier t,Character *p) {
+	selected = false;
 	content = ui::Button::create("images/party/partyFrame.png", "images/party/partyFrame.png", "images/party/partyFrame.png");
 	content->setScale9Enabled(true);
 	content->setContentSize(Size(470, 200));

@@ -7,9 +7,14 @@
 USING_NS_CC;
 class PartyContent {
 public:
+	bool selected;
 	ui::Button *content;
 	ui::Scale9Sprite *img[6];
 	Character *list[6];
 	std::string getStringContent();
 	PartyContent(Tier t,Character *p);
+	~PartyContent() {
+		for (int i = 0; i < 6; i++) delete img[i];
+		delete content;
+	}
 };
