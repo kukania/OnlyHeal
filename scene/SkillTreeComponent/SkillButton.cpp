@@ -163,7 +163,7 @@ void SkillButton::CallbackLearn(){
 			dialog.okBtn->addTouchEventListener([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 				if (type == ui::Button::Widget::TouchEventType::ENDED) {
 					auto learn = get_prev()->getLearn();
-					auto point = get_player_info()->get_point();
+					auto point = 10;
 					auto need = 5;
 					if (learn == false) {
 						printf("Learn prev skill first!\n");

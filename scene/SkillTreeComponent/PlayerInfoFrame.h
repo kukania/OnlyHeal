@@ -10,16 +10,18 @@ Modified: 	2016/10/01 by PorcaM
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 USING_NS_CC;
+#include "parts/Skill.h"
+#include "scene/SkillTreeComponent/SkillIcon.h"
 
-class PlayerInfoFraem : public CCNode{
+class PlayerInfoFrame : public CCNode{
  public:
- 	typedef vector<SkillButton *> Slot;
+ 	typedef vector<SkillIcon *> Slot;
  	PlayerInfoFrame();
  	~PlayerInfoFrame();
  	auto get_label_point();
  	auto get_scrollview();
  	auto get_slot();
- 	void InsertSkill(Skill *skill);
+ 	void InsertIcon(int index, Skill *skill);
  private:
  	void InitLabelPoint();
  	void InitScrollview();
@@ -27,4 +29,4 @@ class PlayerInfoFraem : public CCNode{
  	Label *label_point_;
  	ui::ScrollView *scrollview_;
  	Slot slot_;  // members in scroll
-}
+};

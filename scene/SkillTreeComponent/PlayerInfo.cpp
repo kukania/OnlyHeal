@@ -35,7 +35,7 @@ void PlayerInfo::set_point(Point point){
 auto PlayerInfo::get_slot(){
 	return slot_;
 }
-auto *PlayerInfo::get_scrollview(){
+auto PlayerInfo::get_scrollview(){
 	return scrollview_;
 }
 /* ============================================================

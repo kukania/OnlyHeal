@@ -10,16 +10,19 @@ Modified: 	2016/10/02 by PorcaM
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 USING_NS_CC;
+#include "parts/Skill.h"
 
 class SkillIcon : public CCNode{
  public:
- 	SkillIcon();
+ 	SkillIcon(Skill *skill);
  	~SkillIcon();
+ 	auto get_skill();
+ 	void set_skill(Skill *skill);
+ 	auto get_button();
  private:
- 	void InitLabelPoint();
- 	void InitScrollview();
- 	void InitSlot();
- 	Label *label_point_;
- 	ui::ScrollView *scrollview_;
- 	Slot slot_;  // members in scroll
-}
+ 	void InitLabel();
+	void InitButton();
+ 	Skill *skill_;  // for inforamtion about this skill
+ 	Label *label_;
+ 	ui::Button *button_;
+};
