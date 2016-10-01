@@ -37,12 +37,14 @@ class SkillButton : public CCNode{
  		kAlertDialogEquip,
  		kAlertDialogUnequip
  	};
- 	enum Part{
+ 	enum BelongTo{
  		kSkillTree = 0,
  		kPlayerSlot
  	};
 	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev);
 	~SkillButton ();
+	auto get_belong_to();
+	void set_belong_to(BelongTo belong_to);
 	auto get_player_info();
 	void set_player_info(PlayerInfo *player_info);
 	auto get_label();
@@ -57,15 +59,13 @@ class SkillButton : public CCNode{
 	void UpdateButtonTexture();
 	void UpdateButtonEvent();
 	void AddEventListener(EventType type);
-	/*void AlertDialogLearn(Ref *pSender, ui::Button::Widget::TouchEventType type);
-	void AlertDialogEquip(Ref *pSender, ui::Button::Widget::TouchEventType type);
-	void AlertDialogUnequip(Ref *pSender, ui::Button::Widget::TouchEventType type);*/
  private:
  	void InitLabel();
  	void InitButton();
-	PlayerInfo *player_info_;
  	Label *label_;
  	ui::Button *button_;
 	Skill *skill_;
 	SkillNode *node_, *prev_;
+	PlayerInfo *player_info_;
+	BelongTo belong_to_;
 };
