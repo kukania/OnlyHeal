@@ -22,11 +22,11 @@ Modified: 	2016/09/27 by PorcaM
 /* ============================================================
 	Getter and Setter. 
 ============================================================ */
-auto SkillButton::get_belong_to(){
-	return belong_to_;
+auto SkillButton::get_type(){
+	return type_;
 }
-void SkillButton::set_belong_to(BelongTo belong_to){
-	belong_to_ = belong_to;
+void SkillButton::set_type(Type type){
+	type_ = type;
 	return;
 }
 auto SkillButton::get_player_info(){
@@ -87,15 +87,21 @@ void SkillButton::set_prev(SkillNode *prev){
 	prev_ = prev;
 	return;
 }
+auto SkillButton::get_callback(){
+	return callback_;
+}
+void SkillButton::set_callback(ui::Button::Widget::ccWidgetTouchCallback callback){
+	callback_ = callback;
+}
 
 /* ============================================================
 	Public
 ============================================================ */
-SkillButton::SkillButton(Skill *skill, SkillNode *node, SkillNode *prev){
+SkillButton::SkillButton(Skill *skill, SkillNode *node, SkillNode *prev, Type type){
 	set_skill(skill);
 	set_node(node);
 	set_prev(prev);
-	set_belong_to(kSkillTree);
+	set_type(type);
 	InitLabel();
 	InitButton();
 	setPosition(Vec2(node->get_col() * 100, node->get_row() * 100));
@@ -106,112 +112,12 @@ SkillButton::~SkillButton(){
 }
 void SkillButton::UpdateButton(){
 	UpdateButtonTexture();
-	UpdateButtonEvent();
+	//UpdateButtonCallback();
 }
 void SkillButton::UpdateButtonTexture(){
 	string color = (get_node()->getLearn ()) ? "a" : "d";
 	string path = "images/skilltree/icon_" + color + ".png";
-	get_button()->loadTextures (path, path, path);
-	return;
-}
-void SkillButton::UpdateButtonEvent(){
-	auto button = get_button();
-	button->getEventDispatcher()->removeAllEventListeners();
-	EventType type;
-	if (get_belong_to() == kPlayerSlot) {
-		type = kAlertDialogUnequip;
-	} else if (get_node()->getLearn() == true) {
-		type = kAlertDialogEquip;
-	} else {
-		type = kAlertDialogLearn;
-	}
-	AddEventListener(type);
-	return;
-}
-void SkillButton::AddEventListener(EventType type){
-	auto *button = get_button();
-	std::function<void (TOUCH_EVENT_LISTENER_PARM)> callback;
-	switch (type) {
-	case kAlertDialogLearn: {
-		callback = [=](TOUCH_EVENT_LISTENER_PARM) {
-			if (type == GET_TOUCH_EVENT_TYPE::ENDED) {
-				string title = "LEARN_SKILL";
-				string prompt = "Do you want to learn this skill?\n";
-				string info = "SkillName: " + get_skill()->getName();
-				OHDialog dialog(Size(400, 250), title, prompt + info);
-				dialog.okBtn->addTouchEventListener([=](TOUCH_EVENT_LISTENER_PARM) {
-					if (type == GET_TOUCH_EVENT_TYPE::ENDED) {
-						auto learn = get_prev()->getLearn();
-						auto point = get_player_info()->get_point();
-						auto need = 5;
-						if (learn == true && point > need) {
-							get_node()->setLearn(true);
-							get_player_info()->set_point(point - need);
-							printf("Success learn!\n");
-						} else {
-							printf("Fail to learn!\n");
-						}
-						UpdateButton();
-						((CCNode*)pSender)->getParent()->removeFromParent();
-					}
-				});
-				dialog.addedTo(Director::getInstance()->getRunningScene());
-			}
-		};
-		break;
-	}
-	case kAlertDialogEquip: {
-		callback = [=](TOUCH_EVENT_LISTENER_PARM) {
-			if (type == GET_TOUCH_EVENT_TYPE::ENDED) {
-				string title = "EQUIP SKILL";
-				string prompt = "Do you want to equip this skill?\n";
-				string info = "SkillName: " + get_skill()->getName();
-				OHDialog dialog(Size(400, 250), title, prompt + info);
-				dialog.okBtn->addTouchEventListener([=](TOUCH_EVENT_LISTENER_PARM) {
-					if (type == GET_TOUCH_EVENT_TYPE::ENDED) {
-						if (true) {
-							// equip skill
-						} else {
-							printf("Fail to equip\n");
-						}
-						UpdateButton();
-						((CCNode*)pSender)->getParent()->removeFromParent();
-					}
-				});
-				dialog.addedTo(Director::getInstance()->getRunningScene());
-			}
-		};
-		break;
-	}
-	case kAlertDialogUnequip: {
-		callback = [=](TOUCH_EVENT_LISTENER_PARM) {
-			if (type == GET_TOUCH_EVENT_TYPE::ENDED) {
-				string title = "UNEQUIP_SKILL";
-				string prompt = "Do you want to unequip this skill?\n";
-				string info = "SkillName: " + get_skill()->getName();
-				OHDialog dialog(Size(400, 250), title, prompt + info);
-				dialog.okBtn->addTouchEventListener([=](TOUCH_EVENT_LISTENER_PARM) {
-					if (type == GET_TOUCH_EVENT_TYPE::ENDED) {
-						if (true) {
-							// unequip skill
-						} else {
-							printf("Fail to unequip\n");
-						}
-						UpdateButton();
-						((CCNode*)pSender)->getParent()->removeFromParent();
-					}
-				});
-				dialog.addedTo(Director::getInstance()->getRunningScene());
-			}
-		};
-		break;
-	}
-	default: {
-		assert(false);
-		break;
-	}
-	}
-	button->addTouchEventListener(callback);
+	get_button()->loadTextures(path, path, path);
 	return;
 }
 /* ============================================================
@@ -232,10 +138,97 @@ void SkillButton::InitLabel(){
 void SkillButton::InitButton(){
 	set_button(ui::Button::create());
 	auto button = get_button();
-	UpdateButtonTexture();  /* MUST be called after allocation! */
-	//UpdateButtonEvent();
+	UpdateButtonTexture();
+	Type type = get_type();
+	if (type == kNotLearned) {
+		CallbackLearn();
+	} else if (type == kLearned) {
+		CallbackEquip();
+	} else if (type == kEquiped) {
+		CallbackUnequip();
+	} else {
+		assert(false);
+	}
+	button->addTouchEventListener(get_callback());
 	this->addChild(button);
 	return;
 }
+void SkillButton::CallbackLearn(){
+	set_callback([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		printf("function2\n");
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			printf("Evnet listener called!\n");
+			string title = "LEARN_SKILL";
+			string prompt = "Do you want to learn this skill?\n";
+			string info = "SkillName: " + get_skill()->getName();
+			OHDialog dialog(Size(400, 250), title, prompt + info);
+			dialog.okBtn->addTouchEventListener([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+				if (type == ui::Button::Widget::TouchEventType::ENDED) {
+					auto learn = get_prev()->getLearn();
+					auto point = get_player_info()->get_point();
+					auto need = 5;
+					if (learn == true && point > need) {
+						get_node()->setLearn(true);
+						get_player_info()->set_point(point - need);
+						UpdateButtonTexture();
+						printf("Success learn!\n");
+					}
+					else {
+						printf("Fail to learn!\n");
+					}
+					((CCNode*)pSender)->getParent()->removeFromParent();
+				}
+			});
+			dialog.addedTo(Director::getInstance()->getRunningScene());
+		}
+	});
+}
+
+void SkillButton::CallbackEquip(){
+	set_callback([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			printf("Evnet listener called!\n");
+			string title = "EQUIP SKILL";
+				string prompt = "Do you want to equip this skill?\n";
+				string info = "SkillName: " + get_skill()->getName();
+				OHDialog dialog(Size(400, 250), title, prompt + info);
+				dialog.okBtn->addTouchEventListener([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+					if (type == ui::Button::Widget::TouchEventType::ENDED) {
+						if (true) {
+							// equip skill
+						} else {
+							printf("Fail to equip\n");
+						}
+						((CCNode*)pSender)->getParent()->removeFromParent();
+					}
+				});
+				dialog.addedTo(Director::getInstance()->getRunningScene());
+		}
+	});
+}
+
+void SkillButton::CallbackUnequip(){
+	set_callback([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			printf("Evnet listener called!\n");
+			string title = "UNEQUIP SKILL";
+				string prompt = "Do you want to unequip this skill?\n";
+				string info = "SkillName: " + get_skill()->getName();
+				OHDialog dialog(Size(400, 250), title, prompt + info);
+				dialog.okBtn->addTouchEventListener([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+					if (type == ui::Button::Widget::TouchEventType::ENDED) {
+						if (true) {
+							// unequip skill
+						} else {
+							printf("Fail to equip\n");
+						}
+						((CCNode*)pSender)->getParent()->removeFromParent();
+					}
+				});
+				dialog.addedTo(Director::getInstance()->getRunningScene());
+		}
+	});
+}
+
 
 #undef TOUCH_EVENT_LISTENER_PARM

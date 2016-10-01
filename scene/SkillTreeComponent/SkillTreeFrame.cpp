@@ -42,7 +42,7 @@ void SkillTreeFrame::ClearContents() {
 void SkillTreeFrame::InsertButton(Skill *skill){
 	SkillNode *node = get_skilltree()->findSkill(skill->getID());
 	SkillNode *prev = get_skilltree()->findSkill(node->getPrev());
-	auto button = new SkillButton(skill, node, prev);
+	auto button = new SkillButton(skill, node, prev, SkillButton::Type::kNotLearned);
 	get_scrollview()->addChild(button);
 	return;
 }

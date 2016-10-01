@@ -31,20 +31,15 @@ USING_NS_CC;
 ============================================================ */
 class SkillButton : public CCNode{
  public:
- 	typedef void EventListener(Ref *pSender, ui::Button::Widget::TouchEventType type);
- 	enum EventType{
- 		kAlertDialogLearn = 0,
- 		kAlertDialogEquip,
- 		kAlertDialogUnequip
+ 	enum Type{
+ 		kNotLearned = 0,
+ 		kLearned,
+ 		kEquiped
  	};
- 	enum BelongTo{
- 		kSkillTree = 0,
- 		kPlayerSlot
- 	};
-	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev);
+	SkillButton (Skill *skill, SkillNode *node, SkillNode *prev, Type type);
 	~SkillButton ();
-	auto get_belong_to();
-	void set_belong_to(BelongTo belong_to);
+	auto get_type();
+	void set_type(Type type);
 	auto get_player_info();
 	void set_player_info(PlayerInfo *player_info);
 	auto get_label();
@@ -57,18 +52,23 @@ class SkillButton : public CCNode{
 	void set_node(SkillNode *node);
 	auto get_prev();
 	void set_prev(SkillNode *prev);
+	auto get_callback();
+	void set_callback(ui::Button::Widget::ccWidgetTouchCallback);
 	void UpdateButton();
 	void UpdateButtonTexture();
-	void UpdateButtonEvent();
-	void AddEventListener(EventType type);
+	void UpdateButtonCallback();
  private:
  	void InitLabel();
  	void InitButton();
+ 	void CallbackLearn();
+ 	void CallbackEquip();
+ 	void CallbackUnequip();
  	Label *label_;
  	ui::Button *button_;
 	Skill *skill_;
 	SkillNode *node_;
 	SkillNode *prev_;
 	PlayerInfo *player_info_;
-	BelongTo belong_to_;
+	Type type_;
+	ui::Button::Widget::ccWidgetTouchCallback callback_;
 };
