@@ -29,6 +29,7 @@ protected:
 	bool 		_multi;
 
  public:	
+ 	typedef int ID;
  	enum Type{
  		kHeal = 0,
  		kBuff,

@@ -1,25 +1,7 @@
 /* ============================================================
 FileName:	SkillTreeFrame.h
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/27 by PorcaM
-
-This is a set of skillbuttons. 
-Scrollable. 
-Just viewer. 
-This class update nothing. 
-Draw net of skilltree. 
-
-This class has ? componets. 
-	1. SkillButtonFrame
-		Draw scollview. 
-		Has Skill buttons. 
-		Show network about skilltree. 
-		Has 3 instance with type(Heal, Buff, Debuff). 
-	2. PlayerFrame
-		2-1. Skillset
-			Scrollable skill set interface. 
-		2-2. Point
-			Show player's skill point. 
+Modified: 	2016/10/02 by PorcaM
 ============================================================ */
 
 #pragma once

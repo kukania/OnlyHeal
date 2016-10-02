@@ -12,18 +12,20 @@ Modified: 	2016/10/01 by PorcaM
 USING_NS_CC;
 #include "parts/Skill.h"
 #include "scene/SkillTreeComponent/SkillIcon.h"
+#include "scene/SkillTreeComponent/PlayerInfo.h"
 
 class PlayerInfoFrame : public CCNode{
  public:
  	typedef vector<SkillIcon *> IconVec;
  	PlayerInfoFrame();
+ 	PlayerInfoFrame(PlayerInfo *player_info);
  	~PlayerInfoFrame();
  	auto get_label_point();
  	auto get_scrollview();
  	auto get_icons();
  	void InsertIcon(int index, Skill *skill);
  private:
- 	void InitLabelPoint();
+ 	void InitLabelPoint(int point);
  	void InitScrollview();
  	void InitIcons();
  	Label *label_point_;

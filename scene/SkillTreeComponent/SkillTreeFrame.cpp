@@ -1,17 +1,17 @@
-/* ============================================================
+/* ==================================================
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/27 by PorcaM
-============================================================ */
+Modified: 	2016/10/02 by PorcaM
+================================================== */
 
 #include "SkillTreeFrame.h"
 
 #include "skillinstance/Factory/HealSkillFactory.h"
 #include "skillinstance/Factory/BuffSkillFactory.h"
 #include "skillinstance/Factory/DebuffSkillFactory.h"
-/* ============================================================
+/* ==================================================
 	Renewaled functions on 27th. 
-============================================================ */
+================================================== */
 SkillTreeFrame::SkillTreeFrame(){
 	set_type(Skill::Type::kHeal);
 	scrollview_height_ 			= 330;

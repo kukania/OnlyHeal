@@ -7,6 +7,7 @@ Modified: 	2016/10/02 by PorcaM
 #include "scene/SkillTreeComponent/SkillIcon.h"
 
 #include <string>
+#include "ConvertKorean.h"
 
 /* ============================================================
 	Getter and Setter. 
@@ -42,7 +43,7 @@ void SkillIcon::InitLabel(){
 		"Empty\nSkill";
 	string font = "fonts/sdCrayon.ttf";
 	int size = 24;
-	label_ = Label::create(text, font, size);
+	label_ = Label::create(_AtoU8(text.c_str()), font, size);
 	label_->setAlignment(TextHAlignment::CENTER);
 	label_->setTextColor(Color4B (0, 0, 0, 255));
 	label_->setWidth(50);

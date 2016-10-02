@@ -6,21 +6,22 @@ Modified: 	2016/10/02 by PorcaM
 
 #pragma once
 
-#include <vector>
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 USING_NS_CC;
-#include "parts/Skill.h"  /* Perhaps this Lib is not essential. */
+#include "scene/SkillTreeComponent/SkillSlot.h"
 
 class PlayerInfo{
  public:
  	PlayerInfo();
+ 	PlayerInfo(int point, SkillSlot *slot);  // for saved data
  	~PlayerInfo();
- 	auto get_point();
- 	auto get_slot();
+ 	auto get_point()->int;
+ 	auto get_slot()->SkillSlot*;
  	void AddPoint(int value);
  private:
  	void set_point(int point);
+ 	void set_slot(SkillSlot *slot);
  	int point_;
- 	Slot slot_;
-}
+ 	SkillSlot *slot_;
+};

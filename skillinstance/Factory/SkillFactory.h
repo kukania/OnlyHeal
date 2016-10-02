@@ -1,8 +1,8 @@
-/*
+/* ============================================================
 FileName: 	SkillFactory.h
 Revision: 	2016/08/23 by PorcaM
 Modified:	2016/09/05 by PorcaM
-*/
+============================================================ */
 
 #pragma once
 #include "parts\Skill.h"
@@ -27,4 +27,5 @@ public:
 	virtual Skill*	createSkill();
 	Skill* getSkill(int);
 	Skill** getSkillsList(int);
+	Skill *RetrieveSkillWithID(Skill::ID id);
 };

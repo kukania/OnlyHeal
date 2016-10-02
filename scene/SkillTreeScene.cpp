@@ -6,8 +6,10 @@ Modified: 	2016/09/22 by PorcaM
 
 #include "SkillTreeScene.h"
 #include "ui/CocosGUI.h"
-#include "SkillTreeComponent/SkillTreeFrame.h"
-#include "SkillTreeComponent/PlayerInfoFrame.h"
+//#include "SkillTreeComponent/SkillTreeFrame.h"
+#include "scene/SkillTreeComponent/PlayerInfo.h"
+#include "scene/SkillTreeComponent/PlayerInfoFrame.h"
+#include "scene/SkillTreeComponent/SkillInfo.h"
 #include <string>
 using std::string;
 USING_NS_CC;
@@ -94,7 +96,14 @@ bool SkillTreeScene::init()
 	/* ============================================================
 		Player Information Frame
 	============================================================ */
-	auto pif = new PlayerInfoFrame();
+	auto tempSlot = new SkillSlot();
+	SkillInfo skillInfo;
+	auto healFac = skillInfo.get_factory_by_type(Skill::Type::kHeal);
+	healFac->initAllSkills();
+	Skill *skill = healFac->RetrieveSkillWithID(1);
+	tempSlot->InsertSkill(skill);
+	auto playerInfo2 = new PlayerInfo(10, tempSlot);
+	auto pif = new PlayerInfoFrame(playerInfo2);
 	pif->setPositionY(-270);
 	SkillTreeLayer->addChild(pif);
 

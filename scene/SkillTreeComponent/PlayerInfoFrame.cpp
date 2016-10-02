@@ -24,12 +24,25 @@ auto PlayerInfoFrame::get_icons(){
 	Public
 ============================================================ */
 PlayerInfoFrame::PlayerInfoFrame(){
-	InitLabelPoint();
+	InitLabelPoint(0);
  	InitScrollview();
  	InitIcons();
  	for (int i = 0; i < 10; ++i) {
  		InsertIcon(i, NULL);
  	}
+}
+PlayerInfoFrame::PlayerInfoFrame(PlayerInfo *player_info){
+	InitLabelPoint(player_info->get_point());
+	InitScrollview();
+	InitIcons();
+	auto slot = player_info->get_slot();
+	int i;
+	for (i = 0; i < slot->Size(); ++i) {
+		InsertIcon(i, *(slot->FindSkillWithIndex(i)));
+	}
+	for (; i < 10; ++i) {
+		InsertIcon(i, NULL);
+	}
 }
 PlayerInfoFrame::~PlayerInfoFrame(){
 	delete label_point_;
@@ -51,8 +64,8 @@ void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
 /* ============================================================
 	Private
 ============================================================ */	
-void PlayerInfoFrame::InitLabelPoint(){
-	string text = "Player SKill Point: " + to_string(0);
+void PlayerInfoFrame::InitLabelPoint(int point){
+	string text = "Player SKill Point: " + to_string(point);
 	string font = "fonts/sdCrayon.ttf";
 	int size = 24;
 	label_point_ = Label::create(text, font, size);
