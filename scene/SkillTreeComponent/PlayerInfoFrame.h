@@ -24,6 +24,7 @@ class PlayerInfoFrame : public CCNode{
  	auto get_scrollview();
  	auto get_icons();
  	void InsertIcon(int index, Skill *skill);
+	void UpdateWithPlayerInfo(PlayerInfo *playerinfo);
  private:
  	void InitLabelPoint(int point);
  	void InitScrollview();

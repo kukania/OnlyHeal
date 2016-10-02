@@ -1,8 +1,8 @@
-/* ============================================================
+/* ==================================================
 FileName:	SkillTreeFrame.h
 Revision:	2016/09/12 by PorcaM
 Modified: 	2016/10/02 by PorcaM
-============================================================ */
+================================================== */
 
 #pragma once
 
@@ -10,40 +10,30 @@ Modified: 	2016/10/02 by PorcaM
 #include "cocos2d.h"
 #include "ui\CocosGUI.h"
 USING_NS_CC;
-#include "parts\Skill.h"
-#include "scene\SkillTreeComponent\PlayerInfo.h"
-#include "scene\SkillTreeComponent\SkillButton.h"
-#include "scene\SkillTreeComponent\SkillInfo.h"
-#include "skillinstance\Factory\SkillFactory.h"
-#include "skilltree\SkillTree.h"
+#include "scene/SkillTreeComponent/PlayerInfo.h"
+#include "scene/SkillTreeComponent/PlayerInfoFrame.h"
+#include "scene/SkillTreeComponent/SkillIcon.h"
+#include "scene/SkillTreeComponent/SkillInfo.h"
+#include "skilltree/SkillTree.h"
 
-enum ST_TYPE{
-	HealSkilltree, BuffSkilltree, DebuffSkilltree
-};
-
-class SkillTreeFrame {
+class SkillTreeFrame : public CCNode{
  public:
-	// renewal
-	SkillTreeFrame();
-	void InitWithType(Skill::Type type);
-	void ClearContents();
-	void InsertButton(Skill *skill);
-	ui::ScrollView *get_scrollview();
-	Skill::Type get_type();
-	void set_type(Skill::Type type);
-	PlayerInfo *get_player_info();
+ 	typedef vector<SkillIcon*> IconVec;
+ 	SkillTreeFrame(SkillInfo *skillinfo, PlayerInfo *playerinfo, PlayerInfoFrame *playerinfoframe);
+ 	~SkillTreeFrame();
+ 	void set_skillinfo(SkillInfo *skillinfo);
+ 	void set_playerinfo(PlayerInfo *playerinfo);
+	void set_playerinfoframe(PlayerInfoFrame *playerinfoframe);
+ 	void UpdateByType(Skill::Type type);
  private:
-	// renewal
-	void InitScrollView();
-	void ClearScrollview();
-	void ClearButtons();
-	SkillFactory *get_factory();
-	SkillTree *get_skilltree();
-	Skill::Type 			type_;
-	vector<SkillButton *> 	button_vec_;
-	PlayerInfo 				player_info_;
-	SkillInfo 				skill_info_;
-	ui::ScrollView* 		scrollview_;
-	int 					scrollview_height_;
-	int 					scrollview_inner_width_;
+ 	void InitScrollview();
+ 	void InitIconList();
+ 	void InsertIcon(SkillNode *node, SkillNode *prev);
+ 	void DrawFrame(SkillTree *skilltree);
+ 	void ClearFrame();
+ 	ui::ScrollView *scrollview_;
+ 	IconVec icon_list_;
+ 	SkillInfo *skillinfo_;
+ 	PlayerInfo *playerinfo_;
+	PlayerInfoFrame *playerinfoframe_;
 };

@@ -16,9 +16,9 @@ class SkillIcon : public CCNode{
  public:
  	SkillIcon(Skill *skill);
  	~SkillIcon();
- 	auto get_skill();
+ 	auto get_skill()->Skill*;
  	void set_skill(Skill *skill);
- 	auto get_button();
+ 	auto get_button()->ui::Button*;
  private:
  	void InitLabel();
 	void InitButton();

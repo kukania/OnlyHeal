@@ -61,6 +61,11 @@ void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
 	scrollview_->addChild(icon);
 	return;
 }
+void PlayerInfoFrame::UpdateWithPlayerInfo(PlayerInfo *playerinfo) {
+	string text = "Player Skill Point: " + to_string(playerinfo->get_point());
+	label_point_->setString(text);
+	return;
+}
 /* ============================================================
 	Private
 ============================================================ */	

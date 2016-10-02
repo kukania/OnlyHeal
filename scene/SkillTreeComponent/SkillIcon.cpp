@@ -12,14 +12,14 @@ Modified: 	2016/10/02 by PorcaM
 /* ============================================================
 	Getter and Setter. 
 ============================================================ */
-auto SkillIcon::get_skill(){
+auto SkillIcon::get_skill()->Skill*{
 	return skill_;
 }
 void SkillIcon::set_skill(Skill *skill){
 	skill_ = skill;
 	return;
 }
-auto SkillIcon::get_button(){
+auto SkillIcon::get_button()->ui::Button* {
 	return button_;
 }
 /* ============================================================

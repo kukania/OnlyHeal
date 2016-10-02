@@ -1,9 +1,10 @@
 /* ============================================================
 FileName: 	SkillInfo.h
 Revision: 	2016/09/27 by PorcaM
+Modified: 	2016/10/02 by PorcaM
 ============================================================ */
 
-#include "scene\SkillTreeComponent\SkillInfo.h"
+#include "scene/SkillTreeComponent/SkillInfo.h"
 
 SkillInfo::SkillInfo(){
 	factory_arr_ = new SkillFactory*[3];
@@ -46,4 +47,16 @@ SkillTree *SkillInfo::get_skilltree_by_type(Skill::Type type){
 		assert(false);
 	}
 	return NULL;
+}
+auto SkillInfo::RetrieveSkillByID(Skill::ID id)->Skill*{
+	Skill *skill = NULL;
+	for (int i = 0; i < 3; i++) {
+		for (auto it = factory_arr_[i]->getBegin();
+			it != factory_arr_[i]->getEnd();
+			++it) {
+			if (id == (*it)->getID())
+				skill = *it;
+		}
+	}
+	return skill;
 }
