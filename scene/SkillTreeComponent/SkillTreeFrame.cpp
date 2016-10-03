@@ -68,7 +68,6 @@ void SkillTreeFrame::InitScrollview(){
 	scrollview_->setSwallowTouches(false);
 	scrollview_->setName("skilltreeframe_scrollView");
 	scrollview_->setAnchorPoint (Vec2 (0.5f, 0.98f));
-	scrollview_->setPosition (Vec2 (0, 185));
 	this->addChild(scrollview_);
 	return;
 }
@@ -151,6 +150,7 @@ void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){
 							auto slot = playerinfo->get_slot();
 							auto skill = icon->get_skill();
 							slot->InsertSkill(skill);
+							playerinfoframe_->UpdateWithPlayerInfo(playerinfo);
 							printf("Success equip");
 						} else {
 							printf("Fail to equip\n");

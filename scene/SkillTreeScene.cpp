@@ -81,18 +81,15 @@ bool SkillTreeScene::init()
 	============================================================ */
 	auto tempSlot = new SkillSlot();
 	auto skillInfo = new SkillInfo();
-	auto healFac = skillInfo->get_factory_by_type(Skill::Type::kHeal);
-	Skill *skill = healFac->RetrieveSkillWithID(1);
-	tempSlot->InsertSkill(skill);
-	auto playerInfo2 = new PlayerInfo(10, tempSlot);
+	auto playerInfo2 = new PlayerInfo(20, tempSlot);
 	auto pif = new PlayerInfoFrame(playerInfo2);
 	pif->setPositionY(-270);
 	SkillTreeLayer->addChild(pif);
 	/* ============================================================
 		Skilltree Frame
 	============================================================ */
-	auto skillInfo2 = new SkillInfo();
 	auto skillTreeFrame = new SkillTreeFrame(skillInfo, playerInfo2, pif);
+	skillTreeFrame->setPositionY(185);
 	SkillTreeLayer->addChild(skillTreeFrame);
 	/* ============================================================
 	Tabs

@@ -1,5 +1,5 @@
 /* ============================================================
-FileName: 	PlayerInfoFrame.h
+FileName: 	PlayerInfoFrame.cpp
 Revision: 	2016/10/01 by PorcaM
 Modified: 	2016/10/01 by PorcaM
 ============================================================ */
@@ -7,18 +7,17 @@ Modified: 	2016/10/01 by PorcaM
 #include "scene/SkillTreeComponent/PlayerInfoFrame.h"
 
 #include <string>
+#include "scene/OHDialog.h"
 
 /* ============================================================
 	Getter and Setter. 
 ============================================================ */
-auto PlayerInfoFrame::get_label_point(){
-	return label_point_;
-}
-auto PlayerInfoFrame::get_scrollview(){
-	return scrollview_;
-}
-auto PlayerInfoFrame::get_icons(){
-	return icons_;
+void PlayerInfoFrame::set_playerinfo(PlayerInfo *playerinfo){
+	if (playerinfo == NULL) {
+		assert(false);
+	}
+	playerinfo_ = playerinfo;
+	return;
 }
 /* ============================================================
 	Public
@@ -26,16 +25,17 @@ auto PlayerInfoFrame::get_icons(){
 PlayerInfoFrame::PlayerInfoFrame(){
 	InitLabelPoint(0);
  	InitScrollview();
- 	InitIcons();
+	InitIconList();
  	for (int i = 0; i < 10; ++i) {
  		InsertIcon(i, NULL);
  	}
 }
-PlayerInfoFrame::PlayerInfoFrame(PlayerInfo *player_info){
-	InitLabelPoint(player_info->get_point());
+PlayerInfoFrame::PlayerInfoFrame(PlayerInfo *playerinfo){
+	set_playerinfo(playerinfo);
+	InitLabelPoint(playerinfo_->get_point());
 	InitScrollview();
-	InitIcons();
-	auto slot = player_info->get_slot();
+	InitIconList();
+	auto slot = playerinfo_->get_slot();
 	int i;
 	for (i = 0; i < slot->Size(); ++i) {
 		InsertIcon(i, *(slot->FindSkillWithIndex(i)));
@@ -47,23 +47,31 @@ PlayerInfoFrame::PlayerInfoFrame(PlayerInfo *player_info){
 PlayerInfoFrame::~PlayerInfoFrame(){
 	delete label_point_;
 	delete scrollview_;
-	for (auto it = icons_.begin(); it != icons_.end(); it++) {
+	for (auto it = icon_list_.begin(); it != icon_list_.end(); it++) {
 		if (*it) {
 			delete *it;
 		}
 	}
-	icons_.clear();
+	icon_list_.clear();
 }
-void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
-	auto *icon = new SkillIcon(skill);
-	icon->setPosition(Vec2(50+index*100, 50));
-	icons_.push_back(icon);
-	scrollview_->addChild(icon);
+void PlayerInfoFrame::UpdateWithPlayerInfo() {
+	string text = "Player Skill Point: " + to_string(playerinfo_->get_point());
+	label_point_->setString(text);
+	scrollview_->removeAllChildren();
+	icon_list_.clear();
+	auto slot = playerinfo_->get_slot();
+	int i;
+	for (i = 0; i < slot->Size(); ++i) {
+		InsertIcon(i, *(slot->FindSkillWithIndex(i)));
+	}
+	for (; i < 10; ++i) {
+		InsertIcon(i, NULL);
+	}
 	return;
 }
 void PlayerInfoFrame::UpdateWithPlayerInfo(PlayerInfo *playerinfo) {
-	string text = "Player Skill Point: " + to_string(playerinfo->get_point());
-	label_point_->setString(text);
+	set_playerinfo(playerinfo);
+	UpdateWithPlayerInfo();
 	return;
 }
 /* ============================================================
@@ -99,7 +107,36 @@ void PlayerInfoFrame::InitScrollview(){
 	this->addChild(scrollview_);
 	return;
 }
-void PlayerInfoFrame::InitIcons(){
-	icons_.clear();
+void PlayerInfoFrame::InitIconList(){
+	icon_list_.clear();
+	return;
+}
+void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
+	auto *icon = new SkillIcon(skill);
+	icon->setPosition(Vec2(50+index*100, 50));
+	icon->get_button()->addTouchEventListener([=](
+			Ref *pSender,
+			ui::Button::Widget::TouchEventType type){
+		auto slot = playerinfo_->get_slot();
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			string title = "UNEQUIP_SKILL";
+			string prompt = "Do you want to unequip this skill?\n";
+			string info = "Skill Name: " + skill->getName();
+			OHDialog dialog(Size(400, 250), title, prompt+info);
+			dialog.okBtn->addTouchEventListener([=](
+					Ref *pSender,
+					ui::Button::Widget::TouchEventType type){
+				if (type == ui::Button::Widget::TouchEventType::ENDED) {
+					slot->RemoveSkill(index);
+					printf("Remove succes!\n");
+					UpdateWithPlayerInfo();
+					((CCNode*)pSender)->getParent()->removeFromParent();
+				}
+			});
+			dialog.addedTo(Director::getInstance()->getRunningScene());
+		}
+	});
+	icon_list_.push_back(icon);
+	scrollview_->addChild(icon);
 	return;
 }
