@@ -69,13 +69,6 @@ int Character::setType(CharacterType type) {
 CharacterType Character::getType() {
 	return type;
 }
-void Character::setCharacterList(Character **input) {
-	this->list = input;
-}
-
-Character** Character::getCharacterList() {
-	return list;
-}
 
 int		Character::getIndex() {
 	return _index;

@@ -123,7 +123,7 @@ void Raid::onTouchEnded(Touch *touch, Event*) {
 
 void Raid::makeUnitFrame() {
 	for (int i = 0; i < 6; i++) {
-		cl[i]->setCharacterList(cl);
+//		cl[i]->setCharacterList(cl);
 		cl[i]->_timer = 0.0;
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -257,10 +257,11 @@ void Raid::checkGameOver(float fd) {
 		this->unschedule(schedule_selector(Raid::checkGameOver));
 		OHDialog popup(Size(500,200),"system","you win!");
 		popup.cancelBtn->setVisible(false);
-		popup.okBtn->addTouchEventListener([](Ref *sender, ui::Button::TouchEventType e) {
+		popup.okBtn->addTouchEventListener([&](Ref *sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
 				ui::Button *btn = (ui::Button*)sender;
 				btn->getParent()->removeFromParentAndCleanup(true);
+				/*drop item setting */
 				Director::getInstance()->popScene();
 			}
 		});
