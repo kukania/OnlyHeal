@@ -1,121 +1,167 @@
-/*
+/* ==================================================
 FileName:	SkillTreeFrame.cpp
 Revision:	2016/09/12 by PorcaM
-Modified: 	2016/09/22 by PorcaM
-*/
+Modified: 	2016/10/02 by PorcaM
+================================================== */
 
-#include "SkillTreeFrame.h"
-#include "skillinstance/Factory/HealSkillFactory.h"
-#include "skillinstance/Factory/BuffSkillFactory.h"
-#include "skillinstance/Factory/DebuffSkillFactory.h"
+#include "scene/SkillTreeComponent/SkillTreeFrame.h"
 
-SkillTreeFrame::
-SkillTreeFrame (ST_TYPE type){
-	/* Allocate members */
-	_factories = new SkillFactory*[3];
-	_factories[0] = new HealSkillFactory ();
-	_factories[1] = new BuffSkillFactory ();
-	_factories[2] = new DebuffSkillFactory ();
-	for (int i = 0; i < 3; i++)
-		_factories[i] -> initAllSkills ();
-	/* Set values */
-	_height 	= 400;
-	_innerWidth = 1200;
-	initScrollView();
-	initWithType (type);
-	initPoint ();
+#include "scene/OHDialog.h"
+
+void SkillTreeFrame::set_skillinfo(SkillInfo *skillinfo){
+	if (skillinfo == NULL) {
+		assert(false);
+	}
+	skillinfo_ = skillinfo;
+	return;
 }
-
-void 
-SkillTreeFrame::
-initWithType (ST_TYPE type){
-	clearScrollview ();		/* This order is VERY important! */
-	clearButtons (); 		/* Never call this function before above! */
-	SkillFactory* factory = _factories[(int)type];
-	if		(type == HealSkilltree)
-		_skilltree.initHealSkillTree ();
-	else if (type == BuffSkilltree)
-		_skilltree.initBuffSkillTree ();
-	int i = 0;
-	for (TreeIt ti = _skilltree.getBegin (); ti != _skilltree.getEnd (); ti++){
-		Skill* 	pSkill 		= factory -> getSkill (ti->first);
-		Vec2 	position 	= Vec2 (100*++i, 100);
-		insertButton (pSkill, ti->second, position);
+void SkillTreeFrame::set_playerinfo(PlayerInfo *playerinfo){
+	if (playerinfo == NULL) {
+		assert(false);
+	}
+	playerinfo_ = playerinfo;
+	return;
+}
+void SkillTreeFrame::set_playerinfoframe(PlayerInfoFrame *playerinfoframe) {
+	if (playerinfoframe == NULL) {
+		assert(false);
+	}
+	playerinfoframe_ = playerinfoframe;
+	return;
+}
+/* ==================================================
+	Public
+================================================== */
+SkillTreeFrame::SkillTreeFrame(SkillInfo *skillinfo, PlayerInfo *playerinfo, PlayerInfoFrame *playerinfoframe){
+	set_skillinfo(skillinfo);
+	set_playerinfo(playerinfo);
+	set_playerinfoframe(playerinfoframe);
+	InitScrollview();
+	InitIconList();
+	DrawFrame(skillinfo->get_skilltree_by_type(Skill::Type::kHeal));
+}
+SkillTreeFrame::~SkillTreeFrame(){
+	delete scrollview_;
+	ClearFrame();
+	return;
+}
+void SkillTreeFrame::UpdateByType(Skill::Type type){
+	ClearFrame();
+	DrawFrame(skillinfo_->get_skilltree_by_type(type));
+}
+/* ==================================================
+	Private
+================================================== */
+void SkillTreeFrame::InitScrollview(){
+	int scrollview_height = 330;
+	int scrollview_inner_width = 8*100;
+	scrollview_ = ui::ScrollView::create();
+	scrollview_->setContentSize(Size(280, scrollview_height));
+	scrollview_->setInnerContainerSize(Size(
+											scrollview_inner_width, 
+											scrollview_height));
+	scrollview_->setBackGroundImageScale9Enabled(true);
+	scrollview_->setBackGroundImage("images/skilltree/rect.png");
+	scrollview_->setDirection(ui::ScrollView::Direction::HORIZONTAL);
+	scrollview_->setBounceEnabled(true);
+	scrollview_->setTouchEnabled(true);
+	scrollview_->setSwallowTouches(false);
+	scrollview_->setName("skilltreeframe_scrollView");
+	scrollview_->setAnchorPoint (Vec2 (0.5f, 0.98f));
+	scrollview_->setPosition (Vec2 (0, 185));
+	this->addChild(scrollview_);
+	return;
+}
+void SkillTreeFrame::InitIconList(){
+	icon_list_.clear();
+	return;
+}
+void SkillTreeFrame::DrawFrame(SkillTree *skilltree){
+	for (auto it = skilltree->getBegin(); it != skilltree->getEnd(); ++it) {
+		InsertIcon(it->second, skilltree->findSkill(it->second->getPrev()));
 	}
 	return;
 }
-
-void 
-SkillTreeFrame::
-initScrollView(){
-	_scrollview = ui::ScrollView::create();
-	_scrollview->setContentSize (Size (280, _height));
-	_scrollview->setInnerContainerSize(Size (_innerWidth, _height));
-	_scrollview->setBackGroundImageScale9Enabled(true);
-	_scrollview->setBackGroundImage("images/skilltree/rect.png");
-	_scrollview->setDirection(ui::ScrollView::Direction::HORIZONTAL);
-	_scrollview->setBounceEnabled(true);
-	_scrollview->setTouchEnabled(true);
-	_scrollview->setSwallowTouches(false);
-	_scrollview->setName("scrollView");
-	_scrollview->setAnchorPoint (Vec2 (0.5f, 0.98f));
-	_scrollview->setPosition (Vec2 (0, 185));
-	return;
-}
-
-void
-SkillTreeFrame::
-initPoint (){
-	string 	text = to_string (_skilltree.getPoint ()) + "score";
-	string 	font = "fonts/sdCrayon.ttf";
-	int 	size = 24;
-	_point = Label::create (text, font, size);
-	_point->setPosition (Vec2 (300, 300));
-	_point->setColor (Color3B (0, 0, 0));
-	_scrollview->addChild (_point);
-	return;
-}
-
-void 
-SkillTreeFrame::
-clearScrollview (){
-	_scrollview -> removeAllChildren ();
-	return;
-}
-
-void 
-SkillTreeFrame::
-clearButtons (){
-	for (vector<SkillButton*>::iterator vi = _buttons.begin ();
-		vi != _buttons.end (); vi++){
-		delete *vi;
+void SkillTreeFrame::ClearFrame(){
+	scrollview_->removeAllChildren();
+	for (auto it = icon_list_.begin(); it != icon_list_.end(); ++it) {
+		delete *it;
 	}
-	_buttons.clear ();
+	icon_list_.clear();
 	return;
 }
-
-void 
-SkillTreeFrame::
-insertButton (Skill* skill, SkillNode* node, Vec2 position){
-	auto button = new SkillButton (skill, node, _skilltree.findSkill (node->getPrev ()));
-	button->setPosition (position);
-	_buttons.push_back (button);
-	_scrollview->addChild (button);
-	return;
-}
-
-ui::ScrollView* 
-SkillTreeFrame::
-getScrollView (){
-	return _scrollview;
-}
-
-SkillTreeFrame::
-~SkillTreeFrame (){
-	clearButtons ();
-	for (int i = 0; i < 3; i++){
-		delete _factories[i];
+void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){
+	auto skill = skillinfo_->RetrieveSkillByID(node->getID());
+	if (skill == NULL) return;
+	auto icon = new SkillIcon(skill);
+	if (node->getLearn() == false) {
+		string path = "images/skilltree/icon_d.png";
+		icon->get_button()->loadTextures(path, path, path);
 	}
-	delete[] _factories;
-	_buttons.clear();
+	int col = node->get_col();
+	int row = node->get_row();
+	icon->setPosition(Vec2(50 + col * 100, 330 - 50 - row * 100));
+	auto playerinfo = playerinfo_;
+	auto playerinfoframe = playerinfoframe_;
+	icon->get_button()->addTouchEventListener([=](
+			Ref *pSender,
+			ui::Button::Widget::TouchEventType type
+			) {
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			printf("id?: %d\n", node->getID());
+			if (node->getLearn() == false) {
+				string title = "LEARN_SKILL";
+				string prompt = "Do you want to learn this skill?\n";
+				string info = "SkillName: " + icon->get_skill()->getName();
+				OHDialog dialog(Size(400, 250), title, prompt + info);
+				dialog.okBtn->addTouchEventListener([=](
+						Ref *pSender, 
+						ui::Button::Widget::TouchEventType type) {
+					if (type == ui::Button::Widget::TouchEventType::ENDED) {
+						bool learn = prev->getLearn();
+						auto point = playerinfo->get_point();
+						auto need = 5;
+						if (learn == false) {
+							printf("Learn prev skill first!\n");
+						} else if (point < need) {
+							printf("No point\n");
+						} else {
+							node->setLearn(true);
+							playerinfo->AddPoint(-need);
+							playerinfo->get_slot()->InsertSkill(icon->get_skill());
+							playerinfoframe->UpdateWithPlayerInfo(playerinfo);
+							string path = "images/skilltree/icon_a.png";
+							icon->get_button()->loadTextures(path, path, path);
+							printf("Success learn!\n");
+						}
+						((CCNode*)pSender)->getParent()->removeFromParent();
+					}
+				});
+				dialog.addedTo(Director::getInstance()->getRunningScene());
+			} else {
+				string title = "EQUIP_SKILL";
+				string prompt = "Do you want to equip this skill?\n";
+				string info = "SkillName: " + icon->get_skill()->getName();
+				OHDialog dialog(Size(400, 250), title, prompt + info);
+				dialog.okBtn->addTouchEventListener([=](
+						Ref *pSender, 
+						ui::Button::Widget::TouchEventType type) {
+					if (type == ui::Button::Widget::TouchEventType::ENDED) {
+						if (true) {
+							auto slot = playerinfo->get_slot();
+							auto skill = icon->get_skill();
+							slot->InsertSkill(skill);
+							printf("Success equip");
+						} else {
+							printf("Fail to equip\n");
+						}
+						((CCNode*)pSender)->getParent()->removeFromParent();
+					}
+				});
+				dialog.addedTo(Director::getInstance()->getRunningScene());
+			}
+		}
+	});
+	scrollview_->addChild(icon);
+	return;
 }

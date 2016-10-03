@@ -6,7 +6,11 @@ Modified: 	2016/09/22 by PorcaM
 
 #include "SkillTreeScene.h"
 #include "ui/CocosGUI.h"
-#include "SkillTreeComponent\SkillTreeFrame.h"
+//#include "SkillTreeComponent/SkillTreeFrame.h"
+#include "scene/SkillTreeComponent/PlayerInfo.h"
+#include "scene/SkillTreeComponent/PlayerInfoFrame.h"
+#include "scene/SkillTreeComponent/SkillInfo.h"
+#include "scene/SkillTreeComponent/SkillTreeFrame.h"
 #include <string>
 using std::string;
 USING_NS_CC;
@@ -40,18 +44,30 @@ bool SkillTreeScene::init()
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu, 1);
 
-	/*
-	Below codes are writed by PorcaM
-	Generate SkillTree Layer
-	*/
+	/* ============================================================
+		Below codes are writed by PorcaM.
+		Generate SkillTree Layer.
+	============================================================ */
 	setBackground (Color4F (1, 1, 1, 1));
-	// Layer composition
+	/* ============================================================
+		Layer
+		Include all elements of this scene. 
+	============================================================ */
 	auto SkillTreeLayer = Layer::create();
-	// Outline for visual border
+	SkillTreeLayer->setPosition(Vec2(visibleSize.width / 2 * 1.6, visibleSize.height / 2 * 1.6));
+	SkillTreeLayer->setScale(1.6f);
+	this->addChild(SkillTreeLayer);
+	/* ============================================================
+		Outline
+	============================================================ */
 	auto outline = Sprite::create ("images/skilltree/outline.png");
 	SkillTreeLayer->addChild (outline);
-
+	/* ============================================================
+		Title
+	============================================================ */
 	auto title = Sprite::create ("images/skilltree/title.png");
+	title->setPosition(Vec2(0, 250));
+	SkillTreeLayer->addChild(title);
 	auto closeBtn = ui::Button::create ("images/skilltree/btn_close.png");
 	closeBtn->addTouchEventListener([&](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf ("Touch event type: %d\n", type);
@@ -59,35 +75,47 @@ bool SkillTreeScene::init()
 	});
 	closeBtn->setAnchorPoint (Vec2 (0.5f, 1.0f));
 	closeBtn->setPosition (Vec2 (268, 47));
-	title->addChild (closeBtn);
-	title->setPosition (Vec2 (0, 250));
-	SkillTreeLayer->addChild (title);
-
+	title->addChild(closeBtn);
+	/* ============================================================
+		Player Information Frame
+	============================================================ */
+	auto tempSlot = new SkillSlot();
+	auto skillInfo = new SkillInfo();
+	auto healFac = skillInfo->get_factory_by_type(Skill::Type::kHeal);
+	Skill *skill = healFac->RetrieveSkillWithID(1);
+	tempSlot->InsertSkill(skill);
+	auto playerInfo2 = new PlayerInfo(10, tempSlot);
+	auto pif = new PlayerInfoFrame(playerInfo2);
+	pif->setPositionY(-270);
+	SkillTreeLayer->addChild(pif);
+	/* ============================================================
+		Skilltree Frame
+	============================================================ */
+	auto skillInfo2 = new SkillInfo();
+	auto skillTreeFrame = new SkillTreeFrame(skillInfo, playerInfo2, pif);
+	SkillTreeLayer->addChild(skillTreeFrame);
+	/* ============================================================
+	Tabs
+	============================================================ */
 	ui::Button* tab[3];
 	string num[3] = { "1", "2", "3" };
-	for (int i = 0; i < 3; i++){
+	for (int i = 0; i < 3; i++) {
 		string path = "images/skilltree/tab" + num[i] + ".png";
-		tab[i] = ui::Button::create (path.c_str ());
-		tab[i]->setAnchorPoint (Vec2 (0.5f, 0));
-		tab[i]->setPosition (Vec2 (92*(i-1), 185));
-		tab[i]->setName ("tab"+num[i]);
-		SkillTreeLayer->addChild (tab[i]);
+		tab[i] = ui::Button::create(path.c_str());
+		tab[i]->setAnchorPoint(Vec2(0.5f, 0));
+		tab[i]->setPosition(Vec2(92 * (i - 1), 185));
+		tab[i]->setName("tab" + num[i]);
+		SkillTreeLayer->addChild(tab[i]);
 	}
-
-	SkillTreeFrame* stf = new SkillTreeFrame (HealSkilltree);
-	SkillTreeLayer->addChild (stf->getScrollView ());
-
-	for (int i = 0; i < 3; i++){
-		tab[i]->addTouchEventListener ([&, stf, i] (Ref *pSender, ui::Button::Widget::TouchEventType type){
-			printf (((ui::Button*)pSender)->getName ().c_str ());
-			stf -> initWithType ((ST_TYPE)i);
+	for (int i = 0; i < 3; i++) {
+		tab[i]->addTouchEventListener([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+			printf(((ui::Button*)pSender)->getName().c_str());
+			skillTreeFrame->UpdateByType((Skill::Type)i);
 		});
 	}
+	
 
-	SkillTreeLayer->setPosition (Vec2 (visibleSize.width/2*1.6, visibleSize.height/2*1.6));
-	SkillTreeLayer->setScale (1.6f);
-	this->addChild (SkillTreeLayer);
-
+	
 	return true;
 }
 void SkillTreeScene::menuCloseCallback(Ref* pSender)

@@ -1,40 +1,28 @@
-/*
+/* ============================================================
 FileName: 	SkillTree.cpp
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/09/22 by PorcaM
-*/
+Modified: 	2016/09/27 by PorcaM
+============================================================ */
 
 #include "SkillTree.h"
+
 #include <cstdio>
 
 SkillTree::SkillTree (){
-	clear ();
-	setPoint (0);
+	_tree.clear();
+	// No variable => nothing to do. 
 }
 
 /* clear all allocated nodes */
 SkillTree::~SkillTree (){
-	clear ();
-}
-
-unsigned int
-SkillTree::
-getPoint (){
-	return _point;
-}
-
-void
-SkillTree::
-setPoint (unsigned int point){
-	_point = point;
-	return;
+	clear();  // Clear nodes of tree. 
 }
 
 void SkillTree::clear (){
-	for (TreeIt ti = getBegin (); ti != getEnd (); ti++){
+	for (auto ti = getBegin(); ti != getEnd(); ++ti) {
 		delete ti->second;
 	}
-	_tree.clear ();
+	_tree.clear();
 	return;
 }
 
@@ -62,22 +50,6 @@ void 	SkillTree::removeSkill (SkillID id){
 	return;
 }
 
-void 	SkillTree::initHealSkillTree (){
-	clear ();
-	insertSkill (new SkillNode (0, 0, true));
-	insertSkill (new SkillNode (1, 0, false));
-	for (int i = 0 ; i < 6; i++){
-		insertSkill (new SkillNode (2+i, 1+i, false));
-	}
-
-	return;
-}
-
-void 	SkillTree::initBuffSkillTree (){
-	clear ();
-	return;
-}
-
 int 	SkillTree::learnSkill (SkillID id){
 	SkillNode* skill = findSkill (id);
 	SkillNode* prev = findSkill (skill->getPrev ());
@@ -95,4 +67,55 @@ TreeIt SkillTree::getBegin (){
 
 TreeIt SkillTree::getEnd (){
 	return _tree.end ();
+}
+
+/* ============================================================
+	Renewaled functions on 27th. 
+============================================================ */
+void SkillTree::InitWithType(Skill::Type type){
+	if (type == Skill::Type::kHeal) {
+		InitHealSkillTree();
+	} else if (type == Skill::Type::kBuff) {
+		InitBuffSkillTree();
+	} else if (type == Skill::Type::kDebuff) {
+		InitDebuffSkillTree();
+	} else {
+		assert(false);
+	}
+	return;
+}
+
+void SkillTree::InitHealSkillTree(){
+	clear();
+	SkillNode *temp;
+	insertSkill(new SkillNode (0, 0, true));
+	insertSkill(temp = new SkillNode (1, 0, false));
+	temp->set_col_n_row(0, 0);
+	insertSkill(temp = new SkillNode (8, 1, false));
+	temp->set_col_n_row(0, 1);
+	insertSkill(temp = new SkillNode (15, 1, false));
+	temp->set_col_n_row(0, 2);
+	for (int i = 0; i < 6; ++i){  // from 2 to 7
+		insertSkill(temp = new SkillNode (2+i, 1+i, false));
+		temp->set_col_n_row(i+1, 0);
+	}
+	for (int i = 0; i < 6; ++i){  // from 9 to 14
+		insertSkill(temp = new SkillNode (9+i, 8+i, false));
+		temp->set_col_n_row(i+1, 1);
+	}
+	for (int i = 0; i < 6; ++i){  // from 16 to 21
+		insertSkill(temp = new SkillNode (16+i, 8+i, false));
+		temp->set_col_n_row(i+1, 2);
+	}
+	return;
+}
+
+void SkillTree::InitBuffSkillTree(){
+	clear();
+	return;
+}
+
+void SkillTree::InitDebuffSkillTree(){
+	clear();
+	return;
 }

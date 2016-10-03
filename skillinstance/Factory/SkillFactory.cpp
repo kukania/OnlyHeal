@@ -1,8 +1,8 @@
-/*
+/* ============================================================
 FileName: 	SkillFactory.cpp
 Revision: 	2016/08/23 by PorcaM
 Modified:	2016/09/05 by PorcaM
-*/
+============================================================ */
 
 #include "SkillFactory.h"
 #include <stdlib.h>
@@ -35,7 +35,7 @@ void 	SkillFactory::pushSkill (Skill* pSkill){
 	Akashic.push_back (pSkill);
 }
 
-Skill*	SkillFactory::getSkill(int index) {
+Skill* SkillFactory::getSkill(int index) {
 	return Akashic[index];
 }
 
@@ -63,4 +63,12 @@ Skill**	SkillFactory::getSkillsList(int num) {
 		skillList[i++] = Akashic[*si];
 	}
 	return skillList;
+}
+Skill *SkillFactory::RetrieveSkillWithID(Skill::ID id){
+	Skill *skill = NULL;
+	for (int i = 0; i < Akashic.size(); ++i) {
+		if (id == Akashic[i]->getID())
+			skill = Akashic[i];
+	}
+	return skill;
 }

@@ -1,31 +1,27 @@
 /* ============================================================
-FileName: 	PlayerInfo.h
+FileName: 	PlayerInfoFrame.h
 Revision: 	2016/09/22 by PorcaM
-
-This class has player's information used in skilltree. 
-	1. Point
-		This is cost for learning skill. 
-		Updated when learn skill. (MUST BE UPDATED)
-	2. SkillSet
-		This is skills that used in RAID. 
-		Updated when user want to. 
+Modified: 	2016/10/02 by PorcaM
 ============================================================ */
 
 #pragma once
 
 #include "cocos2d.h"
-#include "ui\CocosGUI.h"
+#include "ui/CocosGUI.h"
 USING_NS_CC;
-
-#include "parts/Skill.h"
-#include <vector>
-
-#typedef unsigned int 		point_t
-#typedef vector<Skill*> 	skillset_t
+#include "scene/SkillTreeComponent/SkillSlot.h"
 
 class PlayerInfo{
-private:
-	point_t		_point;
-	skillset_t 	_skillslot;
-public:
+ public:
+ 	PlayerInfo();
+ 	PlayerInfo(int point, SkillSlot *slot);  // for saved data
+ 	~PlayerInfo();
+ 	auto get_point()->int;
+ 	auto get_slot()->SkillSlot*;
+ 	void AddPoint(int value);
+ private:
+ 	void set_point(int point);
+ 	void set_slot(SkillSlot *slot);
+ 	int point_;
+ 	SkillSlot *slot_;
 };
