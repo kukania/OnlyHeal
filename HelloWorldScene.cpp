@@ -42,7 +42,7 @@ bool HelloWorld::init()
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 
-	this->schedule(schedule_selector(HelloWorld::updateConsumableInventory), 0.1);
+	
 
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -253,6 +253,7 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		}
 		else if (cB->getBoundingBox().containsPoint(t->getLocation())) {
 			Size a(400, 600);
+			this->schedule(schedule_selector(HelloWorld::updateConsumableInventory), 0.1);
 
 			if(consumableLayer==NULL)
 				consumableLayer=new ConsumableLayer(a,&p->cInventory,5,80);
@@ -380,6 +381,9 @@ void HelloWorld::updateConsumableInventory(float fd) {
 		this->p->cInventory.checkChange = false;
 		this->drawPlayerStatusHexa();
 	}
+
+	if(this->backGround->getChildByName("cInventory")==NULL)
+		this->unschedule(schedule_selector(HelloWorld::updateConsumableInventory));
 }
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
