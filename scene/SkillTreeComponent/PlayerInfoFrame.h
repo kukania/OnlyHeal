@@ -18,18 +18,18 @@ class PlayerInfoFrame : public CCNode{
  public:
  	typedef vector<SkillIcon *> IconVec;
  	PlayerInfoFrame();
- 	PlayerInfoFrame(PlayerInfo *player_info);
+ 	PlayerInfoFrame(PlayerInfo *playerinfo);
  	~PlayerInfoFrame();
- 	auto get_label_point();
- 	auto get_scrollview();
- 	auto get_icons();
- 	void InsertIcon(int index, Skill *skill);
+ 	void set_playerinfo(PlayerInfo *playerinfo);
+ 	void UpdateWithPlayerInfo();
 	void UpdateWithPlayerInfo(PlayerInfo *playerinfo);
  private:
  	void InitLabelPoint(int point);
  	void InitScrollview();
- 	void InitIcons();
+ 	void InitIconList();
+ 	void InsertIcon(int index, Skill *skill);
  	Label *label_point_;
  	ui::ScrollView *scrollview_;
- 	IconVec icons_;  // members in scroll
+ 	IconVec icon_list_;  // members in scroll
+ 	PlayerInfo *playerinfo_;
 };
