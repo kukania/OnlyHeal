@@ -35,6 +35,7 @@ void Consumable::consume() {
 		//}
 		break;
 	}
+	((Player*)owner)->cInventory.deleteConsumable(*this->it);
 }
 string Consumable::toString() {
 	string str = "еш╦М :" + this->name;

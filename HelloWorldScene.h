@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
 #include "scene/statusHexa.h"
+#include "scene/ConsumableLayer.h"
 #include "characters/Player.h"
 #include<vector>
 
@@ -25,6 +26,7 @@ public:
 	DrawNode* playerStatusHexa;
 	StatusHexa statusHexaContent;
 	Label *showPlayerStatus[4]; //damage,defence,MaxHP,Tier
+	ConsumableLayer *consumableLayer;
 
 	bool menuBtnTouched;
 	bool scrollViewShow;//flag for touch event
@@ -36,6 +38,8 @@ public:
 	void drawPlayerStatusHexa();
 	void scrollViewSetting(int);
     
+	//update
+	void updateConsumableInventory(float fd);
     
 	//debug
 	void makePlayerWithItem();

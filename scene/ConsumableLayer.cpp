@@ -32,10 +32,16 @@ ConsumableLayer::ConsumableLayer(Size cSize, ConsumableInventory * inven, int co
 	btn->setAnchorPoint(Point(1, 1));
 	btn->setPosition(Point(cSize.width-5, cSize.height-5));
 	btn->setContentSize(Size(50,50));
-	btn->addTouchEventListener([](Ref*sender,ui::Button::TouchEventType e) {
+	btn->addTouchEventListener([&](Ref*sender,ui::Button::TouchEventType e) {
 		if (e == ui::Button::TouchEventType::ENDED) {
-			Node* temp = ((Node*)sender)->getParent();
-			temp->removeFromParent();
+			//Node* temp = ((Node*)sender)->getParent();
+			//temp->removeFromParent();
+
+			/*******************************************/
+			content->retain(); //DANGER
+			/*******************************************/
+
+			content->removeFromParent();
 		}
 	});
 	content->addChild(btn);
@@ -54,8 +60,11 @@ ConsumableLayer::ConsumableLayer(Size cSize, ConsumableInventory * inven, int co
 
 	this->cellWidth = (contentsSize.width-10) / column;
 	this->cellHeight = cellHeight;
+
+	content->setName("cInventory");
 }
 void ConsumableLayer::loadData() {
+	scv->removeAllChildren();
 	int rows = this->inven->consumableList.size() / column;
 	rows += this->inven->consumableList.size() % column == 0 ? 0 : 1;
 	scv->setInnerContainerSize(Size(contentsSize.width,rows*this->cellHeight+10));
@@ -65,7 +74,7 @@ void ConsumableLayer::loadData() {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < this->column; j++) {
 			if (it == inven->consumableList.end()) break;
-			ConsumableComponent *temp = new ConsumableComponent(Size(cellWidth, cellHeight), *it++);
+			ConsumableComponent *temp = new ConsumableComponent(Size(cellWidth, cellHeight),this, *it++);
 			temp->setPosition(position);
 			temp->addedTo(scv);
 			position.x += cellWidth;

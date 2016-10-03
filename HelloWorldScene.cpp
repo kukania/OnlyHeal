@@ -27,6 +27,7 @@ bool HelloWorld::init()
 	}
 	positionArr.assign(10, Vec2(0, 0));
 	p = new Player();
+	
 	scrollViewShow = false;
 	menuBtnTouched = false;
 
@@ -40,6 +41,9 @@ bool HelloWorld::init()
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+
+	this->schedule(schedule_selector(HelloWorld::updateConsumableInventory), 0.1);
+
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	return true;
@@ -181,9 +185,10 @@ void HelloWorld::makePlayerWithItem() {
 void HelloWorld::makePlayerConsumable() {
 	Consumable * temp;
 	for (int i = 0; i < 13; i++) {
-		temp = new Consumable(Consumable::CType::DAMAGE,i*10);
+		temp = new Consumable(p,Consumable::CType::DAMAGE,i*10);
 		p->cInventory.pushConsumable(temp);
 	}
+	p->cInventory.checkChange = false;
 }
 //end debug
 void HelloWorld::drawPlayerStatusHexa() {
@@ -248,9 +253,13 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		}
 		else if (cB->getBoundingBox().containsPoint(t->getLocation())) {
 			Size a(400, 600);
-			ConsumableLayer consumableLayer(a,&p->cInventory,5,80);
-			consumableLayer.addedTo(backGround);
-			consumableLayer.loadData();
+
+			if(consumableLayer==NULL)
+				consumableLayer=new ConsumableLayer(a,&p->cInventory,5,80);
+
+			consumableLayer->addedTo(backGround);
+			consumableLayer->loadData();
+			/*consumable*/
 		}
 		sB->setVisible(false);
 		pB->setVisible(false);
@@ -333,7 +342,6 @@ void HelloWorld::scrollViewSetting(int i) {
 				OHDialog dialog(Size(400, 250), "테스트", str + "장착하시겠습니까?");
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
 					if (e == ui::Button::TouchEventType::ENDED) {
-						int deb;
 						ui::Button *t = (ui::Button*)sender;
 						if(!this->scrollViewShow)
 							t->getParent()->removeFromParentAndCleanup(true);
@@ -363,6 +371,14 @@ void HelloWorld::scrollViewSetting(int i) {
 			btn->addChild(labelLayer);
 		}
 		this->scrollView->addChild(btn);
+	}
+}
+
+void HelloWorld::updateConsumableInventory(float fd) {
+	if (this->p->cInventory.checkChange) {
+		consumableLayer->loadData();
+		this->p->cInventory.checkChange = false;
+		this->drawPlayerStatusHexa();
 	}
 }
 void HelloWorld::menuCloseCallback(Ref* pSender)
