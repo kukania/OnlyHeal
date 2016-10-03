@@ -128,6 +128,9 @@ void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
 					ui::Button::Widget::TouchEventType type){
 				if (type == ui::Button::Widget::TouchEventType::ENDED) {
 					slot->RemoveSkill(index);
+					printf("Remove succes!\n");
+					UpdateWithPlayerInfo();
+					((CCNode*)pSender)->getParent()->removeFromParent();
 				}
 			});
 			dialog.addedTo(Director::getInstance()->getRunningScene());
