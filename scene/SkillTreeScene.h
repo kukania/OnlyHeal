@@ -31,10 +31,10 @@ public:
 	/*
 	Basic code of cocos2dx scene
 	*/
-	struct InputData {
+	struct Data{
 		Player *player;
 	};
-	static cocos2d::Scene* createScene(InputData inputdata);
+	static cocos2d::Scene* createScene(Data data);
 	virtual bool init();
 	// a selector callback
 	void menuCloseCallback(cocos2d::Ref* pSender);
@@ -46,10 +46,10 @@ public:
 	2016/09/11 by PorcaM
 	*/
 	void setBackground(cocos2d::Color4F);
-	void set_inputdata(InputData inputdata);
+	void set_data(Data data);
 	void myInit();
  private:
-	InputData inputdata_;
+	Data data_;
 };
 
 #endif // __SKILLTREE_SCENE_H__

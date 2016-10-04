@@ -242,7 +242,7 @@ void HelloWorld::onTouchEnded(Touch *t, Event *e) {
 		auto pB = (Label*)backGround->getChildByName("partyBtn");
 		auto cB = (Label*)backGround->getChildByName("consumableBtn");
 		if (sB->getBoundingBox().containsPoint(t->getLocation())) {
-			SkillTreeScene::InputData data;
+			SkillTreeScene::Data data;
 			data.player = p;
 			Director::getInstance()->pushScene(SkillTreeScene::createScene(data));
 			//skillTreeLayer

@@ -1,34 +1,33 @@
 /* ============================================================
 FileName:	SkillTreeScene.cpp
 Revision:	2016/09/11 by PorcaM
-Modified: 	2016/09/22 by PorcaM
+Modified: 	2016/10/05 by PorcaM
 ============================================================ */
+#include <string>
+using std::string;
 
 #include "SkillTreeScene.h"
 #include "ui/CocosGUI.h"
-//#include "SkillTreeComponent/SkillTreeFrame.h"
+USING_NS_CC;
 #include "scene/SkillTreeComponent/PlayerInfo.h"
 #include "scene/SkillTreeComponent/PlayerInfoFrame.h"
 #include "scene/SkillTreeComponent/SkillInfo.h"
 #include "scene/SkillTreeComponent/SkillTreeFrame.h"
-#include <string>
-using std::string;
-USING_NS_CC;
 
-Scene* SkillTreeScene::createScene(InputData inputdata)
+Scene* SkillTreeScene::createScene(Data data)
 {
 	auto scene = Scene::create();
 	auto layer = SkillTreeScene::create();
-	layer->set_inputdata(inputdata);
+	layer->set_data(data);
 	layer->myInit();
 	scene->addChild(layer);
 	return scene;
 }
-void SkillTreeScene::set_inputdata(InputData inputdata) {
-	if (inputdata.player == NULL) {
+void SkillTreeScene::set_data(Data data) {
+	if (data.player == NULL) {
 		assert(false);
 	}
-	inputdata_ = inputdata;
+	data_ = data;
 	return;
 }
 bool SkillTreeScene::init()
@@ -115,17 +114,17 @@ void SkillTreeScene::myInit(){
 	Player Information Frame
 	============================================================ */
 	auto skillInfo = new SkillInfo();
-	Player *player = inputdata_.player;
+	Player *player = data_.player;
 	auto slot = new SkillSlot();
 	slot->Assign(player->mySkillSet);
-	auto playerInfo2 = new PlayerInfo(20, slot);
-	auto pif = new PlayerInfoFrame(playerInfo2);
-	pif->setPositionY(-270);
-	SkillTreeLayer->addChild(pif);
+	auto playerInfo = new PlayerInfo(20, slot);
+	auto playerInfoFrame = new PlayerInfoFrame(playerInfo);
+	playerInfoFrame->setPositionY(-270);
+	SkillTreeLayer->addChild(playerInfoFrame);
 	/* ============================================================
 	Skilltree Frame
 	============================================================ */
-	auto skillTreeFrame = new SkillTreeFrame(skillInfo, playerInfo2, pif);
+	auto skillTreeFrame = new SkillTreeFrame(skillInfo, playerInfo, playerInfoFrame);
 	skillTreeFrame->setPositionY(185);
 	SkillTreeLayer->addChild(skillTreeFrame);
 	/* ============================================================
