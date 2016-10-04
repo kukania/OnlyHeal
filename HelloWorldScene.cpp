@@ -185,7 +185,12 @@ void HelloWorld::makePlayerWithItem() {
 void HelloWorld::makePlayerConsumable() {
 	Consumable * temp;
 	for (int i = 0; i < 13; i++) {
-		temp = new Consumable(p,Consumable::CType::DAMAGE,i*10);
+		switch (i%4) {
+		case 0:temp = new Consumable(p, Consumable::CType::DAMAGE, i * 10); break;
+		case 1:temp = new Consumable(p, Consumable::CType::DEFENCE, i * 10); break;
+		case 2:temp = new Consumable(p, Consumable::CType::MAXHP, i * 10); break;
+		case 3:temp = new Consumable(p, Consumable::CType::SP, i * 10); break;
+		}
 		p->cInventory.pushConsumable(temp);
 	}
 	p->cInventory.checkChange = false;

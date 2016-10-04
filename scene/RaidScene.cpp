@@ -262,6 +262,7 @@ void Raid::checkGameOver(float fd) {
 				ui::Button *btn = (ui::Button*)sender;
 				btn->getParent()->removeFromParentAndCleanup(true);
 				/*drop item setting */
+				
 				Director::getInstance()->popScene();
 			}
 		});

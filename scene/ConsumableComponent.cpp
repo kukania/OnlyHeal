@@ -4,16 +4,16 @@
 ConsumableComponent::ConsumableComponent(Size s,ConsumableLayer * cLP,Consumable* c) {
 	switch (c->getType()) {
 	case Consumable::CType::DAMAGE:
-		this->container = ui::Button::create("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
+		this->container = ui::Button::create("images/consumable/damage.png", "images/consumable/damage.png", "images/consumable/damage.png");
 		break;
 	case Consumable::CType::DEFENCE:
-		this->container = ui::Button::create("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
+		this->container = ui::Button::create("images/consumable/def.png", "images/consumable/def.png", "images/consumable/def.png");
 		break;
 	case Consumable::CType::MAXHP:
-		this->container = ui::Button::create("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
+		this->container = ui::Button::create("images/consumable/hp.png", "images/consumable/hp.png", "images/consumable/hp.png");
 		break;
 	case Consumable::CType::SP:
-		this->container = ui::Button::create("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
+		this->container = ui::Button::create("images/consumable/skill.png", "images/consumable/skill.png", "images/consumable/skill.png");
 		break;
 	}
 	this->container->setScale9Enabled(true);
