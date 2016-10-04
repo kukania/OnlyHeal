@@ -13,7 +13,6 @@ USING_NS_CC;
 
 class PlayerInfo{
  public:
- 	PlayerInfo();
  	PlayerInfo(int point, SkillSlot *slot);  // for saved data
  	~PlayerInfo();
  	auto get_point()->int;

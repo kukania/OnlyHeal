@@ -20,10 +20,6 @@ auto PlayerInfo::get_slot()->SkillSlot *{
 /* ============================================================
 	Public
 ============================================================ */
-PlayerInfo::PlayerInfo(){
-	set_point(0);
-	set_slot(new SkillSlot());
-}
 PlayerInfo::PlayerInfo(int point, SkillSlot *slot){
 	set_point(point);
 	set_slot(slot);
