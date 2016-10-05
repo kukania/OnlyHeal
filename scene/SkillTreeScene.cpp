@@ -105,7 +105,6 @@ void SkillTreeScene::myInit(){
 	auto closeBtn = ui::Button::create("images/skilltree/btn_close.png");
 	closeBtn->addTouchEventListener([&](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf("Touch event type: %d\n", type);
-		Director::getInstance()->popScene();
 	});
 	closeBtn->setAnchorPoint(Vec2(0.5f, 1.0f));
 	closeBtn->setPosition(Vec2(268, 47));
@@ -149,9 +148,12 @@ void SkillTreeScene::myInit(){
 	closeBtn->addTouchEventListener([=](
 			Ref *pSender,
 			ui::Button::Widget::TouchEventType type) {
-		auto list = slot->get_list();
-		auto it = list.begin();
-		player->mySkillSet.assign(it, list.end());
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			auto list = slot->get_list();
+			auto it = list.begin();
+			player->mySkillSet.assign(it, list.end());
+			Director::getInstance()->popScene();
+		}
 	});
 	return;
 }

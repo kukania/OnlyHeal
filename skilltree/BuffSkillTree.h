@@ -16,5 +16,5 @@ class BuffSkillTree : public SkillTree{
  public:
 	BuffSkillTree();
  private:
- 	virtual void Init() = 0;
+ 	virtual void Init();
 };

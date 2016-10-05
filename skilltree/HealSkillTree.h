@@ -16,5 +16,5 @@ class HealSkillTree : public SkillTree{
  public:
 	HealSkillTree();
  private:
- 	virtual void Init() = 0;
+ 	virtual void Init();
 };

@@ -7,56 +7,67 @@ Modified: 	2016/10/05 by PorcaM
 #include "scene/SkillTreeComponent/SkillInfo.h"
 
 SkillInfo::SkillInfo(){
-	factory_arr_ = new SkillFactory*[3];
-	factory_arr_[0] = new HealSkillFactory();
-	factory_arr_[1] = new BuffSkillFactory();
-	factory_arr_[2] = new DebuffSkillFactory();
-	for (int i = 0; i < 3; ++i) {
-		factory_arr_[i]->initAllSkills();
-	}
-	skilltree_arr_ = new SkillTree *[3];
-	for (int i = 0; i < 3; ++i) {
-		skilltree_arr_[i] = new SkillTree();
-		skilltree_arr_[i]->InitWithType(static_cast<Skill::Type>(i));
-	}
+	InitFactoryList();
+	InitSkilltreeList();
 }
-
 SkillInfo::~SkillInfo(){
-	for (int i = 0; i < 3; i++){
-		delete factory_arr_[i];
-		delete skilltree_arr_[i];
-	}
-	delete[] factory_arr_;
-	delete[] skilltree_arr_;
+	ClearFactoryList();
+	ClearSkilltreeList();
 }
-
-SkillFactory *SkillInfo::get_factory_by_type(Skill::Type type){
-	if (type < 3) {
-		return factory_arr_[type];
-	} else {
+auto SkillInfo::get_factory_by_type(Type type)->SkillFactory*{
+	auto list = factory_list_;
+	if ((int)type > list.size()) {
 		assert(false);
 	}
-	return NULL;
+	return list[(int)type];
 }
-
-SkillTree *SkillInfo::get_skilltree_by_type(Skill::Type type){
-	if (type < 3) {
-		return skilltree_arr_[type];
-	}
-	else {
+auto SkillInfo::get_skilltree_by_type(Type type)->SkillTree*{
+	auto list = skilltree_list_;
+	if ((int)type > list.size()) {
 		assert(false);
 	}
-	return NULL;
+	return list[(int)type];
 }
-auto SkillInfo::RetrieveSkillByID(Skill::ID id)->Skill*{
-	Skill *skill = NULL;
-	for (int i = 0; i < 3; i++) {
-		for (auto it = factory_arr_[i]->getBegin();
-			it != factory_arr_[i]->getEnd();
-			++it) {
-			if (id == (*it)->getID())
-				skill = *it;
+auto SkillInfo::RetrieveSkillByID(ID id)->Skill*{
+	auto sptr = (Skill*)NULL;
+	auto list = factory_list_;
+	for (int i = 0; i < list.size(); ++i) {
+		auto factory = list[i];
+		for (auto it = factory->getBegin(); it != factory->getEnd(); ++it) {
+			auto target = *it;
+			if (id == target->getID())
+				sptr = target;
 		}
 	}
-	return skill;
+	return sptr;
+}
+void SkillInfo::InitFactoryList(){
+	factory_list_.push_back(new HealSkillFactory());
+	factory_list_.push_back(new BuffSkillFactory());
+	factory_list_.push_back(new DebuffSkillFactory());
+	for (int i = 0; i < factory_list_.size(); ++i) {
+		factory_list_[i]->initAllSkills();
+	}
+	return;
+}
+void SkillInfo::ClearFactoryList(){
+	auto wastebasket = factory_list_;
+	for (auto it = wastebasket.begin(); it != wastebasket.end(); ++it) {
+		delete *it;
+	}
+	wastebasket.clear();
+	return;
+}
+void SkillInfo::InitSkilltreeList(){
+	skilltree_list_.push_back(new HealSkillTree());
+	skilltree_list_.push_back(new BuffSkillTree());
+	skilltree_list_.push_back(new DebuffSkillTree());
+	return;
+}
+void SkillInfo::ClearSkilltreeList(){
+	auto wastebasket = skilltree_list_;
+	for (auto it = wastebasket.begin(); it != wastebasket.end(); ++it) {
+		delete *it;
+	}
+	return;
 }

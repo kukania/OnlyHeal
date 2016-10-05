@@ -16,5 +16,5 @@ class DebuffSkillTree : public SkillTree{
  public:
 	DebuffSkillTree();
  private:
- 	virtual void Init() = 0;
+ 	virtual void Init();
 };
