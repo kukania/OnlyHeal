@@ -1,6 +1,6 @@
 /* ============================================================
-FileName: 	SkillTree.h
-Revision: 	2016/09/07 by PorcaM
+FileName: 	HealSkillTree.h
+Revision: 	2016/10/05 by PorcaM
 Modified: 	2016/10/05 by PorcaM
 ============================================================ */
 
@@ -10,9 +10,10 @@ Modified: 	2016/10/05 by PorcaM
 
 #include "parts/Skill.h"
 #include "skilltree/SkillNode.h"
+#include "skilltree/SkillTree.h"
 
 /* ==================================================
-	ClassName: 	SkillNode
+	ClassName: 	HealSkillTree
 	Modified: 	2016/10/05 by PorcaM
 
 	Context:
@@ -21,7 +22,7 @@ Modified: 	2016/10/05 by PorcaM
 		It is a tree, and element is a SkillNode. 
 		SkillTree allocate new SkillNode. So This must free SkillNodes when destruction. 
 ================================================== */
-class SkillTree{
+class HealSkillTree : public SkillTree{
  public:
  	typedef Skill::ID ID;
  	typedef Skill::Type Type;

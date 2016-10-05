@@ -1,21 +1,12 @@
 /* ============================================================
-FileName: 	SkillTree.cpp
-Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/09/27 by PorcaM
+FileName: 	HealSkillTree.cpp
+Revision: 	2016/10/05 by PorcaM
+Modified: 	2016/10/05 by PorcaM
 ============================================================ */
 
-#include "skilltree/SkillTree.h"
+#include "skilltree/HealSkillTree.h"
 
-/* ==================================================
-	Public
-================================================== */
-SkillTree::SkillTree() {
-	Init();
-}
-SkillTree::~SkillTree() {
-	Clear();
-}
-void SkillTree::InitHealSkillTree() {
+virtual void HealSkillTree::Init() {
 	clear();
 	SkillNode *temp;
 	insertSkill(new SkillNode(0, 0, true));
@@ -37,20 +28,5 @@ void SkillTree::InitHealSkillTree() {
 		insertSkill(temp = new SkillNode(16 + i, 8 + i, false));
 		temp->set_col_row(i + 1, 2);
 	}
-	return;
-}
-void SkillTree::InsertSkill(SkillNode *snode){
-	auto id = snode->get_id();
-	if (tree_.find(id) != tree_.end()) {  // Redundancy
-		assert(false);
-	}
-	tree_.insert(NodeType(id, snode));
-	return;
-}
-void SkillTree::Clear(){
-	for (auto it = tree_.begin(); it != tree_.end(); ++it) {
-		delete it->second;
-	}
-	tree_.clear();  // [CAUTION] I don't know this is necessary. 
 	return;
 }

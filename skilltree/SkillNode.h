@@ -1,12 +1,20 @@
 /* ==================================================
 FileName: 	SkillNode.h
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/10/04 by PorcaM
+Modified: 	2016/10/05 by PorcaM
 ================================================== */
 
 #pragma once
 #include "parts/Skill.h"
 
+/* ==================================================
+	ClassName: 	SkillNode
+	Modified: 	2016/10/05 by PorcaM
+
+	Context:
+		Node used in SkillTree. 
+		No link to Skill instance or ptr. 
+================================================== */
 class SkillNode{
  public:
  	typedef int Index;
@@ -23,6 +31,7 @@ class SkillNode{
 	void set_col(Index val);
 	auto get_row()->Index;
 	void set_row(Index val);
+	// Set col and row concurrently
 	void set_col_row(Index col, Index row);
  private:
 	ID id_;

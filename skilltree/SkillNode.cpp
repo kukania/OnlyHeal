@@ -1,7 +1,7 @@
 /* ==================================================
 FileName: 	SkillNode.cpp
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/10/04 by PorcaM
+Modified: 	2016/10/05 by PorcaM
 ================================================== */
 
 #include "skilltree/SkillNode.h"
