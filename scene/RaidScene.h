@@ -11,6 +11,7 @@ Modified:	2016/08/25 by PorcaM
 #include "scene/RaidComponent/unitFrame.h"
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
+#include<vector>
 #include<list>
 USING_NS_CC;
 #define SKILLNUM 21
@@ -37,7 +38,7 @@ public:
 	Character **cl;
 	UnitFrame *uf[4];
 	cocos2d::ui::ScrollView *scv;
-	Point skillBtnPosition[SKILLNUM];
+	std::vector<Point> skillBtnPosition;
 	ui::Button *selectedBtn;
 	static int selectedNum;
 	BossFrame *bf;

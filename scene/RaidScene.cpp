@@ -140,20 +140,16 @@ void Raid::makeUnitFrame() {
 	bf->setPosition(Vec2(visibleSize.width / 2, borderline + 80));
 	this->addChild(bf);
 
-	HealSkillFactory hsf;
-	hsf.initAllSkills();
-	Skill** sl = hsf.getSkillsList(SKILLNUM);
-	SkillFrame *sf[SKILLNUM];
+	SkillFrame *temp;
 	borderline = visibleSize.height - 240;
-	for (int i = 0; i < SKILLNUM; i++) {
-		sf[i] = new SkillFrame(sl[i]);
-		sf[i]->_button->setContentSize(Size(100, 80));
-		sf[i]->_button->setAnchorPoint(Vec2(0, 1));
-		sf[i]->_button->setPosition(Vec2(10, 80 * SKILLNUM + i*-80));
-		sf[i]->_button->setTag(i);
-		cl[1]->mySkillSet.push_back(sl[i]);
-		this->skillBtnPosition[i] = sf[i]->_button->getPosition();
-		scv->addChild(sf[i]->_button);
+	for (int i = 0; i < cl[1]->mySkillSet.size(); i++) {
+		temp = new SkillFrame(cl[1]->mySkillSet[i]);
+		temp->_button->setContentSize(Size(100, 80));
+		temp->_button->setAnchorPoint(Vec2(0, 1));
+		temp->_button->setPosition(Vec2(10, 80 * SKILLNUM + i*-80));
+		temp->_button->setTag(i);
+		this->skillBtnPosition.push_back(temp->_button->getPosition());
+		scv->addChild(temp->_button);
 	}
 	this->addChild(scv);
 }
