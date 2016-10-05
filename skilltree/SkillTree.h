@@ -12,7 +12,6 @@ Modified: 	2016/10/05 by PorcaM
 #include "skilltree/SkillNode.h"
 
 /* ==================================================
-	ClassName: 	SkillNode
 	Modified: 	2016/10/05 by PorcaM
 
 	Context:
@@ -31,6 +30,8 @@ class SkillTree{
 	auto Begin()->Tree::iterator;
 	auto End()->Tree::iterator;
 	auto FindNode(ID id)->SkillNode*;
+	auto Save()->int;
+	void Load(int data);
  protected:
 	void InsertSkill(SkillNode *snode);
  private:

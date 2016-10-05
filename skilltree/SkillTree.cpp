@@ -6,6 +6,9 @@ Modified: 	2016/09/27 by PorcaM
 
 #include "skilltree/SkillTree.h"
 
+bool get_bit(int data, int index);
+void set_bit(int &data, int index, bool value);
+
 /* ==================================================
 	Public
 ================================================== */
@@ -31,6 +34,25 @@ auto SkillTree::FindNode(ID id)->SkillNode*{
 	}
 	return snode;
 }
+auto SkillTree::Save()->int{
+	auto data = (int)0;
+	auto list = tree_;
+	int index = 0;
+	for (auto it = list.begin(); it != list.end(); ++it, ++index) {
+		if (it->second->get_learn() == true)
+			set_bit(data, index, true);
+	}
+	return data;
+}
+void SkillTree::Load(int data){
+	auto list = tree_;
+	int index = 0;
+	for (auto it = list.begin(); it != list.end(); ++it, ++index) {
+		if (get_bit(data, index) == true)
+			it->second->set_learn(true);
+	}
+	return;
+}
 /* ==================================================
 	Protected
 ================================================== */
@@ -50,5 +72,14 @@ void SkillTree::Clear(){
 		delete it->second;
 	}
 	tree_.clear();  // [CAUTION] I don't know this is necessary. 
+	return;
+}
+
+bool get_bit(int data, int index){
+	return data & (1<<index);
+}
+void set_bit(int &data, int index, bool value){
+	int temp = value;
+	data |= (temp<<index);
 	return;
 }
