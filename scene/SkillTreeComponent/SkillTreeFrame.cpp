@@ -77,7 +77,7 @@ void SkillTreeFrame::InitIconList(){
 }
 void SkillTreeFrame::DrawFrame(SkillTree *skilltree){
 	for (auto it = skilltree->getBegin(); it != skilltree->getEnd(); ++it) {
-		InsertIcon(it->second, skilltree->findSkill(it->second->getPrev()));
+		InsertIcon(it->second, skilltree->findSkill(it->second->get_prec_id()));
 	}
 	return;
 }
@@ -90,10 +90,10 @@ void SkillTreeFrame::ClearFrame(){
 	return;
 }
 void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){
-	auto skill = skillinfo_->RetrieveSkillByID(node->getID());
+	auto skill = skillinfo_->RetrieveSkillByID(node->get_id());
 	if (skill == NULL) return;
 	auto icon = new SkillIcon(skill);
-	if (node->getLearn() == false) {
+	if (node->get_learn() == false) {
 		string path = "images/skilltree/icon_d.png";
 		icon->get_button()->loadTextures(path, path, path);
 	}
@@ -107,8 +107,8 @@ void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){
 			ui::Button::Widget::TouchEventType type
 			) {
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
-			printf("id?: %d\n", node->getID());
-			if (node->getLearn() == false) {
+			printf("id?: %d\n", node->get_id());
+			if (node->get_learn() == false) {
 				string title = "LEARN_SKILL";
 				string prompt = "Do you want to learn this skill?\n";
 				string info = "SkillName: " + icon->get_skill()->getName();
@@ -117,7 +117,7 @@ void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){
 						Ref *pSender, 
 						ui::Button::Widget::TouchEventType type) {
 					if (type == ui::Button::Widget::TouchEventType::ENDED) {
-						bool learn = prev->getLearn();
+						bool learn = prev->get_learn();
 						auto point = playerinfo->get_point();
 						auto need = 5;
 						if (learn == false) {
@@ -125,7 +125,7 @@ void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){
 						} else if (point < need) {
 							printf("No point\n");
 						} else {
-							node->setLearn(true);
+							node->set_learn(true);
 							playerinfo->AddPoint(-need);
 							playerinfo->get_slot()->InsertSkill(icon->get_skill());
 							playerinfoframe->UpdateWithPlayerInfo(playerinfo);

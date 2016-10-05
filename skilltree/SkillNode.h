@@ -10,25 +10,23 @@ Modified: 	2016/10/04 by PorcaM
 class SkillNode{
  public:
  	typedef int Index;
- 	SkillNode(Skill::ID id);
-	SkillNode(Skill::ID id, Skill::ID prec_id, bool learn);
-	Skill::ID 	getID();
-	void 		setID(Skill::ID);
-	Skill::ID 	getPrev();
-	void 		setPrev(Skill::ID);
-	bool 		getLearn();
-	void 		setLearn(bool);
-	void set_id(Skill::ID id);
-	void set_prec_id(Skill::ID prec_id);
+	typedef Skill::ID ID;
+ 	SkillNode(ID id);
+	SkillNode(ID id, ID prec_id, bool learn);
+	auto get_id()->ID;
+	void set_id(ID id);
+	auto get_prec_id()->ID;
+	void set_prec_id(ID prec_id);
+	auto get_learn()->bool;
 	void set_learn(bool learn);
 	auto get_col()->Index;
 	void set_col(Index val);
 	auto get_row()->Index;
 	void set_row(Index val);
-	void set_col_row(int val_c, int val_r);
+	void set_col_row(Index col, Index row);
  private:
-	Skill::ID id_;
-	Skill::ID prec_id_;  // Precedence ID
+	ID id_;
+	ID prec_id_;  // Precedence ID
 	bool learn_;
 	Index col_;
 	Index row_;
