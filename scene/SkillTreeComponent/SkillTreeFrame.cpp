@@ -54,7 +54,7 @@ void SkillTreeFrame::UpdateByType(Skill::Type type){
 ================================================== */
 void SkillTreeFrame::InitScrollview(){
 	int scrollview_height = 330;
-	int scrollview_inner_width = 8*100;
+	int scrollview_inner_width = 7*100;
 	scrollview_ = ui::ScrollView::create();
 	scrollview_->setContentSize(Size(280, scrollview_height));
 	scrollview_->setInnerContainerSize(Size(

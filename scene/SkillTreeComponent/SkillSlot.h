@@ -26,6 +26,8 @@ class SkillSlot{
  	void RemoveSkill(SkillVec::iterator it);
 	auto FindSkillWithIndex(int index)->SkillVec::iterator;
  	auto FindSkillWithSkill(Skill *skill);
+	void Assign(SkillVec sv);
+	auto get_list()->SkillVec;
  private:
  	SkillVec list_;
 };

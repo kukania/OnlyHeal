@@ -21,6 +21,7 @@ This class has ? components. All in SkillTreeLayer.
 #define __SKILLTREE_SCENE_H__
 
 #include "cocos2d.h"
+#include "characters/Player.h"
 
 class Character;
 
@@ -30,7 +31,10 @@ public:
 	/*
 	Basic code of cocos2dx scene
 	*/
-	static cocos2d::Scene* createScene();
+	struct Data{
+		Player *player;
+	};
+	static cocos2d::Scene* createScene(Data data);
 	virtual bool init();
 	// a selector callback
 	void menuCloseCallback(cocos2d::Ref* pSender);
@@ -42,6 +46,10 @@ public:
 	2016/09/11 by PorcaM
 	*/
 	void setBackground(cocos2d::Color4F);
+	void set_data(Data data);
+	void myInit();
+ private:
+	Data data_;
 };
 
 #endif // __SKILLTREE_SCENE_H__

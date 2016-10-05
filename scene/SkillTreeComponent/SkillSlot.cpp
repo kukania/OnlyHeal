@@ -59,3 +59,10 @@ auto SkillSlot::FindSkillWithSkill(Skill *skill){
 	}
 	return it;
 }
+void SkillSlot::Assign(SkillVec sv) {
+	list_ = sv;
+	return;
+}
+auto SkillSlot::get_list()->SkillVec {
+	return list_;
+}

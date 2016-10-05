@@ -1,69 +1,96 @@
-/*
+/* ==================================================
 FileName: 	SkillNode.cpp
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/09/09 by PorcaM
-*/
+Modified: 	2016/10/04 by PorcaM
+================================================== */
 
-#include "SkillNode.h"
+#include "skilltree/SkillNode.h"
+
 #include <cstdio>
 
-SkillNode::SkillNode(SkillID id, SkillID prev = 0, bool learn = false) {
-	setID(id);
-	setPrev(prev);
-	setLearn(learn);
-	col_ = row_ = 0;
+/* ==================================================
+	Getter, Setter
+================================================== */
+void SkillNode::set_id(Skill::ID id){
+	if (id < 0) {
+		assert(false);
+	}
+	id_ = id;
+	return;
+}
+void SkillNode::set_prec_id(Skill::ID prec_id){
+	if (prec_id < 0) {
+		assert(false);
+	}
+	prec_id_ = prec_id;
+	return;
+}
+void SkillNode::set_learn(bool learn){
+	learn_ = learn;
+	return;
+}
+auto SkillNode::get_col()->Index{
+	return col_;
+}
+void SkillNode::set_col(Index col){
+	if (col < 0) {
+		assert(false);
+	}
+	col_ = col;
+	return;
+}
+auto SkillNode::get_row()->Index{
+	return row_;
+}
+void SkillNode::set_row(Index row){
+	if (row < 0) {
+		assert(false);
+	}
+	row_ = row;
+	return;
+}
+void SkillNode::set_col_row(Index col, Index row){
+	set_col(col);
+	set_row(row);
+	return;
+}
+/* ==================================================
+	Public
+================================================== */
+SkillNode::SkillNode(Skill::ID id){
+	SkillNode(id, 0, false);
+}
+SkillNode::SkillNode(Skill::ID id, Skill::ID prec_id, bool learn) {
+	set_id(id);
+	set_prec_id(prec_id);
+	set_learn(learn);
+	set_col_row(0, 0);
 }
 
-SkillID SkillNode::getID() {
-	return _id;
+Skill::ID SkillNode::getID() {
+	return id_;
 }
-void SkillNode::setID(SkillID id) {
+void SkillNode::setID(Skill::ID id) {
 	if (id < 0) {
 		printf("Skill ID is not negative!\n");
 	}
-	_id = id;
+	id_ = id;
 	return;
 }
-SkillID SkillNode::getPrev() {
-	return _prev;
+Skill::ID SkillNode::getPrev() {
+	return prec_id_;
 }
-void SkillNode::setPrev(SkillID prev) {
+void SkillNode::setPrev(Skill::ID prev) {
 	if (prev < 0) {
 		printf("Skill ID is not negative!\n");
 	}
-	_prev = prev;
+	prec_id_ = prev;
 	return;
 }
 bool SkillNode::getLearn() {
-	return _learn;
+	return learn_;
 }
 void SkillNode::setLearn(bool learn) {
-	_learn = learn;
-	return;
-}
-
-int SkillNode::get_col(){
-	return col_;
-}
-
-void SkillNode::set_col(int val){
-	assert(val>=0 && "col cannot be unsigned.");
-	col_ = val;
-	return;
-}
-
-int SkillNode::get_row(){
-	return row_;
-}
-
-void SkillNode::set_row(int val){
-	assert(val>=0 && "row cannot be unsigned.");
-	row_ = val;
-	return;
-}
-
-void SkillNode::set_col_n_row(int val_c, int val_r){
-	set_col(val_c);
-	set_row(val_r);
+	learn_ = learn;
 	return;
 }
