@@ -1,7 +1,7 @@
 /* ============================================================
 FileName: 	SkillInfo.h
 Revision: 	2016/09/27 by PorcaM
-Modified: 	2016/10/02 by PorcaM
+Modified: 	2016/10/05 by PorcaM
 ============================================================ */
 
 #include "scene/SkillTreeComponent/SkillInfo.h"

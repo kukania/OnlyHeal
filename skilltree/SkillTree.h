@@ -25,13 +25,16 @@ class SkillTree{
  public:
  	typedef Skill::ID ID;
  	typedef Skill::Type Type;
- 	typedef pair<int, SkillNode *> Node;
+ 	typedef pair<int, SkillNode *> Pair;
  	typedef map<int, SkillNode *> Tree;
-	SkillTree ();
-	~SkillTree ();
+	~SkillTree();
+	auto Begin()->Tree::iterator;
+	auto End()->Tree::iterator;
+	auto FindNode(ID id)->SkillNode*;
+ protected:
+	void InsertSkill(SkillNode *snode);
  private:
  	virtual void Init() = 0;
- 	void InsertSkill(SkillNode *snode);
  	void Clear();
  	Tree tree_;
 };

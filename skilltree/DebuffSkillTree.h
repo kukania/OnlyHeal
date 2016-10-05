@@ -1,5 +1,5 @@
 /* ============================================================
-FileName: 	HealSkillTree.h
+FileName: 	DebuffSkillTree.h
 Revision: 	2016/10/05 by PorcaM
 Modified: 	2016/10/05 by PorcaM
 ============================================================ */
@@ -9,12 +9,12 @@ Modified: 	2016/10/05 by PorcaM
 #include "skilltree/SkillTree.h"
 
 /* ==================================================
-	ClassName: 	HealSkillTree
+	ClassName: 	DebuffSkillTree
 	Modified: 	2016/10/05 by PorcaM
 ================================================== */
-class HealSkillTree : public SkillTree{
+class DebuffSkillTree : public SkillTree{
  public:
-	HealSkillTree();
+	DebuffSkillTree();
  private:
  	virtual void Init() = 0;
 };

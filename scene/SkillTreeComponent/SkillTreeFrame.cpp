@@ -76,8 +76,8 @@ void SkillTreeFrame::InitIconList(){
 	return;
 }
 void SkillTreeFrame::DrawFrame(SkillTree *skilltree){
-	for (auto it = skilltree->getBegin(); it != skilltree->getEnd(); ++it) {
-		InsertIcon(it->second, skilltree->findSkill(it->second->get_prec_id()));
+	for (auto it = skilltree->Begin(); it != skilltree->End(); ++it) {
+		InsertIcon(it->second, skilltree->FindNode(it->second->get_prec_id()));
 	}
 	return;
 }
