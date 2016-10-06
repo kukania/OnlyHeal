@@ -10,7 +10,6 @@ Item::Item(Tier _tier, int _type, MyRGB _rgb) {
 	setType(_type);
 	setMyRGB(_rgb);
 }
-
 void Item::setTier(Tier _tier) {
 	tier = _tier;
 }

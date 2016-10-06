@@ -6,12 +6,15 @@
 USING_NS_CC;
 class ConsumableComponent {
 public:
-	ConsumableComponent(Size,ConsumableLayer * ,Consumable *);
+	ConsumableComponent(Size,Consumable *);
+	static ConsumableComponent* createRandomConsumable(Size s);
 	void addedTo(Node *p);
+	void addedTo(Node *p,Point sp);
 	void setPosition(Point);
 	void setCLayer(ConsumableLayer *);
-private:
+	Consumable* getConsumable();
 	ui::Button * container;
+private:
 	Consumable * item;
 	ConsumableLayer* cLayer;
 };

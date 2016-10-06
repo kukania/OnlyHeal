@@ -9,7 +9,10 @@ Modified:	2016/08/30 by PorcaM
 #include "RaidComponent/BossFrame.h"
 #include "RaidComponent\SkillFrame.h"
 #include "characters\Character.h"
+#include "characters/Player.h"
 #include "skillinstance\Factory\HealSkillFactory.h"
+#include"../ConvertKorean.h"
+#include"ConsumableComponent.h"
 #include "OHDialog.h"
 #include <cstdio>
 
@@ -251,14 +254,40 @@ void Raid::checkGameOver(float fd) {
 		this->unschedule(schedule_selector(Raid::skillCoolDown));
 		this->unschedule(schedule_selector(Raid::frameUpdate));
 		this->unschedule(schedule_selector(Raid::checkGameOver));
-		OHDialog popup(Size(500,200),"system","you win!");
+		
+		OHDialog popup(Size(500,300),"system","you win!\nITEM for you:\n");
 		popup.cancelBtn->setVisible(false);
+		for (int i = 0; i < 3; i++) {
+			ConsumableComponent *t = ConsumableComponent::createRandomConsumable(Size(70, 70));
+			t->addedTo(popup.dialogContent, popup.contentStartP);
+			((Player*)cl[1])->cInventory.pushConsumable(t->getConsumable());
+			t->getConsumable()->setOwner(cl[1]);
+			t->getConsumable()->isNew = true;
+			popup.contentStartP.x += 70;
+		}
+		popup.contentStartP.y -= 70;
+		popup.contentStartP.x -= 70 * 3;
+
+		Item tempI = cl[0]->getStatus()->getItemByNum(rand() % 3);
+		Item tempItem(tempI.getTier(),tempI.getType(),tempI.getMyRGB());
+		tempItem.isNew = true;
+		auto btn = ui::Button::create();
+		btn->loadTextures("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
+		btn->setScale9Enabled(true);
+		btn->setAnchorPoint(Point(0, 1));
+		btn->setPosition(popup.contentStartP);
+		btn->setContentSize(Size(80, 80));
+		auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "fonts/sdCrayon.ttf", 32);
+		txt->setPosition(Point(40, 40));
+		btn->addChild(txt);
+		popup.dialogContent->addChild(btn);
+		((Player*)cl[1])->inventory[tempItem.getType()].itemList.push_back(tempItem);
+
 		popup.okBtn->addTouchEventListener([&](Ref *sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
 				ui::Button *btn = (ui::Button*)sender;
 				btn->getParent()->removeFromParentAndCleanup(true);
 				/*drop item setting */
-				
 				Director::getInstance()->popScene();
 			}
 		});

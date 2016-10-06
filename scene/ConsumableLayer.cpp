@@ -74,10 +74,23 @@ void ConsumableLayer::loadData() {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < this->column; j++) {
 			if (it == inven->consumableList.end()) break;
-			ConsumableComponent *temp = new ConsumableComponent(Size(cellWidth, cellHeight),this, *it++);
+			ConsumableComponent *temp = new ConsumableComponent(Size(cellWidth, cellHeight), *it);
 			temp->setPosition(position);
 			temp->addedTo(scv);
+			if ((*it)->isNew) {
+				auto newLabel = Label::createWithTTF("New", "fonts/sdCrayon.ttf", 30);
+				Size eqlSize = newLabel->getContentSize();
+				auto labelLayer = LayerColor::create(Color4B(255, 255, 0, 255), eqlSize.width, eqlSize.height);
+				newLabel->setColor(Color3B(0, 0, 0));
+				newLabel->setAnchorPoint(Point(0, 0));
+				newLabel->setPosition(Point(0, 0));
+				labelLayer->addChild(newLabel);
+				labelLayer->setPosition(Point(8, 25));
+				labelLayer->setName("newLabel");
+				temp->container->addChild(labelLayer);
+			}
 			position.x += cellWidth;
+			it++;
 		}
 		if (it == inven->consumableList.end()) break;
 		position.y -= cellHeight;

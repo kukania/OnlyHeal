@@ -52,4 +52,5 @@ public:
 	int			getMaxHPDefault();
 	void		setMaxHPDefault(int);
 	void		setItemWithNum(Item, int);
+	Item		getItemByNum(int);
 };

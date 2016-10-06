@@ -145,3 +145,7 @@ void		Status::setItemWithNum(Item a, int num) {
 
 void		Status::addPureDamage(int a) { this->pureDamage += a; setDamage(); }
 void		Status::addPureDefence(int a) { this->pureDefence += a; setDefence(); }
+
+Item		Status::getItemByNum(int a) {
+	return items[a];
+}

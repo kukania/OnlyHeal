@@ -177,6 +177,7 @@ void HelloWorld::makePlayerWithItem() {
 		for (int j = 0; j < 5; j++) {
 			t = new Tier((rand() % 81));
 			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom());
+			w->isNew = false;
 			p->inventory[i].pushItemList(*w);
 		}
 		p->equipSelectedItem(0,i);
@@ -192,6 +193,7 @@ void HelloWorld::makePlayerConsumable() {
 		case 3:temp = new Consumable(p, Consumable::CType::SP, i * 10); break;
 		}
 		p->cInventory.pushConsumable(temp);
+		temp->isNew = false;
 	}
 	p->cInventory.checkChange = false;
 }
@@ -347,8 +349,13 @@ void HelloWorld::scrollViewSetting(int i) {
 		btn->addTouchEventListener([i,this, str](Ref* sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
 				int a = ((ui::Button*)sender)->getTag();
+				if (this->p->inventory[this->touchNum].itemList[a].isNew) {
+					this->p->inventory[this->touchNum].itemList[a].isNew = false;
+					this->scrollViewSetting(i);
+				}
 				OHDialog dialog(Size(400, 250), "테스트", str + "장착하시겠습니까?");
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
+					
 					if (e == ui::Button::TouchEventType::ENDED) {
 						ui::Button *t = (ui::Button*)sender;
 						if(!this->scrollViewShow)
@@ -372,9 +379,22 @@ void HelloWorld::scrollViewSetting(int i) {
 			auto equipedLabel = Label::createWithTTF(_AtoU8("장착중"), "fonts/sdCrayon.ttf", 24);
 			Size eqlSize = equipedLabel->getContentSize();
 			auto labelLayer = LayerColor::create(Color4B(255, 0, 255, 255), eqlSize.width, eqlSize.height);
+			equipedLabel->setColor(Color3B(0, 0, 0));
 			equipedLabel->setAnchorPoint(Point(0, 0));
 			equipedLabel->setPosition(Point(0, 0));
 			labelLayer->addChild(equipedLabel);
+			labelLayer->setPosition(Point(8, 25));
+			btn->addChild(labelLayer);
+		}
+
+		if (tempItem.isNew) {
+			auto newLabel = Label::createWithTTF("New", "fonts/sdCrayon.ttf", 30);
+			Size eqlSize = newLabel->getContentSize();
+			auto labelLayer = LayerColor::create(Color4B(255, 255, 0, 255), eqlSize.width, eqlSize.height);
+			newLabel->setColor(Color3B(0, 0, 0));
+			newLabel->setAnchorPoint(Point(0, 0));
+			newLabel->setPosition(Point(0, 0));
+			labelLayer->addChild(newLabel);
 			labelLayer->setPosition(Point(8, 25));
 			btn->addChild(labelLayer);
 		}

@@ -20,6 +20,7 @@ public:
 	void setOwner(Character *);
 	CType getType();
 	std::list<Consumable*>::iterator it;
+	bool isNew;
 private:
 	CType type;
 	int value;

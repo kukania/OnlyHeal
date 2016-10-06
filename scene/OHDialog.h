@@ -5,6 +5,7 @@
 USING_NS_CC;
 class OHDialog {
 public:
+	Point contentStartP;
 	ui::Scale9Sprite *dialogContent;
 	ui::Button *okBtn;
 	ui::Button *cancelBtn;

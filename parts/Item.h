@@ -11,6 +11,7 @@ public:
 	Tier	tier;
 	int		type;
 	MyRGB	rgb;
+	bool	isNew;
 	Item();
 	Item(Tier, int, MyRGB);
 	void	setTier(Tier);

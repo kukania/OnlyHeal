@@ -18,6 +18,8 @@ OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {
 	dcontent->setPosition(Point(10, layerSize.height-40));
 	dcontent->setAnchorPoint(Point(0, 1));
 	dialogContent->addChild(dcontent);
+	Rect tempR=dcontent->getBoundingBox();
+	contentStartP = Point(10, layerSize.height - 40-tempR.size.height);
 
 	okBtn = ui::Button::create("images/dialog/buttonu.png","images/dialog/buttond.png","");
 	okBtn->setScale9Enabled(true);
