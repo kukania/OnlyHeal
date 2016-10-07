@@ -4,118 +4,82 @@ Revision: 	2016/09/07 by PorcaM
 Modified: 	2016/09/27 by PorcaM
 ============================================================ */
 
-#include "SkillTree.h"
+#include "skilltree/SkillTree.h"
 
-#include <cstdio>
+bool get_bit(int data, int index);
+void set_bit(int &data, int index, bool value);
 
-SkillTree::SkillTree (){
-	_tree.clear();
-	// No variable => nothing to do. 
+/* ==================================================
+	Public
+================================================== */
+SkillTree::~SkillTree() {
+	Clear();
 }
-
-/* clear all allocated nodes */
-SkillTree::~SkillTree (){
-	clear();  // Clear nodes of tree. 
+auto SkillTree::Begin()->Tree::iterator{
+	return tree_.begin();
 }
-
-void SkillTree::clear (){
-	for (auto ti = getBegin(); ti != getEnd(); ++ti) {
-		delete ti->second;
+auto SkillTree::End()->Tree::iterator{
+	return tree_.end();
+}
+auto SkillTree::FindNode(ID id)->SkillNode*{
+	SkillNode *snode = NULL;
+	for (auto it = tree_.begin(); it != tree_.end(); ++it) {
+		auto it_node = it->second;
+		if (it_node->get_id() == id) {
+			snode = it_node;
+		}
 	}
-	_tree.clear();
-	return;
-}
-
-void 	SkillTree::insertSkill (SkillNode* node){
-	if (_tree.find (node->getID ()) != _tree.end ()){
-		printf ("Try to insert old-member skill!\n");
-	}
-	_tree.insert (NodeType (node->getID (), node));
-	return;
-}
-
-SkillNode* 	SkillTree::findSkill (SkillID id){
-	TreeIt ti;
-	if ((ti = _tree.find (id)) == _tree.end ()){
-		printf ("Try to find non-member skill!\n");
-	}
-	return ti->second;
-}
-
-void 	SkillTree::removeSkill (SkillID id){
-	if (_tree.find (id) == _tree.end ()){
-		printf ("Try to erase non-member skill!\n");
-	}
-	_tree.erase (id);
-	return;
-}
-
-int 	SkillTree::learnSkill (SkillID id){
-	SkillNode* skill = findSkill (id);
-	SkillNode* prev = findSkill (skill->getPrev ());
-	if (prev->getLearn ()){
-		skill->setLearn (true);
-		return 0;
-	}
-	else
-		return 1;
-}
-
-TreeIt SkillTree::getBegin (){
-	return _tree.begin ();
-}
-
-TreeIt SkillTree::getEnd (){
-	return _tree.end ();
-}
-
-/* ============================================================
-	Renewaled functions on 27th. 
-============================================================ */
-void SkillTree::InitWithType(Skill::Type type){
-	if (type == Skill::Type::kHeal) {
-		InitHealSkillTree();
-	} else if (type == Skill::Type::kBuff) {
-		InitBuffSkillTree();
-	} else if (type == Skill::Type::kDebuff) {
-		InitDebuffSkillTree();
-	} else {
+	if (snode == NULL) {
 		assert(false);
 	}
-	return;
+	return snode;
 }
-
-void SkillTree::InitHealSkillTree(){
-	clear();
-	SkillNode *temp;
-	insertSkill(new SkillNode (0, 0, true));
-	insertSkill(temp = new SkillNode (1, 0, false));
-	temp->set_col_row(0, 0);
-	insertSkill(temp = new SkillNode (8, 1, false));
-	temp->set_col_row(0, 1);
-	insertSkill(temp = new SkillNode (15, 1, false));
-	temp->set_col_row(0, 2);
-	for (int i = 0; i < 6; ++i){  // from 2 to 7
-		insertSkill(temp = new SkillNode (2+i, 1+i, false));
-		temp->set_col_row(i+1, 0);
+auto SkillTree::Save()->int{
+	auto data = (int)0;
+	auto list = tree_;
+	int index = 0;
+	for (auto it = list.begin(); it != list.end(); ++it, ++index) {
+		if (it->second->get_learn() == true)
+			set_bit(data, index, true);
 	}
-	for (int i = 0; i < 6; ++i){  // from 9 to 14
-		insertSkill(temp = new SkillNode (9+i, 8+i, false));
-		temp->set_col_row(i+1, 1);
-	}
-	for (int i = 0; i < 6; ++i){  // from 16 to 21
-		insertSkill(temp = new SkillNode (16+i, 8+i, false));
-		temp->set_col_row(i+1, 2);
+	return data;
+}
+void SkillTree::Load(int data){
+	auto list = tree_;
+	int index = 0;
+	for (auto it = list.begin(); it != list.end(); ++it, ++index) {
+		if (get_bit(data, index) == true)
+			it->second->set_learn(true);
 	}
 	return;
 }
-
-void SkillTree::InitBuffSkillTree(){
-	clear();
+/* ==================================================
+	Protected
+================================================== */
+void SkillTree::InsertSkill(SkillNode *snode){
+	auto id = snode->get_id();
+	if (tree_.find(id) != tree_.end()) {  // Redundancy
+		assert(false);
+	}
+	tree_.insert(Pair(id, snode));
+	return;
+}
+/* ==================================================
+	Private
+================================================== */
+void SkillTree::Clear(){
+	for (auto it = tree_.begin(); it != tree_.end(); ++it) {
+		delete it->second;
+	}
+	tree_.clear();  // [CAUTION] I don't know this is necessary. 
 	return;
 }
 
-void SkillTree::InitDebuffSkillTree(){
-	clear();
+bool get_bit(int data, int index){
+	return data & (1<<index);
+}
+void set_bit(int &data, int index, bool value){
+	int temp = value;
+	data |= (temp<<index);
 	return;
 }

@@ -1,34 +1,41 @@
 /* ============================================================
 FileName: 	SkillTree.h
 Revision: 	2016/09/07 by PorcaM
-Modified: 	2016/09/27 by PorcaM
+Modified: 	2016/10/05 by PorcaM
 ============================================================ */
 
 #pragma once
 
 #include <map>
-#include "parts\Skill.h"
-#include "skilltree\SkillNode.h"
 
-typedef pair<int, SkillNode*> 			NodeType;
-typedef map<int, SkillNode*>			TreeType;
-typedef map<int, SkillNode*>::iterator	TreeIt;
+#include "parts/Skill.h"
+#include "skilltree/SkillNode.h"
 
+/* ==================================================
+	Modified: 	2016/10/05 by PorcaM
+
+	Context:
+		SkillTree is a learning network of skills. 
+		It has each instance on each skill type(e.g. Heal, Buff, Debuff). 
+		It is a tree, and element is a SkillNode. 
+		SkillTree allocate new SkillNode. So This must free SkillNodes when destruction. 
+================================================== */
 class SkillTree{
  public:
-	TreeType _tree; 	/* Key is Skill's ID. Value is Node for essential information */
-	SkillTree ();
-	~SkillTree ();
-	void 		insertSkill (SkillNode*);
-	SkillNode* 	findSkill (SkillID);
-	void 		removeSkill (SkillID);
-	int 		learnSkill (SkillID);
-	TreeIt 		getBegin ();
-	TreeIt 		getEnd ();
-	void 		clear ();
-	void InitWithType(Skill::Type type);
+ 	typedef Skill::ID ID;
+ 	typedef Skill::Type Type;
+ 	typedef pair<int, SkillNode *> Pair;
+ 	typedef map<int, SkillNode *> Tree;
+	~SkillTree();
+	auto Begin()->Tree::iterator;
+	auto End()->Tree::iterator;
+	auto FindNode(ID id)->SkillNode*;
+	auto Save()->int;
+	void Load(int data);
+ protected:
+	void InsertSkill(SkillNode *snode);
  private:
- 	void InitHealSkillTree();
- 	void InitBuffSkillTree();
- 	void InitDebuffSkillTree();
+ 	virtual void Init() = 0;
+ 	void Clear();
+ 	Tree tree_;
 };

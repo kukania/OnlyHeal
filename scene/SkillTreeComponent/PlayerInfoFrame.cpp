@@ -118,7 +118,8 @@ void PlayerInfoFrame::InsertIcon(int index, Skill *skill){
 			Ref *pSender,
 			ui::Button::Widget::TouchEventType type){
 		auto slot = playerinfo_->get_slot();
-		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+		if (type == ui::Button::Widget::TouchEventType::ENDED &&
+			skill != NULL) {
 			string title = "UNEQUIP_SKILL";
 			string prompt = "Do you want to unequip this skill?\n";
 			string info = "Skill Name: " + skill->getName();

@@ -1,8 +1,8 @@
-/*
+/* ==================================================
 FileName:	Player.h
 Revision:	? by Kukania
-Modified:	2016/09/07 by PorcaM
-*/
+Modified:	2016/10/05 by PorcaM
+================================================== */
 
 #pragma once
 #include "Character.h"
@@ -10,6 +10,9 @@ Modified:	2016/09/07 by PorcaM
 #include"../parts/consumableInventory.h"
 #include "../parts/Tier.h"
 
+/* ==================================================
+	Modified: 2016/10/05 by PorcaM
+================================================== */
 class Player :public Character {
 public:
 	int skillPoint;
@@ -26,4 +29,5 @@ public:
 	}
 	void equipSelectedItem(int index,int type);
 	virtual void	initSkillSet(int);
+	int skilltreeData[3] = { 0 };
 };

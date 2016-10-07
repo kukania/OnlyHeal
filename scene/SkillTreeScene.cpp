@@ -105,7 +105,6 @@ void SkillTreeScene::myInit(){
 	auto closeBtn = ui::Button::create("images/skilltree/btn_close.png");
 	closeBtn->addTouchEventListener([&](Ref *pSender, ui::Button::Widget::TouchEventType type) {
 		printf("Touch event type: %d\n", type);
-		Director::getInstance()->popScene();
 	});
 	closeBtn->setAnchorPoint(Vec2(0.5f, 1.0f));
 	closeBtn->setPosition(Vec2(268, 47));
@@ -115,6 +114,8 @@ void SkillTreeScene::myInit(){
 	============================================================ */
 	auto skillInfo = new SkillInfo();
 	Player *player = data_.player;
+	SkillTree *stree = skillInfo->get_skilltree_by_type((SkillInfo::Type)0);
+	stree->Load(player->skilltreeData[0]); // [TODO] read :158
 	auto slot = new SkillSlot();
 	slot->Assign(player->mySkillSet);
 	auto playerInfo = new PlayerInfo(20, slot);
@@ -149,9 +150,16 @@ void SkillTreeScene::myInit(){
 	closeBtn->addTouchEventListener([=](
 			Ref *pSender,
 			ui::Button::Widget::TouchEventType type) {
-		auto list = slot->get_list();
-		auto it = list.begin();
-		player->mySkillSet.assign(it, list.end());
+		if (type == ui::Button::Widget::TouchEventType::ENDED) {
+			auto list = slot->get_list();
+			auto it = list.begin();
+			player->mySkillSet.assign(it, list.end());
+			Director::getInstance()->popScene();
+			// [TODO] When implement buff and debuff, then changed
+			SkillTree *stree = skillInfo->get_skilltree_by_type((SkillInfo::Type)0);
+			int data = stree->Save();
+			player->skilltreeData[0] = data;
+		}
 	});
 	return;
 }
