@@ -3,8 +3,8 @@
 
 #include "cocos2d.h"
 #include"ui/CocosGUI.h"
-#include "scene/statusHexa.h"
-#include "scene/ConsumableLayer.h"
+#include "scene/HelloWorldComponent/statusHexa.h"
+#include "scene/HelloWorldComponent/ConsumableLayer.h"
 #include "characters/Player.h"
 #include<vector>
 

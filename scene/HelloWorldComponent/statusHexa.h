@@ -1,6 +1,6 @@
 #pragma once
 #include "cocos2d.h"
-#include "../characters/Character.h"
+#include "../../characters/Character.h"
 USING_NS_CC;
 class StatusHexa {
 public:

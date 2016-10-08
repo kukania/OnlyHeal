@@ -2,7 +2,7 @@
 #include"cocos2d.h"
 #include"ui/CocosGUI.h"
 #include"../parts/consumableItem.h"
-#include"../scene/ConsumableLayer.h"
+#include"HelloWorldComponent/ConsumableLayer.h"
 USING_NS_CC;
 class ConsumableComponent {
 public:

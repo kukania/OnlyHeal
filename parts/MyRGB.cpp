@@ -14,6 +14,14 @@ void MyRGB::ErrorDetector(int v) {
 }
 MyRGB::MyRGB() { this->R = this->G = this->B = 0; }
 MyRGB::MyRGB(int a, int b, int c) { R = a; G = b; B = c; }
+MyRGB::MyRGB(ColorType type, float value) {
+	this->type = type;
+	this->value = value;
+	MyRGB temp = MyRGB::ColorTypeToRGB(type, value);
+	this->setR(temp.getR());
+	this->setG(temp.getG());
+	this->setB(temp.getB());
+}
 MyRGB MyRGB::operator+ (MyRGB a) {
 	MyRGB temp;
 	temp.setR(this->R + a.getR());
@@ -28,7 +36,6 @@ short MyRGB::checkMyRGBValue(int value) {
 		return 2;
 	return 1;
 }
-
 short MyRGB::setB(short b) {
 	int temp = this->checkMyRGBValue(b);
 	if (temp == 1) {
@@ -87,6 +94,82 @@ MyRGB MyRGB::getMyRGBRandom() {
 	temp.setG((16 - i) * 16 + rand() % 16);
 	temp.setB((16 - i) * 16 + rand() % 16);
 	return temp;
+}
+MyRGB MyRGB::getMyRGBRandom(float value) {
+	return MyRGB::ColorTypeToRGB((MyRGB::ColorType)(rand()%12),value);
+}
+MyRGB MyRGB::getMyRGBRandom(ColorType t) {
+	return MyRGB::ColorTypeToRGB(t, (rand()%4+1)*0.25);
+}
+MyRGB MyRGB::ColorTypeToRGB(ColorType t, float value) {
+	MyRGB res;
+	switch (t)
+	{
+	case MyRGB::RED:
+		res = MyRGB::HSL2RGB(0, value, 0.5);
+		break;
+	case MyRGB::LIME:
+		res = MyRGB::HSL2RGB(1/3, value, 0.5);
+		break;
+	case MyRGB::BLUE:
+		res = MyRGB::HSL2RGB(2/3, value, 0.5);
+		break;
+	case MyRGB::YELLOW:
+		res = MyRGB::HSL2RGB(1/6, value, 0.5);
+		break;
+	case MyRGB::CYAN:
+		res = MyRGB::HSL2RGB(1/2, value, 0.5);
+		break;
+	case MyRGB::MAGENTA:
+		res = MyRGB::HSL2RGB(5/6, value, 0.5);
+		break;
+	case MyRGB::MAROON:
+		res = MyRGB::HSL2RGB(0, value, 0.25);
+		break;
+	case MyRGB::OLIVE:
+		res = MyRGB::HSL2RGB(1/6, value, 0.25);
+		break;
+	case MyRGB::GREEN:
+		res = MyRGB::HSL2RGB(1/3, value, 0.25);
+		break;
+	case MyRGB::PURPLE:
+		res = MyRGB::HSL2RGB(5/6, value, 0.25);
+		break;
+	case MyRGB::TEAL:
+		res = MyRGB::HSL2RGB(1/2, value, 0.25);
+		break;
+	case MyRGB::NAVY:
+		res = MyRGB::HSL2RGB(2/3, value, 0.25);
+		break;
+	}
+	res.type = t;
+	res.value = value;
+	return res;
+}
+MyRGB MyRGB::HSL2RGB(float h, float s, float l) {
+	int r, g, b;
+	if (s == 0) {
+		r = g = b = (int)(l * 255);
+	}
+	else {
+		float var2, var1;
+		if (l < 0.5f) var2 = l*(1 + s);
+		else var2 = (l + s) - (s*l);
+		var1 = 2 * l - var2;
+	
+		r = (int)(255 * Hue2RGB(var1, var2, h + (1 / 3)));
+		g= (int)(255 * Hue2RGB(var1, var2, h ));
+		b= (int)(255 * Hue2RGB(var1, var2, h-(1/3)));
+	}
+	return MyRGB(r, g, b);
+}
+float MyRGB::Hue2RGB(float v1, float v2, float vH) {
+	if (vH < 0) vH += 1;
+	else if (vH > 1)vH -= 1;
+	if ((6 * vH) < 1)return (v1 + (v2 - v1) * 6 * vH);
+	if ((2 * vH) < 1)return v2;
+	if ((3 * vH) < 2) return(v1 + (v2 - v1)*((2 / 3 - vH)) * 6);
+	return v1;
 }
 MyRGB MyRGB::operator*(float input) {
 	MyRGB temp;

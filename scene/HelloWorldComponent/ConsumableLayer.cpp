@@ -1,6 +1,6 @@
 #include"ConsumableLayer.h"
-#include"../ConvertKorean.h"
-#include"ConsumableComponent.h"
+#include"../../ConvertKorean.h"
+#include"../ConsumableComponent.h"
 #include "parts/consumableItem.h"
 #include<list>
 ConsumableLayer::ConsumableLayer(Size cSize, ConsumableInventory * inven, int column,int cellHeight) {

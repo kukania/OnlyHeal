@@ -5,7 +5,6 @@
 
 BuffSkill::BuffSkill() 
 	:Skill(9999, "UNKNOW_BUFF", 0, 1, buff, false) {
-
 };
 BuffSkill::BuffSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)
 	:Skill(ID, name, cooltime, time, buff, _multi) {

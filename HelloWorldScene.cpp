@@ -1,11 +1,11 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "skillinstance\Factory\SkillFactory.h"
-#include "scene\partyLayer.h"
+#include "skillinstance/Factory/skillFactory.h"
+#include "scene/HelloWorldComponent/partyLayer.h"
 #include "ConvertKorean.h"
-#include "scene\OHDialog.h"
-#include "scene\SkillTreeScene.h"
-#include "scene/ConsumableLayer.h"
+#include "scene/OHDialog.h"
+#include "scene/SkillTreeScene.h"
+#include "scene/HelloWorldComponent/ConsumableLayer.h"
 #include "parts/consumableItem.h"
 
 #include<iostream>
@@ -42,7 +42,6 @@ bool HelloWorld::init()
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 
-	
 
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -176,7 +175,7 @@ void HelloWorld::makePlayerWithItem() {
 	for (int i = WEAPON; i <=ARTIFACT; i++) {
 		for (int j = 0; j < 5; j++) {
 			t = new Tier((rand() % 81));
-			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom());
+			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom((MyRGB::ColorType)(rand()%12)));
 			w->isNew = false;
 			p->inventory[i].pushItemList(*w);
 		}

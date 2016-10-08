@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "parts/Tier.h"
-#include "Characters/Character.h"
+#include "../../Characters/Character.h"
 #include"PartyContent.h"
 #include"ui/CocosGUI.h"
 

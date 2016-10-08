@@ -19,7 +19,7 @@ Status::Status(Tier input) {
 	for (int i = 0; i < 3; i++) {
 		items[i].setType(i);
 		items[i].setTier(Tier::getSimillarTier(input.getLevel()));
-		items[i].setMyRGB(MyRGB::getMyRGBRandom());
+		items[i].setMyRGB(MyRGB::getMyRGBRandom((MyRGB::ColorType)(rand()%12)));
 		equipItem(items[i]);
 	}
 	agro = -1;

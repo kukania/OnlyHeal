@@ -1,10 +1,10 @@
 #pragma once
 #include "partyLayer.h"
-#include "OHDialog.h"
+#include "../OHDialog.h"
 #include"ui/CocosGUI.h"
 #include"scene/RaidScene.h"
 #include "partyContent.h"
-#include "../HelloWorldScene.h"
+#include "../../HelloWorldScene.h"
 
 PartyLayer::PartyLayer() {
 	content = LayerGradient::create(Color4B(255, 255, 255, 255), Color4B(255, 255, 255, 255));

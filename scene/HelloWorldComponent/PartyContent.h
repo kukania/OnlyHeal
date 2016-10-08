@@ -1,6 +1,6 @@
 #pragma once
-#include"parts/Tier.h"
-#include"characters/Character.h"
+#include"../../parts/Tier.h"
+#include"../../characters/Character.h"
 #include"cocos2d.h"
 #include"ui/CocosGUI.h"
 #include<string>
