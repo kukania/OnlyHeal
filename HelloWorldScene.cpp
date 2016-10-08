@@ -6,6 +6,7 @@
 #include "scene/OHDialog.h"
 #include "scene/SkillTreeScene.h"
 #include "scene/HelloWorldComponent/ConsumableLayer.h"
+#include "scene/ItemComponent.h"
 #include "parts/consumableItem.h"
 
 #include<iostream>
@@ -45,6 +46,7 @@ bool HelloWorld::init()
 
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
 	return true;
 }
 void HelloWorld::makeBackGround() {
@@ -336,16 +338,11 @@ void HelloWorld::scrollViewSetting(int i) {
 	for (int j = 0; j < p->inventory[i].itemList.size(); j++) {
 		Item &tempItem = p->inventory[i].itemList[j];
 		string str = tempItem.toString();
-		auto btn = ui::Button::create();
-		btn->loadTextures("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
-		btn->setTouchEnabled(true);
-		btn->setSwallowTouches(false);
-		btn->setAnchorPoint(Vec2(0, 0));
-		btn->setPosition(Vec2(20 + j * 100, 15));
-		btn->setScale9Enabled(true);
-		btn->setContentSize(Size(80, 80));
-		btn->setTag(j);
-		btn->addTouchEventListener([i,this, str](Ref* sender, ui::Button::TouchEventType e) {
+		ItemComponent btn(&tempItem,Size(80,80));
+		btn.content->setAnchorPoint(Vec2(0, 0));
+		btn.content->setPosition(Vec2(20 + j * 100, 15));
+		btn.btn->setTag(j);
+		btn.btn->addTouchEventListener([i,this, str](Ref* sender, ui::Button::TouchEventType e) {
 			if (e == ui::Button::TouchEventType::ENDED) {
 				int a = ((ui::Button*)sender)->getTag();
 				if (this->p->inventory[this->touchNum].itemList[a].isNew) {
@@ -354,7 +351,6 @@ void HelloWorld::scrollViewSetting(int i) {
 				}
 				OHDialog dialog(Size(400, 250), "테스트", str + "장착하시겠습니까?");
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
-					
 					if (e == ui::Button::TouchEventType::ENDED) {
 						ui::Button *t = (ui::Button*)sender;
 						if(!this->scrollViewShow)
@@ -370,34 +366,13 @@ void HelloWorld::scrollViewSetting(int i) {
 				dialog.addedTo(backGround);
 			}
 		});
-
-		auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "fonts/sdCrayon.ttf", 32);
-		txt->setPosition(Point(40, 40));
-		btn->addChild(txt);
-		if (&tempItem == p->inventory[i].equiped) {
-			auto equipedLabel = Label::createWithTTF(_AtoU8("장착중"), "fonts/sdCrayon.ttf", 24);
-			Size eqlSize = equipedLabel->getContentSize();
-			auto labelLayer = LayerColor::create(Color4B(255, 0, 255, 255), eqlSize.width, eqlSize.height);
-			equipedLabel->setColor(Color3B(0, 0, 0));
-			equipedLabel->setAnchorPoint(Point(0, 0));
-			equipedLabel->setPosition(Point(0, 0));
-			labelLayer->addChild(equipedLabel);
-			labelLayer->setPosition(Point(8, 25));
-			btn->addChild(labelLayer);
+		if (&tempItem == p->inventory[i].equiped){
+			btn.setEquiped();
 		}
-
 		if (tempItem.isNew) {
-			auto newLabel = Label::createWithTTF("New", "fonts/sdCrayon.ttf", 30);
-			Size eqlSize = newLabel->getContentSize();
-			auto labelLayer = LayerColor::create(Color4B(255, 255, 0, 255), eqlSize.width, eqlSize.height);
-			newLabel->setColor(Color3B(0, 0, 0));
-			newLabel->setAnchorPoint(Point(0, 0));
-			newLabel->setPosition(Point(0, 0));
-			labelLayer->addChild(newLabel);
-			labelLayer->setPosition(Point(8, 25));
-			btn->addChild(labelLayer);
+			btn.setNew();
 		}
-		this->scrollView->addChild(btn);
+		this->scrollView->addChild(btn.content);
 	}
 }
 

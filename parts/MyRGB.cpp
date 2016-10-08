@@ -106,40 +106,40 @@ MyRGB MyRGB::ColorTypeToRGB(ColorType t, float value) {
 	switch (t)
 	{
 	case MyRGB::RED:
-		res = MyRGB::HSL2RGB(0, value, 0.5);
+		res = MyRGB::HSL2RGB((float)0, value, 0.5);
 		break;
 	case MyRGB::LIME:
-		res = MyRGB::HSL2RGB(1/3, value, 0.5);
+		res = MyRGB::HSL2RGB(1.0f/3.0f, value, 0.5);
 		break;
 	case MyRGB::BLUE:
-		res = MyRGB::HSL2RGB(2/3, value, 0.5);
+		res = MyRGB::HSL2RGB(2.0f/3.0f, value, 0.5);
 		break;
 	case MyRGB::YELLOW:
-		res = MyRGB::HSL2RGB(1/6, value, 0.5);
+		res = MyRGB::HSL2RGB(1.0f/6.0f, value, 0.5);
 		break;
 	case MyRGB::CYAN:
-		res = MyRGB::HSL2RGB(1/2, value, 0.5);
+		res = MyRGB::HSL2RGB(1.0f/2.0f, value, 0.5);
 		break;
 	case MyRGB::MAGENTA:
-		res = MyRGB::HSL2RGB(5/6, value, 0.5);
+		res = MyRGB::HSL2RGB(5.0f/6.0f, value, 0.5);
 		break;
 	case MyRGB::MAROON:
 		res = MyRGB::HSL2RGB(0, value, 0.25);
 		break;
 	case MyRGB::OLIVE:
-		res = MyRGB::HSL2RGB(1/6, value, 0.25);
+		res = MyRGB::HSL2RGB(1.0f/6.0f, value, 0.25);
 		break;
 	case MyRGB::GREEN:
-		res = MyRGB::HSL2RGB(1/3, value, 0.25);
+		res = MyRGB::HSL2RGB(1.0f/3.0f, value, 0.25);
 		break;
 	case MyRGB::PURPLE:
-		res = MyRGB::HSL2RGB(5/6, value, 0.25);
+		res = MyRGB::HSL2RGB(5.0f/6.0f, value, 0.25);
 		break;
 	case MyRGB::TEAL:
-		res = MyRGB::HSL2RGB(1/2, value, 0.25);
+		res = MyRGB::HSL2RGB(1.0f/2.0f, value, 0.25);
 		break;
 	case MyRGB::NAVY:
-		res = MyRGB::HSL2RGB(2/3, value, 0.25);
+		res = MyRGB::HSL2RGB(2.0f/3.0f, value, 0.25);
 		break;
 	}
 	res.type = t;
@@ -157,9 +157,9 @@ MyRGB MyRGB::HSL2RGB(float h, float s, float l) {
 		else var2 = (l + s) - (s*l);
 		var1 = 2 * l - var2;
 	
-		r = (int)(255 * Hue2RGB(var1, var2, h + (1 / 3)));
+		r = (int)(255 * Hue2RGB(var1, var2, h + (1.0f / 3.0f)));
 		g= (int)(255 * Hue2RGB(var1, var2, h ));
-		b= (int)(255 * Hue2RGB(var1, var2, h-(1/3)));
+		b= (int)(255 * Hue2RGB(var1, var2, h-(1.0f/3.0f)));
 	}
 	return MyRGB(r, g, b);
 }
@@ -168,7 +168,7 @@ float MyRGB::Hue2RGB(float v1, float v2, float vH) {
 	else if (vH > 1)vH -= 1;
 	if ((6 * vH) < 1)return (v1 + (v2 - v1) * 6 * vH);
 	if ((2 * vH) < 1)return v2;
-	if ((3 * vH) < 2) return(v1 + (v2 - v1)*((2 / 3 - vH)) * 6);
+	if ((3 * vH) < 2) return(v1 + (v2 - v1)*((2.0f / 3.0f - vH)) * 6);
 	return v1;
 }
 MyRGB MyRGB::operator*(float input) {

@@ -24,7 +24,7 @@ public:
 	MyRGB operator+ (MyRGB a);
 	MyRGB operator*(float);
 	ColorType type;
-	short value;
+	float value;
 private:
 	static float Hue2RGB(float, float, float);
 	short R, G, B;
