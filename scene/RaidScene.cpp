@@ -146,7 +146,7 @@ void Raid::makeUnitFrame() {
 	SkillFrame *temp;
 	borderline = visibleSize.height - 240;
 	for (int i = 0; i < cl[1]->mySkillSet.size(); i++) {
-		temp = new SkillFrame(cl[1]->mySkillSet[i]);
+		temp = new SkillFrame(cl[1]->mySkillSet[i]->getName());
 		temp->_button->setContentSize(Size(100, 80));
 		temp->_button->setAnchorPoint(Vec2(0, 1));
 		temp->_button->setPosition(Vec2(10, 80 * SKILLNUM + i*-80));

@@ -1,16 +1,17 @@
-/*
+/* ==================================================
 FileName:	SkillFrame.cpp
 Revision:	2016/08/30 by PorcaM
-Modified:	2016/08/31 by PorcaM
-*/
-#include"../RaidScene.h"
-#include "SkillFrame.h"
+Modified:	2016/10/08 by PorcaM
+================================================== */
+#include "scene/RaidComponent/SkillFrame.h"
+
 #include <string>
 #include <cstdio>
+#include"../RaidScene.h"
 #include "ConvertKorean.h"
 
-SkillFrame::SkillFrame(Skill *skill) {
-	_skill = skill;
+SkillFrame::SkillFrame(string name) {
+	name_ = name;
 	initBG();
 	initLabel();
 }
@@ -40,8 +41,10 @@ void SkillFrame::initBG() {
 }
 
 void SkillFrame::initLabel() {
-	string _data = _skill->getName();
-	_label = Label::createWithTTF(_AtoU8(_data.c_str()), "fonts/sdCrayon.ttf", 30);
+	string text = name_;
+	string font = "fonts/sdCrayon.ttf";
+	int size = 30;
+	_label = Label::createWithTTF(_AtoU8(text.c_str()), font, size);
 	_label->setTextColor(Color4B(0, 0, 0, 255));
 	_label->setWidth(60);
 	_label->setAnchorPoint(Point(0.2, 0.3));
