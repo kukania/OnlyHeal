@@ -7,6 +7,17 @@ PartyContent::PartyContent(Tier t,Character *p) {
 	content->setContentSize(Size(470, 200));
 	Size tempS = content->getSize();
 
+	//"images/party/partyFrame.png", "images/party/partyFrame.png", "images/party/partyFrame.png"
+	auto backGround = DrawNode::create();
+	Vec2 corners[4] = {
+		Vec2(0,180),
+		Vec2(450,180),
+		Vec2(450,0),
+		Vec2(0,0)
+	};
+	backGround->setPosition(Point(10, 10));
+	content->addChild(backGround);
+
 	list[0] = Character::create(t, "Monster", 0);
 	list[1] = p;
 	list[2] = Character::create(t, "TankNPC", 0);
@@ -27,6 +38,8 @@ PartyContent::PartyContent(Tier t,Character *p) {
 
 	content->addChild(img[0]);
 	for (int i = 2; i < 6; i++) content->addChild(img[i]);
+
+	backGround->drawPolygon(corners, 4, Color4F(Color3B(255 - list[0]->getStatus()->getMyRGBDamage().getR(), 255 - list[0]->getStatus()->getMyRGBDamage().getG(), 255 - list[0]->getStatus()->getMyRGBDamage().getB())), 0, Color4F(1.0f, 0.3f, 0.3f, 1));
 }
 
 std::string PartyContent::getStringContent() {

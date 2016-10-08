@@ -66,6 +66,6 @@ void PartyLayer::makePartyBtn(Tier t, Character *p) {
 			}
 		});
 		contents[i] = tempContent;
-		scrollView->addChild(btn);
+		scrollView->addChild(tempContent->content);
 	}
 }

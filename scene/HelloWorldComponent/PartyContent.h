@@ -8,6 +8,7 @@ USING_NS_CC;
 class PartyContent {
 public:
 	bool selected;
+	DrawNode * backGround;
 	ui::Button *content;
 	ui::Scale9Sprite *img[6];
 	Character *list[6];
