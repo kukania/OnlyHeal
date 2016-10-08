@@ -118,7 +118,7 @@ void SkillTreeScene::myInit(){
 	stree->Load(player->skilltreeData[0]); // [TODO] read :158
 	auto slot = new SkillSlot();
 	slot->Assign(player->mySkillSet);
-	auto playerInfo = new PlayerInfo(20, slot);
+	auto playerInfo = new PlayerInfo(player->skillPoint, slot);
 	auto playerInfoFrame = new PlayerInfoFrame(playerInfo);
 	playerInfoFrame->setPositionY(-270);
 	SkillTreeLayer->addChild(playerInfoFrame);
