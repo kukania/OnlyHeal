@@ -10,7 +10,7 @@ Modified: 	2016/10/01 by PorcaM
 #include "scene/OHDialog.h"
 
 /* ============================================================
-	Getter and Setter. 
+	Getter and Setter.
 ============================================================ */
 void PlayerInfoFrame::set_playerinfo(PlayerInfo *playerinfo){
 	if (playerinfo == NULL) {
@@ -76,7 +76,7 @@ void PlayerInfoFrame::UpdateWithPlayerInfo(PlayerInfo *playerinfo) {
 }
 /* ============================================================
 	Private
-============================================================ */	
+============================================================ */
 void PlayerInfoFrame::InitLabelPoint(int point){
 	string text = "Player SKill Point: " + to_string(point);
 	string font = "fonts/sdCrayon.ttf";
@@ -93,7 +93,7 @@ void PlayerInfoFrame::InitScrollview(){
 	scrollview_ = ui::ScrollView::create();
 	scrollview_->setContentSize(Size(280, scrollview_height));
 	scrollview_->setInnerContainerSize(Size(
-											scrollview_inner_width, 
+											scrollview_inner_width,
 											scrollview_height));
 	scrollview_->setBackGroundImageScale9Enabled(true);
 	scrollview_->setBackGroundImage("images/skilltree/rect.png");

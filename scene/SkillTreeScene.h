@@ -1,26 +1,14 @@
 /* ============================================================
 FileName:	SkillTreeScene.h
 Revision:	2016/09/11 by PorcaM
-Modified: 	2016/09/22 by PorcaM
-
-Interface for player skill controll. 
-This class has ? components. All in SkillTreeLayer. 
-	1. tabs
-		Controll skilltree type. 
-	2. SkillTreeFrame
-		Draw skill buttons. 
-	3. PlayerInfo
-		Has information of player. 
-		e.g. Point(skill point), skill set(equipment)
-	4. SkillInfo
-		Has information of skills. 
-		Real instances from factory. 
+Modified: 	2016/10/09 by PorcaM
 ============================================================ */
 
 #ifndef __SKILLTREE_SCENE_H__
 #define __SKILLTREE_SCENE_H__
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 #include "characters/Player.h"
 
 class Character;
@@ -41,15 +29,17 @@ public:
 	// implement the "static create()" method manually
 	CREATE_FUNC(SkillTreeScene);
 
-	/*
-	Custom class functions
-	2016/09/11 by PorcaM
-	*/
-	void setBackground(cocos2d::Color4F);
-	void set_data(Data data);
-	void myInit();
+
+	void OHInit();
  private:
+	void InitLayer();
+	void InitOuterFrame();
+	void set_backgorund(cocos2d::Color4F);
+	void set_data(Data data);
 	Data data_;
+	cocos2d::Size visible_size_;
+	cocos2d::Layer *skilltree_layer_;
+	cocos2d::ui::Button *close_btn_;
 };
 
 #endif // __SKILLTREE_SCENE_H__
