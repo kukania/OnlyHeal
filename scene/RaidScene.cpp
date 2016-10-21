@@ -13,6 +13,7 @@ Modified:	2016/08/30 by PorcaM
 #include "skillinstance\Factory\HealSkillFactory.h"
 #include"../ConvertKorean.h"
 #include"ConsumableComponent.h"
+#include"ItemComponent.h"
 #include "OHDialog.h"
 #include <cstdio>
 
@@ -265,22 +266,17 @@ void Raid::checkGameOver(float fd) {
 			t->getConsumable()->isNew = true;
 			popup.contentStartP.x += 70;
 		}
-		popup.contentStartP.y -= 70;
+		popup.contentStartP.y -= 150;
 		popup.contentStartP.x -= 70 * 3;
 
 		Item tempI = cl[0]->getStatus()->getItemByNum(rand() % 3);
 		Item tempItem(tempI.getTier(),tempI.getType(),tempI.getMyRGB());
 		tempItem.isNew = true;
-		auto btn = ui::Button::create();
-		btn->loadTextures("images/helloworld/box.png", "images/helloworld/box.png", "images/helloworld/box.png");
-		btn->setScale9Enabled(true);
-		btn->setAnchorPoint(Point(0, 1));
-		btn->setPosition(popup.contentStartP);
-		btn->setContentSize(Size(80, 80));
-		auto txt = Label::createWithTTF(_AtoU8(tempItem.getTier().getTierByString().c_str()), "fonts/sdCrayon.ttf", 32);
-		txt->setPosition(Point(40, 40));
-		btn->addChild(txt);
-		popup.dialogContent->addChild(btn);
+		auto btn = new ItemComponent(&tempItem, Size(80, 80));
+		btn->content->setAnchorPoint(Point(0, 1));
+		btn->content->setPosition(popup.contentStartP);
+		btn->setNew();
+		popup.dialogContent->addChild(btn->content);
 		((Player*)cl[1])->inventory[tempItem.getType()].itemList.push_back(tempItem);
 
 		popup.okBtn->addTouchEventListener([&](Ref *sender, ui::Button::TouchEventType e) {

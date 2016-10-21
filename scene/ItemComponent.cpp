@@ -7,7 +7,8 @@ ItemComponent::ItemComponent(Item *input,Size size) {
 	this->size = size;
 
 	spr = Sprite::create("images/helloworld/box.png");
-	spr->setScale(1.2f);
+	spr->setScaleX(80.0f/spr->getContentSize().width);
+	spr->setScaleY(80.0f / spr->getContentSize().height);
 	spr->setPosition(Point(size.width / 2, size.height / 2));
 	spr->setColor(Color3B(input->getMyRGB().getR(), input->getMyRGB().getG(), input->getMyRGB().getB()));
 	content->addChild(spr);
@@ -54,6 +55,7 @@ void ItemComponent::setNew() {
 	newLabel->setPosition(Point(0, 0));
 	labelLayer->addChild(newLabel);
 	labelLayer->setPosition(Point(8, 25));
+	labelLayer->setName("New");
 	content->addChild(labelLayer);
 }
 void ItemComponent::setEquiped() {
@@ -65,5 +67,6 @@ void ItemComponent::setEquiped() {
 	equipedLabel->setPosition(Point(0, 0));
 	labelLayer->addChild(equipedLabel);
 	labelLayer->setPosition(Point(8, 25));
+	labelLayer->setName("Equiped");
 	content->addChild(labelLayer);
 }

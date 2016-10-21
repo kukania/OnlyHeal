@@ -4,9 +4,11 @@
 #include "scene/HelloWorldComponent/partyLayer.h"
 #include "ConvertKorean.h"
 #include "scene/OHDialog.h"
+#include "scene/OHLabel.h"
 #include "scene/SkillTreeScene.h"
 #include "scene/HelloWorldComponent/ConsumableLayer.h"
 #include "scene/ItemComponent.h"
+
 #include "parts/consumableItem.h"
 
 #include<iostream>
@@ -42,8 +44,7 @@ bool HelloWorld::init()
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-
-
+	
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
@@ -77,28 +78,41 @@ void HelloWorld::makeBackGround() {
 	characterGroup->setContentSize(Size(540, 200));
 	backGround->addChild(characterGroup);
 	characterGroup->setPosition(0, 275);
+	characterGroup->setName("characterGroup");
 
-	auto firstChar = Sprite::create("images/helloworld/char.png");
+	auto firstChar = Sprite::create("images/helloworld/box.png");
 	characterGroup->addChild(firstChar);
 	firstChar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	firstChar->setScale(1.6f);
 	firstChar->setPosition(20, 100);
 	firstChar->setTag(0);
+	OHLabel *textLabel = new OHLabel(firstChar->getContentSize(), "캐", 45);
+	textLabel->setAnchorPoint(Point(0.0f, 0.5f));
+	textLabel->moveBy(Point(-40, -20));
+	textLabel->addedTo(firstChar);
 	positionArr[CHA] = firstChar->getPosition();
 
-	auto secondChar = Sprite::create("images/helloworld/rac.png");
+	auto secondChar = Sprite::create("images/helloworld/box.png");
 	characterGroup->addChild(secondChar);
 	secondChar->setPosition(270, 100);
 	secondChar->setScale(1.6f);
 	secondChar->setTag(1);
+	textLabel = new OHLabel(secondChar->getContentSize(), "릭", 45);
+	textLabel->setAnchorPoint(Point(0.0f, 0.5f));
+	textLabel->moveBy(Point(-40, -20));
+	textLabel->addedTo(secondChar);
 	positionArr[RAC] = secondChar->getPosition();
 
-	auto thirdChar = Sprite::create("images/helloworld/ter.png");
+	auto thirdChar = Sprite::create("images/helloworld/box.png");
 	characterGroup->addChild(thirdChar);
 	thirdChar->setAnchorPoint(Vec2(1.0f, 0.5f));
 	thirdChar->setPosition(520, 100);
 	thirdChar->setScale(1.6f);
 	thirdChar->setTag(2);
+	textLabel = new OHLabel(thirdChar->getContentSize(), "터", 45);
+	textLabel->setAnchorPoint(Point(0.0f, 0.5f)); 
+	textLabel->moveBy(Point(-40, -20));
+	textLabel->addedTo(thirdChar);
 	positionArr[TER] = thirdChar->getPosition();
 
 	/*scroll view test -start-*/
@@ -216,7 +230,12 @@ void HelloWorld::drawPlayerStatusHexa() {
 	showPlayerStatus[1]->setString(_AtoU8(StringUtils::format("공격력\n%d", p->getStatus()->getDamage()).c_str()));
 	showPlayerStatus[2]->setString(_AtoU8(StringUtils::format("방어력\n%d", p->getStatus()->getDefence()).c_str()));
 	showPlayerStatus[3]->setString(_AtoU8(StringUtils::format("체력\n%d", p->getStatus()->getMaxHP()).c_str()));
-}
+
+	auto tempNode=backGround->getChildByName("characterGroup");
+	((Sprite*)tempNode->getChildByTag(0))->setColor(Color3B(p->inventory[0].equiped->getMyRGB().getR(), p->inventory[0].equiped->getMyRGB().getG(), p->inventory[0].equiped->getMyRGB().getB()));
+	((Sprite*)tempNode->getChildByTag(1))->setColor(Color3B(p->inventory[1].equiped->getMyRGB().getR(), p->inventory[1].equiped->getMyRGB().getG(), p->inventory[1].equiped->getMyRGB().getB()));
+	((Sprite*)tempNode->getChildByTag(2))->setColor(Color3B(p->inventory[2].equiped->getMyRGB().getR(), p->inventory[2].equiped->getMyRGB().getG(), p->inventory[2].equiped->getMyRGB().getB()));
+}	
 bool HelloWorld::onTouchBegan(Touch * t, Event *e) {
 	Point location = t->getLocation();
 	auto btn = (ui::Button*)backGround->getChildByName("menuBtn");
@@ -347,7 +366,7 @@ void HelloWorld::scrollViewSetting(int i) {
 				int a = ((ui::Button*)sender)->getTag();
 				if (this->p->inventory[this->touchNum].itemList[a].isNew) {
 					this->p->inventory[this->touchNum].itemList[a].isNew = false;
-					this->scrollViewSetting(i);
+					((ui::Button*)sender)->getParent()->getChildByName("New")->removeFromParent();
 				}
 				OHDialog dialog(Size(400, 250), "테스트", str + "장착하시겠습니까?");
 				dialog.okBtn->addTouchEventListener([i,this, a](Ref *sender, ui::Button::TouchEventType e) {
