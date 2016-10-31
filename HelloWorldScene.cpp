@@ -8,9 +8,7 @@
 #include "scene/SkillTreeScene.h"
 #include "scene/HelloWorldComponent/ConsumableLayer.h"
 #include "scene/ItemComponent.h"
-
 #include "parts/consumableItem.h"
-
 #include<iostream>
 using namespace std;
 
