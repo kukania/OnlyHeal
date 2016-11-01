@@ -1,6 +1,6 @@
 #pragma once
 #include"MonsterSkillFear.h"
-#include"../characters/Character.h"
+#include"characters/Character.h"
 MonsterSkillFear::MonsterSkillFear()
 	:Skill(1000, "fear", 0, 0, debuff, false) {
 	factor = 0;

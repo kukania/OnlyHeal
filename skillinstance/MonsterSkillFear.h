@@ -1,6 +1,6 @@
 #pragma once
-#include"../parts/Skill.h"
-#include"../parts/Tier.h"
+#include"parts/Skill.h"
+#include"parts/Tier.h"
 class MonsterSkillFear:public Skill{
 private:
 	Tier myTier;

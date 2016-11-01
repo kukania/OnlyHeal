@@ -1,11 +1,10 @@
-/*
+/* ============================================================
 FileName: 	BuffSkillFactory.cpp
 Revision:	2016/09/17 by PorcaM
-*/
+Modified: 	2016/11/01 by PorcaM
+============================================================ */
 
 #include "BuffSkillFactory.h"
-#include "skillinstance\BuffSkill.h"
-#include <string>
 
 Skill*	BuffSkillFactory::createSkill() {
 	Skill* skill = new BuffSkill();
