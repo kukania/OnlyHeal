@@ -1,0 +1,760 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+designResolutionSize	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^static cocos2d::Size designResolutionSize = cocos2d::Size(540, 960);$/;"	variable	line:8	file:
+smallResolutionSize	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);$/;"	variable	line:9	file:
+mediumResolutionSize	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);$/;"	variable	line:10	file:
+largeResolutionSize	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);$/;"	variable	line:11	file:
+AppDelegate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^AppDelegate::AppDelegate(){$/;"	function	line:13	class:AppDelegate	signature:()
+~AppDelegate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^AppDelegate::~AppDelegate() $/;"	function	line:16	class:AppDelegate	signature:()
+initGLContextAttrs	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^void AppDelegate::initGLContextAttrs()$/;"	function	line:22	class:AppDelegate	signature:()
+register_all_packages	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^static int register_all_packages()$/;"	function	line:32	file:	signature:()
+applicationDidFinishLaunching	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^bool AppDelegate::applicationDidFinishLaunching() {$/;"	function	line:37	class:AppDelegate	signature:()
+applicationDidEnterBackground	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^void AppDelegate::applicationDidEnterBackground() {$/;"	function	line:87	class:AppDelegate	signature:()
+applicationWillEnterForeground	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.cpp	/^void AppDelegate::applicationWillEnterForeground() {$/;"	function	line:95	class:AppDelegate	signature:()
+_APP_DELEGATE_H_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.h	/^#define  _APP_DELEGATE_H_$/;"	macro	line:2
+AppDelegate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\AppDelegate.h	/^class  AppDelegate : private cocos2d::Application$/;"	class	line:11
+create	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^Character* Character::create(Tier t, const char* input, int index) {$/;"	function	line:19	class:Character	signature:(Tier t, const char* input, int index)
+beAttacked	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^int Character::beAttacked(int damage) {$/;"	function	line:44	class:Character	signature:(int damage)
+checkDie	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^bool Character::checkDie() {$/;"	function	line:51	class:Character	signature:()
+beBuffedDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^int Character::beBuffedDefence(MyRGB input) {$/;"	function	line:54	class:Character	signature:(MyRGB input)
+beBuffedDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^int Character::beBuffedDamage(MyRGB input) {$/;"	function	line:58	class:Character	signature:(MyRGB input)
+getStatus	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^Status* Character::getStatus() {$/;"	function	line:62	class:Character	signature:()
+setType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^int Character::setType(CharacterType type) {$/;"	function	line:65	class:Character	signature:(CharacterType type)
+getType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^CharacterType Character::getType() {$/;"	function	line:69	class:Character	signature:()
+getIndex	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^int		Character::getIndex() {$/;"	function	line:73	class:Character	signature:()
+setIndex	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^void	Character::setIndex(int index) {$/;"	function	line:77	class:Character	signature:(int index)
+getUsableSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^int		Character::getUsableSkill() {$/;"	function	line:84	class:Character	signature:()
+printStatus	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.cpp	/^void Character::printStatus() {$/;"	function	line:94	class:Character	signature:()
+CharacterType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^enum CharacterType {$/;"	enum	line:15
+monster	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	monster,healer, melee, range, tanker, unknown$/;"	enumerator	line:16	enum:CharacterType
+healer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	monster,healer, melee, range, tanker, unknown$/;"	enumerator	line:16	enum:CharacterType
+melee	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	monster,healer, melee, range, tanker, unknown$/;"	enumerator	line:16	enum:CharacterType
+range	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	monster,healer, melee, range, tanker, unknown$/;"	enumerator	line:16	enum:CharacterType
+tanker	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	monster,healer, melee, range, tanker, unknown$/;"	enumerator	line:16	enum:CharacterType
+unknown	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	monster,healer, melee, range, tanker, unknown$/;"	enumerator	line:16	enum:CharacterType
+Character	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^class Character :public cocos2d::Sprite{$/;"	class	line:19
+type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	CharacterType	type;$/;"	member	line:21	class:Character
+isDie	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	bool			isDie;$/;"	member	line:22	class:Character
+myStatus	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	Status			myStatus;$/;"	member	line:23	class:Character
+_index	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	int				_index;		\/* In raid, each character need their own index *\/$/;"	member	line:24	class:Character
+attackedDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	std::queue<int>		attackedDamage; \/*damaged check*\/$/;"	member	line:26	class:Character
+_timer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	double			_timer;		\/*activate timer*\/$/;"	member	line:27	class:Character
+mySkillSet	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	std::vector<Skill*> mySkillSet;$/;"	member	line:29	class:Character
+Character	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	Character() {$/;"	function	line:30	class:Character	signature:()
+Character	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	Character(Tier tier) :myStatus(tier) {$/;"	function	line:34	class:Character	signature:(Tier tier)
+~Character	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Character.h	/^	~Character() {$/;"	function	line:52	class:Character	signature:()
+MeleeNPC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\MeleeNPC.cpp	/^MeleeNPC::MeleeNPC(Tier tier)$/;"	function	line:11	class:MeleeNPC	signature:(Tier tier)
+initSkillSet	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\MeleeNPC.cpp	/^void	MeleeNPC::initSkillSet(int skillnum) {$/;"	function	line:17	class:MeleeNPC	signature:(int skillnum)
+MeleeNPC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\MeleeNPC.h	/^class MeleeNPC :public Character {$/;"	class	line:10
+setFindTarget	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Monster.cpp	/^int Monster::setFindTarget(Character **t) {$/;"	function	line:12	class:Monster	signature:(Character **t)
+Monster	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Monster.cpp	/^Monster::Monster(Tier myTier)$/;"	function	line:26	class:Monster	signature:(Tier myTier)
+Monster	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Monster.cpp	/^Monster::Monster() :Character() {$/;"	function	line:35	class:Monster	signature:()
+initSkillSet	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Monster.cpp	/^void Monster::initSkillSet(int skillnum) {$/;"	function	line:38	class:Monster	signature:(int skillnum)
+Monster	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Monster.h	/^class Monster :public Character {$/;"	class	line:10
+targetNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Monster.h	/^	int targetNum;$/;"	member	line:12	class:Monster
+equipSelectedItem	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.cpp	/^void Player::equipSelectedItem(int index,int itemtype) {$/;"	function	line:10	class:Player	signature:(int index,int itemtype)
+initSkillSet	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.cpp	/^void	Player::initSkillSet(int skillnum) {$/;"	function	line:16	class:Player	signature:(int skillnum)
+Player	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.h	/^class Player :public Character {$/;"	class	line:16
+skillPoint	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.h	/^	int skillPoint;$/;"	member	line:18	class:Player
+inventory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.h	/^	Inventory inventory[3];$/;"	member	line:19	class:Player
+cInventory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.h	/^	ConsumableInventory cInventory;$/;"	member	line:20	class:Player
+Player	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.h	/^	Player(){ $/;"	function	line:21	class:Player	signature:()
+skilltreeData	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\Player.h	/^	int skilltreeData[3] = { 0 };$/;"	member	line:32	class:Player
+RangeNPC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\RangeNPC.cpp	/^RangeNPC::RangeNPC(Tier tier)$/;"	function	line:11	class:RangeNPC	signature:(Tier tier)
+initSkillSet	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\RangeNPC.cpp	/^void	RangeNPC::initSkillSet(int skillnum) {$/;"	function	line:18	class:RangeNPC	signature:(int skillnum)
+RangeNPC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\RangeNPC.h	/^class RangeNPC :public Character {$/;"	class	line:10
+TankNPC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\TankNPC.cpp	/^TankNPC::TankNPC(Tier tier)$/;"	function	line:11	class:TankNPC	signature:(Tier tier)
+initSkillSet	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\TankNPC.cpp	/^void	TankNPC::initSkillSet(int skillnum) {$/;"	function	line:17	class:TankNPC	signature:(int skillnum)
+TankNPC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\characters\TankNPC.h	/^class TankNPC :public Character {$/;"	class	line:10
+__MULTIBYTE_CONVERTER__	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^#define __MULTIBYTE_CONVERTER__$/;"	macro	line:2
+MultiByteConverter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^class MultiByteConverter$/;"	class	line:8
+MultiByteConverter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^	MultiByteConverter(const char* pSrc, int nSrcCP, int nDstCP)$/;"	function	line:11	class:MultiByteConverter	signature:(const char* pSrc, int nSrcCP, int nDstCP)
+~MultiByteConverter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^	~MultiByteConverter()$/;"	function	line:38	class:MultiByteConverter	signature:()
+operator *	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^	const char* operator * ()$/;"	function	line:47	class:MultiByteConverter	signature:()
+m_pBuffer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^	char*	m_pBuffer;$/;"	member	line:53	class:MultiByteConverter
+_AtoU8	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^#define _AtoU8(/;"	macro	line:57
+_U8toA	C:\Users\tjdwn\Documents\OnlyHeal\Classes\ConvertKorean.h	/^#define _U8toA(/;"	macro	line:58
+COCOS2D_DEBUG	C:\Users\tjdwn\Documents\OnlyHeal\Classes\FileOperation.cpp	/^#define COCOS2D_DEBUG /;"	macro	line:2	file:
+saveFile	C:\Users\tjdwn\Documents\OnlyHeal\Classes\FileOperation.cpp	/^void FileOperation::saveFile()$/;"	function	line:10	class:FileOperation	signature:()
+readFile	C:\Users\tjdwn\Documents\OnlyHeal\Classes\FileOperation.cpp	/^void FileOperation::readFile()$/;"	function	line:25	class:FileOperation	signature:()
+getFilePath	C:\Users\tjdwn\Documents\OnlyHeal\Classes\FileOperation.cpp	/^string FileOperation::getFilePath()$/;"	function	line:43	class:FileOperation	signature:()
+__HELLOWORLD_FILE_OPERATION__	C:\Users\tjdwn\Documents\OnlyHeal\Classes\FileOperation.h	/^#define __HELLOWORLD_FILE_OPERATION__$/;"	macro	line:2
+FileOperation	C:\Users\tjdwn\Documents\OnlyHeal\Classes\FileOperation.h	/^class FileOperation $/;"	class	line:6
+createScene	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:16	class:HelloWorld	signature:()
+init	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:24	class:HelloWorld	signature:()
+makeBackGround	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::makeBackGround() {$/;"	function	line:51	class:HelloWorld	signature:()
+makePlayerWithItem	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::makePlayerWithItem() {$/;"	function	line:187	class:HelloWorld	signature:()
+makePlayerConsumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::makePlayerConsumable() {$/;"	function	line:199	class:HelloWorld	signature:()
+drawPlayerStatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::drawPlayerStatusHexa() {$/;"	function	line:214	class:HelloWorld	signature:()
+onTouchBegan	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^bool HelloWorld::onTouchBegan(Touch * t, Event *e) {$/;"	function	line:237	class:HelloWorld	signature:(Touch * t, Event *e)
+onTouchMoved	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::onTouchMoved(Touch *t, Event *e) {$/;"	function	line:249	class:HelloWorld	signature:(Touch *t, Event *e)
+onTouchEnded	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::onTouchEnded(Touch *t, Event *e) {$/;"	function	line:256	class:HelloWorld	signature:(Touch *t, Event *e)
+checkCharacterGroup	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^bool HelloWorld::checkCharacterGroup(Point location) {$/;"	function	line:299	class:HelloWorld	signature:(Point location)
+scrollViewSetting	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::scrollViewSetting(int i) {$/;"	function	line:347	class:HelloWorld	signature:(int i)
+updateConsumableInventory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::updateConsumableInventory(float fd) {$/;"	function	line:396	class:HelloWorld	signature:(float fd)
+menuCloseCallback	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:406	class:HelloWorld	signature:(Ref* pSender)
+__HELLOWORLD_SCENE_H__	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^#define __HELLOWORLD_SCENE_H__$/;"	macro	line:2
+positionName	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^enum positionName{$/;"	enum	line:13
+CHA	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	CHA,RAC,TER,SCROLLVIEW, MENUBTN$/;"	enumerator	line:14	enum:positionName
+RAC	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	CHA,RAC,TER,SCROLLVIEW, MENUBTN$/;"	enumerator	line:14	enum:positionName
+TER	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	CHA,RAC,TER,SCROLLVIEW, MENUBTN$/;"	enumerator	line:14	enum:positionName
+SCROLLVIEW	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	CHA,RAC,TER,SCROLLVIEW, MENUBTN$/;"	enumerator	line:14	enum:positionName
+MENUBTN	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	CHA,RAC,TER,SCROLLVIEW, MENUBTN$/;"	enumerator	line:14	enum:positionName
+HelloWorld	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^class HelloWorld : public cocos2d::Layer$/;"	class	line:16
+p	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	Player *p;$/;"	member	line:19	class:HelloWorld
+touchNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	int touchNum;$/;"	member	line:20	class:HelloWorld
+positionArr	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	std::vector<Vec2>positionArr;$/;"	member	line:21	class:HelloWorld
+scrollView	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	ui::ScrollView* scrollView;$/;"	member	line:22	class:HelloWorld
+backGround	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	DrawNode* backGround;$/;"	member	line:23	class:HelloWorld
+characterGroup	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	cocos2d::Layer* characterGroup;$/;"	member	line:24	class:HelloWorld
+statusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	DrawNode* statusHexa;$/;"	member	line:25	class:HelloWorld
+playerStatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	DrawNode* playerStatusHexa;$/;"	member	line:26	class:HelloWorld
+statusHexaContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	StatusHexa statusHexaContent;$/;"	member	line:27	class:HelloWorld
+showPlayerStatus	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	Label *showPlayerStatus[4]; \/\/damage,defence,MaxHP,Tier$/;"	member	line:28	class:HelloWorld
+consumableLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	ConsumableLayer *consumableLayer;$/;"	member	line:29	class:HelloWorld
+menuBtnTouched	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	bool menuBtnTouched;$/;"	member	line:31	class:HelloWorld
+scrollViewShow	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	bool scrollViewShow;\/\/flag for touch event$/;"	member	line:32	class:HelloWorld
+scrollViewType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\HelloWorldScene.h	/^	short scrollViewType;$/;"	member	line:33	class:HelloWorld
+ItemUtility	C:\Users\tjdwn\Documents\OnlyHeal\Classes\itemUtility.h	/^class ItemUtility {$/;"	class	line:5
+isRange	C:\Users\tjdwn\Documents\OnlyHeal\Classes\myUtility.cpp	/^int isRange(char *argName, int argValue, int max, int min) {$/;"	function	line:9	signature:(char *argName, int argValue, int max, int min)
+calcRGBFomula	C:\Users\tjdwn\Documents\OnlyHeal\Classes\myUtility.cpp	/^float calcRGBFomula(MyRGB rgbAttack, MyRGB rgbBeaten) {$/;"	function	line:24	signature:(MyRGB rgbAttack, MyRGB rgbBeaten)
+DAMAGE_FOMULA	C:\Users\tjdwn\Documents\OnlyHeal\Classes\myUtility.h	/^#define DAMAGE_FOMULA(/;"	macro	line:10
+pushConsumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableInventory.cpp	/^void ConsumableInventory::pushConsumable(Consumable* input) {$/;"	function	line:3	class:ConsumableInventory	signature:(Consumable* input)
+useConsumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableInventory.cpp	/^void ConsumableInventory::useConsumable(Consumable* input) {$/;"	function	line:6	class:ConsumableInventory	signature:(Consumable* input)
+deleteConsumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableInventory.cpp	/^void ConsumableInventory::deleteConsumable(Consumable* input) {$/;"	function	line:10	class:ConsumableInventory	signature:(Consumable* input)
+ConsumableInventory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableInventory.h	/^class ConsumableInventory{$/;"	class	line:4
+checkChange	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableInventory.h	/^	bool checkChange;$/;"	member	line:6	class:ConsumableInventory
+consumableList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableInventory.h	/^	std::list<Consumable *> consumableList;$/;"	member	line:7	class:ConsumableInventory
+Consumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^class Consumable {$/;"	class	line:5
+CType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	enum CType{$/;"	enum	line:7	class:Consumable
+MAXHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^		MAXHP,DAMAGE,DEFENCE,SP$/;"	enumerator	line:8	enum:Consumable::CType
+DAMAGE	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^		MAXHP,DAMAGE,DEFENCE,SP$/;"	enumerator	line:8	enum:Consumable::CType
+DEFENCE	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^		MAXHP,DAMAGE,DEFENCE,SP$/;"	enumerator	line:8	enum:Consumable::CType
+SP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^		MAXHP,DAMAGE,DEFENCE,SP$/;"	enumerator	line:8	enum:Consumable::CType
+Consumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	Consumable() {}$/;"	function	line:10	class:Consumable	signature:()
+Consumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	Consumable(CType a, int b) {$/;"	function	line:11	class:Consumable	signature:(CType a, int b)
+it	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	std::list<Consumable*>::iterator it;$/;"	member	line:22	class:Consumable
+isNew	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	bool isNew;$/;"	member	line:23	class:Consumable
+type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	CType type;$/;"	member	line:25	class:Consumable
+value	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	int value;$/;"	member	line:26	class:Consumable
+name	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	string name;$/;"	member	line:27	class:Consumable
+contents	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	string contents;$/;"	member	line:28	class:Consumable
+owner	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItem.h	/^	Character * owner;$/;"	member	line:29	class:Consumable
+Consumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^Consumable::Consumable(Character * owner, CType type, int value,string name, string contents) {$/;"	function	line:3	class:Consumable	signature:(Character * owner, CType type, int value,string name, string contents)
+Consumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^Consumable::Consumable(Character * owner, CType type, int value) {$/;"	function	line:11	class:Consumable	signature:(Character * owner, CType type, int value)
+consume	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^void Consumable::consume() {$/;"	function	line:18	class:Consumable	signature:()
+toString	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^string Consumable::toString() {$/;"	function	line:40	class:Consumable	signature:()
+setName	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^void Consumable::setName(string name) {$/;"	function	line:45	class:Consumable	signature:(string name)
+setContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^void Consumable::setContent(string contents) {$/;"	function	line:48	class:Consumable	signature:(string contents)
+setOwner	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^void Consumable::setOwner(Character * owner) {$/;"	function	line:51	class:Consumable	signature:(Character * owner)
+getType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\consumableItme.cpp	/^Consumable::CType Consumable::getType() {$/;"	function	line:54	class:Consumable	signature:()
+pushItemList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.cpp	/^void Inventory::pushItemList(Item a) {$/;"	function	line:6	class:Inventory	signature:(Item a)
+deleteItemList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.cpp	/^void Inventory::deleteItemList(int index) {$/;"	function	line:9	class:Inventory	signature:(int index)
+equipedItemChange	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.cpp	/^void Inventory::equipedItemChange(int index) {$/;"	function	line:14	class:Inventory	signature:(int index)
+sortItemList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.cpp	/^void Inventory::sortItemList() {$/;"	function	line:17	class:Inventory	signature:()
+sortFunction	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.cpp	/^bool Inventory::sortFunction(Item a, Item b) {$/;"	function	line:20	class:Inventory	signature:(Item a, Item b)
+Inventory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.h	/^class Inventory{$/;"	class	line:4
+type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.h	/^	int type;$/;"	member	line:6	class:Inventory
+equiped	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.h	/^	Item *equiped;$/;"	member	line:7	class:Inventory
+itemList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Inventory.h	/^	std::vector<Item> itemList;$/;"	member	line:8	class:Inventory
+Item	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^Item::Item() {$/;"	function	line:4	class:Item	signature:()
+Item	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^Item::Item(Tier _tier, int _type, MyRGB _rgb) {$/;"	function	line:8	class:Item	signature:(Tier _tier, int _type, MyRGB _rgb)
+setTier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^void Item::setTier(Tier _tier) {$/;"	function	line:13	class:Item	signature:(Tier _tier)
+setType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^void Item::setType(int _type) {$/;"	function	line:16	class:Item	signature:(int _type)
+setMyRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^void Item::setMyRGB(MyRGB _rgb) {$/;"	function	line:19	class:Item	signature:(MyRGB _rgb)
+getTier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^Tier Item::getTier() {$/;"	function	line:23	class:Item	signature:()
+getType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^int Item::getType() {$/;"	function	line:26	class:Item	signature:()
+getMyRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^MyRGB Item::getMyRGB() {$/;"	function	line:29	class:Item	signature:()
+toString	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.cpp	/^string Item::toString() {$/;"	function	line:32	class:Item	signature:()
+ItemEnum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^enum ItemEnum {$/;"	enum	line:6
+WEAPON	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	WEAPON, ARMOR, ARTIFACT$/;"	enumerator	line:7	enum:ItemEnum
+ARMOR	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	WEAPON, ARMOR, ARTIFACT$/;"	enumerator	line:7	enum:ItemEnum
+ARTIFACT	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	WEAPON, ARMOR, ARTIFACT$/;"	enumerator	line:7	enum:ItemEnum
+Item	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^class Item {$/;"	class	line:9
+tier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	Tier	tier;$/;"	member	line:11	class:Item
+type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	int		type;$/;"	member	line:12	class:Item
+rgb	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	MyRGB	rgb;$/;"	member	line:13	class:Item
+isNew	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Item.h	/^	bool	isNew;$/;"	member	line:14	class:Item
+ErrorDetector	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^void MyRGB::ErrorDetector(int v) {$/;"	function	line:5	class:MyRGB	signature:(int v)
+MyRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB::MyRGB() { this->R = this->G = this->B = 0; }$/;"	function	line:15	class:MyRGB	signature:()
+MyRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB::MyRGB(int a, int b, int c) { R = a; G = b; B = c; }$/;"	function	line:16	class:MyRGB	signature:(int a, int b, int c)
+MyRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB::MyRGB(ColorType type, float value) {$/;"	function	line:17	class:MyRGB	signature:(ColorType type, float value)
+operator +	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::operator+ (MyRGB a) {$/;"	function	line:25	class:MyRGB	signature:(MyRGB a)
+checkMyRGBValue	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::checkMyRGBValue(int value) {$/;"	function	line:32	class:MyRGB	signature:(int value)
+setB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::setB(short b) {$/;"	function	line:39	class:MyRGB	signature:(short b)
+setG	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::setG(short b) {$/;"	function	line:52	class:MyRGB	signature:(short b)
+setR	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::setR(short b) {$/;"	function	line:65	class:MyRGB	signature:(short b)
+getR	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::getR() { return this->R; }$/;"	function	line:78	class:MyRGB	signature:()
+getG	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::getG() { return this->G; }$/;"	function	line:79	class:MyRGB	signature:()
+getB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^short MyRGB::getB() { return this->B; }$/;"	function	line:80	class:MyRGB	signature:()
+getMyRGBRandom	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::getMyRGBRandom() {$/;"	function	line:81	class:MyRGB	signature:()
+getMyRGBRandom	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::getMyRGBRandom(float value) {$/;"	function	line:98	class:MyRGB	signature:(float value)
+getMyRGBRandom	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::getMyRGBRandom(ColorType t) {$/;"	function	line:101	class:MyRGB	signature:(ColorType t)
+ColorTypeToRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::ColorTypeToRGB(ColorType t, float value) {$/;"	function	line:104	class:MyRGB	signature:(ColorType t, float value)
+HSL2RGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::HSL2RGB(float h, float s, float l) {$/;"	function	line:149	class:MyRGB	signature:(float h, float s, float l)
+Hue2RGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^float MyRGB::Hue2RGB(float v1, float v2, float vH) {$/;"	function	line:166	class:MyRGB	signature:(float v1, float v2, float vH)
+operator *	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.cpp	/^MyRGB MyRGB::operator*(float input) {$/;"	function	line:174	class:MyRGB	signature:(float input)
+MyRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^class MyRGB {$/;"	class	line:2
+ColorType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^	enum ColorType{$/;"	enum	line:5	class:MyRGB
+RED	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+LIME	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+BLUE	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+YELLOW	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+CYAN	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+MAGENTA	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+MAROON	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+OLIVE	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+GREEN	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+PURPLE	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+TEAL	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+NAVY	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^		RED,LIME,BLUE,YELLOW,CYAN,MAGENTA,MAROON,OLIVE,GREEN,PURPLE,TEAL,NAVY$/;"	enumerator	line:6	enum:MyRGB::ColorType
+type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^	ColorType type;$/;"	member	line:26	class:MyRGB
+value	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^	float value;$/;"	member	line:27	class:MyRGB
+R	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^	short R, G, B;$/;"	member	line:30	class:MyRGB
+G	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^	short R, G, B;$/;"	member	line:30	class:MyRGB
+B	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\MyRGB.h	/^	short R, G, B;$/;"	member	line:30	class:MyRGB
+Skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^Skill::Skill(SkillID ID, string name, time_ms cooltime, $/;"	function	line:5	class:Skill	signature:(SkillID ID, string name, time_ms cooltime, time_s time, SkillType type, bool multi)
+getID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^SkillID Skill::getID(){$/;"	function	line:16	class:Skill	signature:()
+getName	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^string Skill::getName() {$/;"	function	line:19	class:Skill	signature:()
+getCooltime	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^time_ms Skill::getCooltime() {$/;"	function	line:22	class:Skill	signature:()
+getCooldown	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^time_ms Skill::getCooldown() {$/;"	function	line:25	class:Skill	signature:()
+getTime	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^time_s Skill::getTime(){$/;"	function	line:28	class:Skill	signature:()
+getType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^SkillType Skill::getType() {$/;"	function	line:31	class:Skill	signature:()
+getMulti	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^bool Skill::getMulti(){$/;"	function	line:34	class:Skill	signature:()
+setID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setID(SkillID ID){$/;"	function	line:38	class:Skill	signature:(SkillID ID)
+setName	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setName(string name) {$/;"	function	line:44	class:Skill	signature:(string name)
+setCooltime	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setCooltime(time_ms cooltime) {$/;"	function	line:48	class:Skill	signature:(time_ms cooltime)
+setTime	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setTime(time_s time){$/;"	function	line:54	class:Skill	signature:(time_s time)
+setType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setType(SkillType type) {$/;"	function	line:60	class:Skill	signature:(SkillType type)
+setMulti	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setMulti(bool multi){$/;"	function	line:66	class:Skill	signature:(bool multi)
+setCooldown	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::setCooldown() {$/;"	function	line:72	class:Skill	signature:()
+able	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^bool Skill::able() {$/;"	function	line:77	class:Skill	signature:()
+isMulti	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^bool Skill::isMulti(){$/;"	function	line:80	class:Skill	signature:()
+printInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.cpp	/^void Skill::printInfo() {$/;"	function	line:83	class:Skill	signature:()
+SECOND	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^#define SECOND /;"	macro	line:6
+MINUTE	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^#define MINUTE /;"	macro	line:7
+SkillID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^typedef int SkillID;$/;"	typedef	line:9
+Type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^typedef int Type;$/;"	typedef	line:10
+time_ms	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^typedef int time_ms;$/;"	typedef	line:11
+time_s	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^typedef int time_s;$/;"	typedef	line:12
+SkillType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^enum SkillType {$/;"	enum	line:14
+heal	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	heal, buff, debuff,$/;"	enumerator	line:15	enum:SkillType
+buff	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	heal, buff, debuff,$/;"	enumerator	line:15	enum:SkillType
+debuff	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	heal, buff, debuff,$/;"	enumerator	line:15	enum:SkillType
+tank	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	tank, melee_atk, range_atk,$/;"	enumerator	line:16	enum:SkillType
+melee_atk	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	tank, melee_atk, range_atk,$/;"	enumerator	line:16	enum:SkillType
+range_atk	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	tank, melee_atk, range_atk,$/;"	enumerator	line:16	enum:SkillType
+unknown_skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	unknown_skill$/;"	enumerator	line:17	enum:SkillType
+Skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^class Skill{$/;"	class	line:22
+_ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	SkillID 	_ID;$/;"	member	line:24	class:Skill
+_name	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	string 		_name;$/;"	member	line:25	class:Skill
+_cooltime	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	time_ms 	_cooltime; 		\/\/ static time for cooldown 		$/;"	member	line:26	class:Skill
+_time	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	time_s 		_time; 			\/\/ persistant time of skill$/;"	member	line:27	class:Skill
+_type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	SkillType 	_type; 			\/\/ type of skill$/;"	member	line:28	class:Skill
+_multi	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	bool 		_multi;$/;"	member	line:29	class:Skill
+ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 	typedef int ID;$/;"	typedef	line:32	class:Skill
+Type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 	enum Type{$/;"	enum	line:33	class:Skill
+kHeal	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 		kHeal = 0,$/;"	enumerator	line:34	enum:Skill::Type
+kBuff	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 		kBuff,$/;"	enumerator	line:35	enum:Skill::Type
+kDebuff	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 		kDebuff,$/;"	enumerator	line:36	enum:Skill::Type
+kAgro	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 		kAgro,$/;"	enumerator	line:37	enum:Skill::Type
+kAttk	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^ 		kAttk$/;"	enumerator	line:38	enum:Skill::Type
+_cooldown	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Skill.h	/^	time_ms 	_cooldown;$/;"	member	line:43	class:Skill
+Status	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^Status::Status() {$/;"	function	line:5	class:Status	signature:()
+Status	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^Status::Status(Tier input) {$/;"	function	line:14	class:Status	signature:(Tier input)
+evalTier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^Tier Status::evalTier() {$/;"	function	line:29	class:Status	signature:()
+addHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::addHP(int input) {$/;"	function	line:35	class:Status	signature:(int input)
+getHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::getHP() {$/;"	function	line:41	class:Status	signature:()
+addDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::addDamage(int input) {$/;"	function	line:44	class:Status	signature:(int input)
+getDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::getDamage() {$/;"	function	line:48	class:Status	signature:()
+setDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void Status::setDamage() {$/;"	function	line:51	class:Status	signature:()
+addDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::addDefence(int input) {$/;"	function	line:54	class:Status	signature:(int input)
+getDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::getDefence() {$/;"	function	line:58	class:Status	signature:()
+setDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void Status::setDefence() {$/;"	function	line:61	class:Status	signature:()
+getMyRGBDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^MyRGB			Status::getMyRGBDamage() {$/;"	function	line:64	class:Status	signature:()
+setMyRGBDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::setMyRGBDamage(MyRGB input) {$/;"	function	line:67	class:Status	signature:(MyRGB input)
+setMyRGBDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::setMyRGBDefence(MyRGB input) {$/;"	function	line:71	class:Status	signature:(MyRGB input)
+getMyRGBDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^MyRGB			Status::getMyRGBDefence() {$/;"	function	line:75	class:Status	signature:()
+getSpeed	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^float 		Status::getSpeed() {$/;"	function	line:78	class:Status	signature:()
+addSpeed	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::addSpeed(float in) {$/;"	function	line:81	class:Status	signature:(float in)
+equipItem	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^bool		Status::equipItem(Item input) {$/;"	function	line:85	class:Status	signature:(Item input)
+addMyRGBDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::addMyRGBDamage(MyRGB input) {$/;"	function	line:94	class:Status	signature:(MyRGB input)
+addMyRGBDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::addMyRGBDefence(MyRGB input) {$/;"	function	line:98	class:Status	signature:(MyRGB input)
+setMaxHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::setMaxHP() {$/;"	function	line:102	class:Status	signature:()
+getMaxHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int	Status::getMaxHP() {$/;"	function	line:107	class:Status	signature:()
+setAgro	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::setAgro(int input) {$/;"	function	line:110	class:Status	signature:(int input)
+getAgro	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::getAgro() {$/;"	function	line:114	class:Status	signature:()
+addAgro	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::addAgro(int input) {$/;"	function	line:117	class:Status	signature:(int input)
+initStatus	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void Status::initStatus(Tier a) {$/;"	function	line:121	class:Status	signature:(Tier a)
+addMaxHPDefault	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void		Status::addMaxHPDefault(int a) {$/;"	function	line:129	class:Status	signature:(int a)
+getMaxHPDefault	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^int			Status::getMaxHPDefault() {$/;"	function	line:133	class:Status	signature:()
+setMaxHPDefault	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void		Status::setMaxHPDefault(int a) {$/;"	function	line:136	class:Status	signature:(int a)
+setItemWithNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void		Status::setItemWithNum(Item a, int num) {$/;"	function	line:140	class:Status	signature:(Item a, int num)
+addPureDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void		Status::addPureDamage(int a) { this->pureDamage += a; setDamage(); }$/;"	function	line:146	class:Status	signature:(int a)
+addPureDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^void		Status::addPureDefence(int a) { this->pureDefence += a; setDefence(); }$/;"	function	line:147	class:Status	signature:(int a)
+getItemByNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.cpp	/^Item		Status::getItemByNum(int a) {$/;"	function	line:149	class:Status	signature:(int a)
+Status	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^class Status {$/;"	class	line:6
+agro	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			agro;$/;"	member	line:8	class:Status
+HP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			HP;$/;"	member	line:9	class:Status
+MaxHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			MaxHP;$/;"	member	line:10	class:Status
+MaxHPDefault	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			MaxHPDefault; \/\/pureMHP$/;"	member	line:11	class:Status
+damage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			damage;$/;"	member	line:12	class:Status
+defence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			defence;$/;"	member	line:13	class:Status
+pureDamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			pureDamage;$/;"	member	line:14	class:Status
+pureDefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	int			pureDefence;$/;"	member	line:15	class:Status
+MyRGBdamage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	MyRGB		MyRGBdamage;$/;"	member	line:16	class:Status
+MyRGBdefence	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	MyRGB		MyRGBdefence;$/;"	member	line:17	class:Status
+speed	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	float		speed;$/;"	member	line:18	class:Status
+items	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Status.h	/^	Item		*items; \/\/change to array$/;"	member	line:19	class:Status
+Tier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^Tier::Tier(short input) {$/;"	function	line:6	class:Tier	signature:(short input)
+Tier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^Tier::Tier(short *input){$/;"	function	line:9	class:Tier	signature:(short *input)
+setLevel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^short Tier::setLevel(short input) {$/;"	function	line:12	class:Tier	signature:(short input)
+getLevel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^short Tier::getLevel() { return level; }$/;"	function	line:19	class:Tier	signature:()
+setLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^short Tier::setLabel(short *input) {$/;"	function	line:20	class:Tier	signature:(short *input)
+getLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^short* Tier::getLabel() { return label; }$/;"	function	line:29	class:Tier	signature:()
+getValue	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^int Tier::getValue() {$/;"	function	line:31	class:Tier	signature:()
+setValue	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^int Tier::setValue() {$/;"	function	line:35	class:Tier	signature:()
+getTierByString	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.cpp	/^std::string Tier::getTierByString() {$/;"	function	line:44	class:Tier	signature:()
+MAX_LEVEL	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^#define MAX_LEVEL /;"	macro	line:4
+MAX_LABEL	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^#define MAX_LABEL /;"	macro	line:5
+Tier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^class Tier {$/;"	class	line:7
+label	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	short	label[4];$/;"	member	line:9	class:Tier
+level	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	short	level;$/;"	member	line:10	class:Tier
+value	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	int		value;$/;"	member	line:11	class:Tier
+Tier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	Tier() {$/;"	function	line:13	class:Tier	signature:()
+label2level	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	static short label2level(short *_label) {$/;"	function	line:27	class:Tier	signature:(short *_label)
+level2label	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	static void level2label(short _level, short *_label) {$/;"	function	line:35	class:Tier	signature:(short _level, short *_label)
+getSimillarTier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\parts\Tier.h	/^	static Tier getSimillarTier(int level) {$/;"	function	line:42	class:Tier	signature:(int level)
+ConsumableComponent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^ConsumableComponent::ConsumableComponent(Size s,Consumable* c) {$/;"	function	line:4	class:ConsumableComponent	signature:(Size s,Consumable* c)
+addedTo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^void ConsumableComponent::addedTo(Node *p) {$/;"	function	line:42	class:ConsumableComponent	signature:(Node *p)
+setPosition	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^void ConsumableComponent::setPosition(Point p) {$/;"	function	line:45	class:ConsumableComponent	signature:(Point p)
+setCLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^void ConsumableComponent::setCLayer(ConsumableLayer * p) {$/;"	function	line:48	class:ConsumableComponent	signature:(ConsumableLayer * p)
+addedTo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^void ConsumableComponent::addedTo(Node *p, Point sp) {$/;"	function	line:51	class:ConsumableComponent	signature:(Node *p, Point sp)
+createRandomConsumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^ConsumableComponent* ConsumableComponent::createRandomConsumable(Size s) {$/;"	function	line:55	class:ConsumableComponent	signature:(Size s)
+getConsumable	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.cpp	/^Consumable* ConsumableComponent::getConsumable() {$/;"	function	line:61	class:ConsumableComponent	signature:()
+ConsumableComponent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.h	/^class ConsumableComponent {$/;"	class	line:7
+container	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.h	/^	ui::Button * container;$/;"	member	line:16	class:ConsumableComponent
+item	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.h	/^	Consumable * item;$/;"	member	line:18	class:ConsumableComponent
+cLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ConsumableComponent.h	/^	ConsumableLayer* cLayer;$/;"	member	line:19	class:ConsumableComponent
+ConsumableLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.cpp	/^ConsumableLayer::ConsumableLayer(Size cSize, ConsumableInventory * inven, int column,int cellHeight) {$/;"	function	line:6	class:ConsumableLayer	signature:(Size cSize, ConsumableInventory * inven, int column,int cellHeight)
+loadData	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.cpp	/^void ConsumableLayer::loadData() {$/;"	function	line:66	class:ConsumableLayer	signature:()
+addedTo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.cpp	/^void ConsumableLayer::addedTo(Node * parent) {$/;"	function	line:100	class:ConsumableLayer	signature:(Node * parent)
+ConsumableLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^class ConsumableLayer{$/;"	class	line:10
+scv	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	ui::ScrollView* scv;$/;"	member	line:16	class:ConsumableLayer
+contentsSize	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	Size contentsSize;$/;"	member	line:17	class:ConsumableLayer
+column	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	int column;$/;"	member	line:18	class:ConsumableLayer
+cellHeight	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	int cellHeight;$/;"	member	line:19	class:ConsumableLayer
+cellWidth	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	int cellWidth;$/;"	member	line:20	class:ConsumableLayer
+content	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	Layer* content;$/;"	member	line:21	class:ConsumableLayer
+inven	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\ConsumableLayer.h	/^	ConsumableInventory *inven;$/;"	member	line:22	class:ConsumableLayer
+PartyContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.cpp	/^PartyContent::PartyContent(Tier t,Character *p) {$/;"	function	line:3	class:PartyContent	signature:(Tier t,Character *p)
+getStringContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.cpp	/^std::string PartyContent::getStringContent() {$/;"	function	line:43	class:PartyContent	signature:()
+PartyContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^class PartyContent {$/;"	class	line:8
+selected	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^	bool selected;$/;"	member	line:10	class:PartyContent
+backGround	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^	DrawNode * backGround;$/;"	member	line:11	class:PartyContent
+content	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^	ui::Button *content;$/;"	member	line:12	class:PartyContent
+img	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^	Sprite *img[6];$/;"	member	line:13	class:PartyContent
+list	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^	Character *list[6];$/;"	member	line:14	class:PartyContent
+~PartyContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\PartyContent.h	/^	~PartyContent() {$/;"	function	line:17	class:PartyContent	signature:()
+PartyLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.cpp	/^PartyLayer::PartyLayer() {$/;"	function	line:9	class:PartyLayer	signature:()
+makePartyBtn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.cpp	/^void PartyLayer::makePartyBtn(Tier t, Character *p) {$/;"	function	line:45	class:PartyLayer	signature:(Tier t, Character *p)
+PartyLayer	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.h	/^class PartyLayer {$/;"	class	line:9
+contents	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.h	/^	PartyContent* contents[5];$/;"	member	line:11	class:PartyLayer
+content	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.h	/^	LayerGradient* content;$/;"	member	line:12	class:PartyLayer
+scrollView	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.h	/^	ui::ScrollView *scrollView;$/;"	member	line:14	class:PartyLayer
+cancelBtn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\partyLayer.h	/^	ui::Button *cancelBtn;$/;"	member	line:15	class:PartyLayer
+StatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.cpp	/^StatusHexa::StatusHexa(float value) {$/;"	function	line:4	class:StatusHexa	signature:(float value)
+setSize	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.cpp	/^void StatusHexa::setSize(float value) {$/;"	function	line:14	class:StatusHexa	signature:(float value)
+setPosition	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.cpp	/^void StatusHexa::setPosition(float x, float y) {$/;"	function	line:23	class:StatusHexa	signature:(float x, float y)
+setStatusVertex	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.cpp	/^void StatusHexa::setStatusVertex(Character *c) {$/;"	function	line:32	class:StatusHexa	signature:(Character *c)
+StatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^class StatusHexa {$/;"	class	line:5
+x	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^	float x, y,value;$/;"	member	line:7	class:StatusHexa
+y	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^	float x, y,value;$/;"	member	line:7	class:StatusHexa
+value	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^	float x, y,value;$/;"	member	line:7	class:StatusHexa
+corners	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^	Vec2 corners[6];$/;"	member	line:8	class:StatusHexa
+statusVertex	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^	Vec2 statusVertex[6];$/;"	member	line:9	class:StatusHexa
+StatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\HelloWorldComponent\statusHexa.h	/^	StatusHexa() {}$/;"	function	line:10	class:StatusHexa	signature:()
+ItemComponent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.cpp	/^ItemComponent::ItemComponent(Item *input,Size size) {$/;"	function	line:4	class:ItemComponent	signature:(Item *input,Size size)
+setNew	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.cpp	/^void ItemComponent::setNew() {$/;"	function	line:49	class:ItemComponent	signature:()
+setEquiped	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.cpp	/^void ItemComponent::setEquiped() {$/;"	function	line:61	class:ItemComponent	signature:()
+ItemComponent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.h	/^class ItemComponent{$/;"	class	line:8
+content	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.h	/^	Layer *content;$/;"	member	line:10	class:ItemComponent
+btn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.h	/^	ui::Button * btn;$/;"	member	line:11	class:ItemComponent
+spr	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.h	/^	Sprite *spr;$/;"	member	line:12	class:ItemComponent
+size	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\ItemComponent.h	/^	Size size;$/;"	member	line:17	class:ItemComponent
+OHDialog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.cpp	/^OHDialog::OHDialog(Size layerSize,std::string title, std::string content) {$/;"	function	line:6	class:OHDialog	signature:(Size layerSize,std::string title, std::string content)
+addedTo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.cpp	/^void OHDialog::addedTo(Node* a) {$/;"	function	line:52	class:OHDialog	signature:(Node* a)
+OHDialog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.h	/^class OHDialog {$/;"	class	line:6
+contentStartP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.h	/^	Point contentStartP;$/;"	member	line:8	class:OHDialog
+dialogContent	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.h	/^	ui::Scale9Sprite *dialogContent;$/;"	member	line:9	class:OHDialog
+okBtn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.h	/^	ui::Button *okBtn;$/;"	member	line:10	class:OHDialog
+cancelBtn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHDialog.h	/^	ui::Button *cancelBtn;$/;"	member	line:11	class:OHDialog
+OHLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.cpp	/^OHLabel::OHLabel(Size size2,string in, int size) {$/;"	function	line:4	class:OHLabel	signature:(Size size2,string in, int size)
+setString	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.cpp	/^void OHLabel::setString(string in) {$/;"	function	line:29	class:OHLabel	signature:(string in)
+moveBy	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.cpp	/^void OHLabel::moveBy(Point p) {$/;"	function	line:33	class:OHLabel	signature:(Point p)
+addedTo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.cpp	/^void OHLabel::addedTo(Node *p) {$/;"	function	line:37	class:OHLabel	signature:(Node *p)
+setPosition	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.cpp	/^void OHLabel::setPosition(Point p) {$/;"	function	line:41	class:OHLabel	signature:(Point p)
+setAnchorPoint	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.cpp	/^void OHLabel::setAnchorPoint(Point p) {$/;"	function	line:45	class:OHLabel	signature:(Point p)
+OHLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.h	/^class OHLabel {$/;"	class	line:8
+background	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.h	/^	Label *background[4];$/;"	member	line:17	class:OHLabel
+content	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\OHLabel.h	/^	Label *content;$/;"	member	line:18	class:OHLabel
+GET_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^#define GET_FIELD(/;"	macro	line:11	file:
+GET_RGB_STRING	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^#define GET_RGB_STRING(/;"	macro	line:12	file:
+BossFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^BossFrame::BossFrame(Character *character) {$/;"	function	line:14	class:BossFrame	signature:(Character *character)
+getCharacter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^getCharacter() {$/;"	function	line:23	class:BossFrame	signature:()
+setCharacter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^void BossFrame::setCharacter(Character *character) {$/;"	function	line:27	class:BossFrame	signature:(Character *character)
+initIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^void BossFrame::initIcon() {$/;"	function	line:35	class:BossFrame	signature:()
+initHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^void BossFrame::initHP() {$/;"	function	line:44	class:BossFrame	signature:()
+initRGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^void BossFrame::initRGB() {$/;"	function	line:55	class:BossFrame	signature:()
+updateAll	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^updateAll() {$/;"	function	line:72	class:BossFrame	signature:()
+GET_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^#undef GET_FIELD$/;"	macro	line:104	file:
+GET_RGB_STRING	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^#undef GET_RGB_STRING$/;"	macro	line:105	file:
+deleteLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.cpp	/^void	BossFrame::deleteLabel(Node *node) {$/;"	function	line:106	class:BossFrame	signature:(Node *node)
+BossFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^class BossFrame : public Layer {$/;"	class	line:16
+_icon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^	Sprite 		*_icon;$/;"	member	line:26	class:BossFrame
+_character	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	Monster 	*_character;$/;"	member	line:28	class:BossFrame
+_hpbar	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	Sprite 		*_hpbar;$/;"	member	line:29	class:BossFrame
+_rgbbg	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	Sprite 		*_rgbbg;$/;"	member	line:30	class:BossFrame
+_hplog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	Label 		*_hplog;$/;"	member	line:31	class:BossFrame
+_damagelog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	Label 		*_damagelog;$/;"	member	line:32	class:BossFrame
+_rgblog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	Label 		*_rgblog;$/;"	member	line:33	class:BossFrame
+_hpRatio	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^ 	float 		_hpRatio;$/;"	member	line:34	class:BossFrame
+_tempRatio	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\BossFrame.h	/^	float		_tempRatio;$/;"	member	line:35	class:BossFrame
+SkillFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.cpp	/^SkillFrame::SkillFrame(Skill *skill) {$/;"	function	line:12	class:SkillFrame	signature:(Skill *skill)
+initBG	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.cpp	/^void SkillFrame::initBG() {$/;"	function	line:18	class:SkillFrame	signature:()
+initLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.cpp	/^void SkillFrame::initLabel() {$/;"	function	line:42	class:SkillFrame	signature:()
+SkillFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.h	/^class SkillFrame : public CCNode {$/;"	class	line:14
+_skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.h	/^	Skill		*_skill;$/;"	member	line:16	class:SkillFrame
+_label	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.h	/^	Label		*_label;$/;"	member	line:17	class:SkillFrame
+_button	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\SkillFrame.h	/^	ui::Button	*_button;$/;"	member	line:19	class:SkillFrame
+LEFT_CENTER	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#define LEFT_CENTER	/;"	macro	line:12	file:
+FONT_SDCRAYON	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#define FONT_SDCRAYON /;"	macro	line:13	file:
+STR_RSC_PATH	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#define STR_RSC_PATH /;"	macro	line:14	file:
+GET_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#define GET_FIELD(/;"	macro	line:15	file:
+UnitFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^UnitFrame (Character *character) {$/;"	function	line:18	class:UnitFrame	signature:(Character *character)
+getCharacter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^getCharacter () {$/;"	function	line:32	class:UnitFrame	signature:()
+setCharacter	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^setCharacter (Character *character) {$/;"	function	line:38	class:UnitFrame	signature:(Character *character)
+initBackground	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^initBackground (){$/;"	function	line:51	class:UnitFrame	signature:()
+initIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^initIcon (){$/;"	function	line:64	class:UnitFrame	signature:()
+updateIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^updateIcon (){$/;"	function	line:74	class:UnitFrame	signature:()
+initHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^initHP (){$/;"	function	line:84	class:UnitFrame	signature:()
+updateHP	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^updateHP (){$/;"	function	line:92	class:UnitFrame	signature:()
+initDPS	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^initDPS () {$/;"	function	line:103	class:UnitFrame	signature:()
+updateDPS	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^updateDPS (){$/;"	function	line:116	class:UnitFrame	signature:()
+initHPLog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^initHPLog (){$/;"	function	line:127	class:UnitFrame	signature:()
+updateHPLog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^updateHPLog (){$/;"	function	line:140	class:UnitFrame	signature:()
+updateHPBar	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^updateHPBar (){$/;"	function	line:161	class:UnitFrame	signature:()
+initHPBar	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^initHPBar (){$/;"	function	line:168	class:UnitFrame	signature:()
+updateAll	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^updateAll (){$/;"	function	line:183	class:UnitFrame	signature:()
+f2s	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^f2s(float number) {$/;"	function	line:196	class:UnitFrame	signature:(float number)
+getIconPath	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^getIconPath (){$/;"	function	line:204	class:UnitFrame	signature:()
+getDpsString	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^getDpsString (){$/;"	function	line:212	class:UnitFrame	signature:()
+getHPRatioString	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^getHPRatioString (){$/;"	function	line:219	class:UnitFrame	signature:()
+LEFT_CENTER	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#undef LEFT_CENTER$/;"	macro	line:227	file:
+FONT_SDCRAYON	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#undef FONT_SDCRAYON$/;"	macro	line:228	file:
+STR_RSC_PATH	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#undef STR_RSC_PATH /;"	macro	line:229	file:
+GET_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.cpp	/^#undef GET_FIELD(/;"	macro	line:230	file:
+UnitFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^class UnitFrame : public CCNode{$/;"	class	line:14
+_character	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	Character*	_character;$/;"	member	line:16	class:UnitFrame
+_icon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	Sprite*		_icon;$/;"	member	line:17	class:UnitFrame
+_hpbar	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	Sprite*		_hpbar;$/;"	member	line:18	class:UnitFrame
+_hplog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	Label*		_hplog;$/;"	member	line:19	class:UnitFrame
+_dpslog	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	Label*		_dpslog;$/;"	member	line:20	class:UnitFrame
+_hpRatio	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	float 		_hpRatio;$/;"	member	line:21	class:UnitFrame
+curRatio	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	float		curRatio;$/;"	member	line:22	class:UnitFrame
+_background	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	Sprite*		_background;$/;"	member	line:36	class:UnitFrame
+~UnitFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidComponent\unitFrame.h	/^	~UnitFrame() {$/;"	function	line:44	class:UnitFrame	signature:()
+selectedNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^int Raid::selectedNum = -1;$/;"	member	line:22	class:Raid	file:
+createScene	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^Scene* Raid::createScene()$/;"	function	line:24	class:Raid	signature:()
+createScene	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^Scene* Raid::createScene(Character **a) {$/;"	function	line:31	class:Raid	signature:(Character **a)
+init	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^bool Raid::init()$/;"	function	line:39	class:Raid	signature:()
+makeSkillScrollView	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::makeSkillScrollView() {$/;"	function	line:65	class:Raid	signature:()
+onTouchBegan	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^bool Raid::onTouchBegan(Touch* touch, Event*) {$/;"	function	line:79	class:Raid	signature:(Touch* touch, Event*)
+onTouchMoved	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::onTouchMoved(Touch *touch, Event*) {$/;"	function	line:93	class:Raid	signature:(Touch *touch, Event*)
+onTouchEnded	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::onTouchEnded(Touch *touch, Event*) {$/;"	function	line:99	class:Raid	signature:(Touch *touch, Event*)
+makeUnitFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::makeUnitFrame() {$/;"	function	line:128	class:Raid	signature:()
+menuCloseCallback	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::menuCloseCallback(Ref* pSender)$/;"	function	line:160	class:Raid	signature:(Ref* pSender)
+setBackground	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::setBackground(Color4F color) {$/;"	function	line:168	class:Raid	signature:(Color4F color)
+initUnitGrid	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::initUnitGrid() {$/;"	function	line:183	class:Raid	signature:()
+initBossFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::initBossFrame(Character *character) {$/;"	function	line:186	class:Raid	signature:(Character *character)
+initSkillGrid	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::initSkillGrid() {$/;"	function	line:189	class:Raid	signature:()
+moveBossFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::moveBossFrame(float fd) {$/;"	function	line:193	class:Raid	signature:(float fd)
+playingFunc	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::playingFunc(float fd) {$/;"	function	line:199	class:Raid	signature:(float fd)
+skillCoolDown	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::skillCoolDown(float fd) {$/;"	function	line:226	class:Raid	signature:(float fd)
+frameUpdate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::frameUpdate(float fd) {$/;"	function	line:246	class:Raid	signature:(float fd)
+checkGameOver	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.cpp	/^void Raid::checkGameOver(float fd) {$/;"	function	line:251	class:Raid	signature:(float fd)
+__RAID_SCENE_H__	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^#define __RAID_SCENE_H__$/;"	macro	line:8
+SKILLNUM	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^#define SKILLNUM /;"	macro	line:17
+SkillInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^struct SkillInfo {$/;"	struct	line:18
+cl	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	Character *cl;$/;"	member	line:19	struct:SkillInfo
+skillNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	int skillNum;$/;"	member	line:20	struct:SkillInfo
+Raid	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^class Raid : public cocos2d::Layer$/;"	class	line:22
+cl	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	Character **cl;$/;"	member	line:38	class:Raid
+uf	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	UnitFrame *uf[4];$/;"	member	line:39	class:Raid
+scv	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	cocos2d::ui::ScrollView *scv;$/;"	member	line:40	class:Raid
+skillBtnPosition	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	std::vector<Point> skillBtnPosition;$/;"	member	line:41	class:Raid
+selectedBtn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	ui::Button *selectedBtn;$/;"	member	line:42	class:Raid
+selectedNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	static int selectedNum;$/;"	member	line:43	class:Raid
+bf	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	BossFrame *bf;$/;"	member	line:44	class:Raid
+skillStorage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	std::list<SkillInfo>skillStorage;$/;"	member	line:45	class:Raid
+playerSkillTarget	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	int playerSkillTarget;$/;"	member	line:46	class:Raid
+~Raid	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\RaidScene.h	/^	~Raid() {$/;"	function	line:72	class:Raid	signature:()
+PlayerInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.cpp	/^PlayerInfo::PlayerInfo(int point, SkillSlot *slot){$/;"	function	line:23	class:PlayerInfo	signature:(int point, SkillSlot *slot)
+~PlayerInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.cpp	/^PlayerInfo::~PlayerInfo(){$/;"	function	line:27	class:PlayerInfo	signature:()
+AddPoint	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.cpp	/^void PlayerInfo::AddPoint(int value){$/;"	function	line:30	class:PlayerInfo	signature:(int value)
+set_point	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.cpp	/^void PlayerInfo::set_point(int point){$/;"	function	line:37	class:PlayerInfo	signature:(int point)
+set_slot	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.cpp	/^void PlayerInfo::set_slot(SkillSlot *slot){$/;"	function	line:44	class:PlayerInfo	signature:(SkillSlot *slot)
+PlayerInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.h	/^class PlayerInfo{$/;"	class	line:14
+SkillSlot	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.h	/^ 	auto get_slot()->SkillSlot*;$/;"	member	line:19	class:PlayerInfo
+point_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.h	/^ 	int point_;$/;"	member	line:24	class:PlayerInfo
+slot_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfo.h	/^ 	SkillSlot *slot_;$/;"	member	line:25	class:PlayerInfo
+set_playerinfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::set_playerinfo(PlayerInfo *playerinfo){$/;"	function	line:15	class:PlayerInfoFrame	signature:(PlayerInfo *playerinfo)
+PlayerInfoFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^PlayerInfoFrame::PlayerInfoFrame(){$/;"	function	line:25	class:PlayerInfoFrame	signature:()
+PlayerInfoFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^PlayerInfoFrame::PlayerInfoFrame(PlayerInfo *playerinfo){$/;"	function	line:33	class:PlayerInfoFrame	signature:(PlayerInfo *playerinfo)
+~PlayerInfoFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^PlayerInfoFrame::~PlayerInfoFrame(){$/;"	function	line:47	class:PlayerInfoFrame	signature:()
+UpdateWithPlayerInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::UpdateWithPlayerInfo() {$/;"	function	line:57	class:PlayerInfoFrame	signature:()
+UpdateWithPlayerInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::UpdateWithPlayerInfo(PlayerInfo *playerinfo) {$/;"	function	line:72	class:PlayerInfoFrame	signature:(PlayerInfo *playerinfo)
+InitLabelPoint	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::InitLabelPoint(int point){$/;"	function	line:80	class:PlayerInfoFrame	signature:(int point)
+InitScrollview	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::InitScrollview(){$/;"	function	line:90	class:PlayerInfoFrame	signature:()
+InitIconList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::InitIconList(){$/;"	function	line:110	class:PlayerInfoFrame	signature:()
+InsertIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.cpp	/^void PlayerInfoFrame::InsertIcon(int index, Skill *skill){$/;"	function	line:114	class:PlayerInfoFrame	signature:(int index, Skill *skill)
+PlayerInfoFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.h	/^class PlayerInfoFrame : public CCNode{$/;"	class	line:17
+IconVec	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.h	/^ 	typedef vector<SkillIcon *> IconVec;$/;"	typedef	line:19	class:PlayerInfoFrame
+label_point_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.h	/^ 	Label *label_point_;$/;"	member	line:31	class:PlayerInfoFrame
+scrollview_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.h	/^ 	ui::ScrollView *scrollview_;$/;"	member	line:32	class:PlayerInfoFrame
+icon_list_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.h	/^ 	IconVec icon_list_;  \/\/ members in scroll$/;"	member	line:33	class:PlayerInfoFrame
+playerinfo_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\PlayerInfoFrame.h	/^ 	PlayerInfo *playerinfo_;$/;"	member	line:34	class:PlayerInfoFrame
+set_skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.cpp	/^void SkillIcon::set_skill(Skill *skill){$/;"	function	line:18	class:SkillIcon	signature:(Skill *skill)
+SkillIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.cpp	/^SkillIcon::SkillIcon(Skill *skill){$/;"	function	line:28	class:SkillIcon	signature:(Skill *skill)
+~SkillIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.cpp	/^SkillIcon::~SkillIcon(){$/;"	function	line:33	class:SkillIcon	signature:()
+InitLabel	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.cpp	/^void SkillIcon::InitLabel(){$/;"	function	line:40	class:SkillIcon	signature:()
+InitButton	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.cpp	/^void SkillIcon::InitButton(){$/;"	function	line:53	class:SkillIcon	signature:()
+SkillIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.h	/^class SkillIcon : public CCNode{$/;"	class	line:15
+Skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.h	/^ 	auto get_skill()->Skill*;$/;"	member	line:19	class:SkillIcon
+Button	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.h	/^ 	auto get_button()->ui::Button*;$/;"	member	line:21	class:SkillIcon::ui
+skill_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.h	/^ 	Skill *skill_;  \/\/ for inforamtion about this skill$/;"	member	line:25	class:SkillIcon
+label_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.h	/^ 	Label *label_;$/;"	member	line:26	class:SkillIcon
+button_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillIcon.h	/^ 	ui::Button *button_;$/;"	member	line:27	class:SkillIcon
+SkillInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.cpp	/^SkillInfo::SkillInfo(){$/;"	function	line:9	class:SkillInfo	signature:()
+~SkillInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.cpp	/^SkillInfo::~SkillInfo(){$/;"	function	line:13	class:SkillInfo	signature:()
+InitFactoryList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.cpp	/^void SkillInfo::InitFactoryList(){$/;"	function	line:44	class:SkillInfo	signature:()
+ClearFactoryList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.cpp	/^void SkillInfo::ClearFactoryList(){$/;"	function	line:53	class:SkillInfo	signature:()
+InitSkilltreeList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.cpp	/^void SkillInfo::InitSkilltreeList(){$/;"	function	line:61	class:SkillInfo	signature:()
+ClearSkilltreeList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.cpp	/^void SkillInfo::ClearSkilltreeList(){$/;"	function	line:67	class:SkillInfo	signature:()
+SkillInfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^class SkillInfo{$/;"	class	line:24
+ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	typedef Skill::ID ID;$/;"	typedef	line:26	class:SkillInfo
+Type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	typedef Skill::Type Type;$/;"	typedef	line:27	class:SkillInfo
+FactoryVec	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	typedef vector<SkillFactory*> FactoryVec;$/;"	typedef	line:28	class:SkillInfo
+SkilltreeVec	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	typedef vector<SkillTree*> SkilltreeVec;$/;"	typedef	line:29	class:SkillInfo
+SkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	auto get_factory_by_type(Type type)->SkillFactory *;$/;"	member	line:32	class:SkillInfo
+SkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	auto get_skilltree_by_type(Type type)->SkillTree *;$/;"	member	line:33	class:SkillInfo
+Skill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	auto RetrieveSkillByID(ID id)->Skill*;$/;"	member	line:34	class:SkillInfo
+factory_list_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	FactoryVec factory_list_;$/;"	member	line:40	class:SkillInfo
+skilltree_list_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	SkilltreeVec skilltree_list_;$/;"	member	line:41	class:SkillInfo
+factory_arr_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	SkillFactory **factory_arr_;$/;"	member	line:42	class:SkillInfo
+skilltree_arr_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillInfo.h	/^ 	SkillTree **skilltree_arr_;$/;"	member	line:43	class:SkillInfo
+SkillSlot	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^SkillSlot::SkillSlot(){$/;"	function	line:11	class:SkillSlot	signature:()
+~SkillSlot	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^SkillSlot::~SkillSlot(){$/;"	function	line:15	class:SkillSlot	signature:()
+Size	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^int SkillSlot::Size(){$/;"	function	line:18	class:SkillSlot	signature:()
+Begin	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^auto SkillSlot::Begin(){$/;"	function	line:21	class:SkillSlot	signature:()
+End	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^auto SkillSlot::End(){$/;"	function	line:24	class:SkillSlot	signature:()
+InsertSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^void SkillSlot::InsertSkill(Skill *skill){$/;"	function	line:27	class:SkillSlot	signature:(Skill *skill)
+RemoveSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^void SkillSlot::RemoveSkill(int index){$/;"	function	line:34	class:SkillSlot	signature:(int index)
+RemoveSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^void SkillSlot::RemoveSkill(SkillVec::iterator it){$/;"	function	line:43	class:SkillSlot	signature:(SkillVec::iterator it)
+FindSkillWithSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^auto SkillSlot::FindSkillWithSkill(Skill *skill){$/;"	function	line:55	class:SkillSlot	signature:(Skill *skill)
+Assign	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.cpp	/^void SkillSlot::Assign(SkillVec sv) {$/;"	function	line:62	class:SkillSlot	signature:(SkillVec sv)
+SkillSlot	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.h	/^class SkillSlot{$/;"	class	line:15
+SkillVec	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.h	/^ 	typedef vector<Skill *> SkillVec;$/;"	typedef	line:17	class:SkillSlot
+kMaxSlotNum	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.h	/^ 	const int kMaxSlotNum = 10;$/;"	member	line:18	class:SkillSlot
+iterator	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.h	/^	auto FindSkillWithIndex(int index)->SkillVec::iterator;$/;"	member	line:27	class:SkillSlot::SkillVec
+SkillVec	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.h	/^	auto get_list()->SkillVec;$/;"	member	line:30	class:SkillSlot
+list_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillSlot.h	/^ 	SkillVec list_;$/;"	member	line:32	class:SkillSlot
+set_skillinfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::set_skillinfo(SkillInfo *skillinfo){$/;"	function	line:11	class:SkillTreeFrame	signature:(SkillInfo *skillinfo)
+set_playerinfo	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::set_playerinfo(PlayerInfo *playerinfo){$/;"	function	line:18	class:SkillTreeFrame	signature:(PlayerInfo *playerinfo)
+set_playerinfoframe	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::set_playerinfoframe(PlayerInfoFrame *playerinfoframe) {$/;"	function	line:25	class:SkillTreeFrame	signature:(PlayerInfoFrame *playerinfoframe)
+SkillTreeFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^SkillTreeFrame::SkillTreeFrame(SkillInfo *skillinfo, PlayerInfo *playerinfo, PlayerInfoFrame *playerinfoframe){$/;"	function	line:35	class:SkillTreeFrame	signature:(SkillInfo *skillinfo, PlayerInfo *playerinfo, PlayerInfoFrame *playerinfoframe)
+~SkillTreeFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^SkillTreeFrame::~SkillTreeFrame(){$/;"	function	line:43	class:SkillTreeFrame	signature:()
+UpdateByType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::UpdateByType(Skill::Type type){$/;"	function	line:48	class:SkillTreeFrame	signature:(Skill::Type type)
+InitScrollview	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::InitScrollview(){$/;"	function	line:55	class:SkillTreeFrame	signature:()
+InitIconList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::InitIconList(){$/;"	function	line:74	class:SkillTreeFrame	signature:()
+DrawFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::DrawFrame(SkillTree *skilltree){$/;"	function	line:78	class:SkillTreeFrame	signature:(SkillTree *skilltree)
+ClearFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::ClearFrame(){$/;"	function	line:84	class:SkillTreeFrame	signature:()
+InsertIcon	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.cpp	/^void SkillTreeFrame::InsertIcon(SkillNode *node, SkillNode *prev){$/;"	function	line:92	class:SkillTreeFrame	signature:(SkillNode *node, SkillNode *prev)
+SkillTreeFrame	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^class SkillTreeFrame : public CCNode{$/;"	class	line:19
+IconVec	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^ 	typedef vector<SkillIcon*> IconVec;$/;"	typedef	line:21	class:SkillTreeFrame
+scrollview_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^ 	ui::ScrollView *scrollview_;$/;"	member	line:34	class:SkillTreeFrame
+icon_list_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^ 	IconVec icon_list_;$/;"	member	line:35	class:SkillTreeFrame
+skillinfo_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^ 	SkillInfo *skillinfo_;$/;"	member	line:36	class:SkillTreeFrame
+playerinfo_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^ 	PlayerInfo *playerinfo_;$/;"	member	line:37	class:SkillTreeFrame
+playerinfoframe_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeComponent\SkillTreeFrame.h	/^	PlayerInfoFrame *playerinfoframe_;$/;"	member	line:38	class:SkillTreeFrame
+createScene	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.cpp	/^Scene* SkillTreeScene::createScene(Data data)$/;"	function	line:17	class:SkillTreeScene	signature:(Data data)
+set_data	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.cpp	/^void SkillTreeScene::set_data(Data data) {$/;"	function	line:26	class:SkillTreeScene	signature:(Data data)
+init	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.cpp	/^bool SkillTreeScene::init()$/;"	function	line:33	class:SkillTreeScene	signature:()
+menuCloseCallback	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.cpp	/^void SkillTreeScene::menuCloseCallback(Ref* pSender)$/;"	function	line:56	class:SkillTreeScene	signature:(Ref* pSender)
+setBackground	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.cpp	/^void SkillTreeScene::setBackground(Color4F color) {$/;"	function	line:65	class:SkillTreeScene	signature:(Color4F color)
+myInit	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.cpp	/^void SkillTreeScene::myInit(){$/;"	function	line:79	class:SkillTreeScene	signature:()
+__SKILLTREE_SCENE_H__	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.h	/^#define __SKILLTREE_SCENE_H__$/;"	macro	line:21
+SkillTreeScene	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.h	/^class SkillTreeScene : public cocos2d::Layer$/;"	class	line:28
+Data	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.h	/^	struct Data{$/;"	struct	line:34	class:SkillTreeScene
+player	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.h	/^		Player *player;$/;"	member	line:35	struct:SkillTreeScene::Data
+data_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\SkillTreeScene.h	/^	Data data_;$/;"	member	line:52	class:SkillTreeScene
+StatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^class StatusHexa {$/;"	class	line:5
+x	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^	float x, y,value;$/;"	member	line:7	class:StatusHexa
+y	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^	float x, y,value;$/;"	member	line:7	class:StatusHexa
+value	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^	float x, y,value;$/;"	member	line:7	class:StatusHexa
+corners	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^	Vec2 corners[6];$/;"	member	line:8	class:StatusHexa
+statusVertex	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^	Vec2 statusVertex[6];$/;"	member	line:9	class:StatusHexa
+StatusHexa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\scene\statusHexa.h	/^	StatusHexa() {}$/;"	function	line:10	class:StatusHexa	signature:()
+MEMBER_BEGIN	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define MEMBER_BEGIN	/;"	macro	line:3	file:
+MEMBER_END	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define MEMBER_END	/;"	macro	line:4	file:
+BuffSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^BuffSkill::BuffSkill() $/;"	function	line:6	class:BuffSkill	signature:()
+BuffSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^BuffSkill::BuffSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)$/;"	function	line:9	class:BuffSkill	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^int BuffSkill::activate(Character **t, Character &c) {$/;"	function	line:16	class:BuffSkill	signature:(Character **t, Character &c)
+ADD_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define ADD_FIELD(/;"	macro	line:17	file:
+ADD_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#undef ADD_FIELD$/;"	macro	line:127	file:
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^int BuffSkill::activate(Character **t, Character &c, int a) {$/;"	function	line:130	class:BuffSkill	signature:(Character **t, Character &c, int a)
+ADD_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define ADD_FIELD(/;"	macro	line:132	file:
+GET_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define GET_FIELD(/;"	macro	line:133	file:
+AFFECT_INT	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define AFFECT_INT(/;"	macro	line:134	file:
+AFFECT_RGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#define AFFECT_RGB(/;"	macro	line:145	file:
+AFFECT_RGB	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#undef AFFECT_RGB$/;"	macro	line:181	file:
+AFFECT_INT	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#undef AFFECT_INT$/;"	macro	line:182	file:
+GET_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#undef GET_FIELD$/;"	macro	line:183	file:
+ADD_FIELD	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^#undef ADD_FIELD$/;"	macro	line:184	file:
+initBuffSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.cpp	/^void initBuffSkill() {$/;"	function	line:187	signature:()
+StatType	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^enum StatType {$/;"	enum	line:6
+damage	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	damage, speed, armor, rgbDa, rgbDe$/;"	enumerator	line:7	enum:StatType
+speed	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	damage, speed, armor, rgbDa, rgbDe$/;"	enumerator	line:7	enum:StatType
+armor	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	damage, speed, armor, rgbDa, rgbDe$/;"	enumerator	line:7	enum:StatType
+rgbDa	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	damage, speed, armor, rgbDa, rgbDe$/;"	enumerator	line:7	enum:StatType
+rgbDe	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	damage, speed, armor, rgbDa, rgbDe$/;"	enumerator	line:7	enum:StatType
+BuffSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^class BuffSkill : public Skill {$/;"	class	line:10
+_value	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	float		_value;$/;"	member	line:12	class:BuffSkill
+_stype	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	StatType	_stype;$/;"	member	line:13	class:BuffSkill
+_rgb	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\BuffSkill.h	/^	MyRGB		_rgb;$/;"	member	line:14	class:BuffSkill
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\BuffSkillFactory.cpp	/^Skill*	BuffSkillFactory::createSkill() {$/;"	function	line:10	class:BuffSkillFactory	signature:()
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\BuffSkillFactory.cpp	/^Skill*	BuffSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype) {$/;"	function	line:15	class:BuffSkillFactory	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)
+initAllSkills	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\BuffSkillFactory.cpp	/^void	BuffSkillFactory::initAllSkills() {$/;"	function	line:20	class:BuffSkillFactory	signature:()
+BuffSkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\BuffSkillFactory.h	/^class BuffSkillFactory :public SkillFactory{$/;"	class	line:12
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\DebuffSkillFactory.cpp	/^Skill*	DebuffSkillFactory::createSkill() {$/;"	function	line:10	class:DebuffSkillFactory	signature:()
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\DebuffSkillFactory.cpp	/^Skill*	DebuffSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype) {$/;"	function	line:15	class:DebuffSkillFactory	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float value, MyRGB rgb, StatType stype)
+initAllSkills	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\DebuffSkillFactory.cpp	/^void	DebuffSkillFactory::initAllSkills() {$/;"	function	line:20	class:DebuffSkillFactory	signature:()
+DebuffSkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\DebuffSkillFactory.h	/^class DebuffSkillFactory :public SkillFactory{$/;"	class	line:12
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\HealSkillFactory.cpp	/^Skill*	HealSkillFactory::createSkill() {$/;"	function	line:10	class:HealSkillFactory	signature:()
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\HealSkillFactory.cpp	/^Skill*	HealSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {$/;"	function	line:15	class:HealSkillFactory	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+initAllSkills	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\HealSkillFactory.cpp	/^void	HealSkillFactory::initAllSkills() {$/;"	function	line:20	class:HealSkillFactory	signature:()
+HealSkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\HealSkillFactory.h	/^class HealSkillFactory :public SkillFactory{$/;"	class	line:12
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\MeleeSkillFactory.cpp	/^Skill*	MeleeSkillFactory::createSkill() {$/;"	function	line:10	class:MeleeSkillFactory	signature:()
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\MeleeSkillFactory.cpp	/^Skill*	MeleeSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {$/;"	function	line:15	class:MeleeSkillFactory	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+initAllSkills	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\MeleeSkillFactory.cpp	/^void	MeleeSkillFactory::initAllSkills() {$/;"	function	line:20	class:MeleeSkillFactory	signature:()
+MeleeSkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\MeleeSkillFactory.h	/^class MeleeSkillFactory :public SkillFactory{$/;"	class	line:12
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\RangeSkillFactory.cpp	/^Skill*	RangeSkillFactory::createSkill() {$/;"	function	line:10	class:RangeSkillFactory	signature:()
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\RangeSkillFactory.cpp	/^Skill*	RangeSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {$/;"	function	line:15	class:RangeSkillFactory	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+initAllSkills	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\RangeSkillFactory.cpp	/^void	RangeSkillFactory::initAllSkills() {$/;"	function	line:20	class:RangeSkillFactory	signature:()
+RangeSkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\RangeSkillFactory.h	/^class RangeSkillFactory :public SkillFactory{$/;"	class	line:12
+SkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^SkillFactory::SkillFactory() {$/;"	function	line:11	class:SkillFactory	signature:()
+~SkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^SkillFactory::~SkillFactory(){\\$/;"	function	line:14	class:SkillFactory	signature:()
+getBegin	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^SVI 	SkillFactory::getBegin (){$/;"	function	line:18	class:SkillFactory	signature:()
+getEnd	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^SVI 	SkillFactory::getEnd (){$/;"	function	line:22	class:SkillFactory	signature:()
+clearFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^void 	SkillFactory::clearFactory (){$/;"	function	line:26	class:SkillFactory	signature:()
+pushSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^void 	SkillFactory::pushSkill (Skill* pSkill){$/;"	function	line:34	class:SkillFactory	signature:(Skill* pSkill)
+getSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^Skill* SkillFactory::getSkill(int index) {$/;"	function	line:38	class:SkillFactory	signature:(int index)
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^Skill*	SkillFactory::createSkill() {$/;"	function	line:42	class:SkillFactory	signature:()
+getSkillsList	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^Skill**	SkillFactory::getSkillsList(int num) {$/;"	function	line:47	class:SkillFactory	signature:(int num)
+RetrieveSkillWithID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.cpp	/^Skill *SkillFactory::RetrieveSkillWithID(Skill::ID id){$/;"	function	line:67	class:SkillFactory	signature:(Skill::ID id)
+SV	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.h	/^typedef vector<Skill*> SV;$/;"	typedef	line:13
+SVI	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.h	/^typedef vector<Skill*>::iterator SVI;$/;"	typedef	line:14
+SkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.h	/^class SkillFactory{$/;"	class	line:16
+Akashic	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\SkillFactory.h	/^	SV Akashic;$/;"	member	line:18	class:SkillFactory
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\TankSkillFactory.cpp	/^Skill*	TankSkillFactory::createSkill() {$/;"	function	line:10	class:TankSkillFactory	signature:()
+createSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\TankSkillFactory.cpp	/^Skill*	TankSkillFactory::createSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor) {$/;"	function	line:15	class:TankSkillFactory	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+initAllSkills	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\TankSkillFactory.cpp	/^void	TankSkillFactory::initAllSkills() {$/;"	function	line:20	class:TankSkillFactory	signature:()
+TankSkillFactory	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\Factory\TankSkillFactory.h	/^class TankSkillFactory :public SkillFactory{$/;"	class	line:12
+HealSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\HealSkill.cpp	/^HealSkill::HealSkill()$/;"	function	line:3	class:HealSkill	signature:()
+HealSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\HealSkill.cpp	/^HealSkill::HealSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)$/;"	function	line:7	class:HealSkill	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\HealSkill.cpp	/^int HealSkill::activate(Character **t, Character &c) {$/;"	function	line:11	class:HealSkill	signature:(Character **t, Character &c)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\HealSkill.cpp	/^int HealSkill::activate(Character **t, Character &c, int num) {$/;"	function	line:29	class:HealSkill	signature:(Character **t, Character &c, int num)
+HealSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\HealSkill.h	/^class HealSkill :public Skill{$/;"	class	line:6
+_factor	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\HealSkill.h	/^	float	_factor;$/;"	member	line:8	class:HealSkill
+MeleeSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MeleeSkill.cpp	/^MeleeSkill::MeleeSkill()$/;"	function	line:4	class:MeleeSkill	signature:()
+MeleeSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MeleeSkill.cpp	/^MeleeSkill::MeleeSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)$/;"	function	line:8	class:MeleeSkill	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MeleeSkill.cpp	/^int MeleeSkill::activate(Character **t, Character &c) {$/;"	function	line:12	class:MeleeSkill	signature:(Character **t, Character &c)
+MeleeSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MeleeSkill.h	/^class MeleeSkill :public Skill {$/;"	class	line:6
+_factor	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MeleeSkill.h	/^	float	_factor;$/;"	member	line:8	class:MeleeSkill
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MeleeSkill.h	/^	virtual int activate(Character **, Character &, int) {$/;"	function	line:13	class:MeleeSkill	signature:(Character **, Character &, int)
+MonsterSkillAttack	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillAttack.cpp	/^MonsterSkillAttack::MonsterSkillAttack():Skill(4000, "basic attack", 0, 0, debuff, false) {$/;"	function	line:4	class:MonsterSkillAttack	signature:()
+MonsterSkillAttack	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillAttack.cpp	/^MonsterSkillAttack::MonsterSkillAttack(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c) $/;"	function	line:7	class:MonsterSkillAttack	signature:(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillAttack.cpp	/^int MonsterSkillAttack::activate(Character **t, Character &c, int) {$/;"	function	line:11	class:MonsterSkillAttack	signature:(Character **t, Character &c, int)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillAttack.cpp	/^int MonsterSkillAttack::activate(Character **t, Character &c) {$/;"	function	line:14	class:MonsterSkillAttack	signature:(Character **t, Character &c)
+MonsterSkillAttack	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillAttack.h	/^class MonsterSkillAttack : public Skill {$/;"	class	line:4
+MonsterSkillFear	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.cpp	/^MonsterSkillFear::MonsterSkillFear()$/;"	function	line:4	class:MonsterSkillFear	signature:()
+MonsterSkillFear	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.cpp	/^MonsterSkillFear::MonsterSkillFear(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c)$/;"	function	line:8	class:MonsterSkillFear	signature:(float myFloat, Tier T_input, SkillID now, string S_name, time_ms cool, time_s c)
+setTier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.cpp	/^int MonsterSkillFear::setTier(Tier in) {$/;"	function	line:14	class:MonsterSkillFear	signature:(Tier in)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.cpp	/^int MonsterSkillFear::activate(Character **t, Character &c, int v) {$/;"	function	line:18	class:MonsterSkillFear	signature:(Character **t, Character &c, int v)
+getName	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.cpp	/^string MonsterSkillFear::getName() {$/;"	function	line:30	class:MonsterSkillFear	signature:()
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.cpp	/^int MonsterSkillFear::activate(Character **t, Character &c) {$/;"	function	line:38	class:MonsterSkillFear	signature:(Character **t, Character &c)
+MonsterSkillFear	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.h	/^class MonsterSkillFear:public Skill{$/;"	class	line:4
+myTier	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.h	/^	Tier myTier;$/;"	member	line:6	class:MonsterSkillFear
+factor	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\MonsterSkillFear.h	/^	float factor;$/;"	member	line:7	class:MonsterSkillFear
+RangeSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\RangeSkill.cpp	/^RangeSkill::RangeSkill()$/;"	function	line:5	class:RangeSkill	signature:()
+RangeSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\RangeSkill.cpp	/^RangeSkill::RangeSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)$/;"	function	line:9	class:RangeSkill	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\RangeSkill.cpp	/^int RangeSkill::activate(Character **t, Character &c) {$/;"	function	line:13	class:RangeSkill	signature:(Character **t, Character &c)
+RangeSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\RangeSkill.h	/^class RangeSkill :public Skill {$/;"	class	line:6
+_factor	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\RangeSkill.h	/^	float	_factor;$/;"	member	line:8	class:RangeSkill
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\RangeSkill.h	/^	virtual int activate(Character **, Character &, int) {$/;"	function	line:13	class:RangeSkill	signature:(Character **, Character &, int)
+TankSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.cpp	/^TankSkill::TankSkill()$/;"	function	line:3	class:TankSkill	signature:()
+TankSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.cpp	/^TankSkill::TankSkill(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)$/;"	function	line:7	class:TankSkill	signature:(SkillID ID, string name, time_ms cooltime, time_s time, bool multi, float factor)
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.cpp	/^int TankSkill::activate(Character **t, Character &c) {$/;"	function	line:11	class:TankSkill	signature:(Character **t, Character &c)
+initTankSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.cpp	/^void TankSkill::initTankSkill(vector<Skill *> &_ss) {$/;"	function	line:22	class:TankSkill	signature:(vector<Skill *> &_ss)
+TankSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.h	/^class TankSkill :public Skill {$/;"	class	line:6
+_factor	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.h	/^	float	_factor;$/;"	member	line:8	class:TankSkill
+activate	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skillinstance\TankSkill.h	/^	virtual int activate(Character **, Character &, int) {$/;"	function	line:13	class:TankSkill	signature:(Character **, Character &, int)
+BuffSkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\BuffSkillTree.cpp	/^BuffSkillTree::BuffSkillTree(){$/;"	function	line:9	class:BuffSkillTree	signature:()
+Init	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\BuffSkillTree.cpp	/^void BuffSkillTree::Init() {$/;"	function	line:12	class:BuffSkillTree	signature:()
+BuffSkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\BuffSkillTree.h	/^class BuffSkillTree : public SkillTree{$/;"	class	line:15
+DebuffSkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\DebuffSkillTree.cpp	/^DebuffSkillTree::DebuffSkillTree(){$/;"	function	line:9	class:DebuffSkillTree	signature:()
+Init	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\DebuffSkillTree.cpp	/^void DebuffSkillTree::Init() {$/;"	function	line:12	class:DebuffSkillTree	signature:()
+DebuffSkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\DebuffSkillTree.h	/^class DebuffSkillTree : public SkillTree{$/;"	class	line:15
+HealSkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\HealSkillTree.cpp	/^HealSkillTree::HealSkillTree(){$/;"	function	line:9	class:HealSkillTree	signature:()
+Init	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\HealSkillTree.cpp	/^void HealSkillTree::Init() {$/;"	function	line:12	class:HealSkillTree	signature:()
+HealSkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\HealSkillTree.h	/^class HealSkillTree : public SkillTree{$/;"	class	line:15
+set_id	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^void SkillNode::set_id(ID id){$/;"	function	line:17	class:SkillNode	signature:(ID id)
+set_prec_id	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^void SkillNode::set_prec_id(ID prec_id){$/;"	function	line:27	class:SkillNode	signature:(ID prec_id)
+set_learn	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^void SkillNode::set_learn(bool learn){$/;"	function	line:37	class:SkillNode	signature:(bool learn)
+set_col	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^void SkillNode::set_col(Index col){$/;"	function	line:44	class:SkillNode	signature:(Index col)
+set_row	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^void SkillNode::set_row(Index row){$/;"	function	line:54	class:SkillNode	signature:(Index row)
+set_col_row	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^void SkillNode::set_col_row(Index col, Index row){$/;"	function	line:61	class:SkillNode	signature:(Index col, Index row)
+SkillNode	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^SkillNode::SkillNode(ID id){$/;"	function	line:69	class:SkillNode	signature:(ID id)
+SkillNode	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.cpp	/^SkillNode::SkillNode(ID id, ID prec_id, bool learn) {$/;"	function	line:72	class:SkillNode	signature:(ID id, ID prec_id, bool learn)
+SkillNode	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^class SkillNode{$/;"	class	line:18
+Index	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^ 	typedef int Index;$/;"	typedef	line:20	class:SkillNode
+ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	typedef Skill::ID ID;$/;"	typedef	line:21	class:SkillNode
+ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	auto get_id()->ID;$/;"	member	line:24	class:SkillNode
+ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	auto get_prec_id()->ID;$/;"	member	line:26	class:SkillNode
+bool	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	auto get_learn()->bool;$/;"	member	line:28	class:SkillNode
+Index	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	auto get_col()->Index;$/;"	member	line:30	class:SkillNode
+Index	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	auto get_row()->Index;$/;"	member	line:32	class:SkillNode
+id_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	ID id_;$/;"	member	line:37	class:SkillNode
+prec_id_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	ID prec_id_;  \/\/ Precedence ID$/;"	member	line:38	class:SkillNode
+learn_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	bool learn_;$/;"	member	line:39	class:SkillNode
+col_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	Index col_;$/;"	member	line:40	class:SkillNode
+row_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillNode.h	/^	Index row_;$/;"	member	line:41	class:SkillNode
+~SkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.cpp	/^SkillTree::~SkillTree() {$/;"	function	line:15	class:SkillTree	signature:()
+Load	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.cpp	/^void SkillTree::Load(int data){$/;"	function	line:47	class:SkillTree	signature:(int data)
+InsertSkill	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.cpp	/^void SkillTree::InsertSkill(SkillNode *snode){$/;"	function	line:59	class:SkillTree	signature:(SkillNode *snode)
+Clear	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.cpp	/^void SkillTree::Clear(){$/;"	function	line:70	class:SkillTree	signature:()
+get_bit	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.cpp	/^bool get_bit(int data, int index){$/;"	function	line:78	signature:(int data, int index)
+set_bit	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.cpp	/^void set_bit(int &data, int index, bool value){$/;"	function	line:81	signature:(int &data, int index, bool value)
+SkillTree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^class SkillTree{$/;"	class	line:23
+ID	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^ 	typedef Skill::ID ID;$/;"	typedef	line:25	class:SkillTree
+Type	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^ 	typedef Skill::Type Type;$/;"	typedef	line:26	class:SkillTree
+Pair	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^ 	typedef pair<int, SkillNode *> Pair;$/;"	typedef	line:27	class:SkillTree
+Tree	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^ 	typedef map<int, SkillNode *> Tree;$/;"	typedef	line:28	class:SkillTree
+iterator	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^	auto Begin()->Tree::iterator;$/;"	member	line:30	class:SkillTree::Tree
+iterator	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^	auto End()->Tree::iterator;$/;"	member	line:31	class:SkillTree::Tree
+SkillNode	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^	auto FindNode(ID id)->SkillNode*;$/;"	member	line:32	class:SkillTree
+tree_	C:\Users\tjdwn\Documents\OnlyHeal\Classes\skilltree\SkillTree.h	/^ 	Tree tree_;$/;"	member	line:40	class:SkillTree

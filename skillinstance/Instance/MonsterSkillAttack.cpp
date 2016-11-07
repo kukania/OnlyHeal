@@ -1,6 +1,6 @@
-#include"MonsterSkillAttack.h"
-#include"../characters/Monster.h"
-#include"../myUtility.h"
+#include"MonsterSkillAttack.hpp"
+#include"characters/Monster.h"
+#include"myUtility.h"
 MonsterSkillAttack::MonsterSkillAttack():Skill(4000, "basic attack", 0, 0, debuff, false) {
 	
 }

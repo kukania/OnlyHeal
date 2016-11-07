@@ -1,4 +1,4 @@
-#include "BuffSkill.h"
+#include "BuffSkill.hpp"
 
 #define MEMBER_BEGIN	2
 #define MEMBER_END		6

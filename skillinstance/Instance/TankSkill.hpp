@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../parts/Skill.h"
-#include "../characters/Character.h"
+#include "parts/Skill.h"
+#include "characters/Character.h"
 
 class TankSkill :public Skill {
 private:

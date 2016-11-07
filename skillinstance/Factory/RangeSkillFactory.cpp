@@ -4,7 +4,7 @@ Revision:	2016/09/07 by PorcaM
 */
 
 #include "RangeSkillFactory.h"
-#include "skillinstance\RangeSkill.h"
+#include "skillinstance/Instance/RangeSkill.hpp"
 #include <string>
 
 Skill*	RangeSkillFactory::createSkill() {

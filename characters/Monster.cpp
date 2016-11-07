@@ -6,9 +6,9 @@ Modified:	2016/09/07 by PorcaM
 
 #pragma once
 #include "Monster.h"
-#include"skillinstance/RangeSkill.h"
-#include"skillinstance/MonsterSkillFear.h"
-#include"skillinstance/MonsterSkillAttack.h"
+#include"skillinstance/Instance/RangeSkill.hpp"
+#include"skillinstance/Instance/MonsterSkillFear.hpp"
+#include"skillinstance/Instance/MonsterSkillAttack.hpp"
 int Monster::setFindTarget(Character **t) {
 	int target=2;
 	int max = 0;

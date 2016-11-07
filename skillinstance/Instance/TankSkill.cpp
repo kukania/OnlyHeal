@@ -1,4 +1,4 @@
-#include "TankSkill.h"
+#include "TankSkill.hpp"
 
 TankSkill::TankSkill()
 	:Skill(9999, "UNKOWN_TANK", 0, 1, tank, false) {

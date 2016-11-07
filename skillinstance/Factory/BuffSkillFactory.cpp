@@ -4,7 +4,7 @@ Revision:	2016/09/17 by PorcaM
 */
 
 #include "BuffSkillFactory.h"
-#include "skillinstance\BuffSkill.h"
+#include "skillinstance/Instance/BuffSkill.hpp"
 #include <string>
 
 Skill*	BuffSkillFactory::createSkill() {

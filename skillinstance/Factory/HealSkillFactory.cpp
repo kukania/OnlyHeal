@@ -4,7 +4,7 @@ Revision:	2016/09/05 by PorcaM
 */
 
 #include "HealSkillFactory.h"
-#include "skillinstance\HealSkill.h"
+#include "skillinstance/Instance/HealSkill.hpp"
 #include <string>
 
 Skill*	HealSkillFactory::createSkill() {

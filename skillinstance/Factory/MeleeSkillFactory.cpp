@@ -4,7 +4,7 @@ Revision:	2016/09/05 by PorcaM
 */
 
 #include "MeleeSkillFactory.h"
-#include "skillinstance\MeleeSkill.h"
+#include "skillinstance/Instance/MeleeSkill.hpp"
 #include <string>
 
 Skill*	MeleeSkillFactory::createSkill() {
