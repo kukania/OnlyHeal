@@ -8,10 +8,11 @@
 
 BuffSkillTree::BuffSkillTree() {
 	Init();
+	offset_ = 50;
 }
 
 void BuffSkillTree::Init() {
-	SkillNode *temp;
+	SkillNode* temp;
 
 	InsertSkill(new SkillNode(0, 0, true));
 	InsertSkill(temp = new SkillNode(51, 0, false));

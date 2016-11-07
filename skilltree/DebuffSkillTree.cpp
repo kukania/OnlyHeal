@@ -8,10 +8,11 @@
 
 DebuffSkillTree::DebuffSkillTree() {
 	Init();
+	offset_ = 100;
 }
 
 void DebuffSkillTree::Init() {
-	SkillNode *temp;
+	SkillNode* temp;
 
 	InsertSkill(new SkillNode(0, 0, true));
 	InsertSkill(temp = new SkillNode(101, 0, false));
