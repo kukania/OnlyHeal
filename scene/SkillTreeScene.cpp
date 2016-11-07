@@ -131,11 +131,11 @@ void SkillTreeScene::myInit() {
 	for (int i = 0; i < 3; ++i) {
 		st_data_[i] = player->skilltreeData[i];
 	}
-	SkillTree* stree;
+	SkillTree* stree[3];
 	for (int i = 0; i < 3; ++i) {
-		stree = skillInfo->get_skilltree_by_type(
+		stree[i] = skillInfo->get_skilltree_by_type(
 			(SkillInfo::Type)i);
-		stree->Load(st_data_[i]);
+		stree[i]->Load(st_data_[i]);
 	}
 	auto slot = new SkillSlot();
 	slot->Assign(player->mySkillSet);
@@ -167,26 +167,28 @@ void SkillTreeScene::myInit() {
 		SkillTreeLayer->addChild(tab[i]);
 	}
 	for (int i = 0; i < 3; i++) {
+		auto tt = stree[st_index_];
 		tab[i]->addTouchEventListener([=](Ref* pSender,
 										  ui::Button::Widget::TouchEventType
-										  type) {
+										  type) mutable {
 			if (type == ui::Button::Widget::TouchEventType::ENDED) {
 				printf(((ui::Button*)pSender)->getName().c_str());
-				st_data_[st_index_] = stree->Save();
+				st_data_[st_index_] = tt->Save();
 				st_index_ = i;
 				skillTreeFrame->UpdateByType((Skill::Type)st_index_);
 			}
 		});
 	}
-	closeBtn->addTouchEventListener([=](
+	auto tt = stree[st_index_];
+	closeBtn->addTouchEventListener([=, &stree] (
 										Ref* pSender,
-										ui::Button::Widget::TouchEventType type) {
+										ui::Button::Widget::TouchEventType type) mutable{
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
 			auto list = slot->get_list();
 			auto it = list.begin();
 			player->mySkillSet.assign(it, list.end());
 			Director::getInstance()->popScene();
-			st_data_[st_index_] = stree->Save();
+			st_data_[st_index_] = tt->Save();
 			for (int i = 0; i < 3; ++i) {
 				player->skilltreeData[i] = st_data_[i];
 			}
