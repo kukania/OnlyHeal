@@ -180,9 +180,9 @@ void SkillTreeScene::myInit() {
 		});
 	}
 	auto tt = stree[st_index_];
-	closeBtn->addTouchEventListener([=, &stree] (
-										Ref* pSender,
-										ui::Button::Widget::TouchEventType type) mutable{
+	closeBtn->addTouchEventListener([=](Ref* pSender,
+										ui::Button::Widget::TouchEventType
+										type) mutable {
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
 			auto list = slot->get_list();
 			auto it = list.begin();
