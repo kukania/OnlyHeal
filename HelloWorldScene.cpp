@@ -46,6 +46,9 @@ bool HelloWorld::init()
 	//Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
+	/*DEBUG FILE TEST*/
+	fileWriteTest();
+	fileReadTest();
 	return true;
 }
 void HelloWorld::makeBackGround() {
@@ -186,7 +189,7 @@ void HelloWorld::makeBackGround() {
 //debug
 void HelloWorld::makePlayerWithItem() {
 	Tier *t;
-	for (int i = WEAPON; i <=ARTIFACT; i++) {
+	for (int i = Item::TYPE::WEAPON; i <= Item::TYPE::ARTIFACT; i++) {
 		for (int j = 0; j < 5; j++) {
 			t = new Tier((rand() % 81));
 			Item *w=new Item(*t,i,MyRGB::getMyRGBRandom((MyRGB::ColorType)(rand()%12)));
@@ -411,4 +414,30 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
 #endif
+}
+
+void HelloWorld::fileWriteTest() {
+	short t = 3;
+	FileOperation::saveFile(Tier(t).getFileString());
+	FileOperation::saveFile(MyRGB::getMyRGBRandom().getFileString());
+	FileOperation::saveFile(this->p->inventory[0].itemList[0].getFileString());
+	FileOperation::saveFile(this->p->getStatus()->getFileString());
+	FileOperation::saveFile(this->p->cInventory.consumableList.front()->getFileString());
+
+	this->p->inventory[0].saveFile();
+	this->p->cInventory.saveFile();
+}
+void HelloWorld::fileReadTest(){
+	FileOperation fop;
+	fop.readFile();
+	Tier temp = Tier::tierByString(fop.readOneByOne());
+	MyRGB myRGB = MyRGB::myRGBByString(fop.readOneByOne());
+	string tempS[3];
+	for (int i = 0; i < 3; i++) tempS[i] = fop.readOneByOne();
+	Item item = Item::itemByString(tempS);
+	Status status = Status::statusByString(fop.readOneByOne());
+	Consumable *cSumable = Consumable::consumableByString(p, fop.readOneByOne());
+
+	this->p->inventory[0].readFile();
+	this->p->cInventory.readFile(p);
 }

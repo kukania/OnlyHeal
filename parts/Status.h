@@ -1,6 +1,6 @@
 #pragma once
 #include "MyRGB.h"
-
+#include<string>
 class Item;
 class Tier;
 class Status {
@@ -53,4 +53,6 @@ public:
 	void		setMaxHPDefault(int);
 	void		setItemWithNum(Item, int);
 	Item		getItemByNum(int);
+	std::string		getFileString();/*FTYPE pMHP, pDa, pDe*/
+	static Status statusByString(std::string fstring);
 };

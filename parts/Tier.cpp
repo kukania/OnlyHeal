@@ -1,5 +1,6 @@
 #pragma once
 #include "Tier.h"
+#include"../FileOperation.h"
 #include <random>
 
 
@@ -59,4 +60,18 @@ std::string Tier::getTierByString() {
 			a += "\n";
 	}
 	return a;
+}
+
+std::string Tier::getFileString() {
+	char buf[100];
+	sprintf(buf, "%d %d %d\n", FileOperation::TIER, this->getValue(), this->getLevel());
+	return std::string(buf);
+}
+
+Tier Tier::tierByString(std::string fstring) {
+	int ftype, value,level;
+	sscanf(fstring.c_str(), "%d %d %d\n", &ftype, &value, &level);
+	Tier res(level);
+	res.value = value;
+	return res;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include"Status.h"
+#include"../FileOperation.h"
 #include "Item.h"
 #include "Tier.h"
 Status::Status() {
@@ -87,8 +88,8 @@ bool		Status::equipItem(Item input) {
 	MyRGBdamage = (items[0].getMyRGB() + items[2].getMyRGB())*0.5;
 	MyRGBdefence = (items[1].getMyRGB() + items[2].getMyRGB())*0.5;
 	setMaxHP();
-	if(input.getType()==WEAPON)setDamage();
-	if (input.getType()==ARMOR)setDefence();
+	if(input.getType()== Item::TYPE::WEAPON)setDamage();
+	if (input.getType()== Item::TYPE::ARMOR)setDefence();
 	return 0;
 }
 int			Status::addMyRGBDamage(MyRGB input) {
@@ -148,4 +149,19 @@ void		Status::addPureDefence(int a) { this->pureDefence += a; setDefence(); }
 
 Item		Status::getItemByNum(int a) {
 	return items[a];
+}
+/*FTYPE pMHP, pDa, pDe*/
+std::string		Status::getFileString() {
+	char buf[256];
+	sprintf(buf, "%d %d %d %d\n", FileOperation::FTYPE::STATUS, this->MaxHPDefault, this->pureDamage, this->pureDefence);
+	return std::string(buf);
+}
+Status Status::statusByString(string fstring) {
+	int ftype, pMHP, pDa, pDe;
+	sscanf(fstring.c_str(), "%d %d %d %d\n", &ftype, &pMHP, &pDa, &pDe);
+	Status res;
+	res.setMaxHPDefault(pMHP);
+	res.addPureDamage(pDa - 100);
+	res.addPureDefence(pDe - 100);
+	return res;
 }

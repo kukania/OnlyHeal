@@ -6,6 +6,7 @@
 #include "scene/HelloWorldComponent/statusHexa.h"
 #include "scene/HelloWorldComponent/ConsumableLayer.h"
 #include "characters/Player.h"
+#include "FileOperation.h"
 #include<vector>
 
 USING_NS_CC;
@@ -16,6 +17,7 @@ enum positionName{
 class HelloWorld : public cocos2d::Layer
 {
 public:
+	FileOperation FM;//for wirte,read file
 	Player *p;
 	int touchNum;
 	std::vector<Vec2>positionArr;
@@ -44,6 +46,8 @@ public:
 	//debug
 	void makePlayerWithItem();
 	void makePlayerConsumable();
+	void fileWriteTest();
+	void fileReadTest();
 
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);

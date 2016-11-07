@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include"../characters/Character.h"
 #include"consumableItem.h"
 class ConsumableInventory{
 public:
@@ -8,4 +9,6 @@ public:
 	void pushConsumable(Consumable*);
 	void useConsumable(Consumable*);
 	void deleteConsumable(Consumable*);
+	void saveFile();/*FTYPE CHECKCHANGE LIST*/
+	void readFile(Character *owner);
 };

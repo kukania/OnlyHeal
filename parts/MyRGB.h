@@ -1,4 +1,5 @@
 #pragma once
+#include<string>
 class MyRGB {
 
 public:
@@ -19,10 +20,12 @@ public:
 	short getB();
 	short checkMyRGBValue(int);
 	static void ErrorDetector(int);
+	static MyRGB myRGBByString(std::string fstring);
 	static MyRGB ColorTypeToRGB(ColorType, float value);
 	static MyRGB HSL2RGB(float h, float s, float l);
 	MyRGB operator+ (MyRGB a);
 	MyRGB operator*(float);
+	std::string getFileString();
 	ColorType type;
 	float value;
 private:

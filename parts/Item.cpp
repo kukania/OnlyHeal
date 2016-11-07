@@ -1,6 +1,6 @@
 #include "Item.h"
 #include "Tier.h"
-
+#include"../FileOperation.h"
 Item::Item() {
 	Tier temp = Tier(1);
 	Item(temp, 0, MyRGB());
@@ -54,4 +54,23 @@ string Item::toString() {
 	}
 	str += "\n";
 	return str;
+}
+/*FTYPE type isNew TIER MYRGB*/
+string Item::getFileString() {
+	char buf[256];
+	sprintf(buf, "%d %d %d\n%s%s", FileOperation::FTYPE::ITEM,this->type, 
+		isNew ? 1:0, this->tier.getFileString().c_str(), this->rgb.getFileString().c_str());
+	return string(buf);
+}
+Item Item::itemByString(std::string fstring[]) {
+	int ftype, type, isNew;
+	sscanf(fstring[0].c_str(), "%d %d %d\n", &ftype, &type, &isNew);
+	MyRGB tempRGB = MyRGB::myRGBByString(fstring[2]);
+	Tier tempTier = Tier::tierByString(fstring[1]);
+	Item res;
+	res.setTier(tempTier);
+	res.setMyRGB(tempRGB);
+	res.type = type;
+	res.isNew = isNew;
+	return res;
 }

@@ -4,6 +4,7 @@
 class Inventory{
 public :
 	int type;
+	int equipedNum;
 	Item *equiped;
 	std::vector<Item> itemList;
 	void pushItemList(Item a);
@@ -11,4 +12,6 @@ public :
 	void equipedItemChange(int index);
 	void sortItemList();
 	static bool sortFunction(Item a, Item b);
+	void readFile();
+	void saveFile();/*FTYPE TYPE SIZE LIST EQUIPEDNUM*/
 };

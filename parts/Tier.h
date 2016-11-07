@@ -8,8 +8,8 @@ class Tier {
 private:
 	short	label[4];
 	short	level;
-	int		value;
 public:
+	int		value;
 	Tier() {
 		short temp = 0;
 		setLevel(temp);
@@ -20,10 +20,12 @@ public:
 	short getLevel();
 	short setLabel(short *);
 	short* getLabel();
-
+	
 	int getValue();
 	int setValue();
+	std::string getFileString();
 	std::string	getTierByString();
+	static Tier tierByString(std::string fstring);
 	static short label2level(short *_label) {
 		short ret = 0;
 		for (int i = 0; i < 4; i++) {

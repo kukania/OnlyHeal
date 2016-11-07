@@ -1,6 +1,7 @@
 #pragma once
 #include<cstdio>
 #include "MyRGB.h"
+#include"../FileOperation.h"
 #include<random>
 void MyRGB::ErrorDetector(int v) {
 	switch (v) {
@@ -177,4 +178,17 @@ MyRGB MyRGB::operator*(float input) {
 	temp.setG(this->G*input);
 	temp.setB(this->B*input);
 	return temp;
+}
+
+std::string MyRGB::getFileString() {
+	char buf[100];
+	//sprintf(buf, , MYRGB, src.getR(), src.getG(), src.getB());
+	//CCLOG("fw : %s", buf);
+	sprintf(buf, "%d %d %d %d\n", FileOperation:: MYRGB, this->getR(), this->getG(), this->getB());
+	return std::string(buf);
+}
+MyRGB MyRGB::myRGBByString(string fstring) {
+	int ftype, r, g, b;
+	sscanf(fstring.c_str(), "%d %d %d %d\n", &ftype, &r, &g, &b);
+	return MyRGB(r, g, b);
 }

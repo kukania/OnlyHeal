@@ -1,45 +1,42 @@
 // to enable CCLOG()
 #define COCOS2D_DEBUG 1
-
+#define _CRT_SECURE_NO_WARNINGS
 #include "cocos2d.h"
 #include "FileOperation.h"
 #include <stdio.h>
 
 using namespace std;
 
-void FileOperation::saveFile()
+void FileOperation::saveFile(string buf)
 {
 	string path = getFilePath();
-	FILE *fp = fopen(path.c_str(), "w");
+	FILE* fp = fopen(path.c_str(), "a+");
 
 	if (! fp)
 	{
 		CCLOG("can not create file %s", path.c_str());
 		return;
 	}
-
-	fputs("file example", fp);
+	fputs(buf.c_str(), fp);
 	fclose(fp);
 }
-
 void FileOperation::readFile()
 {
 	string path = getFilePath();
-	FILE *fp = fopen(path.c_str(), "r");
-	char buf[50] = {0};
+	FILE* fp = fopen(path.c_str(), "r");
+	char buf[256] = {0};
 
 	if (! fp)
 	{
 		CCLOG("can not open file %s", path.c_str());
 		return;
 	}
-
-	fgets(buf, 50, fp);
-	CCLOG("read content %s", buf);
-
+	while (!feof(fp)) {
+		fgets(buf, 255, fp);
+		readRes.push_back(buf);
+	}
 	fclose(fp);
 }
-
 string FileOperation::getFilePath()
 {
 	string path("");
@@ -68,4 +65,8 @@ string FileOperation::getFilePath()
 
 #endif
 	return path;
+}
+std::string FileOperation::readOneByOne() {
+	static int num = 0;
+	return readRes[num++];
 }

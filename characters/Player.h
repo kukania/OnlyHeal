@@ -19,12 +19,12 @@ public:
 	Inventory inventory[3];
 	ConsumableInventory cInventory;
 	Player(){ 
-		inventory[WEAPON].type = WEAPON;
-		inventory[WEAPON].equiped = NULL;
-		inventory[ARMOR].type = ARMOR;
-		inventory[ARMOR].equiped = NULL;
-		inventory[ARTIFACT].type = ARTIFACT;
-		inventory[ARTIFACT].equiped = NULL;
+		inventory[Item::TYPE::WEAPON].type = Item::TYPE::WEAPON;
+		inventory[Item::TYPE::WEAPON].equiped = NULL;
+		inventory[Item::TYPE::ARMOR].type = Item::TYPE::ARMOR;
+		inventory[Item::TYPE::ARMOR].equiped = NULL;
+		inventory[Item::TYPE::ARTIFACT].type = Item::TYPE::ARTIFACT;
+		inventory[Item::TYPE::ARTIFACT].equiped = NULL;
 		skillPoint = 0;
 	}
 	void equipSelectedItem(int index,int type);

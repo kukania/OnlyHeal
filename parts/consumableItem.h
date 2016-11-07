@@ -21,6 +21,8 @@ public:
 	CType getType();
 	std::list<Consumable*>::iterator it;
 	bool isNew;
+	string getFileString();/*FTYPE CTYPE VALUE*/
+	static Consumable* consumableByString(Character *owner, string fstring);
 private:
 	CType type;
 	int value;

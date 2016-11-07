@@ -1,4 +1,5 @@
 #include"../characters/Player.h"
+#include"../FileOperation.h"
 #include"consumableItem.h"
 Consumable::Consumable(Character * owner, CType type, int value,string name, string contents) {
 	this->owner = owner;
@@ -53,4 +54,17 @@ void Consumable::setOwner(Character * owner) {
 }
 Consumable::CType Consumable::getType() {
 	return this->type;
+}
+
+string Consumable::getFileString() {
+	char buf[512];
+	sprintf(buf, "%d %d %d %s %s\n", FileOperation::FTYPE::CONSUMABLEITEM, this->type, this->value,this->name.c_str(),this->contents.c_str());
+	return string(buf);
+}
+Consumable* Consumable::consumableByString(Character *owner,string fstring) {
+	int ftype, type, value;
+	char name[100];
+	char contents[100];
+	sscanf(fstring.c_str(), "%d %d %d %s %s\n", &ftype, &type, &value,name,contents);
+	return new Consumable(owner,(Consumable::CType)type, value,name,contents);
 }

@@ -3,11 +3,12 @@
 #include "MyRGB.h"
 #include "Tier.h"
 using namespace std;
-enum ItemEnum {
-	WEAPON, ARMOR, ARTIFACT
-};
+
 class Item {
 public:
+	enum TYPE {
+		WEAPON,ARMOR,ARTIFACT
+	};
 	Tier	tier;
 	int		type;
 	MyRGB	rgb;
@@ -20,5 +21,7 @@ public:
 	Tier	getTier();
 	int		getType();
 	MyRGB	getMyRGB();
-	string  toString();
+	std::string  toString();
+	std::string  getFileString();/*FTYPE tier type rgb isNew*/
+	static Item itemByString(std::string fstring[]);
 };
