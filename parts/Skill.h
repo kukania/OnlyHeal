@@ -19,47 +19,59 @@ enum SkillType {
 
 class Character;
 
-class Skill{
-protected:
-	SkillID 	_ID;
-	string 		_name;
-	time_ms 	_cooltime; 		// static time for cooldown 		
-	time_s 		_time; 			// persistant time of skill
-	SkillType 	_type; 			// type of skill
-	bool 		_multi;
+class Skill {
+ protected:
+	SkillID     _ID;
+	string      _name;
+	time_ms     _cooltime;	// static time for cooldown
+	time_s      _time;		// persistant time of skill
+	SkillType   _type;		// type of skill
+	bool        _multi;
 
- public:	
- 	typedef int ID;
- 	enum Type{
- 		kHeal = 0,
- 		kBuff,
- 		kDebuff,
- 		kAgro,
- 		kAttk
- 	};
+ public:
+	typedef int ID;
+	enum Type {
+		kHeal = 0,
+		kBuff,
+		kDebuff,
+		kAgro,
+		kAttk
+	};
+
 	// ID, name, cooltime, time, type, multi
-	Skill(SkillID, string, time_ms, time_s, SkillType, bool);
+	Skill(SkillID,
+		  string,
+		  time_ms,
+		  time_s,
+		  SkillType,
+		  bool);
+
 	// getter
-	time_ms 	_cooldown;
-	SkillID 	getID();
-	string		getName();
-	time_ms 	getCooltime();
-	time_ms 	getCooldown();
-	time_s 		getTime();
-	SkillType	getType();
-	bool 		getMulti();
+	time_ms     _cooldown;
+	SkillID	  getID();
+	string	  getName();
+	time_ms	  getCooltime();
+	time_ms	  getCooldown();
+	time_s	  getTime();
+	SkillType getType();
+	bool	  getMulti();
+
 	// setter
-	void 		setID(SkillID);
-	void		setName(string);
-	void		setCooltime(time_ms);
-	void 		setTime(time_s);
-	void		setType(SkillType);
-	void 		setMulti(bool);
+	void        setID(SkillID);
+	void        setName(string);
+	void        setCooltime(time_ms);
+	void        setTime(time_s);
+	void        setType(SkillType);
+	void		setMulti(bool);
+
 	// main use
-	virtual int activate(Character **, Character &) = 0;
-	virtual int activate(Character **, Character &, int) = 0;
+	virtual int activate(Character **,
+						 Character&) = 0;
+	virtual int activate(Character **,
+						 Character&,
+						 int)		 = 0;
 	void		setCooldown();
 	bool		able();
-	bool 		isMulti();
+	bool		isMulti();
 	void		printInfo();
 };
