@@ -11,5 +11,10 @@ DebuffSkillTree::DebuffSkillTree() {
 }
 
 void DebuffSkillTree::Init() {
+	SkillNode *temp;
+
+	InsertSkill(new SkillNode(0, 0, true));
+	InsertSkill(temp = new SkillNode(101, 0, false));
+	temp->set_col_row(0, 0);
 	return;
 }
