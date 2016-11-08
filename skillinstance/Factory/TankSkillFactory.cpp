@@ -4,7 +4,7 @@ Revision:	2016/09/05 by PorcaM
 */
 
 #include "TankSkillFactory.h"
-#include "skillinstance\TankSkill.h"
+#include "skillinstance/Instance/TankSkill.hpp"
 #include <string>
 
 Skill*	TankSkillFactory::createSkill() {

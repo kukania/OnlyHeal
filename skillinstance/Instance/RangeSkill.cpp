@@ -1,6 +1,6 @@
-#include "RangeSkill.h"
-#include"../characters/Monster.h"
-#include "../myUtility.h"
+#include "RangeSkill.hpp"
+#include"characters/Monster.h"
+#include "myUtility.h"
 
 RangeSkill::RangeSkill()
 	:Skill(9999, "UNKOWN_RANGE", 0, 1, range_atk, false) {

@@ -1,4 +1,4 @@
-#include "HealSkill.h"
+#include "HealSkill.hpp"
 
 HealSkill::HealSkill()
 	:Skill(9999, "UNKOWN_HEAL", 0, 1, heal, false){

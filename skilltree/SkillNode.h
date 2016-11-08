@@ -12,8 +12,8 @@ Modified: 	2016/10/05 by PorcaM
 	Modified: 	2016/10/05 by PorcaM
 
 	Context:
-		Node used in SkillTree. 
-		No link to Skill instance or ptr. 
+		Node used in SkillTree.
+		No link to Skill instance or ptr.
 ================================================== */
 class SkillNode{
  public:

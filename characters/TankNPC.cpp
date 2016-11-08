@@ -4,7 +4,7 @@ Modified:	2016/09/07 by PorcaM
 */
 
 #include "TankNPC.h"
-#include "skillinstance\TankSkill.h"
+#include "skillinstance/Instance/TankSkill.hpp"
 #include "skillinstance\Factory\TankSkillFactory.h"
 #include <cstdio>
 

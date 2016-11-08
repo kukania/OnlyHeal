@@ -4,7 +4,7 @@ Modified:	2016/09/07 by PorcaM
 */
 
 #include "RangeNPC.h"
-#include "skillinstance\RangeSkill.h"
+#include "skillinstance/Instance/RangeSkill.hpp"
 #include "skillinstance\Factory\RangeSkillFactory.h"
 #include <cstdio>
 

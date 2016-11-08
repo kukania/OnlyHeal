@@ -4,8 +4,8 @@ Modified:	2016/09/07 by PorcaM
 */
 
 #include "MeleeNPC.h"
-#include "skillinstance\MeleeSkill.h"
-#include "skillinstance\Factory\MeleeSkillFactory.h"
+#include "skillinstance/Instance/MeleeSkill.hpp"
+#include "skillinstance/Factory/MeleeSkillFactory.h"
 #include <cstdio>
 
 MeleeNPC::MeleeNPC(Tier tier)

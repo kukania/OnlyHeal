@@ -1,6 +1,6 @@
-#include "MeleeSkill.h"
+#include "MeleeSkill.hpp"
 #include "myUtility.h"
-#include"../characters/Monster.h"
+#include"characters/Monster.h"
 MeleeSkill::MeleeSkill()
 	:Skill(9999, "UNKOWN_MELEE", 0, 1, melee_atk, false) {
 	_factor = 1.0f;

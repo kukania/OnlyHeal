@@ -1,8 +1,8 @@
 /* ============================================================
-FileName:	SkillTreeScene.cpp
-Revision:	2016/09/11 by PorcaM
-Modified: 	2016/10/05 by PorcaM
-============================================================ */
+   FileName:	SkillTreeScene.cpp
+   Revision:	2016/09/11 by PorcaM
+   Modified:    2016/11/07 by PorcaM
+   ============================================================ */
 #include <string>
 using std::string;
 
@@ -18,11 +18,13 @@ Scene* SkillTreeScene::createScene(Data data)
 {
 	auto scene = Scene::create();
 	auto layer = SkillTreeScene::create();
+
 	layer->set_data(data);
 	layer->myInit();
 	scene->addChild(layer);
 	return scene;
 }
+
 void SkillTreeScene::set_data(Data data) {
 	if (data.player == NULL) {
 		assert(false);
@@ -30,107 +32,130 @@ void SkillTreeScene::set_data(Data data) {
 	data_ = data;
 	return;
 }
+
 bool SkillTreeScene::init()
 {
-	if (!Layer::init())
-	{
+	if (!Layer::init()) {
 		return false;
 	}
-	
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	Vec2 origin		 = Director::getInstance()->getVisibleOrigin();
 
 	auto closeItem = MenuItemImage::create(
 		"CloseNormal.png",
 		"CloseSelected.png",
 		CC_CALLBACK_1(SkillTreeScene::menuCloseCallback, this));
 
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width / 2,
-		origin.y + closeItem->getContentSize().height / 2));
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width -
+								closeItem->getContentSize().width / 2,
+								origin.y + closeItem->getContentSize().height /
+								2));
 
 	auto menu = Menu::create(closeItem, NULL);
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu, 1);
 	return true;
 }
+
 void SkillTreeScene::menuCloseCallback(Ref* pSender)
 {
 	Director::getInstance()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
-#endif 
+#endif	// if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 }
 
 void SkillTreeScene::setBackground(Color4F color) {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-	auto backGround = DrawNode::create();
-	Vec2 corners[4] = {
-		Vec2(0, visibleSize.height),
+	auto backGround	 = DrawNode::create();
+	Vec2 corners[4]	 = {
+		Vec2(0,					visibleSize.height),
 		Vec2(visibleSize.width, visibleSize.height),
 		Vec2(visibleSize.width, 0),
-		Vec2(0, 0)
+		Vec2(0,					0)
 	};
+
 	backGround->drawPolygon(corners, 4, color, 0, color);
 	this->addChild(backGround);
 	return;
 }
 
-void SkillTreeScene::myInit(){
+void SkillTreeScene::myInit() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
+
+	st_index_ = 0;
+
 	/* ============================================================
-	Below codes are writed by PorcaM.
-	Generate SkillTree Layer.
-	============================================================ */
+	   Below codes are writed by PorcaM.
+	   Generate SkillTree Layer.
+	   ============================================================ */
 	setBackground(Color4F(1, 1, 1, 1));
+
 	/* ============================================================
-	Layer
-	Include all elements of this scene.
-	============================================================ */
+	   Layer
+	   Include all elements of this scene.
+	   ============================================================ */
 	auto SkillTreeLayer = Layer::create();
-	SkillTreeLayer->setPosition(Vec2(visibleSize.width / 2 * 1.6, visibleSize.height / 2 * 1.6));
+	SkillTreeLayer->setPosition(Vec2(visibleSize.width / 2 * 1.6,
+									 visibleSize.height / 2 * 1.6));
 	SkillTreeLayer->setScale(1.6f);
 	this->addChild(SkillTreeLayer);
+
 	/* ============================================================
-	Outline
-	============================================================ */
+	   Outline
+	   ============================================================ */
 	auto outline = Sprite::create("images/skilltree/outline.png");
 	SkillTreeLayer->addChild(outline);
+
 	/* ============================================================
-	Title
-	============================================================ */
+	   Title
+	   ============================================================ */
 	auto title = Sprite::create("images/skilltree/title.png");
 	title->setPosition(Vec2(0, 250));
 	SkillTreeLayer->addChild(title);
 	auto closeBtn = ui::Button::create("images/skilltree/btn_close.png");
-	closeBtn->addTouchEventListener([&](Ref *pSender, ui::Button::Widget::TouchEventType type) {
+	closeBtn->addTouchEventListener([&](Ref* pSender,
+										ui::Button::Widget::TouchEventType type) {
 		printf("Touch event type: %d\n", type);
 	});
 	closeBtn->setAnchorPoint(Vec2(0.5f, 1.0f));
 	closeBtn->setPosition(Vec2(268, 47));
 	title->addChild(closeBtn);
+
 	/* ============================================================
-	Player Information Frame
-	============================================================ */
+	   Player Information Frame
+	   ============================================================ */
 	auto skillInfo = new SkillInfo();
-	Player *player = data_.player;
-	SkillTree *stree = skillInfo->get_skilltree_by_type((SkillInfo::Type)0);
-	stree->Load(player->skilltreeData[0]); // [TODO] read :158
+	Player* player = data_.player;
+	for (int i = 0; i < 3; ++i) {
+		st_data_[i] = player->skilltreeData[i];
+	}
+	SkillTree* stree[3];
+	for (int i = 0; i < 3; ++i) {
+		stree[i] = skillInfo->get_skilltree_by_type(
+			(SkillInfo::Type)i);
+		stree[i]->Load(st_data_[i]);
+	}
 	auto slot = new SkillSlot();
 	slot->Assign(player->mySkillSet);
-	auto playerInfo = new PlayerInfo(20, slot);
+	auto playerInfo		 = new PlayerInfo(20, slot);
 	auto playerInfoFrame = new PlayerInfoFrame(playerInfo);
 	playerInfoFrame->setPositionY(-270);
 	SkillTreeLayer->addChild(playerInfoFrame);
+
 	/* ============================================================
-	Skilltree Frame
-	============================================================ */
-	auto skillTreeFrame = new SkillTreeFrame(skillInfo, playerInfo, playerInfoFrame);
+	   Skilltree Frame
+	   ============================================================ */
+	auto skillTreeFrame = new SkillTreeFrame(skillInfo,
+											 playerInfo,
+											 playerInfoFrame);
 	skillTreeFrame->setPositionY(185);
 	SkillTreeLayer->addChild(skillTreeFrame);
+
 	/* ============================================================
-	Tabs
-	============================================================ */
+	   Tabs
+	   ============================================================ */
 	ui::Button* tab[3];
 	string num[3] = { "1", "2", "3" };
 	for (int i = 0; i < 3; i++) {
@@ -142,23 +167,31 @@ void SkillTreeScene::myInit(){
 		SkillTreeLayer->addChild(tab[i]);
 	}
 	for (int i = 0; i < 3; i++) {
-		tab[i]->addTouchEventListener([=](Ref *pSender, ui::Button::Widget::TouchEventType type) {
-			printf(((ui::Button*)pSender)->getName().c_str());
-			skillTreeFrame->UpdateByType((Skill::Type)i);
+		auto tt = stree[st_index_];
+		tab[i]->addTouchEventListener([=](Ref* pSender,
+										  ui::Button::Widget::TouchEventType
+										  type) mutable {
+			if (type == ui::Button::Widget::TouchEventType::ENDED) {
+				printf(((ui::Button*)pSender)->getName().c_str());
+				st_data_[st_index_] = tt->Save();
+				st_index_ = i;
+				skillTreeFrame->UpdateByType((Skill::Type)st_index_);
+			}
 		});
 	}
-	closeBtn->addTouchEventListener([=](
-			Ref *pSender,
-			ui::Button::Widget::TouchEventType type) {
+	auto tt = stree[st_index_];
+	closeBtn->addTouchEventListener([=](Ref* pSender,
+										ui::Button::Widget::TouchEventType
+										type) mutable {
 		if (type == ui::Button::Widget::TouchEventType::ENDED) {
 			auto list = slot->get_list();
 			auto it = list.begin();
 			player->mySkillSet.assign(it, list.end());
 			Director::getInstance()->popScene();
-			// [TODO] When implement buff and debuff, then changed
-			SkillTree *stree = skillInfo->get_skilltree_by_type((SkillInfo::Type)0);
-			int data = stree->Save();
-			player->skilltreeData[0] = data;
+			st_data_[st_index_] = tt->Save();
+			for (int i = 0; i < 3; ++i) {
+				player->skilltreeData[i] = st_data_[i];
+			}
 		}
 	});
 	return;
